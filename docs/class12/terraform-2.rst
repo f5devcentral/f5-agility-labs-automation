@@ -29,8 +29,9 @@ On the Ubuntu host run the following commands
   $ terraform plan
   $ terraform apply
   
-In this scenario we are executing a shell script that will install AS3 and deploy the "nginx.json" 
-declaration that is configure to use Consul's API for service discovery.
+In this scenario we are executing a shell script that will install AS3 and
+deploy the "nginx.json" declaration that is configure to use Consul's API for
+service discovery.
 
 You should see the following output.
 
