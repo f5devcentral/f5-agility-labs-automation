@@ -1,4 +1,4 @@
-Module 1: Add module title here
+Module 2: Add module title here
 ===================================
 
 The purpose of this module is to...

@@ -1,5 +1,5 @@
-Class 1: Add Class Name Here
-=========================================
+Class 6: Programmability - CI/CD Process Integration with BIG-IP
+================================================================
 
 This introductory class covers the following topics:
 
