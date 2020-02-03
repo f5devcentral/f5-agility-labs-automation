@@ -10,7 +10,7 @@ In this lab, you will work with multiple tenants on a single BIG-IP platform.
 
 #. Click and examine the ``BIG-IP Authenticate`` declaration. Click ``Send`` and ensure a 200 OK response in the Postman response window. 
 
-    .. image:: /_static/Postname200OK_Highlighted.JPG
+    .. image:: /_static/as3/Postname200OK_Highlighted.JPG
 
 #. Locate the ``Tenant 1: HTTP Multi-Applications (2 Apps)`` request in the same folder.  If you look at the ``Body`` of the request, you will see a declaration to create 2 applications in the tenant named ``http_tenant``.
 
@@ -20,7 +20,7 @@ In this lab, you will work with multiple tenants on a single BIG-IP platform.
 
 #. Locate the ``BIG-IP: Get list of first tenant's deployed declarations`` request.  In the request note that you will only retrieve the applications deployed for ``http_tenant`` tenant.
 
-   .. image:: /_static/Postman_GetTenantDeclaration-Highlighted.JPG
+   .. image:: /_static/as3/Postman_GetTenantDeclaration-Highlighted.JPG
 
 #. Click ``Send`` to retrieve the deployed applications on the BIG-IP.  If you look at the response, you will see the declaration of the both applications.
 
@@ -35,7 +35,7 @@ In this lab, you will work with multiple tenants on a single BIG-IP platform.
 
 #. You should receive an error ``422 Unprocessable Entity``.  The reason you received this error is that the second tenant is attemping to use the same pool member IP addresses in the declaration.  In order to use the same pool members in the second tenant, you must use the ``ShareNodes`` option in the pool declaration.
 
-  .. image:: /_static/Postman_Tenant2_Error.JPG
+  .. image:: /_static/as3/Postman_Tenant2_Error.JPG
 
 #. Open the declaration ``BIG-IP: Delete first tenants declarations`` in order to delete the applications for tenant ``http_tenant``.
 
@@ -47,7 +47,7 @@ In this lab, you will work with multiple tenants on a single BIG-IP platform.
 
 #. Scroll down the declaration to see the ``ShareNodes`` option set to ``true``.  The default setting for this is ``false``.
 
-  .. image:: /_static/Postman_Tenant1_ShareNodes-Highlighted.JPG
+  .. image:: /_static/as3/Postman_Tenant1_ShareNodes-Highlighted.JPG
 
 #. Click ``Send`` to send the updated declaration to the BIG-IP.
 
@@ -63,7 +63,7 @@ In this lab, you will work with multiple tenants on a single BIG-IP platform.
 
 #. Locate the ``BIG-IP: Get list of ALL deployed declarations`` request.  In the request note that you will retrieve the applications deployed for all tenants.
 
-   .. image:: /_static/Postman_GetAllTenantDeclarations.JPG
+   .. image:: /_static/as3/Postman_GetAllTenantDeclarations.JPG
 
 #. Click ``Send`` to retrieve the deployed applications on the BIG-IP.  If you look at the response, you will see the declaration of the both applications.
 

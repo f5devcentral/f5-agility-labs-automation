@@ -12,7 +12,7 @@ In this lab, we will create two simple HTTP application using AS3 within the sam
 
 #. Navigate to the BIG-IP and visually confirm the changes have been made.
 
-    .. image:: /_static/two_apps_confirm.jpg
+    .. image:: /_static/as3/two_apps_confirm.jpg
 
 
 
@@ -24,16 +24,16 @@ In this lab, we will create two simple HTTP application using AS3 within the sam
 
 #. **NOTE:** In Postman, and most text-editors, you can move your cursor next to an open (or closed) brace and it will locate the corresponding closed (or open) brace. This is depicted in the following images:
 
-    .. image:: /_static/app_begin.jpg
+    .. image:: /_static/as3/app_begin.jpg
 
     |
 
-    .. image:: /_static/app_end.jpg
+    .. image:: /_static/as3/app_end.jpg
 
 
 #. We want to add another application to our ``http_tenant``. We can copy the existing declaration for an application and modify parts as needed.
 
-    .. image:: /_static/app_template.jpg
+    .. image:: /_static/as3/app_template.jpg
 
 #. We want to name the application ``http_app_3`` and configure the following:
 
@@ -51,21 +51,21 @@ In this lab, we will create two simple HTTP application using AS3 within the sam
 
 #. Modify the AS3 declaration so that our ``http_app_3`` has the appropriate information. Once modified, it should look like the following:
 
-    .. image:: /_static/app_template_pt2.jpg
+    .. image:: /_static/as3/app_template_pt2.jpg
 
 #. Send the declaration. Ensure a 200 OK response.
 
-    .. image:: /_static/200.jpg
+    .. image:: /_static/as3/200.jpg
 
 #. Confirm the changes on the BIG-IP. On the left column, navigate to **Local Traffic --> Virtual Servers** and validate the **partition** is **http_tenant**.
 
 #. You should see the list of 3 virtual servers.
 
-    .. image:: /_static/3apps.jpg
+    .. image:: /_static/as3/3apps.jpg
 
 #. You can navigate to **Local Traffic-> Pools** to confirm the changes made to the Pools.
 
-    .. image:: /_static/3pools.jpg
+    .. image:: /_static/as3/3pools.jpg
 
 
 
@@ -73,7 +73,7 @@ In this lab, we will create two simple HTTP application using AS3 within the sam
 
 #. In order to delete our virtual server, pool and pool members, we can simply send a POST with an empty tenant body. Since AS3 is declarative, it will notice that we are sending a POST with an empty tenant body, and will by default delete the existing virtual server, pool and pool members.
 
-    .. image:: /_static/clear_tenant.jpg
+    .. image:: /_static/as3/clear_tenant.jpg
 
 #. In Postman, find the ``Delete Application`` request. Examine the URI and body declaration. Notice we are sending a POST to the same API endpoint, but take a close look at the JSON body.
 
@@ -81,5 +81,5 @@ In this lab, we will create two simple HTTP application using AS3 within the sam
 
 #. Click ``Send`` and ensure a 200 OK response. Navigate back to the BIG-IP, refresh the page and confirm the changes that the tenant has been deleted.
 
-    .. image:: /_static/delete_tenant.jpg
+    .. image:: /_static/as3/delete_tenant.jpg
 

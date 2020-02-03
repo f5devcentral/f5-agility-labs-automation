@@ -93,13 +93,13 @@ If the error ``Cannot find any ADC root nodes for the target devices`` occurs, f
 
 #. On BIG-IQ, navigate to ``Applications``, ``Applications`` screen to view the deployed application.
 
-    .. image:: /_static/bigiq_1.jpg
+    .. image:: /_static/as3/bigiq_1.jpg
 
 #. Now we will move our applciations from ``Unknown Applications`` to another tile named ``Known Applications``.
 
 #. Send the ``Get Application Reference`` request to set the variable ``_bigiq_app_ref``.  Look at the ``Tests`` window for the declaration to see the variable being set, whcih will be used in the following step.
 
-   .. image:: /_static/big_variable.JPG
+   .. image:: /_static/as3/big_variable.JPG
 
 #. Open the ``Move out of Unknown App`` request.
 
@@ -391,7 +391,7 @@ If the error ``Cannot find any ADC root nodes for the target devices`` occurs, f
 
 #. On BIG-IQ, navigate to ``Applications``, ``Application Templates``.
 
-    .. image:: /_static/bigiq_2.jpg
+    .. image:: /_static/as3/bigiq_2.jpg
 
 #. Open the ``Create App2 with Template`` request.
 
@@ -480,7 +480,7 @@ If the error ``Cannot find any ADC root nodes for the target devices`` occurs, f
 
 #. Finally, delete the application template from the BIG-IQ. Open the ``GET HTTP Application Template`` request and click the blue ``Send`` button. Copy the ``id`` from the Body of the response.
 
-    .. image:: /_static/bigiq_3.jpg
+    .. image:: /_static/as3/bigiq_3.jpg
 
 #. Paste the ``id`` to the URL of request ``DELETE HTTP Application Template``.
 

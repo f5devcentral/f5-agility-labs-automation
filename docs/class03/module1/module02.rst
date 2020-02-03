@@ -10,10 +10,10 @@ In this lab, we will create a simple HTTP application using AS3. Before sending 
 
 #. For the lab, we will be using token-based authentication via HTTP/HTTPS to the BIG-IP API by sending requests to the BIG-IP and including a valid BIG-IP authentication token in the ``X-F5-Auth-Token`` header.
 
-    .. image:: /_static/token_auth.jpg
+    .. image:: /_static/as3/token_auth.jpg
 
 #. Click and examine the ``BIG-IP Authenticate`` declaration. Click ``Send`` and ensure a 200 OK response in the Postman response window.
-    .. image:: /_static/Postname200OK_Highlighted.JPG
+    .. image:: /_static/as3/Postname200OK_Highlighted.JPG
 
 #. Now that we have setup token authentication, we can continue working with our BIG-IP.
 
@@ -30,32 +30,32 @@ In this lab, we will create a simple HTTP application using AS3. Before sending 
 
 #. Open VS Code.
 
-    .. image:: /_static/vs_code.jpg
+    .. image:: /_static/as3/vs_code.jpg
 
 #. Once open, open a new working file by navigating to File->New File.
 
-    .. image:: /_static/vscode_newfile.jpg
+    .. image:: /_static/as3/vscode_newfile.jpg
 
 #. Copy the contents of the file ``AS3 Schema Validation`` JSON body and paste into VS Code. Save the file to your desktop.
 
 #. Notice the wavy line around line 17.This is notifying you that there is a syntax error. You can hover over the wavy line to see more information.
 
-    .. image:: /_static/tenantt.jpg
+    .. image:: /_static/as3/tenantt.jpg
 
    You **must** save the file before Visual Studio Code will show you a syntax error.
 
 #. For a full declaration, it is easier to view the Problems (navigate to View->Problems).
 
-    .. image:: /_static/view_problems.jpg
+    .. image:: /_static/as3/view_problems.jpg
 
 #. Correct the JSON syntax error by correcting the typo from ``Tenantt`` to ``Tenant``.
 
-    .. image:: /_static/tenant.jpg
+    .. image:: /_static/as3/tenant.jpg
 
 #. Using Schema Validation can be very useful when creating AS3 JSON declarations. It can help check the accuracy of a declaration before deployment for existing declarations. It can also be used as a powerful tool while composing your declarations.  It can suggest valid options for a property in a declaration and inform you of required values.
 
-    .. image:: /_static/schema1.jpg
-    .. image:: /_static/schema2.jpg
+    .. image:: /_static/as3/schema1.jpg
+    .. image:: /_static/as3/schema2.jpg
 
 
 #. Now that we have validated our JSON schema, we can confidently send this declaration to the BIG-IP to successfully create an HTTP application.
@@ -67,7 +67,7 @@ In this lab, we will create a simple HTTP application using AS3. Before sending 
 #. Navigate back to Postman and find the ``HTTP Application`` JSON file. Note the only difference between this and the one we used to validate is the first line with the key/value of 'schema' and the schema format URL.
 #. Send the AS3 declaration by clicking the blue ``Send`` button. Ensure once it is done processing that you receive a 200 OK response.
 
-    .. image:: /_static/200.jpg
+    .. image:: /_static/as3/200.jpg
 
 
 **Exercise 4 - Confirm changes on BIG-IP**
@@ -80,19 +80,19 @@ In this lab, we will create a simple HTTP application using AS3. Before sending 
 
 #. Change your partition by choosing the tenant we created, ``http_tenant`` on the top right of your BIG-IP GUI.
 
-    .. image:: /_static/change_tenant.jpg
+    .. image:: /_static/as3/change_tenant.jpg
 
 #. You should now see the virtual server that was just created.
 
-    .. image:: /_static/virtual_server.jpg
+    .. image:: /_static/as3/virtual_server.jpg
 
 #. Navigate to ``Pools`` and examine the pool that was created.
 
-    .. image:: /_static/pool.jpg
+    .. image:: /_static/as3/pool.jpg
 
 #. Click on the ``http_pool`` and click on the ``Members`` tab to view the pool members.
 
-    .. image:: /_static/pool_members.jpg
+    .. image:: /_static/as3/pool_members.jpg
 
 
 **Exercise 5 - Modify AS3 declaration**
@@ -103,18 +103,18 @@ In this lab, we will create a simple HTTP application using AS3. Before sending 
 
 #. Locate in the declaration where we declare the pool members:
 
-    .. image:: /_static/one_pool_member.jpg
+    .. image:: /_static/as3/one_pool_member.jpg
 
 #. In order to add another pool member, we must follow appropriate syntax and declare an additional pool member, ``10.1.10.31``, as follows:
 
-    .. image:: /_static/two_pool_members.jpg
+    .. image:: /_static/as3/two_pool_members.jpg
 
 #. Once we have done this, we can send this updated declaration by clicking the blue ``Send`` button.
 
-    .. image:: /_static/send.jpg
+    .. image:: /_static/as3/send.jpg
 
 #. Follow the steps from previous Exercise to visually confirm the changes have been made on the BIG-IP.
-    .. image:: /_static/PoolMemberAdded.JPG
+    .. image:: /_static/as3/PoolMemberAdded.JPG
 
 #. **NOTE**: When changing the AS3 declaration, we changed the end state which we would like the BIG-IP to be in. This is one major advantage of a declarative interface.
 
@@ -122,7 +122,7 @@ In this lab, we will create a simple HTTP application using AS3. Before sending 
 
 #. In order to delete our virtual server, pool, and pool members, we can simply send a POST with an empty tenant body.
 
-    .. image:: /_static/clear_tenant.jpg
+    .. image:: /_static/as3/clear_tenant.jpg
 
 #. Since AS3 is declarative, it will notice that we are sending a POST with an empty tenant body, and by default AS3 will delete the existing virtual server, pool and pool members.
 
@@ -132,5 +132,5 @@ In this lab, we will create a simple HTTP application using AS3. Before sending 
 
 #. Click ``Send`` and ensure a 200 OK response. Navigate back to the BIG-IP, refresh the page and confirm the changes that the tenant has been deleted.
 
-    .. image:: /_static/delete_tenant.jpg
+    .. image:: /_static/as3/delete_tenant.jpg
 
