@@ -22,4 +22,4 @@ The purpose of these labs is to give you better understanding of...
    :caption: Contents:
    :glob:
 
-      - Class*/   - Class*
+      - class*/class*
