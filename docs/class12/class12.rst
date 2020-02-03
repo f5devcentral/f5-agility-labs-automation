@@ -1,3 +1,4 @@
+
 Class 12: Cisco ACI Integration with BIG-IP
 ===========================================
 
@@ -8,6 +9,3 @@ This introductory class covers the following topics:
    :glob:
 
    module*/module*
-
-Expected time to complete: **1 hour**
-
