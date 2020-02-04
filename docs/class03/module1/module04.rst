@@ -84,11 +84,13 @@ Already Existing WAF policy deployment
         }
         }
 
-#. Click on ``Send``.  Look at the results of the POST and make sure you recieve a result of 200.
+#. Click on ``Send``.
 
-#. Look at the BIG-IP configuration and select Local Traffic and Virtual Servers.  Select the ``Sample_04`` partition.
+#. Confirm the results of the POST, and make sure you receive a result of 200.
 
-#. Select the serviceMain virtual server and then go to the Security tab and see the test-policy applied to the virtual server.
+#. Look at the BIG-IP configuration and select ``Local Traffic`` and ``Virtual Servers``.  Select the ``Sample_04`` partition.
+
+#. Select the ``serviceMain`` virtual server, and then go to the ``Security`` tab and see the ``test-policy`` applied to the virtual server.
 
    .. image:: /_static/as3/lab3-waf-onbox.png
 
@@ -97,9 +99,9 @@ Already Existing WAF policy deployment
 WAF policy in source repository
 -------------------------------
 
-#. If you store your WAF policy in a Source Control Repository you can call it as follows.
+#. If you store your WAF policy in a Source Control Repository, you can assign it via AS3 as follows.
 
-#. Select the Lab3, ``HTTPS with external WAF policy`` request, and look at the ``Body``. Notice the Policy at the bottom and the policyWAF referencing it, with the URL for the WAF Policy file:
+#. Select the ``Lab 3``, ``HTTPS with external WAF policy`` request, and look at the ``Body``. Notice the Policy at the bottom and the ``policyWAF`` referencing it, with the URL for the WAF Policy file:
 
    The body of the post will be as follows:
 
@@ -176,16 +178,18 @@ WAF policy in source repository
         }
         }
 
-#. Click on ``Send``.  Look at the results of the POST and make sure you recieve a result of 200.
+#. Click on ``Send``.  
 
-   If you go to /Security/Application Security/Security Policies and then select the Sample_04 partition you will notice there are two security policies.  One in the Common partition and one in the Sample_04 partition.  The Sample_04 instance is named My_AWAF_Policy.
+#. Confirm the results of the POST, and make sure you receive a result of 200.
+
+#. If you go to ``/Security/Application Security/Security Policies`` and then select the ``Sample_04`` partition, you will notice there are two security policies.  One in the ``Common`` partition and one in the ``Sample_04`` partition.  The ``Sample_04`` instance is named ``My_AWAF_Policy``.
 
    Also notice in the Virtual Server Security settings that the new ``My_AWAF_Policy`` is applied to the ``serviceMain`` virtual server instead of the test-policy.
 
 Setting WAF policy to Blocking mode:
 ------------------------------------
 
-#. Select the Lab3, ``BIG-IP: HTTPS with external WAF policy in blocking mode``, and look at the ``Body``.
+#. Select the ``Lab 3``, ``BIG-IP: HTTPS with external WAF policy in blocking mode``, and look at the ``Body``.
 
    In order to set blocking mode we can override what is defined in the Policy with an additional enforcementMode option in our WAF Policy declaration:
 
@@ -267,7 +271,9 @@ Setting WAF policy to Blocking mode:
         }
         }
 
-#. Click on ``Send``.  Look at the results of the POST and make sure you recieve a result of 200.
+#. Click on ``Send``.
+
+#. Confirm the results of the POST, and make sure you receive a result of 200.
 
 #. Now go to the BIG-IP configuration and look at the Security Policies.  Select the ``My_AWAF_Policy`` and look at the Enforcement Mode.
 
@@ -276,10 +282,10 @@ Setting WAF policy to Blocking mode:
 Delete the Applications deployed
 --------------------------------
 
-#. This time we will delete all the AS3 declarations that are currently deployed on the boxes.
+#. This time we will delete all the AS3 declarations that are currently deployed.
 
 #. In Postman open the ``Getting Started`` section.
 
-#. Select the ``BIG-IP: Delete ALL declarations`` job and look at the Body of the declaration.
+#. Select the ``BIG-IP: Delete ALL declarations`` declaration, and look at the ``Body`` of the declaration.
 
 #. In this instance we are setting the Action to ``remove``.  Also notice that we set a ``syncToGroup`` option in order to cause the HA pair to sync configurations.
