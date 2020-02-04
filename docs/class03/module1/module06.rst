@@ -1,6 +1,6 @@
 Lab 5 - How to work with multiple tenants using AS3
 ===================================================
-In this lab, you will work with multiple tenants on a single BIG-IP platform.
+In this lab, you will work with multiple tenants on a BIG-IP platform.
 
 **Exercise 1 - Deploy Applications for First Tenant**
 
@@ -16,13 +16,15 @@ In this lab, you will work with multiple tenants on a single BIG-IP platform.
 
 #. Click ``Send`` to send the declaration to the BIG-IP.
 
-#. Verify that you received a ``HTTP 200 OK`` response.
+#. Confirm the results of the POST, and make sure you receive a result of 200.
 
 #. Locate the ``BIG-IP: Get list of first tenant's deployed declarations`` request.  In the request note that you will only retrieve the applications deployed for ``http_tenant`` tenant.
 
    .. image:: /_static/as3/Postman_GetTenantDeclaration-Highlighted.JPG
 
-#. Click ``Send`` to retrieve the deployed applications on the BIG-IP.  If you look at the response, you will see the declaration of the both applications.
+#. Click ``Send`` to retrieve the deployed applications on the BIG-IP.  
+
+#. In the response, you will see the declaration of the both applications.
 
 #. If you login to the BIG-IP, you will see the applications deployed in the ``http_tenant`` partition.
 
