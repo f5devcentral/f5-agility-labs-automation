@@ -1,4 +1,4 @@
-Lab 3 - Adding WAF policy to application
+Lab 3 - Adding a WAF policy to an application
 ========================================
 
 This lab will be broken down to 3 parts.
