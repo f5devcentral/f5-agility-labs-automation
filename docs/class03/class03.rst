@@ -1,26 +1,23 @@
 Class 3- Application Deployments with BIG-IP and Application Services (AS3)
 ===========================================================================
 
-This class provides hands-on experience using F5's AS3 declarative interface for configuration of a BIG-IP.
+This class provides hands-on experience using F5's AS3 declarative interface for configuration of a BIG-IP.  You will use AS3 for configuration by sending directly to BIG-IP and alternatively BIG-IQ.
 
 The class will cover the following topics in the labs that follow:
 
-- Postman Basics
 - AS3 declarations
-- VS Code Schema validations
-- Deleting AS3 VIP
-- AS3 with WAF configuration
-- Adding app to existing tenant
-- Modify existing AS3 Application
-- Use traffic policy in AS3 declaration
+- Using Postman to send AS3 declarations
+- Using Visual Studio Code to perform AS3 Schema validations
+- Create, delete, and modify VIPs using AS3
+- Using AS3 to apply WAF security policy
+- How you can use AS3 with muliple applications per tenant
+- Use of AS3 with multiple tenants
 - Using BIG-IQ to push AS3 declarations
 
-We will be using a jumpbox to connect to the lab environment.  Click on the lab link given out during class and select the RDP option to connect to the lab box.
-
-Expected time to complete: **1 hour**
+Expected time to complete: **1 hour, 20 minutes**
  
 
-We will be using a jumpbox to connect to the lab environment.  Click on the lab link given out during class and select the RDP option to connect to the lab box.
+We will be using a jumpbox to connect to the lab environment.  Go to the next section for details on how to connect to the lab environment.
 
 
 
