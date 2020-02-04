@@ -75,7 +75,7 @@ In this lab, we will create a simple HTTP application using AS3. Before sending 
 
 **Exercise 4 - Confirm changes on BIG-IP**
 
-#. Login to the BIG-IP to confirm our changes. Open Chrome and navigate to ``https://10.1.1.4`` (or you can click on the bookmark in Chrome).
+#. Login to the BIG-IP to confirm our changes. Open Chrome and navigate to ``https://10.1.1.4`` (or you can click on the ``BIG-IP01`` bookmark in Chrome).
 
 #. Login with the following credentials: username = admin , password = admin.
 
