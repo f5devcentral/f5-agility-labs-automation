@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Terraform and Consul
-====================
+Class 7: Dude Where's My Services: Introduction to Service Discovery with Consul
+================================================================================
 
 During this lab you will make use of Terraform to deploy a BIG-IP, Consul
 Server, and NGINX nodes.
