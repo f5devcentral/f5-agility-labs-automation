@@ -1,15 +1,44 @@
 Lab 6 - Creating a Applications using AS3 Declarative Interface & BIG-IQ
 --------------------------------------------------------------------------------------------------
-In this lab, we will create a simple HTTP application using AS3.
+In this lab, we will create a simple HTTP application using AS3 via BIG-IQ.
 
-Unless instructed, throughout this section we will be working in the ``BIG-IQ`` Collection in Postman. This folder holds 15 enclosed requests that we will work through.
+Unless instructed, throughout this section we will be working in the ``BIG-IQ`` Collection in Postman. 
 
 If the error ``Cannot find any ADC root nodes for the target devices`` occurs, follow directions here: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/troubleshooting.html
 
+**Exercise 1 - Ensure BIG-IP devices are in sync**
 
+Before BIG-IQ can be used to perform application creation via AS3, all BIG-IP devices in a config sync group must be in sync. In order to show how AS3 can do the configuration creation on both devices, the BIG-IP devices in the lab are configured with manual sync.  Due to that, you need to ensure the two BIG-IP devices are in sync before starting this section of the lab. of this lab.
 
+#. Open the ``Authenticate to BIG-IP`` request.
 
-**Exercise 1 - Authenticate to the BIG-IQ**
+#. ``Send`` the request, and ensure you receive a 200 OK response.
+
+#. Open the ``BIG-IP: Get sync status`` request.
+
+#. ``Send`` the request, and ensure you receive a 200 OK response.
+
+#. Look at the data returned in the request.  If it has a status of ``red`` reported, then you will need to complete the other steps in this exercise.  If the status is reported as ``green``, then you can proceed to **Exercise 2**.
+
+  .. image:: /_static/as3/bigip-cfgsync-status-red-highlighted.JPG
+
+#. Open the ``BIG-IP: sync failoverGroup`` request, and click ``Send``.
+
+#. Ensure you receive a 200 OK response.
+
+#. Open the ``BIG-IP: sync datasync-global-dg`` request, and click ``Send``.
+
+#. Ensure you receive a 200 OK response.
+
+#. Open the ``BIG-IP: Get sync status`` request, and click ``Send``.
+
+#. Ensure you receive a 200 OK response.
+
+#. Look at the data returned in the request.  If it has a status of ``green`` reported.
+
+  .. image:: /_static/as3/bigip-cfgsync-status-green-highlighted.JPG
+
+**Exercise 2 - Authenticate to the BIG-IQ**
 
 #. Open the ``Authenticate to BIG-IQ`` request. Note that tokens need to be refreshed after 5 minutes. 401 Errors will occur if the token is bad or old. Resending this request will refresh the token.
 
@@ -27,14 +56,7 @@ If the error ``Cannot find any ADC root nodes for the target devices`` occurs, f
 #. Click the blue ``Send`` button. Ensure that you receive a 200 OK response.
 
 
-
-
-
-
-
-
-
-**Exercise 2 - Deploy and Delete an App without an App Template on BIG-IQ**
+**Exercise 3 - Deploy and Delete an App without an App Template on BIG-IQ**
 
 #. Open the ``Deploy App w/o Template`` request.
 
@@ -62,7 +84,7 @@ If the error ``Cannot find any ADC root nodes for the target devices`` occurs, f
                         "serviceMain": {
                             "class": "Service_HTTP",
                             "virtualAddresses": [
-                                "10.1.10.10"
+                                "10.1.20.50"
                             ],
                             "pool": "web_pool"
                         },
@@ -74,7 +96,7 @@ If the error ``Cannot find any ADC root nodes for the target devices`` occurs, f
                             "members": [{
                             "servicePort": 8080,
                             "serverAddresses": [
-                                "192.168.128.10"
+                                "10.1.10.30"
                             ]
                             }]
                         }
@@ -83,40 +105,44 @@ If the error ``Cannot find any ADC root nodes for the target devices`` occurs, f
             }
         }
         
-#. Looking further into this request, the URI is sent to the IP address of BIG-IQ instead of the BIG-IP address per past requests. Lines 9-11 target the BIG-IP we would like to build this application on. Lines 12-40 build an http application we have in past sections in this lab.
+#. Looking further into this request, the URI is sent to the IP address of BIG-IQ instead of the BIG-IP address per past requests. The ``target`` in the declaration shows that BIG-IQ will create the configuration on ``bigip01.as3lab.com``.  The rest of the declaration is just like what you would send directly to a BIG-IP device.
 
 #. Click the blue ``Send`` button. Ensure that you receive a 200 OK response. 
 
 #. This application is now in the ``Demo Service`` partition on the BIG-IP (10.1.1.4).
 
-#. Navigate to Chrome, BIG-IQ bookmark 10.1.1.7 (username = admin, password = admin).
+#. Login to the BIG-IP to confirm changes. Open Chrome and navigate to https://10.1.1.4 (or you can click on the ``BIG-IP01`` bookmark in Chrome).
 
-#. On BIG-IQ, navigate to ``Applications``, ``Applications`` screen to view the deployed application.
+#. Login with the following credentials: username = admin , password = admin.
+
+#. Login to the BIG-IQ to confirm changes. Open Chrome and navigate to https://10.1.1.7 (or you can click on the ``BIG-IQ`` bookmark in Chrome).
+
+#. On BIG-IQ, navigate to **Applications -> Applications** screen to view the deployed application.
 
     .. image:: /_static/as3/bigiq_1.jpg
 
 #. Now we will move our applciations from ``Unknown Applications`` to another tile named ``Known Applications``.
 
-#. Send the ``Get Application Reference`` request to set the variable ``_bigiq_app_ref``.  Look at the ``Tests`` window for the declaration to see the variable being set, whcih will be used in the following step.
+#. ``Send`` the ``Get Application Reference`` request to set the variable ``_bigiq_app_ref``.  Look at the ``Tests`` window for the declaration to see the variable being set, whcih will be used in the following step.
 
    .. image:: /_static/as3/big_variable.JPG
 
 #. Open the ``Move out of Unknown App`` request.
 
+#. Look at the ``Body` of the request, and you will see that we are moving the application to ``Known Applications``.  You could name this to any string.
+
 #. Click the blue ``Send`` button. Ensure that you receive a 200 OK response. 
 
-#. Navigate back to the BIG-IQ Applications and notice that our app is now under the ``Known Applications`` tile.
+#. Navigate back to the ``BIG-IQ`` ``Applications`` tab, and you will see that our app is now under the ``Known Applications`` tile.
 
 #. Now that we have had some fun, lets delete the app. Open the ``Delete App w/o Template`` request. 
 
 #. Click the blue ``Send`` button. Ensure that you receive a 200 OK response. 
 
-#. This application is now deleted from BIG-IQ and BIG-IP (10.1.1.4).
+#. This application is now deleted from ``BIG-IQ`` and ``BIG-IP`` (10.1.1.4).
 
 
-
-
-**Exercise 3 - Deploy, Change and Delete Apps via App Templates on BIG-IQ**
+**Exercise 4 - Deploy, Change and Delete Apps via App Templates on BIG-IQ**
 
 #. Open the ``Upload App Template to BIG-IQ`` request. Note that this this request was taken from https://github.com/f5devcentral/f5-big-iq.
 
@@ -389,11 +415,11 @@ If the error ``Cannot find any ADC root nodes for the target devices`` occurs, f
 
 #. To view the template we just uploaded, navigate to Chrome, BIG-IQ bookmark 10.1.1.7 (username = admin, password = admin).
 
-#. On BIG-IQ, navigate to ``Applications``, ``Application Templates``.
+#. On BIG-IQ, navigate to **Applications -> Application Templates**.
 
     .. image:: /_static/as3/bigiq_2.jpg
 
-#. Open the ``Create App2 with Template`` request.
+#. In Postman, open the ``Create App2 with Template`` request.
 
 #. Click on the ``Body`` section of the POST Request. The body will look like the following
 
@@ -431,11 +457,11 @@ If the error ``Cannot find any ADC root nodes for the target devices`` occurs, f
 
 #. Click the blue ``Send`` button. Ensure that you receive a 200 OK response. 
 
-#. This application is now in the ``Demo Service`` partition on the BIG-IP (10.1.1.4).
+#. This application is now in the ``Unknown Applications`` section on the ``BIG-IQ`` ``Application`` dashboard, and it is in the ``Demo Service`` partition on the BIG-IP (10.1.1.4).
 
 #. Now we will change this application. Open the ``Change App2`` request.
 
-#. Click on the ``Body`` section of the POST Request. Notice the changed IP address
+#. Click on the ``Body`` section of the POST Request. Notice the changed IP address for the ``virtualAddress``.
 
     .. code-block:: json
         :linenos:
@@ -470,24 +496,13 @@ If the error ``Cannot find any ADC root nodes for the target devices`` occurs, f
 
 #. Click the blue ``Send`` button. Ensure that you receive a 200 OK response. 
 
-#. This application is now changed in the ``Demo Service`` partition on the BIG-IP (10.1.1.4).
+#. This application is now changed on ``BIG-IQ`` and ``BIG-IP``.
 
 #. Now we will delete the app. Open the ``Delete App from Template`` request. 
 
 #. Click the blue ``Send`` button. Ensure that you receive a 200 OK response. 
 
 #. This application is now deleted from BIG-IQ and BIG-IP (10.1.1.4).
-
-#. Finally, delete the application template from the BIG-IQ. Open the ``GET HTTP Application Template`` request and click the blue ``Send`` button. Copy the ``id`` from the Body of the response.
-
-    .. image:: /_static/as3/bigiq_3.jpg
-
-#. Paste the ``id`` to the URL of request ``DELETE HTTP Application Template``.
-
-#. Click the blue ``Send`` button. Ensure that you receive a 200 OK response. 
-
-#. Navigate to Chrome, BIG-IQ bookmark 10.1.1.7 (username = admin: password = admin), Applications, Application Templates. The template is now deleted from the available templates.
-
 
 
 
