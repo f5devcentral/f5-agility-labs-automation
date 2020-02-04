@@ -21,24 +21,26 @@ In this lab, we will create a simple HTTP application using AS3. Before sending 
 
 #. Locate the ``GET AS3 Info`` request and double click. Notice that we are sending a GET request to an API endpoint with an empty body. Click the blue **Send** button, and ensure you get a 200 OK response.
 
+#. In the response, you will see the version fo AS3 that is installed on the BIG-IP.
+
 #. Locate the ``HTTP Application`` request in the same folder. Notice that we are sending a POST request to an API endpoint. To examine the body of our request, click the ``Body`` tab.
 
-#. Before we send our AS3 JSON to the BIG-IP, we want to ensure the schema is valid. In order to do this, we will use VE Studio Code in the next Exercise.
+#. Before we send our AS3 JSON to the BIG-IP, we want to ensure the schema is valid. In order to do this, we will use Visual Studio Code in the next Exercise.
 
 
 **Exercise 2 - Visual Studio Code Schema Validation**
 
-#. Open VS Code.
+#. Open Visual Studio Code.
 
     .. image:: /_static/as3/vs_code.jpg
 
-#. Once open, open a new working file by navigating to File->New File.
+#. Once open, create a new working file by navigating to File -> New File.
 
     .. image:: /_static/as3/vscode_newfile.jpg
 
-#. Copy the contents of the file ``AS3 Schema Validation`` JSON body and paste into VS Code. Save the file to your desktop.
+#. Copy the contents of the file ``AS3 Schema Validation`` JSON body and paste into VS Code. Save the file to your desktop - make sure to save with a .json filename.
 
-#. Notice the wavy line around line 17.This is notifying you that there is a syntax error. You can hover over the wavy line to see more information.
+#. Once the file has been saved, you will notice a wavy line around line 17.  This is notifying you that there is a syntax error. You can hover over the wavy line to see more information.
 
     .. image:: /_static/as3/tenantt.jpg
 
@@ -58,13 +60,14 @@ In this lab, we will create a simple HTTP application using AS3. Before sending 
     .. image:: /_static/as3/schema2.jpg
 
 
-#. Now that we have validated our JSON schema, we can confidently send this declaration to the BIG-IP to successfully create an HTTP application.
+#. Now that we have validated our JSON schema, we could confidently send this declaration to the BIG-IP to successfully create an HTTP application.
 
 
 
 **Exercise 3 - Send AS3 declaration**
 
 #. Navigate back to Postman and find the ``HTTP Application`` JSON file. Note the only difference between this and the one we used to validate is the first line with the key/value of 'schema' and the schema format URL.
+
 #. Send the AS3 declaration by clicking the blue ``Send`` button. Ensure once it is done processing that you receive a 200 OK response.
 
     .. image:: /_static/as3/200.jpg
@@ -76,7 +79,7 @@ In this lab, we will create a simple HTTP application using AS3. Before sending 
 
 #. Login with the following credentials: username = admin , password = admin.
 
-#. Once you are logged in, expand the Local Traffic tab by clicking on it on the left and click Virtual Servers.
+#. Once you are logged in, expand the ``Local Traffic`` tab by clicking on it on the left and click ``Virtual Servers``.
 
 #. Change your partition by choosing the tenant we created, ``http_tenant`` on the top right of your BIG-IP GUI.
 
@@ -114,6 +117,7 @@ In this lab, we will create a simple HTTP application using AS3. Before sending 
     .. image:: /_static/as3/send.jpg
 
 #. Follow the steps from previous Exercise to visually confirm the changes have been made on the BIG-IP.
+
     .. image:: /_static/as3/PoolMemberAdded.JPG
 
 #. **NOTE**: When changing the AS3 declaration, we changed the end state which we would like the BIG-IP to be in. This is one major advantage of a declarative interface.
