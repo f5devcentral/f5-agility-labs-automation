@@ -78,7 +78,9 @@ HTTPS application with SSL Offload
           }
         }
 
-#. Click on ``Send``.  Look at the results of the POST and make sure you receive a result of 200.
+#. Click on ``Send``.  
+
+#. Confirm the results of the POST, and make sure you receive a result of 200.
 
  .. image:: /_static/as3/Postman200OK_HTTPS_Highlighted.JPG
 
@@ -171,7 +173,7 @@ In many environments it is required to perform TLS (SSL) from beginning to end o
 
 #. Click on ``Send``.  
 
-#. Confirm results of the POST, and make sure you recieve a result of 200.
+#. Confirm results of the POST, and make sure you receive a result of 200.
 
 #. Verify that the configuration is on the BIG-IP.  Select the partition Sample_03 and notice the new virtual servers:
 
@@ -198,6 +200,6 @@ Before proceeding to the other labs, we will delete the applications deployed in
 
 #. Click on ``Send``.
 
-#. Confirm results of the POST, and make sure you recieve a result of 200.
+#. Confirm results of the POST, and make sure you receive a result of 200.
 
 
