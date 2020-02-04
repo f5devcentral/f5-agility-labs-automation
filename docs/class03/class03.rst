@@ -25,4 +25,5 @@ We will be using a jumpbox to connect to the lab environment.  Go to the next se
    :maxdepth: 1
    :glob:
 
-   module*/module*
+   module*/startup*
+   module*/lab*
