@@ -1,0 +1,23 @@
+F5 Agility Labs - Index
+=======================
+
+Welcome
+-------
+
+Welcome to the |classbold| lab at F5 Agility |year|
+
+|repoinfo|
+
+Login information for the BIG-IP:
+    - username: admin
+    - password: P@ssw0rd
+
+
+.. toctree::
+   :maxdepth: 2
+   :numbered:
+   :caption: Contents:
+   :glob:
+
+   intro*
+   class*/class*
