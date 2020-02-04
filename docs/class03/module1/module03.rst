@@ -191,15 +191,6 @@ In many environments it is required to perform TLS (SSL) from beginning to end o
 
    You can see the default values here:  https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/examples.html#example-2-https-application
    
-Delete all applications
------------------------------------
 
-Before proceeding to the other labs, we will delete the applications deployed in this lab.
-
-#. In Postman select the Lab2, ``BIG-IP: Delete ALL declarations``.
-
-#. Click on ``Send``.
-
-#. Confirm results of the POST, and make sure you receive a result of 200.
 
 
