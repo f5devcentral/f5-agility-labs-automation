@@ -10,4 +10,3 @@ This introductory class covers the following topics:
    module*/module*
 
 Expected time to complete: **1 hour**
-
