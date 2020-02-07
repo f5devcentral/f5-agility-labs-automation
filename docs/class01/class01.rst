@@ -1,5 +1,5 @@
 Class 1: Programmability - Introduction to BIG-IP Rest Structure and Concepts
-=============================================================================
+==============================================================================
 
 This introductory class covers the following topics:
 

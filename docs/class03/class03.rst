@@ -1,4 +1,4 @@
-Class 3 - Application Deployments with BIG-IP and Application Services (AS3)
+Class 3: Application Deployments with BIG-IP and Application Services (AS3)
 ============================================================================
 
 This class provides hands-on experience using F5's AS3 declarative interface
