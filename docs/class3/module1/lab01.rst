@@ -1,5 +1,6 @@
 Lab 1 - Creating a Simple HTTP Application using AS3
---------------------------------------------------------------------------------------------------
+====================================================
+
 In this lab, we will create a simple HTTP application using AS3. Before sending the AS3 declaration, we will use Microsoft Visual Studio Code to validate our JSON schema.
 
 **Exercise 1 - AS3 declaration**

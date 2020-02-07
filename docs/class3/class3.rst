@@ -1,7 +1,9 @@
-Class 3- Application Deployments with BIG-IP and Application Services (AS3)
-===========================================================================
+Class 3 - Application Deployments with BIG-IP and Application Services (AS3)
+============================================================================
 
-This class provides hands-on experience using F5's AS3 declarative interface for configuration of a BIG-IP.  You will use AS3 for configuration by sending directly to BIG-IP and alternatively BIG-IQ.
+This class provides hands-on experience using F5's AS3 declarative interface
+for configuration of a BIG-IP.  You will use AS3 for configuration by sending
+directly to BIG-IP and alternatively BIG-IQ.
 
 The class will cover the following topics in the labs that follow:
 
@@ -15,11 +17,9 @@ The class will cover the following topics in the labs that follow:
 - Using BIG-IQ to push AS3 declarations
 
 Expected time to complete: **1 hour, 20 minutes**
- 
 
-We will be using a jumpbox to connect to the lab environment.  Go to the next section for details on how to connect to the lab environment.
-
-
+We will be using a jumpbox to connect to the lab environment. Go to the next
+section for details on how to connect to the lab environment.
 
 .. toctree::
    :maxdepth: 1

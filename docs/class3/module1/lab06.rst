@@ -1,5 +1,5 @@
 Lab 6 - Creating a Applications using AS3 Declarative Interface & BIG-IQ
---------------------------------------------------------------------------------------------------
+========================================================================
 In this lab, we will create a simple HTTP application using AS3 via BIG-IQ.
 
 Unless instructed, throughout this section we will be working in the ``BIG-IQ`` Collection in Postman. 

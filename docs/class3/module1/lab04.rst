@@ -1,5 +1,5 @@
 Lab 4 - Creating Multiple HTTP Applications per tenant using AS3
---------------------------------------------------------------------------------------------------
+================================================================
 In this lab, we will create two simple HTTP applications using AS3 within the same tenant. Afterwards, we will modify the AS3 declaration to compose and create our very own third application within the same tenant.
 
 **Exercise 1 - Multi-App AS3 Declaration**
