@@ -1,31 +1,11 @@
-Lab 1 Configure Standalone BIG-IP with Declarative Onboarding
+Lab 2 Configure Clustered BIG-IP with Declarative Onboarding
 ==============================================================
 
-In this lab declarative onboarding (DO) has already been installed.  For instructions on how to install declarative onboarding (DO) please see appendix A.
+In this lab we are going to configure **BIGIP-02**.  The build out will be similar but the declaration will be slightly different than **BIGIP-01**.  There are some device specific items, like
+Self-IPs that will be different between devices.  These differences illustrate examples where templatizing would work exceptionally well.  For these situation you could use a templating tool that
+an orchestrator may provide such as Jinja2 in Ansible.
 
-Before we jump into declarative onboarding (DO) lets take a look at the current state of one of our **BIGIP** appliances.
-
-Login to **BIGIP-01** and notice that it is not licensed and nothing has been provisioned.  Also notice the hostname in the upper left hand corner.
-
-..  images/bigip01_01.png
-
-
-With the declarative onboarding (DO) package installed on BIG-IP, we are ready to build out our first BIG-IP.
-
-The desired end state of these DO configurations is to configure the objects below, built on the BIG-IPs with a single call in a single file.  This declarative solution 
-allows us to compose configurations that are reusable with templating technologies and storable in Source Control.
-
-In our first declaration we will configure the following items on the BIG-IP:
-
-    - Licensing
-    - Credentials
-    - Provisioning
-    - DNS
-    - NTP
-    - Self-IPs
-    - Vlans
-
-Copy **all** of the declarative onboarding (DO) declaration below.
+Below is our declaration for **BIGIP-02**.  Copy **all of** the declaration to be used in Postman.
 
 ..  code-block:: JSON
 
@@ -34,14 +14,14 @@ Copy **all** of the declarative onboarding (DO) declaration below.
         "schemaVersion": "1.9.0",
         "class": "Device",
         "async": true,
-        "label": "my BIG-IP declaration for declarative onboarding",
+        "label": "my clustered BIG-IP declaration for declarative onboarding",
         "Common": {
             "class": "Tenant",
-            "hostname": "bigip-01.compute.internal",
+            "hostname": "bigip-02.compute.internal",
             "myLicense": {
                 "class": "License",
                 "licenseType": "regKey",
-                "regKey": "E7135-74831-26771-18995-6988851",
+                "regKey": "X0400-17381-92678-76392-8132569",
                 "overwrite": false
             },
             "myDns": {
@@ -111,14 +91,14 @@ Copy **all** of the declarative onboarding (DO) declaration below.
             },
             "internal-self": {
                 "class": "SelfIp",
-                "address": "10.1.10.100/24",
+                "address": "10.1.10.200/24",
                 "vlan": "internal",
                 "allowService": "default",
                 "trafficGroup": "traffic-group-local-only"
             },
             "internal-floating": {
                 "class": "SelfIp",
-                "address": "10.1.10.120/24",
+                "address": "10.1.10.220/24",
                 "vlan": "internal",
                 "allowService": "default",
                 "trafficGroup": "traffic-group-1"
@@ -137,14 +117,14 @@ Copy **all** of the declarative onboarding (DO) declaration below.
             },
             "external-self": {
                 "class": "SelfIp",
-                "address": "10.1.20.100/24",
+                "address": "10.1.20.200/24",
                 "vlan": "external",
                 "allowService": "none",
                 "trafficGroup": "traffic-group-local-only"
             },
             "external-floating": {
                 "class": "SelfIp",
-                "address": "10.1.20.120/24",
+                "address": "10.1.20.220/24",
                 "vlan": "external",
                 "allowService": "default",
                 "trafficGroup": "traffic-group-1"
@@ -188,62 +168,11 @@ Copy **all** of the declarative onboarding (DO) declaration below.
         }
     }
 
-F5 publishes a schema for each of the Automation Toolchain items.  This published schema can be used in Visual Studio Code allowing you to see context and find errors within your
-different declarations.  The schema reference is added at the top of your declaration, and requires vscode to know the language is JSON.
 
-Open Visual Studio Code on your jump host desktop and open a New File and paste all of the DO declaration contents.  Additionally, the language setting in VSCode must be set to JSON.
-
-..  image:: images/schemavalidation_01.png
-
-
-One the declaration and language are set, you can highlight over sections of the code to see contect and errors
-
-..  image:: images/schemacontext_01.png
-
-
-..  note::  Now that you've added the schema validation to your JSON declaration you can try misspelling some of the declaration objects to see errors, remember to 
-    revert your changes.
-
-We are now ready to send our declaration to **BIGIP-01**
-
-Launch Postman on your jump host and copy the JSON declaration from VSCode to the Body of the Postman application.
-
-
-Click the **+** icon to open a new request in Postman
+Next, launch Postman on your jump host and copy the JSON declaration to the body of the Postman application.
 
 ..  image:: images/postman_01.png
 
-|
+..  note::  Clustering via declarative onboarding can take a couple of minutes to sync and establish, this is normal behavior.
 
-Change the request type from **GET** to **POST**
-
-..  image:: images/postman_02.png
-
-|
-|
-
-#.  Enter the following in the request URL **https://10.1.1.4/mgmt/shared/declarative-onboarding**
-#.  Click on the **Body** tab
-#.  Change the language to **JSON**
-#.  Then paste the JSON code
-
-..  image:: images/postman_03.png
-
-|
-|
-
-Once the **BIG-IP** has finished processing the declaration, login to **BIGIP01** and notice the host name has changed and the device is now licensed.
-
-..  image:: images/bigip01_02.png
-
-|
-|
-
-Futhermore, take a look at the following settings on **BIGIP01** to see what all was configured with declarative onboarding (DO)
-
-    - Credentials
-    - Provisioning
-    - DNS
-    - NTP
-    - Self-IPs
-    - Vlans
+Return to either **BIG-IP** in Chrome and check the cluster configuration and status.  Both units should be clustered with all onboarding objects present from the declaration.
