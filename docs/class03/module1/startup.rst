@@ -90,7 +90,7 @@ it easier to follow the rest of the lab.
    .. image:: images/import.jpg
 
 #. Select ``Import From Link`` and paste the link into the text box,
-   ``https://raw.githubusercontent.com/f5devcentral/f5-agility-labs-automation/master/docsimages/AS3%202020%20Lab.postman_collection20200204.json``,
+   ``https://raw.githubusercontent.com/f5devcentral/f5-agility-labs-automation/master/docs/class03/module1/images/AS3%202020%20Lab.postman_collection20200204.json``,
    then click ``Import``:
 
    .. image:: images/import_from_link.jpg
