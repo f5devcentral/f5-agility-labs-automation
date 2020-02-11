@@ -74,6 +74,3 @@ it easier to follow the rest of the lab.
 ..  images/win2019_rdp_yesconnect.png
 
 #. Congratulations! You are now connected to your Windows jump host.
-
-
-
