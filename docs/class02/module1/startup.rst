@@ -43,18 +43,18 @@ it easier to follow the rest of the lab.
 
 #. Click on the ``Components`` tab in your UDF deployment
 
-..   images/components.jpg
+..   images/components.png
 
 #. Under ``Systems`` find the Windows Server 2019 Base and click ``Access``,
    then click ``RDP``.  When prompted, select option to ``Save`` RDP file. RDP
    file will be downloaded to your local machine.
 
-..  images/Win2019_RDP_Access.JPG
+..  images/win2019_rdp_access.png
 
 #. Open the RDP file downloaded in the previous step and click ``Continue``
    when prompted.
 
-..  images/Win2019_RDP_Connect.JPG
+..  images/win2019_rdp_connect.png
 
 #. When prompted for login credentials, select ``More Choices``.
 
@@ -62,16 +62,16 @@ it easier to follow the rest of the lab.
 
 #. Enter credentials: Administrator / @gi1ity2020
 
-..  images/Win2019_RDP_DiffAccount.JPG
+..  images/win2019_rdp_diffaccount.png
 
 #. Click ``OK``.
 
-..  images/Win2019_RDP_Login.JPG
+..  images/win2019_rdp_login.png
 
 #. When prompted, click ``Yes`` to connection, and session will be established
    to Windows host.
    
-..  images/Win2019_RDP_YesConnect.JPG
+..  images/win2019_rdp_yesconnect.png
 
 #. Congratulations! You are now connected to your Windows jump host.
 
