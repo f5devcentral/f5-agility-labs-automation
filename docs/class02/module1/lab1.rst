@@ -1,33 +1,39 @@
 Lab 1 Configure Standalone BIG-IP with Declarative Onboarding
 ==============================================================
 
-In this lab declarative onboarding (DO) has already been installed.  For instructions on how to install declarative onboarding (DO) please see appendix A.
+In this lab declarative onboarding (DO) has already been installed.  For
+instructions on how to install declarative onboarding (DO) please see appendix
+A.
 
-Before we jump into declarative onboarding (DO) lets take a look at the current state of one of our **BIGIP** appliances.
+Before we jump into declarative onboarding (DO) lets take a look at the current
+state of one of our **BIGIP** appliances.
 
-Login to **BIGIP-01** and notice that it is not licensed and nothing has been provisioned.  Also notice the hostname in the upper left hand corner.
+Login to **BIGIP-01** and notice that it is not licensed and nothing has been
+provisioned.  Also notice the hostname in the upper left hand corner.
 
-..  images/bigip01_01.png
+.. image:: images/bigip01_01.png
 
+With the declarative onboarding (DO) package installed on BIG-IP, we are ready
+to build out our first BIG-IP.
 
-With the declarative onboarding (DO) package installed on BIG-IP, we are ready to build out our first BIG-IP.
-
-The desired end state of these DO configurations is to configure the objects below, built on the BIG-IPs with a single call in a single file.  This declarative solution 
-allows us to compose configurations that are reusable with templating technologies and storable in Source Control.
+The desired end state of these DO configurations is to configure the objects
+below, built on the BIG-IPs with a single call in a single file.  This
+declarative solution allows us to compose configurations that are reusable with
+templating technologies and storable in Source Control.
 
 In our first declaration we will configure the following items on the BIG-IP:
 
-    - Licensing
-    - Credentials
-    - Provisioning
-    - DNS
-    - NTP
-    - Self-IPs
-    - Vlans
+- Licensing
+- Credentials
+- Provisioning
+- DNS
+- NTP
+- Self-IPs
+- Vlans
 
 Copy **all** of the declarative onboarding (DO) declaration below.
 
-..  code-block:: JSON
+.. code-block:: JSON
 
     {
         "$schema": "https://raw.githubusercontent.com/F5Networks/f5-declarative-onboarding/master/src/schema/latest/base.schema.json",
@@ -188,36 +194,41 @@ Copy **all** of the declarative onboarding (DO) declaration below.
         }
     }
 
-F5 publishes a schema for each of the Automation Toolchain items.  This published schema can be used in Visual Studio Code allowing you to see context and find errors within your
-different declarations.  The schema reference is added at the top of your declaration, and requires vscode to know the language is JSON.
+F5 publishes a schema for each of the Automation Toolchain items. This
+published schema can be used in Visual Studio Code allowing you to see context
+and find errors within your different declarations. The schema reference is
+added at the top of your declaration, and requires vscode to know the language
+is JSON.
 
-Open Visual Studio Code on your jump host desktop and open a New File and paste all of the DO declaration contents.  Additionally, the language setting in VSCode must be set to JSON.
+Open Visual Studio Code on your jump host desktop and open a New File and paste
+all of the DO declaration contents.  Additionally, the language setting in
+VSCode must be set to JSON.
 
-..  image:: images/schemavalidation_01.png
+.. image:: images/schemavalidation_01.png
 
+One the declaration and language are set, you can highlight over sections of
+the code to see contect and errors
 
-One the declaration and language are set, you can highlight over sections of the code to see contect and errors
+.. image:: images/schemacontext_01.png
 
-..  image:: images/schemacontext_01.png
-
-
-..  note::  Now that you've added the schema validation to your JSON declaration you can try misspelling some of the declaration objects to see errors, remember to 
-    revert your changes.
+.. note::  Now that you've added the schema validation to your JSON declaration
+   you can try misspelling some of the declaration objects to see errors,
+   remember to  revert your changes.
 
 We are now ready to send our declaration to **BIGIP-01**
 
-Launch Postman on your jump host and copy the JSON declaration from VSCode to the Body of the Postman application.
-
+Launch Postman on your jump host and copy the JSON declaration from VSCode to
+the Body of the Postman application.
 
 Click the **+** icon to open a new request in Postman
 
-..  image:: images/postman_01.png
+.. image:: images/postman_01.png
 
 |
 
 Change the request type from **GET** to **POST**
 
-..  image:: images/postman_02.png
+.. image:: images/postman_02.png
 
 |
 |
@@ -227,23 +238,26 @@ Change the request type from **GET** to **POST**
 #.  Change the language to **JSON**
 #.  Then paste the JSON code
 
-..  image:: images/postman_03.png
+.. image:: images/postman_03.png
 
 |
 |
 
-Once the **BIG-IP** has finished processing the declaration, login to **BIGIP01** and notice the host name has changed and the device is now licensed.
+Once the **BIG-IP** has finished processing the declaration, login to
+**BIGIP01** and notice the host name has changed and the device is now
+licensed.
 
-..  image:: images/bigip01_02.png
+.. image:: images/bigip01_02.png
 
 |
 |
 
-Futhermore, take a look at the following settings on **BIGIP01** to see what all was configured with declarative onboarding (DO)
+Futhermore, take a look at the following settings on **BIGIP01** to see what
+all was configured with declarative onboarding (DO)
 
-    - Credentials
-    - Provisioning
-    - DNS
-    - NTP
-    - Self-IPs
-    - Vlans
+- Credentials
+- Provisioning
+- DNS
+- NTP
+- Self-IPs
+- Vlans
