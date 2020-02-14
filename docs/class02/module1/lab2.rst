@@ -1,13 +1,17 @@
 Lab 2 Configure Clustered BIG-IP with Declarative Onboarding
 ==============================================================
 
-In this lab we are going to configure **BIGIP-02**.  The build out will be similar but the declaration will be slightly different than **BIGIP-01**.  There are some device specific items, like
-Self-IPs that will be different between devices.  These differences illustrate examples where templatizing would work exceptionally well.  For these situation you could use a templating tool that
-an orchestrator may provide such as Jinja2 in Ansible.
+In this lab we are going to configure **BIGIP-02**.  The build out will be
+similar but the declaration will be slightly different than **BIGIP-01**. There
+are some device specific items, like Self-IPs that will be different between
+devices. These differences illustrate examples where templatizing would work
+exceptionally well. For these situation you could use a templating tool that an
+orchestrator may provide such as Jinja2 in Ansible.
 
-Below is our declaration for **BIGIP-02**.  Copy **all of** the declaration to be used in Postman.
+Below is our declaration for **BIGIP-02**.  Copy **all of** the declaration t
+be used in Postman.
 
-..  code-block:: JSON
+.. code-block:: JSON
 
     {
         "$schema": "https://raw.githubusercontent.com/F5Networks/f5-declarative-onboarding/master/src/schema/latest/base.schema.json",
@@ -169,10 +173,14 @@ Below is our declaration for **BIGIP-02**.  Copy **all of** the declaration to b
     }
 
 
-Next, launch Postman on your jump host and copy the JSON declaration to the body of the Postman application.
+Next, launch Postman on your jump host and copy the JSON declaration to the
+body of the Postman application.
 
-..  image:: images/postman_01.png
+.. image:: images/postman_01.png
 
-..  note::  Clustering via declarative onboarding can take a couple of minutes to sync and establish, this is normal behavior.
+.. note::  Clustering via declarative onboarding can take a couple of minutes
+   to sync and establish, this is normal behavior.
 
-Return to either **BIG-IP** in Chrome and check the cluster configuration and status.  Both units should be clustered with all onboarding objects present from the declaration.
+Return to either **BIG-IP** in Chrome and check the cluster configuration and
+status. Both units should be clustered with all onboarding objects present from
+the declaration.
