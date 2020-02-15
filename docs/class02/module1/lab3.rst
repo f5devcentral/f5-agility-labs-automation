@@ -49,5 +49,8 @@ Onboard a standalone **BIGIP** that includes the following in the declaration:
    * - syslogremoteserver
      - host 10.1.10.254
 
-The schema reference can be found at the following url: https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/schema-reference.html#syslogremoteserver
-Example declarations can be found at the following url: https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/examples.html
+The schema reference can be found at the following url: 
+https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/schema-reference.html#syslogremoteserver
+
+Example declarations can be found at the following url: 
+https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/examples.html
