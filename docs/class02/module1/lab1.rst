@@ -206,7 +206,7 @@ VSCode must be set to JSON.
 
 .. image:: images/schemavalidation_01.png
 
-One the declaration and language are set, you can highlight over sections of
+Once the declaration and language are set, you can highlight over sections of
 the code to see contect and errors
 
 .. image:: images/schemacontext_01.png
@@ -233,7 +233,7 @@ Change the request type from **GET** to **POST**
 |
 |
 
-#.  Enter the following in the request URL **https://10.1.1.4/mgmt/shared/declarative-onboarding**
+#.  Enter the following in the request URL **https://{{bigip-01}}/mgmt/shared/declarative-onboarding**
 #.  Click on the **Body** tab
 #.  Change the language to **JSON**
 #.  Then paste the JSON code
@@ -244,7 +244,7 @@ Change the request type from **GET** to **POST**
 |
 
 Once the **BIG-IP** has finished processing the declaration, login to
-**BIGIP01** and notice the host name has changed and the device is now
+**BIGIP-01** and notice the host name has changed and the device is now
 licensed.
 
 .. image:: images/bigip01_02.png
@@ -252,7 +252,7 @@ licensed.
 |
 |
 
-Futhermore, take a look at the following settings on **BIGIP01** to see what
+Futhermore, take a look at the following settings on **BIGIP-01** to see what
 all was configured with declarative onboarding (DO)
 
 - Credentials
