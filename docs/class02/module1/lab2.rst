@@ -176,7 +176,14 @@ be used in Postman.
 Next, launch Postman on your jump host and copy the JSON declaration to the
 body of the Postman application.
 
-.. image:: images/postman_01.png
+.. image:: images/postman_04.png
+
+#.  Enter the following in the request URL **https://{{bigip-02}}/mgmt/shared/declarative-onboarding**
+#.  Click on the **Body** tab
+#.  Change the language to **JSON**
+#.  Then paste the JSON code
+
+.. image:: images/postman_03.png
 
 .. note::  Clustering via declarative onboarding can take a couple of minutes
    to sync and establish, this is normal behavior.
