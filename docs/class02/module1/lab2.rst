@@ -191,3 +191,9 @@ body of the Postman application.
 Return to either **BIG-IP** in Chrome and check the cluster configuration and
 status. Both units should be clustered with all onboarding objects present from
 the declaration.
+
+#. In the **BIGIP** console navigate to **Device Management -> Device Groups**
+   and view the device group that was created by the declaration.  Click on the
+   ``failoverGroup`` and verify both devices are members of the group.
+
+Feel free to check other objects such as Self IPs, NTP settings, user accounts, etc.
