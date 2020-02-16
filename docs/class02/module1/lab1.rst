@@ -217,8 +217,6 @@ the code to see contect and errors
 
 We are now ready to send our declaration to **BIGIP-01**
 
-Launch Postman on your jump host and copy the JSON declaration from VSCode.
-
 Expand the Declarative Onboarding Collection folder, then Declarative Onboarding
 Request, lastly BIGIP-01.  Select ``Get Declarative Onboarding Version Info``
 
@@ -247,11 +245,11 @@ we get a response with the version of declarative that is currently installed.
 Next, select the ``BIGIP-01 POST DO Declaration to Configure BIG_IP`` request
 and select the ``Body`` tab.
 
-.. image:: images/postman_04.png
-
 Notice the following in the request:
 #.  The request URL **https://{{bigip-01}}/mgmt/shared/declarative-onboarding**
 #.  The language is set to **JSON**
+
+.. image:: images/postman_04.png
 
 |
 |
@@ -271,10 +269,10 @@ running.
 |
 |
 
-In order to retrieve the status of the DO process when can send a GET request to
+In order to retrieve the status of the DO process we can send a GET request to
 the same URL that we posted our declartion to. In Postman select
-BIGIP-01 GET Declarative Onboarding Status and send the GET request to view the
-status.
+BIGIP-01 ``GET Declarative Onboarding Status`` and send the GET request to view the
+status of the running process.
 
 .. image:: images/postman_07.png
 
