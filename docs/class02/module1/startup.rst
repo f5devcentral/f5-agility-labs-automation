@@ -47,7 +47,7 @@ it easier to follow the rest of the lab.
    then click ``RDP``.  When prompted, select option to ``Save`` RDP file. RDP
    file will be downloaded to your local machine.
 
-   .. image:: images/win2019_rdp_access.png
+   .. image:: images/win2016_rdp_access.png
 
 #. Open the RDP file downloaded in the previous step and click ``Connect``
    when prompted.
