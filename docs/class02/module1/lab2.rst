@@ -172,6 +172,7 @@ be used in Postman.
         }
     }
 
+|
 
 Next, launch Postman on your jump host. Expand the Declarative Onboarding
 Collection folder, then Declarative Onboarding Request, lastly BIGIP-02.  
@@ -180,13 +181,12 @@ Select ``POST DO Declaration to Configure BIG-IP``
 .. image:: images/postman_09.png
 
 |
-|
 
 Notice the following in the request:
+
 #.  The request URL **https://{{bigip-02}}/mgmt/shared/declarative-onboarding**
 #.  The language is set to **JSON**
 
-|
 |
 
 Paste the JSON declaration into the Body of the Postman application and click

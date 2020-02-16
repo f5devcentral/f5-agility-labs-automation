@@ -246,6 +246,7 @@ Next, select the ``BIGIP-01 POST DO Declaration to Configure BIG_IP`` request
 and select the ``Body`` tab.
 
 Notice the following in the request:
+
 #.  The request URL **https://{{bigip-01}}/mgmt/shared/declarative-onboarding**
 #.  The language is set to **JSON**
 
