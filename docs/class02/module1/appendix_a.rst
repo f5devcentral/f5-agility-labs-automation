@@ -1,5 +1,5 @@
-Appendix A Installing Declarative Onboarding
-============================================
+Appendix A Declarative Onboarding
+=================================
 
 The latest information for installing declarative onboarding can be found at
 the link below:
