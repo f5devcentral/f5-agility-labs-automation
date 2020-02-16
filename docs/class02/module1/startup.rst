@@ -64,3 +64,20 @@ it easier to follow the rest of the lab.
    .. image:: images/win2019_rdp_yesconnect.png
 
 #. Congratulations! You are now connected to your Windows jump host.
+
+|
+
+Using browser to connect to BIGIP UI
+------------------------------------
+
+When using Chrome on your jumphost there are three shortcuts to each appliance
+for your convenience.
+
+.. image:: images/chrome_shortcuts.png
+
+|
+
+Bypass any security warning you may receive by clicking ``Advanced`` in the
+browser, then clicking ``Proceed``
+
+.. image:: images/chrome_warnings.png

@@ -24,7 +24,11 @@ Onboard a standalone **BIGIP** that includes the following in the declaration:
 - Enable an advisory message in the UI that show the hostname with a green
   background. **(Extra cool points if you use a JSON pointer for the hostname)**
 
+|
+
 .. note:: Use the table below for the necessary values in your declaration
+
+|
 
 .. list-table:: Declaration Values
    :widths: 30 30
