@@ -30,7 +30,7 @@ Onboard a standalone **BIGIP** that includes the following in the declaration:
 
 |
 
-.. list-table:: Declaration Values
+.. list-table:: **Declaration Values**
    :widths: 30 30
    :header-rows: 1
 
@@ -50,7 +50,7 @@ Onboard a standalone **BIGIP** that includes the following in the declaration:
      - interface 1.2
    * - external self-IP
      - 10.1.20.250
-   * - syslogremoteserver
+   * - SyslogRemoteServer
      - host 10.1.10.254
 
 The schema reference can be found at the following url: 

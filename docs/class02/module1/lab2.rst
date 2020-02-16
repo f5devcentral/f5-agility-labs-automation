@@ -8,7 +8,7 @@ devices. These differences illustrate examples where templatizing would work
 exceptionally well. For these situation you could use a templating tool that an
 orchestrator may provide such as Jinja2 in Ansible.
 
-Below is our declaration for **BIGIP-02**.  Copy **all of** the declaration to
+Below is our declaration for **BIGIP-02**.  Copy **all** of the declaration to
 be used in Postman.
 
 .. code-block:: JSON
@@ -184,8 +184,8 @@ Select ``POST DO Declaration to Configure BIG-IP``
 
 Notice the following in the request:
 
-#.  The request URL **https://{{bigip-02}}/mgmt/shared/declarative-onboarding**
-#.  The language is set to **JSON**
+- The request URL **https://{{bigip-02}}/mgmt/shared/declarative-onboarding**
+- The language is set to **JSON**
 
 |
 

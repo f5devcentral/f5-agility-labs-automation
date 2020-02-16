@@ -272,8 +272,8 @@ running.
 
 In order to retrieve the status of the DO process we can send a GET request to
 the same URL that we posted our declartion to. In Postman select
-BIGIP-01 ``GET Declarative Onboarding Status`` and send the GET request to view the
-status of the running process.
+the ``GET Declarative Onboarding Status`` request in the BIGIP-01 folder and send the
+GET request to view the status of the running process.
 
 .. image:: images/postman_07.png
 
