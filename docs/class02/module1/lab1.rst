@@ -206,7 +206,7 @@ VSCode must be set to JSON.
 
 .. image:: images/schemavalidation_01.png
 
-One the declaration and language are set, you can highlight over sections of
+Once the declaration and language are set, you can highlight over sections of
 the code to see contect and errors
 
 .. image:: images/schemacontext_01.png
@@ -217,34 +217,77 @@ the code to see contect and errors
 
 We are now ready to send our declaration to **BIGIP-01**
 
-Launch Postman on your jump host and copy the JSON declaration from VSCode to
-the Body of the Postman application.
-
-Click the **+** icon to open a new request in Postman
+Expand the Declarative Onboarding Collection folder, then Declarative Onboarding
+Request, lastly BIGIP-01.  Select ``Get Declarative Onboarding Version Info``
 
 .. image:: images/postman_01.png
 
 |
 
-Change the request type from **GET** to **POST**
+You'll notice that we are sending a GET request to the URL
+**https://{{bigip-01}}/mgmt/shared/declarative-onboarding**
+
+Select ``SEND`` to the right of the GET request field.
 
 .. image:: images/postman_02.png
 
 |
 |
 
-#.  Enter the following in the request URL **https://10.1.1.4/mgmt/shared/declarative-onboarding**
-#.  Click on the **Body** tab
-#.  Change the language to **JSON**
-#.  Then paste the JSON code
+When sending a GET request to the **https://{{bigip-01}}/mgmt/shared/declarative-onboarding/info**
+we get a response with the version of declarative that is currently installed.
 
 .. image:: images/postman_03.png
 
 |
 |
 
+Next, select the ``BIGIP-01 POST DO Declaration to Configure BIG_IP`` request
+and select the ``Body`` tab.
+
+Notice the following in the request:
+
+#.  The request URL **https://{{bigip-01}}/mgmt/shared/declarative-onboarding**
+#.  The language is set to **JSON**
+
+.. image:: images/postman_04.png
+
+|
+|
+
+Paste the JSON declaration into the Body of the Postman application and click ``Send``
+
+.. image:: images/postman_05.png
+
+|
+|
+
+In the response of the field you should see a response the the declaration is 
+running.
+
+.. image:: images/postman_06.png
+
+|
+|
+
+In order to retrieve the status of the DO process we can send a GET request to
+the same URL that we posted our declartion to. In Postman select
+the ``GET Declarative Onboarding Status`` request in the BIGIP-01 folder and send the
+GET request to view the status of the running process.
+
+.. image:: images/postman_07.png
+
+|
+
+Send the GET request every so often until you receive a status of "OK." Once
+you receive a status of "OK" the declaration has completed.
+
+.. image:: images/postman_08.png
+
+|
+
 Once the **BIG-IP** has finished processing the declaration, login to
-**BIGIP01** and notice the host name has changed and the device is now
+**BIGIP-01** and notice the host name has changed and the device is now
 licensed.
 
 .. image:: images/bigip01_02.png
@@ -252,7 +295,7 @@ licensed.
 |
 |
 
-Futhermore, take a look at the following settings on **BIGIP01** to see what
+Futhermore, take a look at the following settings on **BIGIP-01** to see what
 all was configured with declarative onboarding (DO)
 
 - Credentials

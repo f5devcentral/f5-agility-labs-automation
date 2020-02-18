@@ -47,24 +47,16 @@ it easier to follow the rest of the lab.
    then click ``RDP``.  When prompted, select option to ``Save`` RDP file. RDP
    file will be downloaded to your local machine.
 
-   .. image:: images/win2019_rdp_access.png
+   .. image:: images/win2016_rdp_access.png
 
-#. Open the RDP file downloaded in the previous step and click ``Continue``
+#. Open the RDP file downloaded in the previous step and click ``Connect``
    when prompted.
 
    .. image:: images/win2019_rdp_connect.png
 
-#. When prompted for login credentials, select ``More Choices``.
+#. Enter credentials: Administrator / @gi1ity2020 then click ``OK``
 
-#. Select ``Use a different account`` under ``More Choices`` option.
-
-#. Enter credentials: Administrator / @gi1ity2020
-
-   .. image:: images/win2019_rdp_diffaccount.png
-
-#. Click ``OK``.
-
-   .. image:: images/win2019_rdp_login.png
+   .. image:: images/win2019_rdp_credentials.png
 
 #. When prompted, click ``Yes`` to connection, and session will be established
    to Windows host.
@@ -72,3 +64,20 @@ it easier to follow the rest of the lab.
    .. image:: images/win2019_rdp_yesconnect.png
 
 #. Congratulations! You are now connected to your Windows jump host.
+
+|
+
+Using browser to connect to BIGIP UI
+------------------------------------
+
+When using Chrome on your jumphost there are three shortcuts to each appliance
+for your convenience.
+
+.. image:: images/chrome_shortcuts.png
+
+|
+
+Bypass any security warning you may receive by clicking ``Advanced`` in the
+browser, then clicking ``Proceed``
+
+.. image:: images/chrome_warnings.png

@@ -8,7 +8,7 @@ devices. These differences illustrate examples where templatizing would work
 exceptionally well. For these situation you could use a templating tool that an
 orchestrator may provide such as Jinja2 in Ansible.
 
-Below is our declaration for **BIGIP-02**.  Copy **all of** the declaration t
+Below is our declaration for **BIGIP-02**.  Copy **all** of the declaration to
 be used in Postman.
 
 .. code-block:: JSON
@@ -172,11 +172,30 @@ be used in Postman.
         }
     }
 
+|
 
-Next, launch Postman on your jump host and copy the JSON declaration to the
-body of the Postman application.
+Next, launch Postman on your jump host. Expand the Declarative Onboarding
+Collection folder, then Declarative Onboarding Request, lastly BIGIP-02.  
+Select ``POST DO Declaration to Configure BIG-IP``
 
-.. image:: images/postman_01.png
+.. image:: images/postman_09.png
+
+|
+
+Notice the following in the request:
+
+- The request URL **https://{{bigip-02}}/mgmt/shared/declarative-onboarding**
+- The language is set to **JSON**
+
+|
+
+Paste the JSON declaration into the Body of the Postman application and click
+``Send``
+
+.. image:: images/postman_10.png
+
+Use the ``GET Declarative Onboarding Status`` request to monitor when the
+declartation is complete.
 
 .. note::  Clustering via declarative onboarding can take a couple of minutes
    to sync and establish, this is normal behavior.
@@ -184,3 +203,9 @@ body of the Postman application.
 Return to either **BIG-IP** in Chrome and check the cluster configuration and
 status. Both units should be clustered with all onboarding objects present from
 the declaration.
+
+#. In the **BIGIP** console navigate to **Device Management -> Device Groups**
+   and view the device group that was created by the declaration.  Click on the
+   ``failoverGroup`` and verify both devices are members of the group.
+
+Feel free to check other objects such as Self IPs, NTP settings, user accounts, etc.
