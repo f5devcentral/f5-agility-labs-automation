@@ -19,6 +19,7 @@ JSON schema.
 
 #. Click and examine the ``BIG-IP Authenticate`` declaration. Click ``Send``
    and ensure a 200 OK response in the Postman response window.
+   
    .. image:: images/Postname200OK_Highlighted.JPG
 
 #. Now that we have setup token authentication, we can continue working with
