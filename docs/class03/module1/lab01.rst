@@ -54,7 +54,9 @@ JSON schema.
    .. image:: images/vscode_newfile.jpg
 
 #. Copy the contents of the file ``AS3 Schema Validation`` JSON body and paste
-   into VS Code. Save the file to your desktop - make sure to save with a .json
+   into VS Code. 
+   
+#. Save the file to your desktop by selecting File -> Save As - make sure to save with a .json
    filename.
 
 #. Once the file has been saved, you will notice a wavy line around line 17.
