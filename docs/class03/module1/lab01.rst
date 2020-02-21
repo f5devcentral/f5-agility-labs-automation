@@ -49,14 +49,14 @@ JSON schema.
 
    .. image:: images/vs_code.jpg
 
-#. Once open, create a new working file by navigating to File -> New File.
+#. Once open, create a new working file by navigating to ``File -> New File``.
 
    .. image:: images/vscode_newfile.jpg
 
 #. Copy the contents of the file ``AS3 Schema Validation`` JSON body and paste
    into VS Code. 
    
-#. Save the file to your desktop by selecting File -> Save As - make sure to save with a .json
+#. Save the file to your desktop by selecting ``File -> Save As``. Note: make sure to save with a .json
    filename.
 
 #. Once the file has been saved, you will notice a wavy line around line 17.
@@ -69,7 +69,7 @@ JSON schema.
    error.
 
 #. For a full declaration, it is easier to view the Problems
-   (navigate to View->Problems).
+   (navigate to ``View -> Problems``).
 
    .. image:: images/view_problems.jpg
 
@@ -152,8 +152,7 @@ JSON schema.
 
    .. image:: images/send.jpg
 
-#. Follow the steps from previous Exercise to visually confirm the changes have
-   been made on the BIG-IP.
+#. Go back to BIG-IP to see the new pool member that was added. Note: if you are still on the ``Pool`` page, you can click ``Refresh`` on the browser to see the newly added pool member.
 
    .. image:: images/PoolMemberAdded.JPG
 
