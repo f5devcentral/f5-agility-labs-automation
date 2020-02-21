@@ -11,10 +11,12 @@ Under the "Actions" menu select "Edit"
 
 .. image:: ./images/aws-auto-scaling-edit.png
 
+.. warning:: It may take a few minutes for the new instances to be created
+
 On the BIG-IP you should see the new pool members get added.
 
 .. image:: ./images/aws-auto-scaling-big-ip.png
 
-On the NGINX page if you click on "Auto Refresh" you should see.
+On the NGINX page click on "Auto Refresh" you should see.
 
-.. image:: ./images/aws-auto-scaling-nginx-3.gif
+  .. image:: ./images/aws-auto-scaling-nginx-3.gif
