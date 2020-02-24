@@ -3,40 +3,6 @@
 Exercise 4.2: Creating a Workflow
 #################################
 
-Table of Contents
------------------
-
--  `Exercise 4.2: Creating a
-   Workflow <#exercise-42-creating-a-workflow>`__
-
-   -  `Table of Contents <#table-of-contents>`__
-
--  `Objective <#objective>`__
--  `Guide <#guide>`__
-
-   -  `Step 0: Prepare Job Templates <#step-0-prepare-job-templates>`__
-   -  `Step 1: Create a Workflow
-      Template <#step-1-create-a-workflow-template>`__
-   -  `Step 2: The Workflow
-      Visualizer <#step-2-the-workflow-visualizer>`__
-   -  `Step 3: Add Create node Job
-      Template <#step-3-add-create-node-job-template>`__
-   -  `Step 4: Add Create pool Job
-      Template <#step-4-add-create-pool-job-template>`__
-   -  `Step 5: Add Create virtual server Job
-      Template <#step-5-add-create-virtual-server-job-template>`__
-   -  `Step 6: Rollback node deploy
-      Template <#step-6-rollback-node-deploy-template>`__
-   -  `Step 7: Rollback pool deploy
-      Template <#step-7-rollback-pool-deploy-template>`__
-   -  `Step 8: Rollback virtual server
-      Template <#step-8-rollback-virtual-server-template>`__
-   -  `Step 9: Run the Workflow <#step-9-run-the-workflow>`__
-   -  `Step 9: Error Handling <#step-9-error-handling>`__
-
--  `Takeaways <#takeaways>`__
--  `Complete <#complete>`__
-
 Objective
 =========
 

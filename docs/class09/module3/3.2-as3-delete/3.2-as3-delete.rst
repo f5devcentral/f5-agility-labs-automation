@@ -3,25 +3,6 @@
 Exercise 3.2: Deleting a Web Application
 #########################################
 
-Table of Contents
------------------
-
--  `Exercise 3.2 - Deleting a Web
-   Application <#exercise-32---deleting-a-web-application>`__
-
-   -  `Table of Contents <#table-of-contents>`__
-
--  `Objective <#objective>`__
--  `Guide <#guide>`__
-
-   -  `Step 1: <#step-1>`__
-   -  `Step 2: <#step-2>`__
-   -  `Step 3 <#step-3>`__
-   -  `Step 4 <#step-4>`__
-
--  `Playbook Output <#playbook-output>`__
--  `Solution <#solution>`__
-
 Objective
 =========
 

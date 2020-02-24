@@ -3,14 +3,6 @@
 Exercise 1.2: Adding nodes to F5 BIG-IP
 #######################################
 
-Table of Contents
------------------
-
--  `Objective <#objective>`__
--  `Guide <#guide>`__
--  `Playbook Output <#playbook-output>`__
--  `Solution <#solution>`__
-
 Objective
 =========
 

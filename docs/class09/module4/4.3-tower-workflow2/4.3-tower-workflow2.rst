@@ -3,40 +3,6 @@
 Exercise 4.3: Creating Node Maintenance Workflow
 ################################################
 
-Table of Contents
------------------
-
--  `Exercise 4.3: Creating Node Maintenance
-   Workflow <#exercise-43-creating-node-maintenance-workflow>`__
-
-   -  `Table of Contents <#table-of-contents>`__
-
--  `Objective <#objective>`__
--  `Guide <#guide>`__
-
-   -  `Step 0: Prepare Job Templates <#step-0-prepare-job-templates>`__
-
-      -  `Create Server Credential <#create-server-credential>`__
-      -  `Create Job Templates <#create-job-templates>`__
-
-   -  `Step 1: Create a Workflow
-      Template <#step-1-create-a-workflow-template>`__
-   -  `Step 2: The Workflow
-      Visualizer <#step-2-the-workflow-visualizer>`__
-   -  `Step 3: Disable node Job
-      Template <#step-3-disable-node-job-template>`__
-   -  `Step 4: Attach iRule to virtual server
-      Template <#step-4-attach-irule-to-virtual-server-template>`__
-   -  `Step 4: Patch server Template <#step-4-patch-server-template>`__
-   -  `Step 5: Enable node Template <#step-5-enable-node-template>`__
-   -  `Step 6: Detach iRule Template <#step-6-detach-irule-template>`__
-   -  `Step 6: Create a converged
-      link <#step-6-create-a-converged-link>`__
-   -  `Step 7: Run the Workflow <#step-7-run-the-workflow>`__
-
--  `Takeaways <#takeaways>`__
--  `Complete <#complete>`__
-
 Objective
 =========
 
