@@ -3,31 +3,6 @@
 Exercise 4.0: Explore Red Hat Ansible Tower
 ###########################################
 
-Table of Contents
------------------
-
--  `Exercise 4.0: Explore Red Hat Ansible
-   Tower <#exercise-40-explore-red-hat-ansible-tower>`__
-
-   -  `Table of Contents <#table-of-contents>`__
-
--  `Objective <#objective>`__
--  `Guide <#guide>`__
-
-   -  `Step 1: Login to Ansible
-      Tower <#step-1-login-to-ansible-tower>`__
-   -  `Step 2: Examine the Ansible Tower
-      Inventory <#step-2-examine-the-ansible-tower-inventory>`__
-   -  `Step 3: Examine the Ansible Tower Workshop
-      Project <#step-3-examine-the-ansible-tower-workshop-project>`__
-   -  `Step 4: Examine the Ansible Tower Workshop
-      Credential <#step-4-examine-the-ansible-tower-workshop-credential>`__
-   -  `Step 5: Examine the Ansible Tower
-      Template <#step-5-examine-the-ansible-tower-template>`__
-
--  `Takeaways <#takeaways>`__
--  `Complete <#complete>`__
-
 Objective
 =========
 

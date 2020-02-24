@@ -3,35 +3,6 @@
 Exercise 4.1: Creating a Tower Job Template
 ###########################################
 
-Table of Contents
------------------
-
--  `Exercise 4.1: Creating a Tower Job
-   Template <#exercise-41-creating-a-tower-job-template>`__
-
-   -  `Table of Contents <#table-of-contents>`__
-
--  `Objective <#objective>`__
--  `Guide <#guide>`__
-
-   -  `Step 1: Create a Credential <#step-1-create-a-credential>`__
-   -  `Step 2: Migrate an Inventory <#step-2-migrate-an-inventory>`__
-   -  `Step 3: Create a Project <#step-3-create-a-project>`__
-   -  `Step 4: Create a Job Template <#step-4-create-a-job-template>`__
-   -  `Step 5: Launch the Job
-      Template <#step-5-launch-the-job-template>`__
-   -  `Step 6: Examine the Job Details
-      View <#step-6-examine-the-job-details-view>`__
-   -  `Step 7: Examine the Jobs
-      window <#step-7-examine-the-jobs-window>`__
-   -  `Step 8: Verify the BIG-IP Virtual Server was
-      created <#step-8-verify-the-big-ip-virtual-server-was-created>`__
-   -  `Step 9: Verifying the web
-      servers <#step-9-verifying-the-web-servers>`__
-
--  `Takeaways <#takeaways>`__
--  `Complete <#complete>`__
-
 Objective
 =========
 

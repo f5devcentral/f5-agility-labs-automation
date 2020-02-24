@@ -3,14 +3,6 @@
 Exercise 1.3: Adding a load balancing pool
 ##########################################
 
-Table of Contents
------------------
-
--  `Objective <#objective>`__
--  `Guide <#guide>`__
--  `Playbook Output <#playbook-output>`__
--  `Solution <#solution>`__
-
 Objective
 =========
 

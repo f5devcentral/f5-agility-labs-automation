@@ -3,29 +3,6 @@
 Exercise 1.1: Using the bigip_device_info module
 ################################################
 
-Table of Contents
------------------
-
--  `Exercise 1.1: Using the bigip_device_info
-   module <#exercise-11-using-the-bigipdeviceinfo-module>`__
-
-   -  `Table of Contents <#table-of-contents>`__
-
--  `Objective <#objective>`__
--  `Guide <#guide>`__
-
-   -  `Step 1: <#step-1>`__
-   -  `Step 2: <#step-2>`__
-   -  `Step 3 <#step-3>`__
-   -  `Step 4 <#step-4>`__
-   -  `Step 5 <#step-5>`__
-   -  `Step 6 <#step-6>`__
-   -  `Step 7 <#step-7>`__
-
--  `Playbook Output <#playbook-output>`__
--  `Solution <#solution>`__
--  `Going Further <#going-further>`__
-
 Objective
 =========
 
