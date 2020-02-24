@@ -313,6 +313,4 @@ You have completed lab exercise 4.2
 `Click here to return to the Ansible Network Automation
 Workshop <..>`__
 
-Next: :ref:`4.3-tower-workflow2`
-
 .. |templates link| image:: images/add.png

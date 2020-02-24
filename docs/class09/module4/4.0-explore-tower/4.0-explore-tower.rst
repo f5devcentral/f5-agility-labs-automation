@@ -233,8 +233,6 @@ exercise we will create a job template.
 `Click here to return to the Ansible Network Automation
 Workshop <..>`__
 
-Next: :ref:`4.1-tower-job-template`
-
 .. |Tower Login Window| image:: images/login_window.png
 .. |Tower Job Dashboard| image:: images/tower_login.png
 .. |Inventory| image:: images/inventory.png

@@ -158,7 +158,7 @@ be executed later in this lab.
 
 **``create_vs.yml``**
 
-.. code:: yaml
+.. code-block:: yaml
 
    ---
    - name: BIG-IP SETUP
@@ -387,8 +387,6 @@ You have completed lab exercise 4.1
 
 `Click here to return to the Ansible Network Automation
 Workshop <..>`__
-
-Next: :ref:`4.2-tower-workflow`
 
 .. |templates link| image:: images/add.png
 .. |workshop inventory link| image:: images/workshop_inventory1.png

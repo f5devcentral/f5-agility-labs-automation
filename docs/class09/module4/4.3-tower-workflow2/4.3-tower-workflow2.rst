@@ -73,7 +73,7 @@ For this credential, we use the **SSH private key** instead. Get the
 private key from Ansible server, copy the output and paste in the **SSH
 PRIVATE KEY** box, and click SAVE.
 
-::
+.. code-block:: shell-session
 
    [student1@ansible ~]$ cat ~/.ssh/aws-private.pem
 
