@@ -28,7 +28,7 @@ Step 1:
 Using your text editor of choice create a new file called
 ``bigip-irule.yml``.
 
-.. code:: bash
+.. code-block:: shell-session
 
    [centos@ansible ~]$ nano bigip-irule.yml
 
@@ -46,7 +46,7 @@ JSON format).
 
 Enter the following play definition into ``bigip-irule.yml``:
 
-.. code:: yaml
+.. code-block:: yaml
 
    ---
    - name: BIG-IP SETUP
@@ -70,7 +70,7 @@ Step 3
 
 Create two dummy irules with the names ‘irule1’ and ‘irule2’
 
-.. code:: bash
+.. code-block:: shell-session
 
    [centos@ansible ~]$ nano irule1
 
@@ -80,7 +80,7 @@ Create two dummy irules with the names ‘irule1’ and ‘irule2’
 
 Save the file
 
-.. code:: bash
+.. code-block:: shell-session
 
    [centos@ansible ~]$ nano irule2
 
@@ -96,7 +96,7 @@ Step 4
 Next, re-open ``bigip-irule.yml`` and add the ``task``. This task will
 use the ``bigip-irule`` to add irules to the BIG-IP.
 
-.. code:: yaml
+.. code-block:: yaml
 
      vars:
       irules: ['irule1','irule2']
@@ -162,9 +162,8 @@ Next, append the ``task`` to above playbook. This task will use the
 ``bigip_virtual_server`` to add attach the iRules to a Virtual Server on
 the BIG-IP.
 
-.. code:: yaml
+.. code-block:: yaml
 
-       
      - name: ATTACH iRules TO VIRTUAL SERVER
        bigip_virtual_server:
          provider:
@@ -182,7 +181,7 @@ the BIG-IP.
 Details of `BIG-IP virtual_Server
 module <https://docs.ansible.com/ansible/latest/modules/bigip_irule_module.html>`__
 or reference `Exercise
-1.5 <https://github.com/network-automation/linklight/blob/master/exercises/ansible_f5/1.5-add-virtual-server/bigip-virtual-server.yml>`__
+1.5 <./bigip-virtual-server.yml>`__
 
 Save the file and exit out of editor.
 
@@ -192,14 +191,14 @@ Step 6
 Run the playbook - exit back into the command line of the control host
 and execute the following:
 
-.. code:: bash
+.. code-block:: shell-session
 
    [centos@ansible ~]$ ansible-playbook bigip-irule.yml
 
 Playbook Output
 ===============
 
-.. code:: yaml
+.. code-block:: yaml
 
    [centos@ansible]$ ansible-playbook bigip-irule.yml
 
@@ -220,7 +219,7 @@ Solution
 
 The finished Ansible Playbook is provided here for an Answer key. Click
 here:
-`bigip-irule.yml <https://github.com/network-automation/linklight/blob/master/exercises/ansible_f5/1.6-add-irules/bigip-irule.yml>`__.
+`bigip-irule.yml <./bigip-irule.yml>`__.
 
 Verifying the Solution
 ======================

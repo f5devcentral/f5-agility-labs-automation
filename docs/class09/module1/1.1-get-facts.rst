@@ -40,7 +40,7 @@ Guide
 
 Make sure you are in the home directory
 
-.. code:: bash
+.. code-block:: shell-session
 
    [centos@ansible networking-workshop]$ cd ~
 
@@ -50,7 +50,7 @@ Step 1:
 Using your text editor of choice create a new file called
 ``bigip-facts.yml``.
 
-.. code:: bash
+.. code-block:: shell-session
 
    [centos@ansible ~]$ nano bigip-facts.yml
 
@@ -68,7 +68,7 @@ JSON format).
 
 Enter the following play definition into ``bigip-facts.yml``:
 
-.. code:: yaml
+.. code-block:: yaml
 
    ---
    - name: GRAB F5 FACTS
@@ -94,7 +94,7 @@ Next, add the first ``task``. This task will use the
 ``bigip_device_info`` module to grab useful information from the BIG-IP
 device.
 
-.. code:: yaml
+.. code-block:: yaml
 
      tasks:
 
@@ -147,7 +147,7 @@ Next, append the second ``task`` to above . This task will use the
 ``debug`` module to print the output from device_facts variable we
 registered the facts to.
 
-.. code:: yaml
+.. code-block:: yaml
 
        - name: DISPLAY COMPLETE BIG-IP SYSTEM INFORMATION
          debug:
@@ -167,13 +167,13 @@ Step 5
 Run the playbook - exit back into the command line of the control host
 and execute the following:
 
-.. code:: bash
+.. code-block:: shell-session
 
    [centos@ansible ~]$ ansible-playbook bigip-facts.yml
 
 The output will look as follows.
 
-.. code:: bash
+.. code-block:: shell-session
 
    [centos@ansible ~]$ ansible-playbook bigip-facts.yml 
 
@@ -237,7 +237,7 @@ Step 6
 Finally let’s append two more tasks to get more specific info from facts
 gathered, to the above playbook.
 
-.. code:: yaml
+.. code-block:: yaml
 
 
        - name: DISPLAY ONLY THE MAC ADDRESS
@@ -268,7 +268,7 @@ Step 7
 Run the playbook - exit back into the command line of the control host
 and execute the following:
 
-.. code:: bash
+.. code-block:: shell-session
 
    [centos@ansible ~]$ ansible-playbook bigip-facts.yml
 
@@ -277,7 +277,7 @@ Playbook Output
 
 The output will look as follows.
 
-.. code:: bash
+.. code-block:: shell-session
 
    [centos@ansible ~]$ ansible-playbook bigip-facts.yml 
 
@@ -348,7 +348,7 @@ Solution
 
 The finished Ansible Playbook is provided here for an Answer key. Click
 here for
-`bigip-facts.yml <https://github.com/network-automation/linklight/blob/master/exercises/ansible_f5/1.1-get-facts/bigip-facts.yml>`__.
+`bigip-facts.yml <./bigip-facts.yml>`__.
 
 Going Further
 =============
@@ -356,7 +356,7 @@ Going Further
 For this bonus exercise add the ``tags: debug`` paramteter (at the task
 level) to the existing debug task.
 
-.. code:: yaml
+.. code-block:: yaml
 
    - name: DISPLAY COMPLETE BIG-IP SYSTEM INFORMATION
      debug:
@@ -366,7 +366,7 @@ level) to the existing debug task.
 Now re-run the playbook with the ``--skip-tags-debug`` command line
 option.
 
-.. code:: bash
+.. code-block:: shell-session
 
    ansible-playbook bigip-facts.yml --skip-tags=debug
 

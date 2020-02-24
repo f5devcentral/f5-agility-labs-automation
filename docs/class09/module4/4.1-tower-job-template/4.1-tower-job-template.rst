@@ -158,7 +158,7 @@ be executed later in this lab.
 
 **``create_vs.yml``**
 
-.. code:: yaml
+.. code-block:: yaml
 
    ---
    - name: BIG-IP SETUP

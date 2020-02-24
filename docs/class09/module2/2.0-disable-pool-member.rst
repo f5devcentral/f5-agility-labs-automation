@@ -1,6 +1,6 @@
 .. _2.0-disable-pool-members:
 
-Exercise 2.0 - Disabling a pool member
+Exercise 2.0: Disabling a pool member
 ######################################
 
 Table of Contents
@@ -34,7 +34,7 @@ Step 1:
 Using your text editor of choice create a new file called
 ``disable-pool-member.yml``.
 
-.. code:: bash
+.. code-block:: shell-session
 
    [centos@ansible ~]$ nano disable-pool-member.yml
 
@@ -48,7 +48,7 @@ Step 2:
 
 Enter the following play definition into ``disable-pool-member.yml``:
 
-.. code:: yaml
+.. code-block:: yaml
 
    ---
 
@@ -65,7 +65,7 @@ the provider you can re-use this key in future tasks instead of giving
 the server/user/password/server_port and validate_certs info to each
 task.
 
-.. code:: yaml
+.. code-block:: yaml
 
    ---
    - name: "Disabling a pool member"
@@ -85,7 +85,7 @@ task.
 
 Now in the next task you can use provider as follows:
 
-.. code:: yaml
+.. code-block:: yaml
 
    bigip_device_info:
      provider: "{{provider}}"
@@ -95,7 +95,7 @@ Now in the next task you can use provider as follows:
 You DO NOT need to pass the server_ip/user/password etc. for each module
 going forward
 
-.. code:: yaml
+.. code-block:: yaml
 
    ---
    - name: "Disabling a pool member"
@@ -165,7 +165,7 @@ Step 10
 Run the playbook - exit back into the command line of the control host
 and execute the following:
 
-.. code:: bash
+.. code-block:: shell-session
 
    [centos@ansible ~]$ ansible-playbook disable-pool-member.yml
 
@@ -174,7 +174,7 @@ Playbook Output
 
 The output will look as follows.
 
-.. code:: yaml
+.. code-block:: yaml
 
    [centos@ansible ~]$ ansible-playbook disable-pool-member.yml
 
