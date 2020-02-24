@@ -105,7 +105,7 @@ Declaration for BIGIP1:
 
 Copy **all of** the below DO declaration.
 
-.. literalinclude :: /docs/class05/ansibleTowerDeployment/module5/ansible/roles/declarative_onboarding/files/do_cluster_bigip1.json
+.. literalinclude :: /class05/ansibleTowerDeployment/module5/ansible/roles/declarative_onboarding/files/do_cluster_bigip1.json
    :language: json
 
 Task |labmodule|\.\ |labnum|\.6
@@ -158,7 +158,7 @@ Declaration for BIGIP2:
 
 Copy **all of** the below DO declaration.
 
-.. literalinclude :: /docs/class05/ansibleTowerDeployment/module5/ansible/roles/declarative_onboarding/files/do_cluster_bigip2.json
+.. literalinclude :: /class05/ansibleTowerDeployment/module5/ansible/roles/declarative_onboarding/files/do_cluster_bigip2.json
    :language: json
 
 Task |labmodule|\.\ |labnum|\.10

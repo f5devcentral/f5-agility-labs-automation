@@ -81,7 +81,7 @@ Declaration for BIGIP1:
 
 Copy **all of** the below AS3 declaration.
 
-.. literalinclude :: /docs/class05/ansibleTowerDeployment/module5/ansible/roles/application_services_3/files/as3_ssl_redirect.json
+.. literalinclude:: /class05/ansibleTowerDeployment/module5/ansible/roles/application_services_3/files/as3_ssl_redirect.json
    :language: json
 
 Task |labmodule|\.\ |labnum|\.6

@@ -31,7 +31,7 @@ Reviewing the Playbook execution, we can see some testing and error handling tha
 
 Ansible literal configuration file for review:
 
-.. literalinclude :: /docs/class05/ansibleTowerDeployment/module5/ansible/roles/install_atc/tasks/main.yml
+.. literalinclude:: /class05/ansibleTowerDeployment/module5/ansible/roles/install_atc/tasks/main.yml
    :language: yaml
 
 .. Warning:: If a template fails to be successful, re-execute the template. All of the objects in these Ansible tasks and F5 Automation Toolchain declarations are built for Idempotency and Atomic best practices. This means, a change is only executed if needed, and if a failure happens **all** changes revert.

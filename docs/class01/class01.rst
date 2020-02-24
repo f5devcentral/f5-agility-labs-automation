@@ -3,10 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to the Agility 2020 Programmability BIG-IP Rest Structure and Concepts Documentation!
-=============================================================================================
+Class 1: Programmability BIG-IP Rest Structure and Concepts Documentation!
+==========================================================================
 
-This lab was re-authored by Jon Calalang (jmcalalang_) with amazing contributions from:
+This lab was re-authored by Jon Calalang (jmcalalang_) with amazing
+contributions from:
 
 - Chris Adrian
 - Pier-Luc Charbonneau
@@ -19,18 +20,11 @@ This lab was re-authored by Jon Calalang (jmcalalang_) with amazing contribution
    :caption: Contents:
    :glob:
 
-   class
+   agenda
    labinfo/labinfo*
    module*/module*
    conclusion
    bigipbasics
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
 .. _jmcalalang: https://www.github.com/jmcalalang
 .. _aknot242: https://www.github.com/aknot242

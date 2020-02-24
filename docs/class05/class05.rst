@@ -1,7 +1,8 @@
-Welcome to the Agility 2020 F5 Automation Toolchain Lab Documentation!
-======================================================================
+Class 5: Automation Toolchain Lab Documentation!
+================================================
 
-This lab was authored by Jon Calalang (jmcalalang_) with amazing contributions from: 
+This lab was authored by Jon Calalang (jmcalalang_) with amazing contributions
+from: 
 
 (Alphabetical)
 
@@ -26,13 +27,6 @@ This lab was authored by Jon Calalang (jmcalalang_) with amazing contributions f
    ansibleTowerDeployment/ansibleTowerDeployment*
    ansibleTowerDeployment/module*/module*
    conclusion
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
 .. _jmcalalang: https://www.github.com/jmcalalang
 .. _aknot242: https://www.github.com/aknot242
