@@ -218,7 +218,7 @@ Solution
 
 The finished Ansible Playbook is provided here for an Answer key. Click
 here:
-`bigip-delete-configuration.yml <./bigip-delete-configuration.yml>`__.
+:download:`bigip-delete-configuration.yml <./bigip-delete-configuration.yml>`.
 
 Verifying the Solution
 ======================
@@ -236,5 +236,3 @@ Manager -> Pool \* Local Traffic Manager -> Node
 
 You have finished this exercise. `Click here to return to the lab
 guide <..>`__
-
-Next: :ref:`2.2-error-handling`

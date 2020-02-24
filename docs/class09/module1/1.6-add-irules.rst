@@ -180,8 +180,8 @@ the BIG-IP.
 
 Details of `BIG-IP virtual_Server
 module <https://docs.ansible.com/ansible/latest/modules/bigip_irule_module.html>`__
-or reference `Exercise
-1.5 <./bigip-virtual-server.yml>`__
+or reference :download:`Exercise
+1.5 <./bigip-virtual-server.yml>`
 
 Save the file and exit out of editor.
 
@@ -219,7 +219,7 @@ Solution
 
 The finished Ansible Playbook is provided here for an Answer key. Click
 here:
-`bigip-irule.yml <./bigip-irule.yml>`__.
+:download:`bigip-irule.yml <./bigip-irule.yml>`.
 
 Verifying the Solution
 ======================
@@ -243,7 +243,5 @@ the iRules attached to the Virtual Server |irules|
 
 You have finished this exercise. `Click here to return to the lab
 guide <..>`__
-
-Next: :ref:`1.7-save-running-config`
 
 .. |irules| image:: bigip-irule.png

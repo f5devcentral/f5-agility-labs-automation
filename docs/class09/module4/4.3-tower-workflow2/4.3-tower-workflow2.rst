@@ -56,7 +56,7 @@ Step 0: Prepare Job Templates
 -----------------------------
 
 Create Server Credential
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
 Before creating templates, you should create one more credential
 ``Server credential`` beforehand, to be utilized by one of the jobs
@@ -83,7 +83,7 @@ PRIVATE KEY** box, and click SAVE.
    server credential
 
 Create Job Templates
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 
 Similar to the previous lab, we would need to prepare the following
 templates by following ``Lab 4.2``:

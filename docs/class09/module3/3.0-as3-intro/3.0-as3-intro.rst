@@ -61,7 +61,7 @@ scratch. There are two parts->
 
 1. ``tenant_base.j2``
 
-.. code-block:: json
+.. code-block:: jinja
 
    {
        "class": "AS3",
@@ -96,7 +96,7 @@ their customers. The important parts to understand are:
 
 1. ``as3_template.j2``
 
-.. code-block:: json
+.. code-block:: jinja
 
    "web_app": {
        "class": "Application",
@@ -323,7 +323,7 @@ Solution
 
 The finished Ansible Playbook is provided here for an Answer key. Click
 here:
-`as3.yml <./as3.yml>`__.
+:download:`as3.yml <./as3.yml>`.
 
 Verifying the Solution
 ======================
@@ -347,5 +347,3 @@ file, and type it in like so: https://X.X.X.X:8443/
 
 You have finished this exercise. `Click here to return to the lab
 guide <..>`__
-
-Next: :ref:`3.1-as3-change`

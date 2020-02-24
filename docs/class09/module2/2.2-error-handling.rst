@@ -277,7 +277,7 @@ Step 7
 
 Next, add the **rescue** stanza. The tasks under the ``rescue`` stanza
 will be identical to :ref:`Exercise 1.6 - Deleting F5 BIG-IP
-Configuration<1.6-delete-configuration>`. The
+Configuration<1.6-add-irules>`. The
 bigip_pool_member task does not need to re-enterered since by deleting
 the nodes and pool will remove all configuration. If any task within the
 **block** fails, the **rescue** stanza will execute in order. The VIP,
@@ -510,7 +510,7 @@ Solution
 
 The finished Ansible Playbook is provided here for an Answer key. Click
 here:
-`bigip-error-handling.yml <./bigip-error-handling.yml>`__.
+:download:`bigip-error-handling.yml <./bigip-error-handling.yml>`.
 
 You have finished this exercise. `Click here to return to the lab
 guide <..>`__

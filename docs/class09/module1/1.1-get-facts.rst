@@ -348,7 +348,7 @@ Solution
 
 The finished Ansible Playbook is provided here for an Answer key. Click
 here for
-`bigip-facts.yml <./bigip-facts.yml>`__.
+:download:`bigip-facts.yml <./bigip-facts.yml>`.
 
 Going Further
 =============
@@ -375,5 +375,3 @@ The Ansible Playbook will only run three tasks, skipping the
 
 You have finished this exercise. `Click here to return to the lab
 guide <..>`__
-
-Next: :ref:`1.2-add-node`

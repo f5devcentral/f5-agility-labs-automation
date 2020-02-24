@@ -388,8 +388,6 @@ You have completed lab exercise 4.1
 `Click here to return to the Ansible Network Automation
 Workshop <..>`__
 
-Next: :ref:`4.2-tower-workflow`
-
 .. |templates link| image:: images/add.png
 .. |workshop inventory link| image:: images/workshop_inventory1.png
 .. |workshop inventory group link| image:: images/workshop_inventory_group1.png

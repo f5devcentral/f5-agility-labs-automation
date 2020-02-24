@@ -148,7 +148,7 @@ Solution
 
 The finished Ansible Playbook is provided here for an Answer key. Click
 here:
-`bigip-pool.yml <./bigip-pool.yml>`__.
+:download:`bigip-pool.yml <./bigip-pool.yml>`.
 
 Verifying the Solution
 ======================
@@ -165,7 +165,5 @@ Click on Local Traffic-> then click on Pools. |f5pool|
 
 You have finished this exercise. `Click here to return to the lab
 guide <..>`__
-
-Next: :ref:`1.4-add-pool-members`
 
 .. |f5pool| image:: pool.png

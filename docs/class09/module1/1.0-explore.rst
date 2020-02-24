@@ -150,6 +150,3 @@ Go back to the home directory
 
 You have finished this exercise. `Click here to return to the lab
 guide <..>`__
-
-Next: :ref:`1.1-get-facts`
-

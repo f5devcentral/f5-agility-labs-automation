@@ -174,7 +174,7 @@ Playbook Output
 
 The output will look as follows.
 
-.. code-block:: yaml
+.. code-block:: shell-session
 
    [centos@ansible ~]$ ansible-playbook disable-pool-member.yml
 
@@ -233,5 +233,3 @@ indicating the specified node was forced offline.
 
 You have finished this exercise. `Click here to return to the lab
 guide <..>`__
-
-Next: :ref:`2.1-delete-configuration`

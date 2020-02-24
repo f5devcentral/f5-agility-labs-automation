@@ -165,7 +165,7 @@ Solution
 
 The finished Ansible Playbook is provided here for an Answer key. Click
 here:
-`bigip-virtual-server.yml <./bigip-virtual-server.yml>`__.
+:download:`bigip-virtual-server.yml <./bigip-virtual-server.yml>`.
 
 Verifying the Solution
 ======================
@@ -220,8 +220,6 @@ respective workbench. (e.g. student5 would ``| grep student5``)
 
 You have finished this exercise. `Click here to return to the lab
 guide <..>`__
-
-Next: :ref:`1.6-add-irules`
 
 .. |f5 vip image| image:: f5vip.png
 .. |animation| image:: animation.gif

@@ -290,7 +290,7 @@ Solution
 
 The finished Ansible Playbook is provided here for an Answer key. Click
 here:
-`bigip-pool-members.yml <./bigip-pool-members.yml>`__.
+:download:`bigip-pool-members.yml <./bigip-pool-members.yml>`.
 
 Verifying the Solution
 ======================
@@ -309,7 +309,5 @@ Members. |f5members|
 
 You have finished this exercise. `Click here to return to the lab
 guide <..>`__
-
-Next: :ref:`1.5-add-virtual-server`
 
 .. |f5members| image:: poolmembers.png
