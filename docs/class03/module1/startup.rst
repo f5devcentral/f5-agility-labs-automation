@@ -89,8 +89,6 @@ it easier to follow the rest of the lab.
 
 #. Once Postman has launched, you need to load the Postman environment
    variables and import the collections we will be using for the lab.
-   
-#. When Postman is open, click on the ``Collections`` tab.  If there is a collection present, right click and select ``Delete`` to remove the collection.
 
 #. First, import the Postman collection, which are located on a github
    repository. On the top left, click the ``Import`` button.
@@ -103,6 +101,10 @@ it easier to follow the rest of the lab.
 
    .. image:: images/import_from_link.jpg
 
+#. If you get a message that Postman collection is already present, choose ``Replace`` in the dialog box to overwrite any collection that may be present.
+
+   .. image:: images/postman_collectionPresent.JPG
+   
 #. You should now see a new folder under the ``Collections`` tab to the left of
    the Postman application screen.
 
