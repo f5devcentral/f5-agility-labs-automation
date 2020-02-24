@@ -54,7 +54,7 @@ it easier to follow the rest of the lab.
 
    .. image:: images/win2019_rdp_connect.png
 
-#. Enter credentials: Administrator / @gi1ity2020 then click ``OK``
+#. Enter credentials: Administrator / brwP61Ag then click ``OK``
 
    .. image:: images/win2019_rdp_credentials.png
 
