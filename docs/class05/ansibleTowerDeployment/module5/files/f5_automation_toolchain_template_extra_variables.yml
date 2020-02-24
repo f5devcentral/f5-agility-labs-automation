@@ -1,0 +1,19 @@
+---
+# Credentials
+BIGIPadminUsername: "admin"
+BIGIPadminPassword: "Agility2020!"
+
+# Used for Declarative Onboarding
+deviceName1: "10.1.1.7"
+deviceName2: "10.1.1.6"
+
+# Used for Application Services 3
+partition: "Module_03"
+serviceName: "Module_03"
+virtualAddresses1: "10.1.10.110"
+virtualAddresses2: "10.1.10.111"
+servicePort: "8080"
+
+# Used for Telemetry Streaming
+forwarderName: "tsdemo"
+F5BeaconAccessToken: "a-aavdvRoPC5#qmmgf9zZ7nXrLnrppyr1hrpJay4UAKN2EMvZ2rexisU="

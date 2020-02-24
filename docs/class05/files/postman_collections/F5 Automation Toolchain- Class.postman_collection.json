@@ -1,0 +1,2498 @@
+{
+	"info": {
+		"_postman_id": "690dc31b-4cfb-4053-83a1-1c620f9540bf",
+		"name": "F5 Automation Toolchain: Class",
+		"description": "This class is focused on highlighting the F5 Automation Toolchain objects and their specific uses.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Retrieve Authentication Token BIGIP1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "766bb157-29e5-4539-9cd6-01b6b08ab5cb",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var populate_vars = [",
+									"        {name:\"bigip_1_auth_token\", value:\"token.token\"}",
+									"    ];",
+									"    ",
+									"f5_populate_env_vars(populate_vars);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"{{bigip_cred}}\",\n    \"password\":\"{{bigip_cred_password}}\",\n    \"loginProviderName\":\"tmos\"\n}"
+						},
+						"url": {
+							"raw": "https://{{bigip1}}/mgmt/shared/authn/login",
+							"protocol": "https",
+							"host": [
+								"{{bigip1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"authn",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Authentication Token Timeout BIGIP1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "85b2f12c-366b-42d6-93c1-ce808473ddbc",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"timeout\", ",
+									"            \"value\":\"36000\" ",
+									"        }",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_1_auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"timeout\":\"36000\"\n}"
+						},
+						"url": {
+							"raw": "https://{{bigip1}}/mgmt/shared/authz/tokens/{{bigip_1_auth_token}}",
+							"protocol": "https",
+							"host": [
+								"{{bigip1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"authz",
+								"tokens",
+								"{{bigip_1_auth_token}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Authentication Token BIGIP2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "766bb157-29e5-4539-9cd6-01b6b08ab5cb",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var populate_vars = [",
+									"        {name:\"bigip_2_auth_token\", value:\"token.token\"}",
+									"    ];",
+									"    ",
+									"f5_populate_env_vars(populate_vars);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"{{bigip_cred}}\",\n    \"password\":\"{{bigip_cred_password}}\",\n    \"loginProviderName\":\"tmos\"\n}"
+						},
+						"url": {
+							"raw": "https://{{bigip2}}/mgmt/shared/authn/login",
+							"protocol": "https",
+							"host": [
+								"{{bigip2}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"authn",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Authentication Token Timeout BIGIP2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "85b2f12c-366b-42d6-93c1-ce808473ddbc",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"timeout\", ",
+									"            \"value\":\"36000\" ",
+									"        }",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_2_auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"timeout\":\"36000\"\n}"
+						},
+						"url": {
+							"raw": "https://{{bigip2}}/mgmt/shared/authz/tokens/{{bigip_2_auth_token}}",
+							"protocol": "https",
+							"host": [
+								"{{bigip2}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"authz",
+								"tokens",
+								"{{bigip_2_auth_token}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Module 2 - DO and BIG-IP",
+			"item": [
+				{
+					"name": "Step 1: Get Installed iControl LX Extensions BIGIP1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5e098299-9d1c-4d54-b189-b8d35751507c",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"kind\",",
+									"            \"value\":\"shared:iapp:installed-packages:installedpackagecollectionstate\",",
+									"        }       ",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_1_auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{bigip1}}/mgmt/shared/iapp/installed-packages",
+							"protocol": "https",
+							"host": [
+								"{{bigip1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"iapp",
+								"installed-packages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 2: Upload DO Extension RPM BIGIP1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bb38c6e9-0658-458c-be36-3f95d74c9a1c",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"localFilePath\",",
+									"            \"value\":\"/f5-declarative-onboarding-1..*.noarch.rpm$/i\",",
+									"            \"op\":\"regex\"",
+									"        }",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ec269764-4137-4028-b375-4e6471b42ff9",
+								"exec": [
+									"// Create the value for the Content-Range header based on the file size of the RPM",
+									"// https://devcentral.f5.com/articles/demystifying-icontrol-rest-part-5-transferring-files",
+									"",
+									"var fileLen = parseInt(pm.environment.get(\"do_filelen\"));",
+									"pm.globals.set(\"_do_content_range\",\"0-\" + (fileLen - 1) + \"/\" + fileLen);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/octet-stream"
+							},
+							{
+								"key": "Content-Range",
+								"value": "{{_do_content_range}}"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_1_auth_token}}"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "https://{{bigip1}}/mgmt/shared/file-transfer/uploads/{{do_filename}}",
+							"protocol": "https",
+							"host": [
+								"{{bigip1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"file-transfer",
+								"uploads",
+								"{{do_filename}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 3: Create DO Extension Install Task BIGIP1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a4da1ae5-cea8-48aa-b803-b45a0086508a",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"status\",",
+									"            \"value\":\"CREATED\"",
+									"        }       ",
+									"    ];",
+									"var populate_vars = [",
+									"        { ",
+									"            \"name\":\"_do_install_uuid\",",
+									"            \"value\":\"id\"",
+									"        }      ",
+									"    ];",
+									"    ",
+									"f5_populate_env_vars(populate_vars);",
+									"f5_check_response(check_vals);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_1_auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"operation\":\"INSTALL\",\n  \"packageFilePath\":\"/var/config/rest/downloads/{{do_filename}}\"\n}"
+						},
+						"url": {
+							"raw": "https://{{bigip1}}/mgmt/shared/iapp/package-management-tasks",
+							"protocol": "https",
+							"host": [
+								"{{bigip1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"iapp",
+								"package-management-tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 4: Get DO Install Task Status BIGIP1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2cfb16a5-d7b6-4580-9428-93f10b49d6ad",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"status\",",
+									"            \"value\":\"FINISHED\"",
+									"        }       ",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_1_auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{bigip1}}/mgmt/shared/iapp/package-management-tasks/{{_do_install_uuid}}",
+							"protocol": "https",
+							"host": [
+								"{{bigip1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"iapp",
+								"package-management-tasks",
+								"{{_do_install_uuid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 5: Check DO Installed BIGIP1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "72146941-5edf-430b-b687-8e6c3e0b5ecd",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"declaration\"",
+									"        }       ",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_1_auth_token}}"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							}
+						],
+						"url": {
+							"raw": "https://{{bigip1}}/mgmt/shared/declarative-onboarding/",
+							"protocol": "https",
+							"host": [
+								"{{bigip1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"declarative-onboarding",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 6: DO Declaration BIGIP1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bb38c6e9-0658-458c-be36-3f95d74c9a1c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ec269764-4137-4028-b375-4e6471b42ff9",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_1_auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{bigip1}}/mgmt/shared/declarative-onboarding",
+							"protocol": "https",
+							"host": [
+								"{{bigip1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"declarative-onboarding"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 7: Get Installed iControl LX Extensions BIGIP2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5e098299-9d1c-4d54-b189-b8d35751507c",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"kind\",",
+									"            \"value\":\"shared:iapp:installed-packages:installedpackagecollectionstate\",",
+									"        }       ",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_2_auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{bigip2}}/mgmt/shared/iapp/installed-packages",
+							"protocol": "https",
+							"host": [
+								"{{bigip2}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"iapp",
+								"installed-packages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 8: Upload DO Extension RPM BIGIP2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bb38c6e9-0658-458c-be36-3f95d74c9a1c",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"localFilePath\",",
+									"            \"value\":\"/f5-declarative-onboarding-1..*.noarch.rpm$/i\",",
+									"            \"op\":\"regex\"",
+									"        }",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ec269764-4137-4028-b375-4e6471b42ff9",
+								"exec": [
+									"// Create the value for the Content-Range header based on the file size of the RPM",
+									"// https://devcentral.f5.com/articles/demystifying-icontrol-rest-part-5-transferring-files",
+									"",
+									"var fileLen = parseInt(pm.environment.get(\"do_filelen\"));",
+									"pm.globals.set(\"_do_content_range\",\"0-\" + (fileLen - 1) + \"/\" + fileLen);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/octet-stream"
+							},
+							{
+								"key": "Content-Range",
+								"value": "{{_do_content_range}}"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_2_auth_token}}"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "https://{{bigip2}}/mgmt/shared/file-transfer/uploads/{{do_filename}}",
+							"protocol": "https",
+							"host": [
+								"{{bigip2}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"file-transfer",
+								"uploads",
+								"{{do_filename}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 9: Create DO Extension Install Task BIGIP2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a4da1ae5-cea8-48aa-b803-b45a0086508a",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"status\",",
+									"            \"value\":\"CREATED\"",
+									"        }       ",
+									"    ];",
+									"var populate_vars = [",
+									"        { ",
+									"            \"name\":\"_do_install_uuid\",",
+									"            \"value\":\"id\"",
+									"        }      ",
+									"    ];",
+									"    ",
+									"f5_populate_env_vars(populate_vars);",
+									"f5_check_response(check_vals);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_2_auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"operation\":\"INSTALL\",\n  \"packageFilePath\":\"/var/config/rest/downloads/{{do_filename}}\"\n}"
+						},
+						"url": {
+							"raw": "https://{{bigip2}}/mgmt/shared/iapp/package-management-tasks",
+							"protocol": "https",
+							"host": [
+								"{{bigip2}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"iapp",
+								"package-management-tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 10: Get DO Install Task Status BIGIP2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2cfb16a5-d7b6-4580-9428-93f10b49d6ad",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"status\",",
+									"            \"value\":\"FINISHED\"",
+									"        }       ",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_2_auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{bigip2}}/mgmt/shared/iapp/package-management-tasks/{{_do_install_uuid}}",
+							"protocol": "https",
+							"host": [
+								"{{bigip2}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"iapp",
+								"package-management-tasks",
+								"{{_do_install_uuid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 11: Check DO Installed BIGIP2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "72146941-5edf-430b-b687-8e6c3e0b5ecd",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"declaration\"",
+									"        }       ",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_2_auth_token}}"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							}
+						],
+						"url": {
+							"raw": "https://{{bigip2}}/mgmt/shared/declarative-onboarding/",
+							"protocol": "https",
+							"host": [
+								"{{bigip2}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"declarative-onboarding",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 12: DO Declaration BIGIP2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bb38c6e9-0658-458c-be36-3f95d74c9a1c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ec269764-4137-4028-b375-4e6471b42ff9",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_2_auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{bigip2}}/mgmt/shared/declarative-onboarding",
+							"protocol": "https",
+							"host": [
+								"{{bigip2}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"declarative-onboarding"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6d75e112-93b6-45bb-b6f6-3a70d6724a0a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "16cc20b4-c98c-4913-8670-65caacab136c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Module 3 - AS3 and BIG-IP",
+			"item": [
+				{
+					"name": "Step 1: Get Installed iControl LX Extensions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5e098299-9d1c-4d54-b189-b8d35751507c",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"kind\",",
+									"            \"value\":\"shared:iapp:installed-packages:installedpackagecollectionstate\",",
+									"        }       ",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_1_auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{bigip1}}/mgmt/shared/iapp/installed-packages",
+							"protocol": "https",
+							"host": [
+								"{{bigip1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"iapp",
+								"installed-packages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 2: Upload AS3 Extension RPM",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bb38c6e9-0658-458c-be36-3f95d74c9a1c",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"localFilePath\",",
+									"            \"value\":\"/f5-appsvcs-3..*.noarch.rpm$/i\",",
+									"            \"op\":\"regex\"",
+									"        }",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ec269764-4137-4028-b375-4e6471b42ff9",
+								"exec": [
+									"// Create the value for the Content-Range header based on the file size of the RPM",
+									"// https://devcentral.f5.com/articles/demystifying-icontrol-rest-part-5-transferring-files",
+									"",
+									"var fileLen = parseInt(pm.environment.get(\"as3_filelen\"));",
+									"pm.globals.set(\"_as3_content_range\",\"0-\" + (fileLen - 1) + \"/\" + fileLen);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/octet-stream"
+							},
+							{
+								"key": "Content-Range",
+								"value": "{{_as3_content_range}}"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_1_auth_token}}"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "https://{{bigip1}}/mgmt/shared/file-transfer/uploads/{{as3_filename}}",
+							"protocol": "https",
+							"host": [
+								"{{bigip1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"file-transfer",
+								"uploads",
+								"{{as3_filename}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 3: Create AS3 Extension Install Task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a4da1ae5-cea8-48aa-b803-b45a0086508a",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"status\",",
+									"            \"value\":\"CREATED\"",
+									"        }       ",
+									"    ];",
+									"var populate_vars = [",
+									"        { ",
+									"            \"name\":\"_as3_install_uuid\",",
+									"            \"value\":\"id\"",
+									"        }      ",
+									"    ];",
+									"    ",
+									"f5_populate_env_vars(populate_vars);",
+									"f5_check_response(check_vals);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_1_auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"operation\":\"INSTALL\",\n  \"packageFilePath\":\"/var/config/rest/downloads/{{as3_filename}}\"\n}"
+						},
+						"url": {
+							"raw": "https://{{bigip1}}/mgmt/shared/iapp/package-management-tasks",
+							"protocol": "https",
+							"host": [
+								"{{bigip1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"iapp",
+								"package-management-tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 4: Get AS3 Install Task Status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2cfb16a5-d7b6-4580-9428-93f10b49d6ad",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"status\",",
+									"            \"value\":\"FINISHED\"",
+									"        }       ",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_1_auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{bigip1}}/mgmt/shared/iapp/package-management-tasks/{{_as3_install_uuid}}",
+							"protocol": "https",
+							"host": [
+								"{{bigip1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"iapp",
+								"package-management-tasks",
+								"{{_as3_install_uuid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 5: Get AS3 Version Info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "72146941-5edf-430b-b687-8e6c3e0b5ecd",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"version\",",
+									"            \"value\":\"/^3./i\",",
+									"            \"op\":\"regex\"",
+									"        }       ",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_1_auth_token}}"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							}
+						],
+						"url": {
+							"raw": "https://{{bigip1}}/mgmt/shared/appsvcs/info",
+							"protocol": "https",
+							"host": [
+								"{{bigip1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 6: AS3 Declaration BIGIP1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a4da1ae5-cea8-48aa-b803-b45a0086508a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_1_auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{bigip1}}/mgmt/shared/appsvcs/declare",
+							"protocol": "https",
+							"host": [
+								"{{bigip1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6d75e112-93b6-45bb-b6f6-3a70d6724a0a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "16cc20b4-c98c-4913-8670-65caacab136c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Module 4 - TS and BIG-IP",
+			"item": [
+				{
+					"name": "Step 1: Get Installed iControl LX Extensions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5e098299-9d1c-4d54-b189-b8d35751507c",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"kind\",",
+									"            \"value\":\"shared:iapp:installed-packages:installedpackagecollectionstate\",",
+									"        }       ",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_1_auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{bigip1}}/mgmt/shared/iapp/installed-packages",
+							"protocol": "https",
+							"host": [
+								"{{bigip1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"iapp",
+								"installed-packages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 2: Upload TS Extension RPM",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bb38c6e9-0658-458c-be36-3f95d74c9a1c",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"localFilePath\",",
+									"            \"value\":\"/f5-telemetry-1..*.noarch.rpm$/i\",",
+									"            \"op\":\"regex\"",
+									"        }",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ec269764-4137-4028-b375-4e6471b42ff9",
+								"exec": [
+									"// Create the value for the Content-Range header based on the file size of the RPM",
+									"// https://devcentral.f5.com/articles/demystifying-icontrol-rest-part-5-transferring-files",
+									"",
+									"var fileLen = parseInt(pm.environment.get(\"ts_filelen\"));",
+									"pm.globals.set(\"_ts_content_range\",\"0-\" + (fileLen - 1) + \"/\" + fileLen);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/octet-stream"
+							},
+							{
+								"key": "Content-Range",
+								"value": "{{_ts_content_range}}"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_1_auth_token}}"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "https://{{bigip1}}/mgmt/shared/file-transfer/uploads/{{ts_filename}}",
+							"protocol": "https",
+							"host": [
+								"{{bigip1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"file-transfer",
+								"uploads",
+								"{{ts_filename}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 3: Create TS Extension Install Task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a4da1ae5-cea8-48aa-b803-b45a0086508a",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"status\",",
+									"            \"value\":\"CREATED\"",
+									"        }       ",
+									"    ];",
+									"var populate_vars = [",
+									"        { ",
+									"            \"name\":\"_ts_install_uuid\",",
+									"            \"value\":\"id\"",
+									"        }      ",
+									"    ];",
+									"    ",
+									"f5_populate_env_vars(populate_vars);",
+									"f5_check_response(check_vals);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_1_auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"operation\":\"INSTALL\",\n  \"packageFilePath\":\"/var/config/rest/downloads/{{ts_filename}}\"\n}"
+						},
+						"url": {
+							"raw": "https://{{bigip1}}/mgmt/shared/iapp/package-management-tasks",
+							"protocol": "https",
+							"host": [
+								"{{bigip1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"iapp",
+								"package-management-tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 4: Get TS Install Task Status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2cfb16a5-d7b6-4580-9428-93f10b49d6ad",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"status\",",
+									"            \"value\":\"FINISHED\"",
+									"        }       ",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_1_auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{bigip1}}/mgmt/shared/iapp/package-management-tasks/{{_ts_install_uuid}}",
+							"protocol": "https",
+							"host": [
+								"{{bigip1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"iapp",
+								"package-management-tasks",
+								"{{_ts_install_uuid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 5: Get TS Version Info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "72146941-5edf-430b-b687-8e6c3e0b5ecd",
+								"exec": [
+									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
+									"",
+									"var check_vals = [",
+									"        { ",
+									"            \"path\":\"version\",",
+									"            \"value\":\"/^1./i\",",
+									"            \"op\":\"regex\"",
+									"        }       ",
+									"    ];",
+									"",
+									"f5_check_response(check_vals);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_1_auth_token}}"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive"
+							}
+						],
+						"url": {
+							"raw": "https://{{bigip1}}/mgmt/shared/telemetry/info",
+							"protocol": "https",
+							"host": [
+								"{{bigip1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"telemetry",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 6: TS Declaration BIGIP1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a4da1ae5-cea8-48aa-b803-b45a0086508a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_1_auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{bigip1}}/mgmt/shared/telemetry/declare",
+							"protocol": "https",
+							"host": [
+								"{{bigip1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"telemetry",
+								"declare"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6d75e112-93b6-45bb-b6f6-3a70d6724a0a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "16cc20b4-c98c-4913-8670-65caacab136c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Ansible Tower",
+			"item": [
+				{
+					"name": "Provisioning Tower",
+					"item": [
+						{
+							"name": "Step 1: Modify Ansible Tower License",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3a70e9a7-2a95-4e10-97ad-55562345fa99",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"tower_project_id\", jsonData.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{ansibletower_cred_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{ansibletower_cred}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"company_name\": \"F5\",\r\n    \"eula_accepted\": \"true\",\r\n    \"contact_email\": \"jon@f5.com\",\r\n    \"contact_name\": \"Jon Calalang\",\r\n    \"hostname\": \"787070646e8d460cbe37960acfabc50d\",\r\n    \"instance_count\": 10,\r\n    \"license_date\": 2120157493,\r\n    \"license_key\": \"38f62b7bb49071a131d6b42f7b3579346c2bea2774c047b86b9645cce61c405d\",\r\n    \"license_type\": \"basic\",\r\n    \"subscription_name\": \"Red Hat Ansible Tower, Self-Support (10 Managed Nodes)\"\r\n}"
+								},
+								"url": {
+									"raw": "https://{{ansibletower}}/api/v2/config/",
+									"protocol": "https",
+									"host": [
+										"{{ansibletower}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"config",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Step 2: Create f5_automation_toolchain SCM Project",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3a70e9a7-2a95-4e10-97ad-55562345fa99",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"tower_project_id\", jsonData.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{ansibletower_cred_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{ansibletower_cred}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"f5_automation_toolchain_project\",\n    \"scm_type\": \"git\",\n    \"scm_url\": \"https://github.com/jmcalalang/Agility-2020---AnO-Tool-Chain---Advanced-Design-Patterns-with-AS3-DO-and-TS\",\n    \"scm_branch\": null,\n    \"scm_clean\": false,\n    \"scm_delete_on_update\": true,\n    \"credential\": null,\n    \"timeout\": 0,\n    \"organization\": \"1\",\n    \"scm_update_on_launch\": true,\n    \"scm_update_cache_timeout\": 0\n}"
+								},
+								"url": {
+									"raw": "https://{{ansibletower}}/api/v2/projects/",
+									"protocol": "https",
+									"host": [
+										"{{ansibletower}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"projects",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Step 3: Create f5_automation_toolchain Inventory",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9892b225-34ef-490e-ad59-0d3b11c1bb9e",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"tower_inventory_id\", jsonData.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{ansibletower_cred_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{ansibletower_cred}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"f5_automation_toolchain_inventory\",\r\n    \"description\": \"\",\r\n    \"organization\": 1\r\n}"
+								},
+								"url": {
+									"raw": "https://{{ansibletower}}/api/v2/inventories/",
+									"protocol": "https",
+									"host": [
+										"{{ansibletower}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"inventories",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Step 4: Create f5_automation_toolchain Host",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "14a3c387-8f9e-49a8-b991-0cfa001c7652",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"tower_host_id\", jsonData.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{ansibletower_cred_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{ansibletower_cred}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"localhost\",\r\n    \"description\": \"\",\r\n    \"inventory\": \"{{tower_inventory_id}}\",\r\n    \"enabled\": true,\r\n    \"instance_id\": \"\",\r\n    \"variables\": \"ansible_connection: local\"\r\n}"
+								},
+								"url": {
+									"raw": "https://{{ansibletower}}/api/v2/hosts/",
+									"protocol": "https",
+									"host": [
+										"{{ansibletower}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"hosts",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Step 5: Create f5_automation_toolchain ATC Install Template",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f486c417-90df-42c0-802c-519a1be4d6ec",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"tower_viewtemplate_id\", jsonData.id);",
+											"postman.setEnvironmentVariable(\"tower_viewconfig_execute_id\", jsonData.summary_fields.object_roles.execute_role.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{ansibletower_cred_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{ansibletower_cred}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"f5_automation_toolchain_atc_install_template\",\n    \"description\": \"\",\n    \"job_type\": \"run\",\n    \"inventory\": \"{{tower_inventory_id}}\",\n    \"project\": \"{{tower_project_id}}\",\n    \"playbook\": \"docs/ansibleTowerDeployment/module5/ansible/playbooks/install_atc.yml\",\n    \"forks\": 0,\n    \"limit\": \"\",\n    \"verbosity\": 0,\n    \"extra_vars\": \"---\\n# Credentials\\nBIGIPadminUsername: \\\"admin\\\"\\nBIGIPadminPassword: \\\"Agility2020!\\\"\\n\\n# Used for Declarative Onboarding\\ndeviceName1: \\\"10.1.1.7\\\"\\ndeviceName2: \\\"10.1.1.6\\\"\\n\\n# Used for Application Services 3\\npartition: \\\"Module_03\\\"\\nserviceName: \\\"Module_03\\\"\\nvirtualAddresses1: \\\"10.1.10.110\\\"\\nvirtualAddresses2: \\\"10.1.10.111\\\"\\nservicePort: \\\"8080\\\"\\n\\n# Used for Telemetry Streaming\\nforwarderName: \\\"tsdemo\\\"\\nF5BeaconAccessToken: \\\"a-aavdvRoPC5#qmmgf9zZ7nXrLnrppyr1hrpJay4UAKN2EMvZ2rexisU=\\\"\",\n    \"job_tags\": \"\",\n    \"force_handlers\": false,\n    \"skip_tags\": \"\",\n    \"start_at_task\": \"\",\n    \"timeout\": 0,\n    \"use_fact_cache\": false,\n    \"host_config_key\": \"\",\n    \"ask_diff_mode_on_launch\": false,\n    \"ask_variables_on_launch\": false,\n    \"ask_limit_on_launch\": false,\n    \"ask_tags_on_launch\": false,\n    \"ask_skip_tags_on_launch\": false,\n    \"ask_job_type_on_launch\": false,\n    \"ask_verbosity_on_launch\": false,\n    \"ask_inventory_on_launch\": false,\n    \"ask_credential_on_launch\": false,\n    \"survey_enabled\": false,\n    \"become_enabled\": false,\n    \"diff_mode\": false,\n    \"allow_simultaneous\": false,\n    \"custom_virtualenv\": null,\n    \"credential\": null,\n    \"vault_credential\": null\n}"
+								},
+								"url": {
+									"raw": "https://{{ansibletower}}/api/v2/job_templates/",
+									"protocol": "https",
+									"host": [
+										"{{ansibletower}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"job_templates",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Step 6: Create f5_automation_toolchain DO Deployment Template",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f486c417-90df-42c0-802c-519a1be4d6ec",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"tower_viewtemplate_id\", jsonData.id);",
+											"postman.setEnvironmentVariable(\"tower_viewconfig_execute_id\", jsonData.summary_fields.object_roles.execute_role.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{ansibletower_cred_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{ansibletower_cred}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"f5_automation_toolchain_do_deployment_template\",\n    \"description\": \"\",\n    \"job_type\": \"run\",\n    \"inventory\": \"{{tower_inventory_id}}\",\n    \"project\": \"{{tower_project_id}}\",\n    \"playbook\": \"docs/ansibleTowerDeployment/module5/ansible/playbooks/declarative_onboarding.yml\",\n    \"forks\": 0,\n    \"limit\": \"\",\n    \"verbosity\": 0,\n    \"extra_vars\": \"---\\n# Credentials\\nBIGIPadminUsername: \\\"admin\\\"\\nBIGIPadminPassword: \\\"Agility2020!\\\"\\n\\n# Used for Declarative Onboarding\\ndeviceName1: \\\"10.1.1.7\\\"\\ndeviceName2: \\\"10.1.1.6\\\"\\n\\n# Used for Application Services 3\\npartition: \\\"Module_03\\\"\\nserviceName: \\\"Module_03\\\"\\nvirtualAddresses1: \\\"10.1.10.110\\\"\\nvirtualAddresses2: \\\"10.1.10.111\\\"\\nservicePort: \\\"8080\\\"\\n\\n# Used for Telemetry Streaming\\nforwarderName: \\\"tsdemo\\\"\\nF5BeaconAccessToken: \\\"a-aavdvRoPC5#qmmgf9zZ7nXrLnrppyr1hrpJay4UAKN2EMvZ2rexisU=\\\"\",\n    \"job_tags\": \"\",\n    \"force_handlers\": false,\n    \"skip_tags\": \"\",\n    \"start_at_task\": \"\",\n    \"timeout\": 0,\n    \"use_fact_cache\": false,\n    \"host_config_key\": \"\",\n    \"ask_diff_mode_on_launch\": false,\n    \"ask_variables_on_launch\": false,\n    \"ask_limit_on_launch\": false,\n    \"ask_tags_on_launch\": false,\n    \"ask_skip_tags_on_launch\": false,\n    \"ask_job_type_on_launch\": false,\n    \"ask_verbosity_on_launch\": false,\n    \"ask_inventory_on_launch\": false,\n    \"ask_credential_on_launch\": false,\n    \"survey_enabled\": false,\n    \"become_enabled\": false,\n    \"diff_mode\": false,\n    \"allow_simultaneous\": false,\n    \"custom_virtualenv\": null,\n    \"credential\": null,\n    \"vault_credential\": null\n}"
+								},
+								"url": {
+									"raw": "https://{{ansibletower}}/api/v2/job_templates/",
+									"protocol": "https",
+									"host": [
+										"{{ansibletower}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"job_templates",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Step 7: Create f5_automation_toolchain AS3 Deployment Template",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f486c417-90df-42c0-802c-519a1be4d6ec",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"tower_viewtemplate_id\", jsonData.id);",
+											"postman.setEnvironmentVariable(\"tower_viewconfig_execute_id\", jsonData.summary_fields.object_roles.execute_role.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{ansibletower_cred_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{ansibletower_cred}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"f5_automation_toolchain_as3_deployment_template\",\n    \"description\": \"\",\n    \"job_type\": \"run\",\n    \"inventory\": \"{{tower_inventory_id}}\",\n    \"project\": \"{{tower_project_id}}\",\n    \"playbook\": \"docs/ansibleTowerDeployment/module5/ansible/playbooks/application_services_3.yml\",\n    \"forks\": 0,\n    \"limit\": \"\",\n    \"verbosity\": 0,\n    \"extra_vars\": \"---\\n# Credentials\\nBIGIPadminUsername: \\\"admin\\\"\\nBIGIPadminPassword: \\\"Agility2020!\\\"\\n\\n# Used for Declarative Onboarding\\ndeviceName1: \\\"10.1.1.7\\\"\\ndeviceName2: \\\"10.1.1.6\\\"\\n\\n# Used for Application Services 3\\npartition: \\\"Module_03\\\"\\nserviceName: \\\"Module_03\\\"\\nvirtualAddresses1: \\\"10.1.10.110\\\"\\nvirtualAddresses2: \\\"10.1.10.111\\\"\\nservicePort: \\\"8080\\\"\\n\\n# Used for Telemetry Streaming\\nforwarderName: \\\"tsdemo\\\"\\nF5BeaconAccessToken: \\\"a-aavdvRoPC5#qmmgf9zZ7nXrLnrppyr1hrpJay4UAKN2EMvZ2rexisU=\\\"\",\n    \"job_tags\": \"\",\n    \"force_handlers\": false,\n    \"skip_tags\": \"\",\n    \"start_at_task\": \"\",\n    \"timeout\": 0,\n    \"use_fact_cache\": false,\n    \"host_config_key\": \"\",\n    \"ask_diff_mode_on_launch\": false,\n    \"ask_variables_on_launch\": false,\n    \"ask_limit_on_launch\": false,\n    \"ask_tags_on_launch\": false,\n    \"ask_skip_tags_on_launch\": false,\n    \"ask_job_type_on_launch\": false,\n    \"ask_verbosity_on_launch\": false,\n    \"ask_inventory_on_launch\": false,\n    \"ask_credential_on_launch\": false,\n    \"survey_enabled\": false,\n    \"become_enabled\": false,\n    \"diff_mode\": false,\n    \"allow_simultaneous\": false,\n    \"custom_virtualenv\": null,\n    \"credential\": null,\n    \"vault_credential\": null\n}"
+								},
+								"url": {
+									"raw": "https://{{ansibletower}}/api/v2/job_templates/",
+									"protocol": "https",
+									"host": [
+										"{{ansibletower}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"job_templates",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Step 8: Create f5_automation_toolchain TS Deployment Template",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f486c417-90df-42c0-802c-519a1be4d6ec",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"tower_viewtemplate_id\", jsonData.id);",
+											"postman.setEnvironmentVariable(\"tower_viewconfig_execute_id\", jsonData.summary_fields.object_roles.execute_role.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{ansibletower_cred_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{ansibletower_cred}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"f5_automation_toolchain_ts_deployment_template\",\n    \"description\": \"\",\n    \"job_type\": \"run\",\n    \"inventory\": \"{{tower_inventory_id}}\",\n    \"project\": \"{{tower_project_id}}\",\n    \"playbook\": \"docs/ansibleTowerDeployment/module5/ansible/playbooks/telemetry_streaming.yml\",\n    \"forks\": 0,\n    \"limit\": \"\",\n    \"verbosity\": 0,\n    \"extra_vars\": \"---\\n# Credentials\\nBIGIPadminUsername: \\\"admin\\\"\\nBIGIPadminPassword: \\\"Agility2020!\\\"\\n\\n# Used for Declarative Onboarding\\ndeviceName1: \\\"10.1.1.7\\\"\\ndeviceName2: \\\"10.1.1.6\\\"\\n\\n# Used for Application Services 3\\npartition: \\\"Module_03\\\"\\nserviceName: \\\"Module_03\\\"\\nvirtualAddresses1: \\\"10.1.10.110\\\"\\nvirtualAddresses2: \\\"10.1.10.111\\\"\\nservicePort: \\\"8080\\\"\\n\\n# Used for Telemetry Streaming\\nforwarderName: \\\"tsdemo\\\"\\nF5BeaconAccessToken: \\\"a-aavdvRoPC5#qmmgf9zZ7nXrLnrppyr1hrpJay4UAKN2EMvZ2rexisU=\\\"\",\n    \"job_tags\": \"\",\n    \"force_handlers\": false,\n    \"skip_tags\": \"\",\n    \"start_at_task\": \"\",\n    \"timeout\": 0,\n    \"use_fact_cache\": false,\n    \"host_config_key\": \"\",\n    \"ask_diff_mode_on_launch\": false,\n    \"ask_variables_on_launch\": false,\n    \"ask_limit_on_launch\": false,\n    \"ask_tags_on_launch\": false,\n    \"ask_skip_tags_on_launch\": false,\n    \"ask_job_type_on_launch\": false,\n    \"ask_verbosity_on_launch\": false,\n    \"ask_inventory_on_launch\": false,\n    \"ask_credential_on_launch\": false,\n    \"survey_enabled\": false,\n    \"become_enabled\": false,\n    \"diff_mode\": false,\n    \"allow_simultaneous\": false,\n    \"custom_virtualenv\": null,\n    \"credential\": null,\n    \"vault_credential\": null\n}"
+								},
+								"url": {
+									"raw": "https://{{ansibletower}}/api/v2/job_templates/",
+									"protocol": "https",
+									"host": [
+										"{{ansibletower}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"job_templates",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Step 9: Create f5_automation_toolchain Full Deployment Template",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f486c417-90df-42c0-802c-519a1be4d6ec",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"tower_viewtemplate_id\", jsonData.id);",
+											"postman.setEnvironmentVariable(\"tower_viewconfig_execute_id\", jsonData.summary_fields.object_roles.execute_role.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{ansibletower_cred_password}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{ansibletower_cred}}",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"f5_automation_toolchain_full_deployment_template\",\n    \"description\": \"\",\n    \"job_type\": \"run\",\n    \"inventory\": \"{{tower_inventory_id}}\",\n    \"project\": \"{{tower_project_id}}\",\n    \"playbook\": \"docs/ansibleTowerDeployment/module5/ansible/playbooks/full_build.yml\",\n    \"forks\": 0,\n    \"limit\": \"\",\n    \"verbosity\": 0,\n    \"extra_vars\": \"---\\n# Credentials\\nBIGIPadminUsername: \\\"admin\\\"\\nBIGIPadminPassword: \\\"Agility2020!\\\"\\n\\n# Used for Declarative Onboarding\\ndeviceName1: \\\"10.1.1.7\\\"\\ndeviceName2: \\\"10.1.1.6\\\"\\n\\n# Used for Application Services 3\\npartition: \\\"Module_03\\\"\\nserviceName: \\\"Module_03\\\"\\nvirtualAddresses1: \\\"10.1.10.110\\\"\\nvirtualAddresses2: \\\"10.1.10.111\\\"\\nservicePort: \\\"8080\\\"\\n\\n# Used for Telemetry Streaming\\nforwarderName: \\\"tsdemo\\\"\\nF5BeaconAccessToken: \\\"a-aavdvRoPC5#qmmgf9zZ7nXrLnrppyr1hrpJay4UAKN2EMvZ2rexisU=\\\"\",\n    \"job_tags\": \"\",\n    \"force_handlers\": false,\n    \"skip_tags\": \"\",\n    \"start_at_task\": \"\",\n    \"timeout\": 0,\n    \"use_fact_cache\": false,\n    \"host_config_key\": \"\",\n    \"ask_diff_mode_on_launch\": false,\n    \"ask_variables_on_launch\": false,\n    \"ask_limit_on_launch\": false,\n    \"ask_tags_on_launch\": false,\n    \"ask_skip_tags_on_launch\": false,\n    \"ask_job_type_on_launch\": false,\n    \"ask_verbosity_on_launch\": false,\n    \"ask_inventory_on_launch\": false,\n    \"ask_credential_on_launch\": false,\n    \"survey_enabled\": false,\n    \"become_enabled\": false,\n    \"diff_mode\": false,\n    \"allow_simultaneous\": false,\n    \"custom_virtualenv\": null,\n    \"credential\": null,\n    \"vault_credential\": null\n}"
+								},
+								"url": {
+									"raw": "https://{{ansibletower}}/api/v2/job_templates/",
+									"protocol": "https",
+									"host": [
+										"{{ansibletower}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"job_templates",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Consul Services",
+			"item": [
+				{
+					"name": "Provisioning Consul",
+					"item": [
+						{
+							"name": "Step 1: Build Module_03 Service and Node",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ServiceID\": \"Module_03_id\",\n    \"ServiceName\": \"Module_03_service\",\n    \"ServiceTags\": [\n        \"Module_03_service\",\n        \"agility2020\"\n    ],\n    \"ServiceEnableTagOverride\": false,\n    \"Node\": \"Module_03_docker_node\",\n    \"Address\": \"10.1.20.11\",\n    \"Port\": 8080,\n    \"Service\": {\n        \"ID\": \"Module_03_id\",\n        \"Service\": \"Module_03_service\",\n        \"Tags\": [\n            \"Module_03_node\",\n            \"agility2020\"\n        ]\n    },\n    \"Check\": {\n        \"Node\": \"Module_03_docker_node\",\n        \"Name\": \"docker_node health check\",\n        \"Notes\": \"Script based health check\",\n        \"Status\": \"passing\",\n        \"ServiceID\": \"Module_03_id\",\n        \"Definition\": {\n            \"TCP\": \"10.1.20.11:8080\",\n            \"Interval\": \"5s\",\n            \"Timeout\": \"1s\",\n            \"DeregisterCriticalServiceAfter\": \"30s\"\n        }\n    }\n}    "
+								},
+								"url": {
+									"raw": "http://10.1.10.11:8500/v1/catalog/register",
+									"protocol": "http",
+									"host": [
+										"10",
+										"1",
+										"10",
+										"11"
+									],
+									"port": "8500",
+									"path": [
+										"v1",
+										"catalog",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Step 2: Build JuiceShop Service and Node",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ServiceID\": \"JuiceShop_id\",\n    \"ServiceName\": \"JuiceShop_service\",\n    \"ServiceTags\": [\n        \"JuiceShop_service\",\n        \"agility2020\"\n    ],\n    \"ServiceEnableTagOverride\": false,\n    \"Node\": \"JuiceShop_docker_node\",\n    \"Address\": \"10.1.20.11\",\n    \"Port\": 8081,\n    \"Service\": {\n        \"ID\": \"JuiceShop_id\",\n        \"Service\": \"JuiceShop_service\",\n        \"Tags\": [\n            \"JuiceShop_node\",\n            \"agility2020\"\n        ]\n    },\n    \"Check\": {\n        \"Node\": \"JuiceShop_docker_node\",\n        \"Name\": \"docker_node health check\",\n        \"Notes\": \"Script based health check\",\n        \"Status\": \"passing\",\n        \"ServiceID\": \"JuiceShop_id\",\n        \"Definition\": {\n            \"TCP\": \"10.1.20.11:8081\",\n            \"Interval\": \"5s\",\n            \"Timeout\": \"1s\",\n            \"DeregisterCriticalServiceAfter\": \"30s\"\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "http://10.1.10.11:8500/v1/catalog/register",
+									"protocol": "http",
+									"host": [
+										"10",
+										"1",
+										"10",
+										"11"
+									],
+									"port": "8500",
+									"path": [
+										"v1",
+										"catalog",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Step 3: Build GitLab Service and Node",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ServiceID\": \"GitLab_id\",\n    \"ServiceName\": \"GitLab_service\",\n    \"ServiceTags\": [\n        \"GitLab_service\",\n        \"agility2020\"\n    ],\n    \"ServiceEnableTagOverride\": false,\n    \"Node\": \"GitLab_docker_node\",\n    \"Address\": \"10.1.20.11\",\n    \"Port\": 8501,\n    \"Service\": {\n        \"ID\": \"GitLab_id\",\n        \"Service\": \"GitLab_service\",\n        \"Tags\": [\n            \"GitLab_node\",\n            \"agility2020\"\n        ]\n    },\n    \"Check\": {\n        \"Node\": \"GitLab_docker_node\",\n        \"Name\": \"docker_node health check\",\n        \"Notes\": \"Script based health check\",\n        \"Status\": \"passing\",\n        \"ServiceID\": \"GitLab_id\",\n        \"Definition\": {\n            \"TCP\": \"10.1.20.11:8501\",\n            \"Interval\": \"5s\",\n            \"Timeout\": \"1s\",\n            \"DeregisterCriticalServiceAfter\": \"30s\"\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "http://10.1.10.11:8500/v1/catalog/register",
+									"protocol": "http",
+									"host": [
+										"10",
+										"1",
+										"10",
+										"11"
+									],
+									"port": "8500",
+									"path": [
+										"v1",
+										"catalog",
+										"register"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "952142f4-00a7-41bb-9464-70022f333574",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b6aca7a9-f42f-4583-9b84-1a231428be63",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
