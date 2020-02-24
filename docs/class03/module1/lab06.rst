@@ -3,8 +3,8 @@ Lab 6 - Creating a Applications using AS3 Declarative Interface & BIG-IQ
 
 In this lab, we will create a simple HTTP application using AS3 via BIG-IQ.
 
-Unless instructed, throughout this section we will be working in the ``BIG-IQ``
-Collection in Postman. 
+Unless instructed, throughout this section we will be working in the ``Lab 6``
+folder in the Postman collection. 
 
 If the error ``Cannot find any ADC root nodes for the target devices`` occurs,
 follow directions here: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/troubleshooting.html
@@ -17,7 +17,7 @@ the configuration creation on both devices, the BIG-IP devices in the lab are
 configured with manual sync.  Due to that, you need to ensure the two BIG-IP
 devices are in sync before starting this section of the lab. of this lab.
 
-#. Open the ``Authenticate to BIG-IP`` request.
+#. Open the ``BIG-IP: Authenticate`` request.
 
 #. ``Send`` the request, and ensure you receive a 200 OK response.
 
@@ -25,10 +25,9 @@ devices are in sync before starting this section of the lab. of this lab.
 
 #. ``Send`` the request, and ensure you receive a 200 OK response.
 
-#. Look at the data returned in the request.  If it has a status of ``red``
+#. Look at the data returned in the request.  If the status is reported as ``green``, then you can proceed to
+   **Exercise 2**.  If it has a status of ``red`` or anythign else
    reported, then you will need to complete the other steps in this exercise.
-   If the status is reported as ``green``, then you can proceed to
-   **Exercise 2**.
 
    .. image:: images/bigip-cfgsync-status-red-highlighted.JPG
 
@@ -143,7 +142,7 @@ devices are in sync before starting this section of the lab. of this lab.
 
    .. image:: images/bigiq_1.jpg
 
-#. Now we will move our applciations from ``Unknown Applications`` to another
+#. Now we will move our application from ``Unknown Applications`` to another
    tile named ``Known Applications``.
 
 #. ``Send`` the ``Get Application Reference`` request to set the variable
@@ -535,7 +534,7 @@ devices are in sync before starting this section of the lab. of this lab.
 
 #. This application is now changed on ``BIG-IQ`` and ``BIG-IP``.
 
-#. Now we will delete the app. Open the ``Delete App from Template`` request. 
+#. Now we will delete the application. Open the ``Delete App from Template`` request. 
 
 #. Click the blue ``Send`` button. Ensure that you receive a 200 OK response. 
 
