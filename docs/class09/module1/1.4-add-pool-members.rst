@@ -292,7 +292,7 @@ the IP information for the F5 load balancer from the lab_inventory/hosts
 file, and type it in like so: https://X.X.X.X:8443/
 
 Login information for the BIG-IP: - username: admin - password:
-**provided by instructor** defaults to ansible
+**provided by instructor** defaults to f5ansible
 
 The pool will now show two members (host1 and host2). Click on Local
 Traffic-> then click on Pools. Click on http_pool to get more granular

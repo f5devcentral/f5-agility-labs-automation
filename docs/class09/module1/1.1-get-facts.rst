@@ -71,6 +71,10 @@ Next, add the first ``task``. This task will use the
 ``bigip_device_info`` module to grab useful information from the BIG-IP
 device.
 
+.. warning::
+   The ``tasks:`` item should line up to the same indentation as ``gather_facts:``
+   while the ``- name:`` item should be indented 2 spaces under ``tasks:``
+
 .. code-block:: yaml
 
      tasks:
@@ -152,7 +156,7 @@ The output will look as follows.
 
 .. code-block:: shell-session
 
-   [centos@ansible ~]$ ansible-playbook bigip-facts.yml 
+   [centos@ansible ~]$ ansible-playbook bigip-facts.yml
 
    PLAY [GRAB F5 FACTS] *****************************************************************************************************************************************
 
@@ -160,7 +164,7 @@ The output will look as follows.
    ok: [f5]
 
    TASK [DISPLAY COMPLETE BIG-IP SYSTEM INFORMATION] ************************************************************************************************************
-   ok: [f5] => 
+   ok: [f5] =>
      device_facts:
        ansible_facts:
          discovered_interpreter_python: /usr/bin/python
@@ -215,7 +219,7 @@ Finally let’s append two more tasks to get more specific info from facts
 gathered, to the above playbook.
 
 .. code-block:: yaml
-
+   :emphasize-lines: 3,7
 
        - name: DISPLAY ONLY THE MAC ADDRESS
          debug:
@@ -256,7 +260,7 @@ The output will look as follows.
 
 .. code-block:: shell-session
 
-   [centos@ansible ~]$ ansible-playbook bigip-facts.yml 
+   [centos@ansible ~]$ ansible-playbook bigip-facts.yml
 
    PLAY [GRAB F5 FACTS] *****************************************************************************************************************************************
 
@@ -264,7 +268,7 @@ The output will look as follows.
    ok: [f5]
 
    TASK [DISPLAY COMPLETE BIG-IP SYSTEM INFORMATION] ************************************************************************************************************
-   ok: [f5] => 
+   ok: [f5] =>
      device_facts:
        ansible_facts:
          discovered_interpreter_python: /usr/bin/python
@@ -310,11 +314,11 @@ The output will look as follows.
          uptime: 9443.0
 
    TASK [DISPLAY ONLY THE MAC ADDRESS] **************************************************************************************************************************
-   ok: [f5] => 
+   ok: [f5] =>
      device_facts['system_info']['base_mac_address']: 06:95:66:ab:b6:1c
 
    TASK [DISPLAY ONLY THE VERSION] ******************************************************************************************************************************
-   ok: [f5] => 
+   ok: [f5] =>
      device_facts['system_info']['product_version']: 15.0.1
 
    PLAY RECAP ***************************************************************************************************************************************************

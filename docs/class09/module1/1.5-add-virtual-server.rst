@@ -170,7 +170,7 @@ with your web browser.
    type it in like so: https://X.X.X.X:8443/
 
 Login information for the BIG-IP: - username: admin - password:
-**provided by instructor** defaults to ansible
+**provided by instructor** defaults to f5ansible
 
 The load balancer virtual server can be found by navigating the menu on
 the left. Click on **Local Traffic**. then click on **Virtual Server**.
@@ -185,6 +185,10 @@ web servers. Open up the public IP of the F5 load balancer in your web
 browser:
 
    This time use port 443 instead of 8443, e.g. https://X.X.X.X:443/
+
+.. note::
+   In your environment, go to the f5 component and use the
+   ``Virtual Server Test`` access method to test.
 
 Each time you refresh the host will change between **host1** and
 **host2**. Here is animation of the host field changing: |animation|

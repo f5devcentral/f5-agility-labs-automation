@@ -150,7 +150,7 @@ the IP information for the F5 load balancer from the lab_inventory/hosts
 file, and type it in like so: https://X.X.X.X:8443/
 
 Login information for the BIG-IP: - username: admin - password:
-**provided by instructor, defaults to ansible**
+**provided by instructor, defaults to f5ansible**
 
 The load balancer pool can be found by navigating the menu on the left.
 Click on Local Traffic-> then click on Pools. |f5pool|
