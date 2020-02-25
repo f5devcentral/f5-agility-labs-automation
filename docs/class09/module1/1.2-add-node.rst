@@ -157,14 +157,12 @@ the IP information for the F5 load balancer from the lab_inventory/hosts
 file, and type it in like so: https://X.X.X.X:8443/
 
 Login information for the BIG-IP: - username: admin - password:
-**provided by instructor, defaults to ansible**
+**provided by instructor, defaults to f5ansible**
 
 The list of nodes can be found by navigating the menu on the left. Click
 on Local Traffic-> then click on Nodes. |f5web|
 
 You have finished this exercise. `Click here to return to the lab
 guide <..>`__
-
-Next: :ref:`1.3-add-pool`
 
 .. |f5web| image:: nodes.png
