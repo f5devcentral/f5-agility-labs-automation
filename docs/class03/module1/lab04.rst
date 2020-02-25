@@ -18,7 +18,7 @@ create our very own third application within the same tenant.
 
 #. Confirm the results of the POST, and make sure you receive a result of 200.
 
-#. Navigate to the BIG-IP and visually confirm the changes have been made.
+#. Navigate to the BIG-IP and visually confirm the changes have been made.  Note: change to the ``http_tenant`` partition.
 
    .. image:: images/two_apps_confirm.jpg
 

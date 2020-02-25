@@ -40,7 +40,7 @@ Configuration Items in our declaration:
 
 Ansible literal configuration file for review:
 
-.. literalinclude :: /docs/class05/ansibleTowerDeployment/module5/ansible/roles/telemetry_streaming/tasks/main.yml
+.. literalinclude:: /class05/ansibleTowerDeployment/module5/ansible/roles/telemetry_streaming/tasks/main.yml
    :language: yaml
 
 Reviewing the Playbook execution, we can see some testing and error handling that has been built into the tasks. The BIG-IP(s) are verified to be accessible, and then Declarative Onboarding is verified installed and ready. 

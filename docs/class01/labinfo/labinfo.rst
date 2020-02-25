@@ -1,9 +1,11 @@
 Lab Information
 ===============
 
-Access into the lab environment and all work are through the **Win 10 Jumphost** jump host provided. 
+Access into the lab environment and all work are through the
+**Win 10 Jumphost** jump host provided.
 
-.. Warning:: You need to have outbound access from your system, allowing Microsoft Remote Desktop Protocol.
+.. warning:: You need to have outbound access from your system, allowing
+   Microsoft Remote Desktop Protocol.
 
 Lab Topology
 ------------
@@ -11,11 +13,14 @@ Lab Topology
 - 1 x Windows Jumphost
 - 1 x Ansible Tower
 - 1 x Docker Host
-    - Docker
-        - NGiNX
-        - Juice Shop
-        - Hashicorp Consul
-        - GitLab
+
+  - Docker
+
+    - NGiNX
+    - Juice Shop
+    - Hashicorp Consul
+    - GitLab
+
 - 2 x BIG-IP
 - 1 x BIG-IQ Centralized Manager
 
@@ -76,10 +81,8 @@ components:
      - admin/Agility2020!
        root/Agility2020!
 
-.. Note:: In order for Postman to store objects dynamically f5-postman-workflows_ have been installed on the jumphost, this is an extension to Postman utilizing `Tests` objects.
+.. note:: In order for Postman to store objects dynamically
+   f5-postman-workflows_ have been installed on the jumphost, this is an
+   extension to Postman utilizing `Tests` objects.
 
 .. _f5-postman-workflows: https://github.com/0xHiteshPatel/f5-postman-workflows
-
-.. toctree::
-   :maxdepth: 1
-   :glob:

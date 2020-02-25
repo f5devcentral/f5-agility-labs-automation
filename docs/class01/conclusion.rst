@@ -1,9 +1,13 @@
 Conclusion
 ==========
 
-In this class, we learned the base concepts and skills required to automate the F5 BIG-IP platform effectively. In subsequent classes, we will expand on the core concepts and knowledge learned in this class.
+In this class, we learned the base concepts and skills required to automate the
+F5 BIG-IP platform effectively. In subsequent classes, we will expand on the
+core concepts and knowledge learned in this class.
 
-This content has been created with a DevOps methodology and a fully Continuous Toolchain.  All content contained here is sourced from the following GitHub repository:
+This content has been created with a DevOps methodology and a fully Continuous
+Toolchain.  All content contained here is sourced from the following GitHub
+repository:
 
 https://github.com/jmcalalang/Agility-2020---Programmability---BIG-IP-Rest-Structure-and-Concepts
 
@@ -15,6 +19,8 @@ Bug Reports and Requests for Enhancement are handled in two ways:
 
 - Open an `Issue <https://github.com/jmcalalang/Agility-2020---Programmability---BIG-IP-Rest-Structure-and-Concepts/issues>`_ within the repository.
 
-Lastly, this content would not be possible without the contributions from many F5 Employees, Partners, and Customers.  A full list of original contributors to this content can be found at:
+Lastly, this content would not be possible without the contributions from many
+F5 Employees, Partners, and Customers.  A full list of original contributors to
+this content can be found at:
 
 https://github.com/jmcalalang/Agility-2020---Programmability---BIG-IP-Rest-Structure-and-Concepts/graphs/contributors

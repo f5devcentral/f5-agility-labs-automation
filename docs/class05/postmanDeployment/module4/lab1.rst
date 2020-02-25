@@ -93,7 +93,7 @@ Declaration for BIGIP1:
 
 Copy **all of** the below TS declaration.
 
-.. literalinclude :: /docs/class05/ansibleTowerDeployment/module5/ansible/roles/telemetry_streaming/files/ts_beacon.json
+.. literalinclude:: /class05/ansibleTowerDeployment/module5/ansible/roles/telemetry_streaming/files/ts_beacon.json
    :language: json
 
 

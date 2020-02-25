@@ -17,7 +17,7 @@ Already Existing WAF policy deployment
    to your application then it is easy enough to just reference it in the AS3
    declaration in the policyWAF area.
 
-#. In Postman select the Lab3, ``HTTPS with local WAF policy`` request.
+#. In Postman select the ``Lab3``, ``HTTPS with local WAF policy`` request.
    Notice in the body the ``policyWAF`` option.
 
    .. code-block:: json
@@ -311,3 +311,5 @@ Delete the Applications deployed
 #. In this instance we are setting the Action to ``remove``.  Also notice that
    we set a ``syncToGroup`` option in order to cause the HA pair to sync
    configurations.
+   
+#. Click ``Send``, and wait for confirm results of receiving 200.  Now all applications deployed with ``AS3`` have been deleted from the ``BIG-IP``.
