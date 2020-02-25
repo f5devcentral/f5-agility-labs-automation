@@ -70,3 +70,6 @@ After the configuration has been sent to our BIG-IP units, all DO objects should
 .. |image22| image:: images/image22.png
 .. |image23| image:: images/image23.png
 .. |image25| image:: images/image25.png
+
+.. _declarative: https://www.f5.com/company/blog/in-container-land-declarative-configuration-is-king
+.. _DO_Example: https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/examples.html#example-2-clustered-declaration
