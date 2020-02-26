@@ -76,7 +76,7 @@ Next, append the ``task`` to above playbook. This task will use the
            server_port: 8443
            validate_certs: no
          name: "vip"
-         destination: "{{private_ip}}"
+         destination: "{{destination_ip}}"
          port: "443"
          enabled_vlans: "all"
          all_profiles: ['http','clientssl','oneconnect']
