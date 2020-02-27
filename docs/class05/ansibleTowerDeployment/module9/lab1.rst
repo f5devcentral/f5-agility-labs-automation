@@ -69,3 +69,6 @@ There is no configuration within the BIG-IP TMUI to show. The TS declaration uti
 .. |image31| image:: images/image31.png
    :width: 75%
 .. |image32| image:: images/image32.png
+
+.. _TS_Example: https://clouddocs.f5.com/products/extensions/f5-telemetry-streaming/latest/setting-up-consumer.html#generic-http
+.. _Beacon: https://www.f5.com/products/beacon-visibility-and-analytics

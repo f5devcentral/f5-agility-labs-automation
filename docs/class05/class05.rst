@@ -23,13 +23,12 @@ from:
    labPath/labPath*
    postmanDeployment/postmanDeployment*
    postmanDeployment/module*/module*
-   conclusion
+   postmanDeployment/postmanConclusion
    ansibleTowerDeployment/ansibleTowerDeployment*
    ansibleTowerDeployment/module*/module*
-   conclusion
+   ansibleTowerDeployment/ansibleConclusion
 
 .. _jmcalalang: https://www.github.com/jmcalalang
 .. _aknot242: https://www.github.com/aknot242
 .. _tkam8: https://www.github.com/tkam8
-.. _wojtek0806: https://github.com/wojtek0806
 .. _yossi-r: https://www.github.com/yossi-r

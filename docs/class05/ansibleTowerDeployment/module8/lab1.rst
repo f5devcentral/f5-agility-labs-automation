@@ -70,3 +70,6 @@ The Service can be viewed in Chrome from either from the IP address or the Bookm
    :width: 75%
 .. |image29| image:: images/image29.png
    :width: 75%
+
+
+.. _AS3_Example: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/declarations/http-services.html#http-and-https-virtual-services-in-one-declaration
