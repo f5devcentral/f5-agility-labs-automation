@@ -53,9 +53,9 @@ JSON schema.
 
    .. image:: images/vscode_newfile.jpg
 
-#. Copy the contents of the file ``AS3 Schema Validation`` JSON body and paste
-   into VS Code. 
-   
+#. Copy the contents of the Postman Job ``AS3 Schema Validation`` JSON body and paste
+   into VS Code.
+
 #. Save the file to your desktop by selecting ``File -> Save As``. Note: make sure to save with a .json
    filename.
 
@@ -92,7 +92,7 @@ JSON schema.
 
 **Exercise 3 - Send AS3 declaration**
 
-#. Navigate back to Postman and find the ``HTTP Application`` JSON file. Note
+#. Navigate back to Postman and find the ``HTTP Application`` Postman Job. Note
    the only difference between this and the one we used to validate is the
    first line with the key/value of 'schema' and the schema format URL.
 
