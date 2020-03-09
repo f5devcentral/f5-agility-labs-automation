@@ -42,7 +42,7 @@ Already Existing WAF policy deployment
                "serviceMain": {
                "class": "Service_HTTPS",
                "virtualAddresses": [
-                  "10.1.20.103"
+                  "10.1.10.103"
                ],
                "pool": "web_pool",
                "policyWAF": {

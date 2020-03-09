@@ -1,12 +1,35 @@
-Class 5: A&O Tool Chain - Advanced Design Patterns with AS3, DO and TS
-======================================================================
+Class 5: Automation Toolchain Lab Documentation!
+================================================
 
-This introductory class covers the following topics:
+This lab was authored by Jon Calalang (jmcalalang_) with amazing contributions
+from: 
+
+(Alphabetical)
+
+- Chris Adrian
+- Daniel Edgar (aknot242_)
+- Terrance Kam (tkam8_)
+- Wojciech Wypior
+- Yossi Rosenboim (yossi-r_)
 
 .. toctree::
    :maxdepth: 1
+   :caption: Contents:
    :glob:
 
-   module*/module*
+   intro/intro
+   labinfo/labinfo*
+   labinfo/module* 
+   labPath/labPath*
+   postmanDeployment/postmanDeployment*
+   postmanDeployment/module*/module*
+   postmanDeployment/postmanConclusion
+   ansibleTowerDeployment/ansibleTowerDeployment*
+   ansibleTowerDeployment/module*/module*
+   ansibleTowerDeployment/ansibleConclusion
 
-Expected time to complete: **1 hour**
+.. _jmcalalang: https://www.github.com/jmcalalang
+.. _aknot242: https://www.github.com/aknot242
+.. _tkam8: https://www.github.com/tkam8
+.. _yossi-r: https://www.github.com/yossi-r
+.. _wojtek0806: https://github.com/wojtek0806
