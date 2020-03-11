@@ -1,5 +1,5 @@
 Subscribe to BIG-IP in AWS Marketplace Step #2
-=============================================
+==============================================
 We need to subscribe to BIG-IP in AWS Market place in order to use the BIG-IP AMI, 
 Please follow the steps shown below:
 

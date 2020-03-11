@@ -45,5 +45,6 @@ Now lets understand more
   username = var.username   <------- var.username is BIG-IP username
   password = var.password   <------- var.passowrd is BIG-IP password
   }
+
 Actual values of these variables is stored in terraform.tfvars file
 

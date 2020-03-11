@@ -9,6 +9,7 @@ Review TF files  Step #7.1
     command = "wget ${var.as3_rpm_url}"     <---wget command to get rpm
   }
   } 
+
 This resource helps to download the node_js rpm for AS3 
 
 .. code-block:: shell
