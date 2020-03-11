@@ -1,0 +1,29 @@
+Terraform  TFVARS & Variables File  Step #7.2
+=============================================
+Lets check the "tfvars" file which terraform uses for BIG-IP
+
+.. code-block:: shell
+
+  cat terraform.tfvars
+  address  = "44.232.118.1:8443"
+  username = "admin"
+  password = "6OMcpiWXl3"
+
+This the terraform.tfvars file which has the Mgmt, username & password for BIG-IP
+
+Now lets check the "variables.tf" file which has all the values
+
+.. code-block:: shell
+
+  ubuntu@ip-10-0-0-100:~/f5-as3-usecases$ cat variables.tf
+  variable "address" {}
+  variable "username" {}
+  variable "password" {}
+  variable "as3_rpm" {
+  default = "f5-appsvcs-3.15.0-6.noarch.rpm"
+  }
+  variable "as3_rpm_url" {
+  default = "https://github.com/F5Networks/f5-appsvcs-extension/releases/download/v3.15.0/f5-appsvcs-3.15.0-6.noarch.rpm"
+  } 
+
+
