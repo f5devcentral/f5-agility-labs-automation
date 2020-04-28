@@ -39,15 +39,15 @@ it easier to follow the rest of the lab.
 
 **Exercise 1 - Login to Windows jump host**
 
-#. Click on the ``Components`` tab in your UDF deployment
+#. Click on the ``Deployment`` link in the upper left corner of the browser.
 
-   .. image:: images/components.png
+   .. image:: images/udf_deployment.png
 
-#. Under ``Systems`` find the Windows Server 2019 Base and click ``Access``,
-   then click ``RDP``.  When prompted, select option to ``Save`` RDP file. RDP
-   file will be downloaded to your local machine.
+#. Under ``Systems`` find the Windows Server 2016 Base and click ``Access``,
+   then click the desired resolution for the RDP session.  If prompted, select option to ``Save`` RDP file. The
+   RDP file will be downloaded to your local machine.
 
-   .. image:: images/win2016_rdp_access.png
+   .. image:: images/udf_systems.png
 
 #. Open the RDP file downloaded in the previous step and click ``Connect``
    when prompted.
