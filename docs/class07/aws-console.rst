@@ -7,13 +7,17 @@ AWS Console
    consuming F5 BIG-IP marketplace offers if you are using your own AWS
    account.
 
+During this class we will be using the Blue Print / Class Labeled.
+
+"Agility 2020 - Dude Where's My Services: Introduction to Service Discovery with Consul"
+
 From the UDF console find the RDP link for the Windows 2012 device.
 
 Login using the username: "user" and password: "user".
 
 When you log in you may notice a DOS terminal pop-up.  This is expected.
 
-On the Desktop there should be a file name "AWSCredentials" open it up and you
+On the Desktop there should be a file name "AWSCredentials".  Open it up and you
 should see:
 
 .. image:: ./images/awscredentials.png
