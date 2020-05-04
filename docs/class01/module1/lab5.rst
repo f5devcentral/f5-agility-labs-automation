@@ -70,7 +70,7 @@ Perform the following steps to build the cluster:
 Task 2 - Verify the Built Cluster in BIG-IP GUI
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. At this point you can log into BIG-IP A using Chrome at ``https://10.1.1.10``. Verify that the cluster was built by navigating to :menuselection:`Device Management > Overview` using the menu in the BIG-IP TMUI GUI. Verify that the cluster and failover status indicators are all green.
+#. At this point you can log into BIG-IP A using Chrome at ``https://10.1.1.7``. Verify that the cluster was built by navigating to :menuselection:`Device Management > Overview` using the menu in the BIG-IP TMUI GUI. Verify that the cluster and failover status indicators are all green.
 
    |lab-6-4|
 
