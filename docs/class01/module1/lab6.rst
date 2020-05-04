@@ -74,7 +74,7 @@ Task 3 - Commit a Transaction
 
 #. Click the ``Step 12: View the Transaction Status`` request in the folder and click the :guilabel:`Send` button.  Verify that the ``state`` of the Transaction is ``COMPLETED``.
 
-#. You can verify the configuration was created on the BIG-IP device via the BIG-IP A GUI bookmark or at ``https://10.1.1.10``.
+#. You can verify the configuration was created on the BIG-IP device via the BIG-IP A GUI bookmark or at ``https://10.1.1.7``.
 
 #. Verify that the virtual server works by opening ``http://10.1.10.120`` or using the ``Module 1 VIP01`` bookmark in Chrome web browser
 
