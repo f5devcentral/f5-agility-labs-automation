@@ -305,7 +305,7 @@ Perform the following steps to complete this task:
 
      |lab-3-23|
 
-#. Open Chrome and connect to the Virtual Server at ``http://10.1.20.121``. The iRule that was attached to the service contains an ``HTTP_RESPOND`` event, which response with a simple Maintenance Page.
+#. Open Chrome and connect to the Virtual Server at ``http://10.1.10.121``. The iRule that was attached to the service contains an ``HTTP_RESPOND`` event, which response with a simple Maintenance Page.
 
    |lab-3-24|
 
@@ -328,7 +328,7 @@ Perform the following steps to complete this task:
 
    |lab-3-27|
 
-#. Open Chrome and access the service with ``http://10.1.20.122``. It should redirect you to ``https://10.1.20.122``.
+#. Open Chrome and access the service with ``http://10.1.10.122``. It should redirect you to ``https://10.1.10.122``.
 
    |lab-3-28|
 
