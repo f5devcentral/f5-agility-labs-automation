@@ -11,6 +11,18 @@ state of one of our **BIGIP** appliances.
 Login to **BIGIP-01** and notice that it is not licensed and nothing has been
 provisioned.  Also notice the hostname in the upper left hand corner.
 
+.. list-table::
+   :widths: 20 40 40
+   :header-rows: 1
+   :stub-columns: 1
+
+   * - **System Type**
+     - **Networks**
+     - **Credentials**
+   * - BIGIP-01
+     - Management: 10.1.1.4
+     - admin / @gi1ity2020
+
 .. image:: images/bigip01_01.png
 
 With the declarative onboarding (DO) package installed on BIG-IP, we are ready
@@ -200,6 +212,8 @@ and find errors within your different declarations. The schema reference is
 added at the top of your declaration, and requires vscode to know the language
 is JSON.
 
+We wiil now use Visual Studio Code to validate our declaraion.
+
 Open Visual Studio Code on your jump host desktop and open a New File and paste
 all of the DO declaration contents.  Additionally, the language setting in
 VSCode must be set to JSON.
@@ -217,6 +231,10 @@ the code to see context and errors
 
 We are now ready to send our declaration to **BIGIP-01**
 
+We will use Postman to send our declaration to **BIGIP-01**. Open Postman on
+your jump host desktop.
+
+
 Expand the Declarative Onboarding Collection folder, then Declarative Onboarding
 Request, lastly BIGIP-01.  Select ``Get Declarative Onboarding Version Info``
 
@@ -227,7 +245,7 @@ Request, lastly BIGIP-01.  Select ``Get Declarative Onboarding Version Info``
 You'll notice that we are sending a GET request to the URL
 **https://{{bigip-01}}/mgmt/shared/declarative-onboarding**
 
-Select ``SEND`` to the right of the GET request field.
+Click ``SEND`` to the right of the GET request field.
 
 .. image:: images/postman_02.png
 
@@ -269,10 +287,10 @@ In the response body you should see that the declaration is running.
 |
 |
 
-In order to retrieve the status of the DO process we can send a GET request to
-the same URL that we posted our declartion to. In Postman select
-the ``GET Declarative Onboarding Status`` request in the BIGIP-01 folder and send the
-GET request to view the status of the running process.
+In order to retrieve the status of the DO process we can send a ``GET`` request
+to the same URL that we posted our declartion to. In Postman select
+the ``GET Declarative Onboarding Status`` request in the BIGIP-01 folder and 
+click ``Send`` to view the status of the running process.
 
 .. image:: images/postman_07.png
 
@@ -280,6 +298,9 @@ GET request to view the status of the running process.
 
 Send the GET request every so often until you receive a status of "OK." Once
 you receive a status of "OK" the declaration has completed.
+
+.. note::  Depending on how large the declaration is, it can take several
+   minutes for the process to complete.
 
 .. image:: images/postman_08.png
 
