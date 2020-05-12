@@ -207,7 +207,7 @@ VSCode must be set to JSON.
 .. image:: images/schemavalidation_01.png
 
 Once the declaration and language are set, you can highlight over sections of
-the code to see contect and errors
+the code to see context and errors
 
 .. image:: images/schemacontext_01.png
 
@@ -262,8 +262,7 @@ Paste the JSON declaration into the Body of the Postman application and click ``
 |
 |
 
-In the response of the field you should see a response the the declaration is 
-running.
+In the response body you should see that the declaration is running.
 
 .. image:: images/postman_06.png
 
