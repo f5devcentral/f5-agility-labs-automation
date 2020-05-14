@@ -24,6 +24,9 @@ networks and credentials to use.
    * - BIGIP-03
      - Management: 10.1.1.8
      - admin / @gi1ity2020
+   * - BIGIQ
+     - Management: 10.1.1.9
+     - admin / @gi1ity2020     
    * - Windows Server
      - Management: 10.1.1.5
      - Administrator / brwP61Ag
