@@ -1,23 +1,7 @@
 Lab 3 (Optional) Onboard a BIGIP via BIGIQ
 =================================================
 
-In the previous labs, we pushed the declaration directly to BIGIPs . In this lab, we are going to send our JSON declaration to the BIGIQ, which will configure the BIGIP. 
-
-.. list-table::
-   :widths: 20 40 40
-   :header-rows: 1
-   :stub-columns: 1
-
-   * - **System Type**
-     - **Networks**
-     - **Credentials**
-   * - BIGIP-03
-     - Management: 10.1.1.8
-     - admin / @gi1ity2020
-   * - BIGIQ
-     - Management: 10.1.1.9
-     - admin / @gi1ity2020  
-    
+In the previous labs, we pushed the declaration directly to BIGIPs . In this lab, we are going to send our JSON declaration to the BIGIQ, which will configure the BIGIP.   
 
 Review the declaration for BIGIP-03, and notice the following changes:
 
