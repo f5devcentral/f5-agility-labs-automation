@@ -197,7 +197,7 @@ Paste the JSON declaration into the Body of the Postman application and click
 Use the ``GET Declarative Onboarding Status`` request to monitor when the
 declartation is complete.
 
-.. note::  Clustering via declarative onboarding can take a couple of minutes
+.. note::  Clustering via declarative onboarding can take several minutes
    to sync and establish, this is normal behavior.
 
 Return to either **BIG-IP** in Chrome and check the cluster configuration and
