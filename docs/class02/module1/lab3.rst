@@ -1,14 +1,13 @@
 Lab 3 (Optional) Onboard a BIGIP via BIGIQ
 =================================================
 
-In the previous labs, we pushed the declaration to directly the BIGIPs . In this lab, we are going to send our JSON declaration to the BIGIQ, which will configure the BIGIP. 
+In the previous labs, we pushed the declaration directly to BIGIPs . In this lab, we are going to send our JSON declaration to the BIGIQ, which will configure the BIGIP.   
 
-
-Review the declartion for BIGIP-03, and notice the following changes:
+Review the declaration for BIGIP-03, and notice the following changes:
 
 - Updated license class 
 - New statements to target the BIGIQ
-- Introducted variables
+- Introduced variables
 
 .. code-block:: JSON
 
@@ -149,8 +148,31 @@ Use the ``GET Declaration Onboarding Status`` and monitor the declaration. Conti
 
 .. image:: images/postman_16.png
 
-Login into the BIGIQ at https://10.1.1.9, navigate to Devices, and BIG-IP Devices. BIGIP-O3 is now apart of the BIGIQ device inventory. U/P: admin/@gi1ity2020
+Login into the BIGIQ at https://10.1.1.9, navigate to Devices, and BIG-IP Devices. BIGIP-O3 is now apart of the BIGIQ device inventory. 
 
+.. list-table::
+   :widths: 20 40 40
+   :header-rows: 1
+   :stub-columns: 1
+
+   * - **System Type**
+     - **Networks**
+     - **Credentials**
+   * - BIGIQ
+     - Management: 10.1.1.9
+     - admin / @gi1ity2020  
 .. image:: images/bigiq_1.png
 
-Login into BIGIP-03 at https://10.1.1.8, and review the configurations. U/P: admin/@gi1ity202
+Login into BIGIP-03 at https://10.1.1.8, and review the configurations. 
+
+.. list-table::
+   :widths: 20 40 40
+   :header-rows: 1
+   :stub-columns: 1
+
+   * - **System Type**
+     - **Networks**
+     - **Credentials**
+   * - BIGIP-03
+     - Management: 10.1.1.8
+     - admin / @gi1ity2020
