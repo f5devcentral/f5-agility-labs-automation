@@ -1,7 +1,9 @@
 Class 11:Terraform BIG-IP Provider 
-==========================================
+==================================
+
 Introduction:
 -------------
+
 1. Use FAS-terraform-provisioner to build Application infrastructure environment in AWS.
 This section will deploy F5 BIG-IP, a Ubuntu Jump Box with Terraform  and Application servers in a VPC using terraform tool.
 
