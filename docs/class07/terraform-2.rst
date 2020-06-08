@@ -19,8 +19,10 @@ BIG-IP
 
 .. image:: ./images/terraform-2-big-ip.png
 
-Install AS3
------------
+You may have to wait a few minutes before you can login.	   
+
+Deploy AS3 Declaration
+----------------------
 
 On the Ubuntu host run the following commands
 
@@ -31,7 +33,7 @@ On the Ubuntu host run the following commands
   $ terraform plan
   $ terraform apply
   
-In this scenario we are executing a shell script that will install AS3 and
+In this scenario we are executing a shell script that will
 deploy the "nginx.json" declaration that is configure to use Consul's API for
 service discovery.
 
@@ -88,6 +90,6 @@ This partition was created by the "nginx.json" that contains the following.
      }
    }
 
-Once the partition is select you should observe their is a pool named "web_pool" and there is a single pool member.  In the next step we will increase the number of NGINX nodes and you will see the change reflected on the BIG-IP.   
+Once the partition is selected you should observe there is a pool named "web_pool" and there is a single pool member.  In the next step we will increase the number of NGINX nodes and you will see the change reflected on the BIG-IP.   
 
 
