@@ -40,7 +40,7 @@ About Consul
 Consul is software created by HashiCorp that provides service discovery of infrastructure.  Typically it makes use of a Consul agent that will register services with the Consul server.  This allows mutable infrastructure that can scale-out/in and always be identified at the correct location (IP address).
 
 About BIG-IP
-+++++++++++
+++++++++++++
 
 F5 BIG-IP is a platform that can provide many high-availibility, security, and telemetry services in a reverse-proxy.
 
