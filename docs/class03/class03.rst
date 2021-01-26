@@ -1,22 +1,14 @@
-Class 3: Application Deployments with BIG-IP and Application Services (AS3)
-============================================================================
+Class 3: Deploy apps with AS3, FAST, and ACC
+============================================
 
-This class provides hands-on experience using F5's AS3 declarative interface
-for configuration of a BIG-IP.  You will use AS3 for configuration by sending
-directly to BIG-IP and alternatively BIG-IQ.
+Explore F5 Application Services v3, F5 Application Services Template, and AS3 Configuration Converter. Using a declarative API model to create applications and convert existing configuration to declarative API.
+During this hands-on lab you will learn the following:
+•	How to use FAST to deploy HTTPS applications.
+•	AS3 as a declarative endpoint for Virtual Server configuration. 
+•	How to convert an existing configuration to AS3 JSON declaration.
+•	How to use FAST to create your own Automation Templates.
 
-The class will cover the following topics in the labs that follow:
-
-- AS3 declarations
-- Using Postman to send AS3 declarations
-- Using Visual Studio Code to perform AS3 Schema validations
-- Create, delete, and modify VIPs using AS3
-- Using AS3 to apply WAF security policy
-- How you can use AS3 with muliple applications per tenant
-- Use of AS3 with multiple tenants
-- Using BIG-IQ to push AS3 declarations
-
-Expected time to complete: **1 hour, 20 minutes**
+Expected time to complete: **2 hour**
 
 We will be using a jumpbox to connect to the lab environment. Go to the next
 section for details on how to connect to the lab environment.
