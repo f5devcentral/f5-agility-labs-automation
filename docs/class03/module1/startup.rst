@@ -67,36 +67,5 @@ There is also an instance of Firefox, which will be used to validate virtual ser
 
    .. image:: images/VScode.JPG
 
-**Exercise 2 - Launch and configure Postman**
-
-#. Right click and open Postman
-
-   .. image:: images/postman.jpg
-
-#. Once Postman has launched, you need to load the Postman environment
-   variables and import the collections we will be using for the lab.
-
-#. First, import the Postman collection, which are located on a github
-   repository. On the top left, click the ``Import`` button.
-
-   .. image:: images/import.jpg
-
-#. Select ``Import From Link`` and paste the link into the text box,
-   ``https://raw.githubusercontent.com/f5devcentral/f5-agility-labs-automation/master/docs/class03/module1/images/AS3%202020%20Lab.postman_collection20200204.json``,
-   then click ``Import``:
-
-   .. image:: images/import_from_link.jpg
-
-#. If you get a message that Postman collection is already present, choose ``Replace`` in the dialog box to overwrite any collection that may be present.
-
-   .. image:: images/postman_collectionPresent.JPG
-   
-#. You should now see a new folder under the ``Collections`` tab to the left of
-   the Postman application screen.
-
-#. Navigate to File -> Settings and confirm the ``SSL Certificate Verification``
-   option is turned OFF. If it is on, please turn it OFF. Once finished, exit
-   the settings menu.
-
 
 
