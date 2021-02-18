@@ -21,17 +21,50 @@ provisioned.  Also notice the hostname in the upper left hand corner.
      - **Credentials**
    * - BIGIP-01
      - Management: 10.1.1.4
-     - admin / @gi1ity2020
+     - admin / @gi1ity2021
 
 .. image:: images/bigip01_01.png
 
 With the declarative onboarding (DO) package installed on BIG-IP, we are ready
 to build out our first BIG-IP.
 
-The desired end state of these DO configurations is to configure the objects
+The desired end state of these DO declarations is to configure the objects
 below, built on the BIG-IPs with a single call in a single file.  This
 declarative solution allows us to compose configurations that are reusable with
 templating technologies and storable in Source Control.
+
+|
+
+We will use VSCode to send our declaration to **BIGIP-01**. First, we must
+configure our BIG-IP devices within the F5 VSCode extension.
+
+|
+
+Within the VSCode window click on the ``F5 Extension icon`` then click
+``ADD HOST`` in the ``F5 HOSTS`` window.
+
+.. image:: images/f5_extension_add_host_01.png
+
+Within the add host prompt add each BIG-IP using the username@X.X.X.X format
+and press enter.
+
+.. image:: images/f5_extension_add_host_02.png
+
+Lastly, click the device you just added and copy in the password to connect to
+the device.
+
+.. image:: images/f5_extension_add_host_03.png
+
+Once you have successfully connected and authenticated to the BIG-IP device
+You will notice that the bottom of your VSCode window will show the
+version of declarative onboarding that is installed 
+(as well as other components).
+
+.. image:: images/do_version.png
+
+Be sure to add all three BIG-IPs and BIG-IQ to the F5 VSCode extension.
+
+|
 
 In our first declaration we will configure the following items on the BIG-IP:
 
@@ -214,16 +247,22 @@ is JSON.
 
 We wiil now use Visual Studio Code to validate our declaraion.
 
-Open Visual Studio Code on your jump host desktop and open a New File and paste
-all of the DO declaration contents.  Additionally, the language setting in
-VSCode must be set to JSON.
+Open Visual Studio Code on and open a New File. To open a new file click the
+hamburger icon, hover over ``File`` and select ``New File``.
 
-.. image:: images/schemavalidation_01.png
+.. image:: images/vscode_newfile.png
+
+Once you have a new file open paste all of the DO declaration contents.
+Additionally, the language setting in VSCode must be set to JSON. In the bottom
+right on the VSCode screen, click ``plain text``. Then in the language mode
+screen type ``JSON``.
+
+.. image:: images/schema_validation_01.png
 
 Once the declaration and language are set, you can highlight over sections of
 the code to see context and errors
 
-.. image:: images/schemacontext_01.png
+.. image:: images/schema_context_01.png
 
 .. note::  Now that you've added the schema validation to your JSON declaration
    you can try misspelling some of the declaration objects to see errors,
@@ -231,78 +270,29 @@ the code to see context and errors
 
 We are now ready to send our declaration to **BIGIP-01**
 
-We will use Postman to send our declaration to **BIGIP-01**. Open Postman on
-your jump host desktop.
+Right click in the file editor of VSCode and select ``Post DO Declaration``.
 
+.. image:: images/post_do_declaration.png
 
-Expand the Declarative Onboarding Collection folder, then Declarative Onboarding
-Request, lastly BIGIP-01.  Select ``Get Declarative Onboarding Version Info``
+In the bottom right hand corner of VSCode you should see that the DO 
+declaration is processing.
 
-.. image:: images/postman_01.png
+.. image:: images/do_declaration_processing.png
 
-|
+After a few moments you will receive a second tab in VSCode that shows that the
+declaration is running.
 
-You'll notice that we are sending a GET request to the URL
-**https://{{bigip-01}}/mgmt/shared/declarative-onboarding**
+.. image:: images/do_declaration_status_01.png
 
-Click ``SEND`` to the right of the GET request field.
+To know when the BIG-IP is finished processing the declaration click the DO
+version on the status bar of VSCode.
 
-.. image:: images/postman_02.png
+.. image:: images/do_version.png
 
-|
-|
+When complete, you should receive a 200 response code, a status of OK and a
+message of success
 
-When sending a GET request to the **https://{{bigip-01}}/mgmt/shared/declarative-onboarding/info**
-we get a response with the version of declarative that is currently installed.
-
-.. image:: images/postman_03.png
-
-|
-|
-
-Next, select the ``BIGIP-01 POST DO Declaration to Configure BIG_IP`` request
-and select the ``Body`` tab.
-
-Notice the following in the request:
-
-#.  The request URL **https://{{bigip-01}}/mgmt/shared/declarative-onboarding**
-#.  The language is set to **JSON**
-
-.. image:: images/postman_04.png
-
-|
-|
-
-Paste the JSON declaration into the Body of the Postman application and click ``Send``
-
-.. image:: images/postman_05.png
-
-|
-|
-
-In the response body you should see that the declaration is running.
-
-.. image:: images/postman_06.png
-
-|
-|
-
-In order to retrieve the status of the DO process we can send a ``GET`` request
-to the same URL that we posted our declartion to. In Postman select
-the ``GET Declarative Onboarding Status`` request in the BIGIP-01 folder and 
-click ``Send`` to view the status of the running process.
-
-.. image:: images/postman_07.png
-
-|
-
-Send the GET request every so often until you receive a status of "OK." Once
-you receive a status of "OK" the declaration has completed.
-
-.. note::  Depending on how large the declaration is, it can take several
-   minutes for the process to complete.
-
-.. image:: images/postman_08.png
+.. image:: images/do_declaration_status_02.png
 
 |
 
