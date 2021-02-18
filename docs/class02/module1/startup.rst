@@ -51,7 +51,7 @@ VSCode, Firefox, and the lab guide.
    then click ``Firefox``. Firefox will open in a new tab. Yes, this is a
    browser in a browser.
 
-   .. image:: images/udf_systems02.png
+   .. image:: images/udf_systems_02.png
 
 #. Congratulations! You have now launched VSCode and Firefox and are ready
    to begin the lab!
