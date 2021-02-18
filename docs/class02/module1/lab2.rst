@@ -8,6 +8,14 @@ devices. These differences illustrate examples where templatizing would work
 exceptionally well. For these situation you could use a templating tool that an
 orchestrator may provide such as Jinja2 in Ansible.
 
+|
+
+Lets connect to **BIGIP-02** in VSCode in preparation to send our declaration.
+
+In the F5 host section select the host for **BIGIP-02**
+
+.. image:: images/f5_extension_select_host_01.png
+
 Below is our declaration for **BIGIP-02**.  Copy **all** of the declaration to
 be used in Postman.
 
@@ -174,35 +182,30 @@ be used in Postman.
 
 |
 
-Next, launch Postman on your jump host. Expand the Declarative Onboarding
-Collection folder, then Declarative Onboarding Request, lastly BIGIP-02.  
-Select ``POST DO Declaration to Configure BIG-IP``
-
-.. image:: images/postman_09.png
+Just as we did in the previous lab, you will use VSCode and POST the 
+declaration to **BIGIP-02**
 
 |
 
-Notice the following in the request:
+Open a new file within VSCode and paste the declaration above. Be sure to
+set the language mode to JSON.
 
-- The request URL **https://{{bigip-02}}/mgmt/shared/declarative-onboarding**
-- The language is set to **JSON**
+.. note::  If you have forgotten how to change the language mode and POST the
+   DO declaration, refering back to the example in the first lab.
 
 |
 
-Paste the JSON declaration into the Body of the Postman application and click
-``Send``
+Once you have post the declaration check the status of the declaration being
+processed.
 
-.. image:: images/postman_10.png
-
-Use the ``GET Declarative Onboarding Status`` request to monitor when the
-declartation is complete.
+|
 
 .. note::  Clustering via declarative onboarding can take several minutes
    to sync and establish, this is normal behavior.
 
-Return to either **BIG-IP** in Chrome and check the cluster configuration and
-status. Both units should be clustered with all onboarding objects present from
-the declaration.
+Once the declaration is complete return to either **BIG-IP** in Firefox and 
+check the cluster configuration and status. Both units should be clustered with
+all onboarding objects present from the declaration.
 
 #. In the **BIGIP** console navigate to **Device Management -> Device Groups**
    and view the device group that was created by the declaration.  Click on the
