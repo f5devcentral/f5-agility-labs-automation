@@ -180,8 +180,6 @@ be used in Postman.
         }
     }
 
-|
-
 Just as we did in the previous lab, you will use VSCode and POST the 
 declaration to **BIGIP-02**
 
