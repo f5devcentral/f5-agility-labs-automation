@@ -18,9 +18,32 @@ SSL Offload.
 
    .. image:: images/VScode_F5Logo.jpg
 
-#. If there are no ``F5`` hosts listed, click on ``ADD HOST``.
+#. If ``BIG-IP`` host ``10.1.10.6`` is not listed under ``F5 HOSTS``, click on ``ADD HOST``.
 
    .. image:: images/VScode_F5AddHost.jpg
+
+#. When prompted, enter: admin@10.1.10.6
+
+   .. image:: images/VScode_F5AddBIGIP01.jpg
+
+#. Now click on ``F5 -> Connect!`` at the bottom of the screen.
+
+   .. image:: images/VScode_F5Connect.jpg
+  
+#. When prompted choose ``admin@10.1.10.6`` from the list of choices:
+
+   .. image:: images/VScode_F5ConnectBIGIP01.jpg
+
+#. Enter the password of ``admin`` when prompted.
+
+#. You can confirm ``VS CODE`` is connected by looking at detail on ``F5 -> Connect!`` at bottom of screen.  In the status you can see the version of AS3 that is installed on the ``BIG-IP``.  In this case, it is version ``3.22.0``.
+
+   .. image:: images/VScode_F5ConnectedBIGIP01.jpg
+
+#. Click ``New file`` under the ``Start`` option for ``VS CODE``:
+
+   .. image:: images/VScode_NewFile.jpg
+
 
 #. Copy and paste the AS3 declaration below into the new file window.
 
