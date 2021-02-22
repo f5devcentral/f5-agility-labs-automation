@@ -49,18 +49,18 @@ it easier to follow the rest of the lab.
 
 #. Click on the ``Components`` tab in your UDF deployment
 
-   .. image:: images/components.jpg
+   .. image:: /class03/images/components.jpg
 
 #. Under ``Systems`` find the Client and click ``Access``,
    then click ``RDP``.  When prompted, select option to ``Save`` RDP file. RDP
    file will be downloaded to your local machine.
 
-   .. image:: images/Win2019_RDP_Access.JPG
+   .. image:: /class03/images/Win2019_RDP_Access.JPG
 
 #. Open the RDP file downloaded in the previous step and click ``Continue``
    when prompted.
 
-   .. image:: images/Win2019_RDP_Connect.JPG
+   .. image:: /class03/images/Win2019_RDP_Connect.JPG
 
 #. When prompted for login credentials, select ``More Choices``.
 
@@ -68,16 +68,16 @@ it easier to follow the rest of the lab.
 
 #. Enter credentials: user / user
 
-   .. image:: images/Win2019_RDP_DiffAccount.JPG
+   .. image:: /class03/images/Win2019_RDP_DiffAccount.JPG
 
 #. Click ``OK``.
 
-   .. image:: images/Win2019_RDP_Login.JPG
+   .. image:: /class03/images/Win2019_RDP_Login.JPG
 
 #. When prompted, click ``Yes`` to connection, and session will be established
    to Windows host.
 
-   .. image:: images/Win2019_RDP_YesConnect.JPG
+   .. image:: /class03/images/Win2019_RDP_YesConnect.JPG
 
 #. Congratulations! You are now connected to your Windows jump host.
 
