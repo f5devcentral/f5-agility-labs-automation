@@ -58,7 +58,7 @@ There is also an instance of Firefox, which will be used to validate virtual ser
 
 #. Click on the ``Components`` tab in your UDF deployment
 
-.. image:: images/components.jpg
+   .. image:: images/components.jpg
 
 #. Under ``Systems`` find the ``client`` system, and click ``Access``,
    then click ``VS CODE``.  
