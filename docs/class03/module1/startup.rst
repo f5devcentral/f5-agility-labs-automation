@@ -36,16 +36,16 @@ networks and credentials to use.
         Internal: 10.1.10.7,
         External: 10.1.20.7
       - admin / admin
-    * - Ubuntu Server, "app"
+    * - Ubuntu "app" Server,
       - Management: 10.1.1.5,
         Internal: 10.1.10.10,
         None
       - ubuntu / HelloUDF
-    * - Ubuntu Server, "client"
+    * - Ubuntu "client" Server
       - Management: 10.1.1.4,
-        Internal: 10.1.10.4
+        Internal: 10.1.10.4,
         None
-      -ubuntu / HelloUDF
+      - ubuntu / HelloUDF
 
 Starting the Lab
 ----------------
@@ -54,7 +54,7 @@ In order to complete this lab, you will connect to environment using VS-Code on 
 called "client".  From VS-Code you will use all tools and interact with BIG-IPs for configuration.
 There is also an instance of Firefox, which will be used to validate virtual server configurations.
 
-**Exercise 1 - Connect to VS-Code **
+**Exercise 1 - Connect to VS-Code**
 
 #. Click on the ``Components`` tab in your UDF deployment
 
