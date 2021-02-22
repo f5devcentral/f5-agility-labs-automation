@@ -6,14 +6,18 @@ Getting the latest vscode-f5 extension
 
 To download latest vscode extension
 
-.. code-block::  
-curl -LO https://github.com/f5devcentral/vscode-f5/releases/download/v2.10.7/vscode-f5-2.10.7.vsix 
+   .. code-block:: bash
+      :linenos:
+
+      curl -LO https://github.com/f5devcentral/vscode-f5/releases/download/v2.10.7/vscode-f5-2.10.7.vsix 
 
 
 To always download latest vscode-f5 extension (requires jq in bash "sudo apt install jq -Y")
 
-.. code-block:: 
-curl -sL https://api.github.com/repos/f5devcentral/vscode-f5/releases/latest | jq .assets[0].browser_download_url | xargs wget
+   .. code-block:: bash
+      :linenos:
+
+      curl -sL https://api.github.com/repos/f5devcentral/vscode-f5/releases/latest | jq .assets[0].browser_download_url | xargs wget
 
 
 F5 Devices
@@ -57,13 +61,14 @@ How to import devices for larger/automated environments
 #. Paste the following into the editor
 
 
-.. code-block::
-[
-    {
+   .. code-block:: bash
+      :linenos:
+
+       {
         "device": "admin@10.1.1.7",
         "password": "admin"
-    }
-]
+       }
+      
 
 #. Highlight the json object we just pasted, then right-click in editor, select ``Import Devices``
 
@@ -126,8 +131,10 @@ Deploy FAST application via API
 
 #. In Coder (browser tab for vscode), paste the following into an editor
 
-.. code-block:: JSON
-   {
+   .. code-block:: json
+      :linenos:
+
+      {
       "name": "examples/simple_http",
       "parameters": {
          "tenant_name": "apiTenant",
@@ -139,14 +146,17 @@ Deploy FAST application via API
                "192.168.100.11",
                "192.168.100.12"
          ]
+         }
       }
-   }
 
 #. Highlight the objec, right-click, then select ``Deploy Fast App``
 
    This should produce the following output in another tab
 
-        {
+      .. code-block:: json
+         :linenos:
+
+         {
             "id": "4b06e4d9-01f1-497e-93e5-662d5eb75d1d",
             "code": 200,
             "message": "success",
@@ -165,7 +175,7 @@ Deploy FAST application via API
             "tenant": "apiTenant",
             "application": "apiTenant",
             "operation": "create"
-        }
+         }
 
 #. Check the TMUI to see that the application is now in the ``Application List`` tab
 
