@@ -39,12 +39,12 @@ networks and credentials to use.
     * - Ubuntu Server, "app"
       - Management: 10.1.1.5,
         Internal: 10.1.10.10,
-      - None
+        None
       - ubuntu / HelloUDF
     * - Ubuntu Server, "client"
       - Management: 10.1.1.4,
         Internal: 10.1.10.4
-      - None
+        None
       -ubuntu / HelloUDF
 
 Starting the Lab
