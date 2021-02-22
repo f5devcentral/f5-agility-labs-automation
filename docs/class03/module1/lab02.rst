@@ -12,37 +12,37 @@ SSL Offload.
 
 #. If you are not connected to ``VS CODE`` window, start the connection by clicking on ``VS CODE`` under ``client`` ``Access Methods``.
 
-   .. image:: images/AccessVScode.jpg
+   .. image:: /class03/module1/images/AccessVScode.jpg
 
 #. Once connected, click on the ``F5`` logo on the left-hand side of window.
 
-   .. image:: images/VScode_F5Logo.jpg
+   .. image:: /class03/module1/images/VScode_F5Logo.jpg
 
 #. If ``BIG-IP`` host ``10.1.10.6`` is not listed under ``F5 HOSTS``, click on ``ADD HOST``.
 
-   .. image:: images/VScode_F5AddHost.jpg
+   .. image:: /class03/module1/images/VScode_F5AddHost.jpg
 
 #. When prompted, enter: admin@10.1.10.6
 
-   .. image:: images/VScode_F5AddBIGIP01.jpg
+   .. image:: /class03/module1/images/VScode_F5AddBIGIP01.jpg
 
 #. Now click on ``F5 -> Connect!`` at the bottom of the screen.
 
-   .. image:: images/VScode_F5Connect.jpg
+   .. image:: /class03/module1/images/VScode_F5Connect.jpg
   
 #. When prompted choose ``admin@10.1.10.6`` from the list of choices:
 
-   .. image:: images/VScode_F5ConnectBIGIP01.jpg
+   .. image:: /class03/module1/images/VScode_F5ConnectBIGIP01.jpg
 
 #. Enter the password of ``admin`` when prompted.
 
 #. You can confirm ``VS CODE`` is connected by looking at detail on ``F5 -> Connect!`` at bottom of screen.  In the status you can see the version of AS3 that is installed on the ``BIG-IP``.  In this case, it is version ``3.22.0``.
 
-   .. image:: images/VScode_F5ConnectedBIGIP01.jpg
+   .. image:: /class03/module1/images/VScode_F5ConnectedBIGIP01.jpg
 
 #. Click ``New file`` under the ``Start`` option for ``VS CODE``:
 
-   .. image:: images/VScode_NewFile.jpg
+   .. image:: /class03/module1/images/VScode_NewFile.jpg
 
 
 #. Copy and paste the AS3 declaration below into the new file window.
@@ -120,7 +120,7 @@ SSL Offload.
 #. Expand Local Traffic and then Virtual Servers.  In the Partition expand
    ``TenantHTTPS``.  You should see the following:
 
-   .. image:: images/lab2-verify.png
+   .. image:: /class03/module1/images/lab2-verify.png
 
 #. In a new tab open ``http://10.1.20.101``.  This will automatically redirect
    to SSL and throw a certificate error since our cert doesn't match the
