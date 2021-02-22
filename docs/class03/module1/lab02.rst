@@ -50,36 +50,36 @@ SSL Offload.
     .. code-block:: json
         :linenos:
 
-                    {
-                      "class": "AS3",
-                  "action": "deploy",
-                  "persist": true,
-                  "declaration": {
-                    "class": "ADC",
-                    "schemaVersion": "3.0.0",
-                    "id": "123abc",
-                    "label": "HTTPS Example",
-                    "remark": "HTTPS with round-robin pool",
-                    "TenantHTTPS": {
-                      "class": "Tenant",
-                      "A1": {
-                        "class": "Application",
-                        "template": "https",
-                        "acmeVS": {
+         {
+          "class": "AS3",
+          "action": "deploy",
+          "persist": true,
+          "declaration": {
+              "class": "ADC",
+              "schemaVersion": "3.0.0",
+              "id": "123abc",
+              "label": "HTTPS Example",
+              "remark": "HTTPS with round-robin pool",
+              "TenantHTTPS": {
+                  "class": "Tenant",
+                  "A1": {
+                     "class": "Application",
+                     "template": "https",
+                     "acmeVS": {
                           "class": "Service_HTTPS",
                           "virtualAddresses": [
                             "10.1.20.12"
                           ],
                           "pool": "web_pool",
                           "serverTLS": "webtls"
-                        },
-                        "web_pool": {
-                          "class": "Pool",
-                          "loadBalancingMode": "round-robin",
-                          "monitors": [
+                     },
+                     "web_pool": {
+                     "class": "Pool",
+                     "loadBalancingMode": "round-robin",
+                     "monitors": [
                            "http"
-                          ],
-                          "members": [{
+                     ],
+                     "members": [{
                             "servicePort": 80,
                             "shareNodes": true,
                             "serverAddresses": [
@@ -87,8 +87,8 @@ SSL Offload.
                               "10.1.10.34"
                             ]
                           }]
-                        },
-                        "webtls": {
+                     },
+                     "webtls": {
                           "class": "TLS_Server",
                           "certificates": [{
                             "certificate": "webcert"
@@ -119,8 +119,6 @@ SSL Offload.
 
 #. Expand Local Traffic and then Virtual Servers.  In the Partition expand
    ``TenantHTTPS``.  You should see the following:
-
-   .. image:: /class03/images/lab2-verify.png
 
 #. In a new tab open ``http://10.1.20.101``.  This will automatically redirect
    to SSL and throw a certificate error since our cert doesn't match the
