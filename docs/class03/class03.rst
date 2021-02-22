@@ -8,7 +8,7 @@ During this hands-on lab you will learn the following:
 •	How to convert an existing configuration to AS3 JSON declaration.
 •	How to use FAST to create your own Automation Templates.
 
-Expected time to complete: **2 hour**
+Expected time to complete: **2 hours**
 
 We will be using a jumpbox to connect to the lab environment. Go to the next
 section for details on how to connect to the lab environment.
