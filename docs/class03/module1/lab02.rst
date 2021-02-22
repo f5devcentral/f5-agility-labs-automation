@@ -2,15 +2,17 @@ Lab 2 - Using AS3 to Create a HTTPS application with SSL Offload
 ================================================================
 
 In this portion of the lab, you will be creating an application via AS3 using the extension for ``VS CODE``.
-The focus in this labs is creating an application that require SSL.  You will configure the virtual server to terminate the SSL connection and send the connection as HTTP to the application server.
+The focus in this lab is creating an application that require SSL.  You will configure the virtual server to terminate the SSL connection and send the connection as HTTP to the application server.
 
 HTTPS application with SSL Offload
 ----------------------------------
 
-#. In this section we will start by using AS3 to build out a basic HTTPS application with
+In this section we will start by using AS3 to build out a basic HTTPS application with
 SSL Offload.
 
 #. If you are not connected to ``VS CODE`` window, start the connection by clicking on ``VS CODE`` under ``client`` ``Access Methods``.
+
+   .. image:: images/AccessVScode.jpg
 
 #. Once connected, click on the ``F5`` logo on the left-hand side of window.
 
