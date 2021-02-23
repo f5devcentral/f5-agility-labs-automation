@@ -1,8 +1,8 @@
-Lab 2 - Using AS3 to Create a HTTPS application with SSL Offload
-================================================================
+Lab 2 - Using AS3 to Create a HTTPS and HTTP applications
+=========================================================
 
 In this portion of the lab, you will be creating an application via AS3 using the extension for ``VS CODE``.
-The focus in this lab is creating an application that require SSL.  You will configure the virtual server to terminate the SSL connection and send the connection as HTTP to the application server.
+The focus in this lab is creating two applications - one that is doing SSL offload and one that is just HTTP. You will configure one virtual server to terminate the SSL connection and send the connection as HTTP to the application server. Then you will add to that a HTTP virtual server using the same backend ``pool``.
 
 HTTPS application with SSL Offload
 ----------------------------------
@@ -63,21 +63,19 @@ SSL Offload.
             "Tenant_Acme": {
               "class": "Tenant",
 
-              "https_app": {
+              "acme_https_app": {
                 "class": "Application",
-                "template": "https",
 
-                "serviceMain": {
+                "acme_https_vs": {
                   "class": "Service_HTTPS",
-                  "virtualPort": 443,
                   "virtualAddresses": [
                     "10.1.20.12"
                   ],
-                  "pool": "web_pool",
-                  "serverTLS": "webtls"
+                  "pool": "acme_http_pool",
+                  "serverTLS": "acmeTLS"
                 },
 
-                "web_pool": {
+                "acme_http_pool": {
                   "class": "Pool",
                   "loadBalancingMode": "round-robin",
                   "monitors": [
@@ -93,27 +91,23 @@ SSL Offload.
                   }]
                 },
 
-                "webtls": {
+                "acmeTLS": {
                   "class": "TLS_Server",
                   "certificates": [{
-                    "certificate": "webcert"
+                    "certificate": "acmeCert"
                   }]
                 },
 
-                "webcert": {
+                "acmeCert": {
                   "class": "Certificate",
-                  "remark": "in practice we recommend using a passphrase",
-        "certificate": "-----BEGIN CERTIFICATE-----\nMIICnDCCAgWgAwIBAgIJAJ5n2b0OCEjwMA0GCSqGSIb3DQEBCwUAMGcxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApXYXNoaW5ndG9uMRAwDgYDVQQHDAdTZWF0dGxlMRQwEgYDVQQKDAtmNV9OZXR3b3JrczEbMBkGA1UEAwwSc2FtcGxlLmV4YW1wbGUubmV0MB4XDTE3MTEyNjE5NTAyNFoXDTE4MDIyNTE5NTAyNFowZzELMAkGA1UEBhMCVVMxEzARBgNVBAgMCldhc2hpbmd0b24xEDAOBgNVBAcMB1NlYXR0bGUxFDASBgNVBAoMC2Y1X05ldHdvcmtzMRswGQYDVQQDDBJzYW1wbGUuZXhhbXBsZS5uZXQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALEsuXmSXVQpYjrZPW+WiTBjn491mwZYT7Q92V1HlSBtM6WdWlK1aZN5sovfKtOX7Yrm8xa+e4o/zJ2QYLyyv5O+t2EGN/4qUEjEAPY9mwJdfzRQy6Hyzm84J0QkTuUJ/EjNuPji3D0QJRALUTzu1UqqDCEtiN9OGyXEkh7uvb7BAgMBAAGjUDBOMB0GA1UdDgQWBBSVHPNrGWrjWyZvckQxFYWO59FRFjAfBgNVHSMEGDAWgBSVHPNrGWrjWyZvckQxFYWO59FRFjAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4GBAJeJ9SEckEwPhkXOm+IuqfbUS/RcziifBCTmVyE+Fa/j9pKSYTgiEBNdbJeBEa+gPMlQtbV7Y2dy8TKx/8axVBHiXC5geDML7caxOrAyHYBpnx690xJTh5OIORBBM/a/NvaR+P3CoVebr/NPRh9oRNxnntnqvqD7SW0U3ZPe3tJc\n-----END CERTIFICATE-----",
-        "privateKey": "-----BEGIN RSA PRIVATE KEY-----\nProc-Type: 4,ENCRYPTED\nDEK-Info: AES-256-CBC,D8FFCE6B255601587CB54EC29B737D31\n\nkv4Fc3Jn0Ujkj0yRjt+gQQfBLSNF2aRLUENXnlr7Xpzqu0Ahr3jS1bAAnd8IWnsR\nyILqVmKsYF2DoHh0tWiEAQ7/y/fe5DTFhK7N4Wml6kp2yVMkP6KC4ssyYPw27kjK\nDBwBZ5O8Ioej08A5sgsLCmglbmtSPHJUn14pQnMTmLOpEtOsu6S+2ibPgSNpdg0b\nCAJNG/KHe+Vkx59qNDyDeKb7FZOlsX30+y67zUq9GQqJEDuysPJ2BUNP0IJXAjst\nFIt1qNoZew+5KDYs7u/lPxcMGTirUhgI84Jy4WcDvSOsP/tKlxj04TbIE3epmSKy\n+TihHkwY7ngIGtcm3Sfqk5jz2RXoj1/Ac3SW8kVTYaOUogBhn7zAq4Wju6Et4hQG\nRGapsJp1aCeZ/a4RCDTxspcKoMaRa97/URQb0hBRGx3DGUhzpmX9zl7JI2Xa5D3R\nmdBXtjLKYJTdIMdd27prBEKhMUpae2rz5Mw4J907wZeBq/wu+zp8LAnecfTe2nGY\nE32x1U7gSEdYOGqnwxsOexb1jKgCa67Nw9TmcMPV8zmH7R9qdvgxAbAtwBl1F9OS\nfcGaC7epf1AjJLtaX7krWmzgASHl28Ynh9lmGMdv+5QYMZvKG0LOg/n3m8uJ6sKy\nIzzvaJswwn0j5P5+czyoV5CvvdCfKnNb+3jUEN8I0PPwjBGKr4B1ojwhogTM248V\nHR69D6TxFVMfGpyJhCPkbGEGbpEpcffpgKuC/mEtMqyDQXJNaV5HO6HgAJ9F1P6v\n5ehHHTMRvzCCFiwndHdlMXUjqSNjww6me6dr6LiAPbejdzhL2vWx1YqebOcwQx3G\n-----END RSA PRIVATE KEY-----",
-                  "passphrase": {
-                    "ciphertext": "ZjVmNQ==",
-                    "protected": "eyJhbGciOiJkaXIiLCJlbmMiOiJub25lIn0"
-                  }
+                  "remark": "In practice we recommend using a passphrase",
+        "certificate": "-----BEGIN CERTIFICATE-----\nMIIDSDCCAjCgAwIBAgIEFPdzHjANBgkqhkiG9w0BAQsFADBmMQswCQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHU2VhdHRsZTESMBAGA1UEAxMJQWNtZSBDb3JwMRwwGgYJKoZIhvcNAQkBFg10ZXN0QGFjbWUuY29tMB4XDTIxMDIyMzE1MjYyMloXDTIyMDIyMzE1MjYyMlowZjELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1NlYXR0bGUxEjAQBgNVBAMTCUFjbWUgQ29ycDEcMBoGCSqGSIb3DQEJARYNdGVzdEBhY21lLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMlj0IAPjyzSJzJZXzPPKnWWu6ErkfUhujBk1nQdp++K8YrvocLY5rbY/DZ9ipEz1TxIyZAGl9aBPoLGU4r2XNVMJZA5Zo/QMedEZFal14eOHn3JMMvCDjGrFaWR+cZ2TR9D9Jdxytq9QKUS/JdCKYz/Qxbx2Q4o0nZDqmPAipw//E24y4lLya/Qrwb537QoCGnxgMoUVNi9ruYrnGtS4uPth3+jYmbbivb8G1B8x93Peeu1QHBlOaXr6DndSwKcULIUt2RxcyYcjzeVQ5yrcrVHwvF8eb03Llm10zX0UI68vdjQuMpeUZ7K0RlmO59v0u6XdeoK1s82SJ8ufscqIrcCAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAN78Mxd1ZE9nUNefCxmqdJYbQUzO6baHgqWxNLRuIu/EtJsjBAuuMmpWOd+pWBQS42aDOrUc33zpcNJcquBvtKt6QaKnSzJwCyfk88ACNrb7yFyeKB3YhVALfLkJMal032pvV8U0n4FBlqRTUDrSY2MHaJ/Uar7iJ7t3RBoZ9LbTyikW188hW6h9s238oLOW89FIJluov18uyLJaj8sBP5tInZmnO3EEywzNop0vpqMe0XmTo9Dyq9SFRdcDnptSdoNLLWTXmpXacj/u/f9r7zQqneFbj2b0KqetYLb7Xs5BVi0DfC81FYOEwqiq+kYvEkBubNCP1C8fXzB/65kFXtg==\n-----END CERTIFICATE-----",
+        "privateKey": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDJY9CAD48s0icyWV8zzyp1lruhK5H1IbowZNZ0HafvivGK76HC2Oa22Pw2fYqRM9U8SMmQBpfWgT6CxlOK9lzVTCWQOWaP0DHnRGRWpdeHjh59yTDLwg4xqxWlkfnGdk0fQ/SXccravUClEvyXQimM/0MW8dkOKNJ2Q6pjwIqcP/xNuMuJS8mv0K8G+d+0KAhp8YDKFFTYva7mK5xrUuLj7Yd/o2Jm24r2/BtQfMfdz3nrtUBwZTml6+g53UsCnFCyFLdkcXMmHI83lUOcq3K1R8LxfHm9Ny5ZtdM19FCOvL3Y0LjKXlGeytEZZjufb9Lul3XqCtbPNkifLn7HKiK3AgMBAAECggEAHrvaWmjFd1gc/jyQYFY5yxc1TCvbivbaNL920OKjudVQ9lyKqbMzRm1H1EMFbhJkdN5A0HeJHYW81fVRU5A0a6LCysdPxRvHOd2AmI6XnUrNkXGuPjI/u0m6NHnaDfUI4QAcaC5IAGjIYEjM/oJs1+UuxmYjM1t8furlqnJ8VMrTtfumTSzEoq3OSwK6JlxAtRwBkrYr+pZCI82Ao/ouZcktyO+LjLMCYd/7HpskA0G3Pp/SIjhfbNHsTm4Kvzar0XdxBVMu4M0a6xXvX+I/L8UFa7EuDumwQVdttMnG33+xbCX3yIrndxVk0rOCryYqeItOxSG+aZJ6ZN+r0crgvQKBgQDlolxVh3NQCqa9XS+TCXSGfcZENolAIEu+n6CkZKMqQrmz7KPrblHgMbc54x0jH/GhtkY4wMjV1stqqHWTBV9UqVcb+OXPt8Zwa0JvXEM3b0i9GTp2hQfKGbWTEz7PIUZbZPGrIijHrc4wX2rgq7K5GeUfteh7bZij0cQ5ubFXBQKBgQDgg0SzUIN87D7yRPqvVnd7l0yii740UztWDp/YDpml0T6WfG0rlXqnIEebUS+BxGNDt3ksG7dTfJIE34C/SlYBAlJ5hiJ4rErW7pm+ibLa96qnLAGEQpiwnYmV49Uc2mxxRuBFWqKal4tuY6MxNqaf2NLCT4JKTPMffRR0Iz/HiwKBgFN659hMCpaxmJZE1zO7/zmZZceMj+7ZDtA41byNvWdypHINeDXxgCBh0ntf3krTpRMl4XdmVlyu3npizYNqM5LikQFhRaJy69gYlilHwEPZ1/auwjst93v4RrM2DuJb9WjqVJTjMTIONGQPfBo7MRjrmgkiJ2cfm5sKeiyGHjtFAoGAOvwB1qJ2iSGAQCJDQkGTTpMnfST9qb2cPzXEZP0g/OGGcf7qp6K0AKiIZ5PiyVMRST8wxJfbiEGYE1Os/ZTIF6fGh0roT4/kcadqGRcQOFsNKLJ1C4x7lRsuhITA/r2b8/7M+SugwMDDzxK6UzmqeSB77rT45BBnZ4RzFTgVj5UCgYBasm6nh2v8PzE8aXzYM6YWsM5R0l3Xr2YvycLc6HfI5Sen+yqIyE9qDNFFk8qa3RZVKl83ZTk7wtAL8nMupmdVodNrx4pUgFW4U4WPPSvVXRZRTZdLHwGKw5Fa3u48qFxdYqpZmnBMB2RHEKcRB8T1+RkcByghNnCBwJMJSRHIWA==\n-----END PRIVATE KEY-----"
                 }
               }
             }
           }
-        }
+       }
 
 #. In the editing window, right click and select ``Post as AS3 declaration``.  
 
@@ -121,31 +115,207 @@ SSL Offload.
 
 #. You will see a status window of the ``AS3`` declaration being sent to the ``BIG-IP``.
 
-   .. image:: /class03/images/VScode_PostProgress.jpg
+   .. image:: /class03/images/VScode_AS3PostProgress.jpg
 
 #. Once the declaration has been processed by the BIG-IP, a status window will appear.  You will see a ``"code": 200,`` and ``"message": "success",``.  If you do not see that, ask lab assistant for help.
 
-#. Login to the BIG-IP to confirm our changes. Go back to UDF deployment screen, and choose ``TMUI`` for ``bigip1``.  This will allow you to login to the ``BIG-IP`` GUI.
+#. Login to the BIG-IP to confirm our changes. Go back to UDF deployment screen, and choose the component ``bigip1``.  Then choose the ``Access Method`` of ``TMUI``.  This will allow you to login to the ``BIG-IP`` GUI.
 
    .. image:: /class03/images/BIGIP_TMUIlogin.jpg
 
 #. Login with the following credentials: username = admin , password = admin.
 
-#. Expand Local Traffic and then Virtual Servers.  In the Partition expand
-   ``Tenant_Acme``.  
+#. Expand ``Local Traffic`` and then ``Virtual Servers``.  In the Partition pull-down menu, select ``Tenant_Acme``.  
    
    .. image:: /class03/images/BIGIP_ChoosePart.jpg
 
-#. You should see the following:
+#. You should see the following virtal servers:
 
    .. image:: /class03/images/BIGIP_VirtualServers.jpg
 
-#. ``serviceMain`` is the name of the virtual server.  You can see that ``AS3`` automatically created the HTTP-to-HTTPS redirect virtual server also.  That was done because the declaration specified ``"class": "Service_HTTPS"``.  When using ``AS3``, it will take care of some things for you.
+#. ``acme_https_vs`` is the name of the virtual server.  You can see that ``AS3`` automatically created the HTTP-to-HTTPS redirect virtual server also.  That was done because the declaration specified ``"class": "Service_HTTPS"``.  When using ``AS3``, it will take care of some things for you.
 
-#. Q: Add testing the virtual server?
+#. In order to see all the options for the ``AS3`` declaration, go page to the ``VS CODE`` window, and look for the list of ``Tenants`` under the ``AS3`` section of the left window pane:
 
-#. Click through ignoring the certificate error and the application is working.
+   .. image:: /class03/images/VScode_TenantsMenu.jpg
+
+#. Click on the down arrow next to ``Tenant 1``, and you will see the ``Tenant_Acme`` in the list.
+
+#. Right click on the ``Tenant_Acme``, and right click.  Choose the option ``Expanded Tenant``.
+
+   .. image:: /class03/images/VScode_TenantExpand.jpg
+
+#. In the results of query, you will see the full AS3 declaration with all the options.  Scroll down the data and look at the options. As you can see, there are many aspects of the configuration that ``AS3`` took care of for you.  You always have the option to specify all the options, but that is not required.
 
 
-   - You can see the default values here:
-     https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/examples.html#example-2-https-application
+
+HTTP application
+----------------
+
+In this section of the lab, it is assumed that you have already created the first exercise, creating at HTTPS virtual server with SSL offload.  Please complete that section before continuing.
+
+#. You should already be connected to the ``VS CODE`` window.  If not, please go to ``Exercise 1``.
+
+#. Go to the AS3 HTTPS declaration that you sent to ``BIG-IP01`` in the last exercise.  You are going to modify that declaration to add a second application to the tenant.  Keep in mind that ``AS3`` is a declarative interface - what you send in the declaration is what will be done on the ``BIG-IP``.  If you need multiple applications, then you must send multiple applications in the declaration.  If you only send one application declaration, it will remove all of the others.
+
+#. Add the following declaration to the ``HTTPS`` declaration.  You must make sure the declaration is syntacially correct, so follow the instructions exactly.  You will add this declaration starting at line 57 - you must also add a ``,`` on line 56 to add the second application.
+
+    .. code-block:: json
+
+         "acme_http_app": {
+                "class": "Application",
+
+                "acme_http_vs": {
+                  "class": "Service_HTTP",
+                  "virtualAddresses": [
+                    "10.1.20.13"
+                  ],
+                  "pool": "acme_http_pool"
+                },
+
+                "acme_http_pool": {
+                  "class": "Pool",
+                  "loadBalancingMode": "round-robin",
+                  "monitors": [
+                   "http"
+                  ],
+
+                  "members": [{
+                    "servicePort": 8080,
+                    "shareNodes": true,
+                    "serverAddresses": [
+                      "10.1.10.5"
+                    ]
+                  }]
+                }
+              }
+
+   .. image:: /class03/images/VScode_combineDecHighlight.jpg
+
+#. In the editing window, right click and select ``Post as AS3 declaration``.  
+
+   .. image:: /class03/images/VScode_PostAS3.jpg
+
+#. You will see a status window of the ``AS3`` declaration being sent to the ``BIG-IP``.
+
+   .. image:: /class03/images/VScode_AS3PostProgress.jpg
+
+#. Once the declaration has been processed by the BIG-IP, a status window will appear.  You will see a ``"code": 200,`` and ``"message": "success",``.  If you do not see that, check the syntax of your ``AS3`` declaration. If you need help, ask a lab attendant.
+
+#. If you have problems with the syntax, here is the full declaration for both ``HTTPS`` and ``HTTP``:
+
+    .. code-block:: json
+
+       {
+          "class": "AS3",
+          "action": "deploy",
+          "persist": true,
+          "declaration": {
+            "class": "ADC",
+            "schemaVersion": "3.0.0",
+            "id": "123abc",
+            "label": "HTTPS Example",
+            "remark": "HTTPS with round-robin pool",
+
+            "Tenant_Acme": {
+              "class": "Tenant",
+
+              "acme_https_app": {
+                "class": "Application",
+
+                "acme_https_vs": {
+                  "class": "Service_HTTPS",
+                  "virtualAddresses": [
+                    "10.1.20.12"
+                  ],
+                  "pool": "acme_http_pool",
+                  "serverTLS": "acmeTLS"
+                },
+
+                "acme_http_pool": {
+                  "class": "Pool",
+                  "loadBalancingMode": "round-robin",
+                  "monitors": [
+                   "http"
+                  ],
+
+                  "members": [{
+                    "servicePort": 8080,
+                    "shareNodes": true,
+                    "serverAddresses": [
+                      "10.1.10.5"
+                    ]
+                  }]
+                },
+
+                "acmeTLS": {
+                  "class": "TLS_Server",
+                  "certificates": [{
+                    "certificate": "acmeCert"
+                  }]
+                },
+
+                "acmeCert": {
+                  "class": "Certificate",
+                  "remark": "In practice we recommend using a passphrase",
+        "certificate": "-----BEGIN CERTIFICATE-----\nMIIDSDCCAjCgAwIBAgIEFPdzHjANBgkqhkiG9w0BAQsFADBmMQswCQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHU2VhdHRsZTESMBAGA1UEAxMJQWNtZSBDb3JwMRwwGgYJKoZIhvcNAQkBFg10ZXN0QGFjbWUuY29tMB4XDTIxMDIyMzE1MjYyMloXDTIyMDIyMzE1MjYyMlowZjELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1NlYXR0bGUxEjAQBgNVBAMTCUFjbWUgQ29ycDEcMBoGCSqGSIb3DQEJARYNdGVzdEBhY21lLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMlj0IAPjyzSJzJZXzPPKnWWu6ErkfUhujBk1nQdp++K8YrvocLY5rbY/DZ9ipEz1TxIyZAGl9aBPoLGU4r2XNVMJZA5Zo/QMedEZFal14eOHn3JMMvCDjGrFaWR+cZ2TR9D9Jdxytq9QKUS/JdCKYz/Qxbx2Q4o0nZDqmPAipw//E24y4lLya/Qrwb537QoCGnxgMoUVNi9ruYrnGtS4uPth3+jYmbbivb8G1B8x93Peeu1QHBlOaXr6DndSwKcULIUt2RxcyYcjzeVQ5yrcrVHwvF8eb03Llm10zX0UI68vdjQuMpeUZ7K0RlmO59v0u6XdeoK1s82SJ8ufscqIrcCAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAN78Mxd1ZE9nUNefCxmqdJYbQUzO6baHgqWxNLRuIu/EtJsjBAuuMmpWOd+pWBQS42aDOrUc33zpcNJcquBvtKt6QaKnSzJwCyfk88ACNrb7yFyeKB3YhVALfLkJMal032pvV8U0n4FBlqRTUDrSY2MHaJ/Uar7iJ7t3RBoZ9LbTyikW188hW6h9s238oLOW89FIJluov18uyLJaj8sBP5tInZmnO3EEywzNop0vpqMe0XmTo9Dyq9SFRdcDnptSdoNLLWTXmpXacj/u/f9r7zQqneFbj2b0KqetYLb7Xs5BVi0DfC81FYOEwqiq+kYvEkBubNCP1C8fXzB/65kFXtg==\n-----END CERTIFICATE-----",
+        "privateKey": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDJY9CAD48s0icyWV8zzyp1lruhK5H1IbowZNZ0HafvivGK76HC2Oa22Pw2fYqRM9U8SMmQBpfWgT6CxlOK9lzVTCWQOWaP0DHnRGRWpdeHjh59yTDLwg4xqxWlkfnGdk0fQ/SXccravUClEvyXQimM/0MW8dkOKNJ2Q6pjwIqcP/xNuMuJS8mv0K8G+d+0KAhp8YDKFFTYva7mK5xrUuLj7Yd/o2Jm24r2/BtQfMfdz3nrtUBwZTml6+g53UsCnFCyFLdkcXMmHI83lUOcq3K1R8LxfHm9Ny5ZtdM19FCOvL3Y0LjKXlGeytEZZjufb9Lul3XqCtbPNkifLn7HKiK3AgMBAAECggEAHrvaWmjFd1gc/jyQYFY5yxc1TCvbivbaNL920OKjudVQ9lyKqbMzRm1H1EMFbhJkdN5A0HeJHYW81fVRU5A0a6LCysdPxRvHOd2AmI6XnUrNkXGuPjI/u0m6NHnaDfUI4QAcaC5IAGjIYEjM/oJs1+UuxmYjM1t8furlqnJ8VMrTtfumTSzEoq3OSwK6JlxAtRwBkrYr+pZCI82Ao/ouZcktyO+LjLMCYd/7HpskA0G3Pp/SIjhfbNHsTm4Kvzar0XdxBVMu4M0a6xXvX+I/L8UFa7EuDumwQVdttMnG33+xbCX3yIrndxVk0rOCryYqeItOxSG+aZJ6ZN+r0crgvQKBgQDlolxVh3NQCqa9XS+TCXSGfcZENolAIEu+n6CkZKMqQrmz7KPrblHgMbc54x0jH/GhtkY4wMjV1stqqHWTBV9UqVcb+OXPt8Zwa0JvXEM3b0i9GTp2hQfKGbWTEz7PIUZbZPGrIijHrc4wX2rgq7K5GeUfteh7bZij0cQ5ubFXBQKBgQDgg0SzUIN87D7yRPqvVnd7l0yii740UztWDp/YDpml0T6WfG0rlXqnIEebUS+BxGNDt3ksG7dTfJIE34C/SlYBAlJ5hiJ4rErW7pm+ibLa96qnLAGEQpiwnYmV49Uc2mxxRuBFWqKal4tuY6MxNqaf2NLCT4JKTPMffRR0Iz/HiwKBgFN659hMCpaxmJZE1zO7/zmZZceMj+7ZDtA41byNvWdypHINeDXxgCBh0ntf3krTpRMl4XdmVlyu3npizYNqM5LikQFhRaJy69gYlilHwEPZ1/auwjst93v4RrM2DuJb9WjqVJTjMTIONGQPfBo7MRjrmgkiJ2cfm5sKeiyGHjtFAoGAOvwB1qJ2iSGAQCJDQkGTTpMnfST9qb2cPzXEZP0g/OGGcf7qp6K0AKiIZ5PiyVMRST8wxJfbiEGYE1Os/ZTIF6fGh0roT4/kcadqGRcQOFsNKLJ1C4x7lRsuhITA/r2b8/7M+SugwMDDzxK6UzmqeSB77rT45BBnZ4RzFTgVj5UCgYBasm6nh2v8PzE8aXzYM6YWsM5R0l3Xr2YvycLc6HfI5Sen+yqIyE9qDNFFk8qa3RZVKl83ZTk7wtAL8nMupmdVodNrx4pUgFW4U4WPPSvVXRZRTZdLHwGKw5Fa3u48qFxdYqpZmnBMB2RHEKcRB8T1+RkcByghNnCBwJMJSRHIWA==\n-----END PRIVATE KEY-----"
+                }
+              },
+              "acme_http_app": {
+                "class": "Application",
+
+                "acme_http_vs": {
+                  "class": "Service_HTTP",
+                  "virtualAddresses": [
+                    "10.1.20.13"
+                  ],
+                  "pool": "acme_http_pool"
+                },
+
+                "acme_http_pool": {
+                  "class": "Pool",
+                  "loadBalancingMode": "round-robin",
+                  "monitors": [
+                   "http"
+                  ],
+
+                  "members": [{
+                    "servicePort": 8080,
+                    "shareNodes": true,
+                    "serverAddresses": [
+                      "10.1.10.5"
+                    ]
+                  }]
+                }
+              }
+
+            }
+          }
+        }
+
+#. Login to the BIG-IP to confirm our changes. Go back to UDF deployment screen, and choose the component ``bigip1``.  Then choose the ``Access Method`` of ``TMUI``.  This will allow you to login to the ``BIG-IP`` GUI.
+
+   .. image:: /class03/images/BIGIP_TMUIlogin.jpg
+
+#. Login with the following credentials: username = admin , password = admin.
+
+#. Expand ``Local Traffic`` and then ``Virtual Servers``.  In the Partition pull-down menu, select ``Tenant_Acme``.  
+   
+   .. image:: /class03/images/BIGIP_ChoosePart.jpg
+
+#. You should see the following virtal servers:
+
+   .. image:: /class03/images/BIGIP_VirtualServers2.jpg
+
+Delete Tenant
+-------------
+
+Now that you have completed this section of the lab, let's clean-up by deleting the tenant named ``Tenant_Acme``.
+
+#. In the ``VS CODE`` window, select the tenant ``Tenant_Acme``, then right click and select ``Delete Tenant``.
+
+   .. image:: /class03/images/VScode_TenantDelete.jpg
+
+#. The tenant ``Tenant_Acme`` should now be deleted.
+
