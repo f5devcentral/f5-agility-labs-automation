@@ -8,18 +8,17 @@ devices. These differences illustrate examples where templatizing would work
 exceptionally well. For these situation you could use a templating tool that an
 orchestrator may provide such as Jinja2 in Ansible.
 
-|
+#. Lets connect to **BIGIP-02** in VSCode in preparation to send our declaration.
 
-Lets connect to **BIGIP-02** in VSCode in preparation to send our declaration.
+   In the F5 host section select the host for **BIGIP-02**
 
-In the F5 host section select the host for **BIGIP-02**
+   .. image:: images/f5_extension_select_host_01.png
 
-.. image:: images/f5_extension_select_host_01.png
+#. Below is our declaration for **BIGIP-02**.  Copy the declaration to be used
+   in the VScode extension. Use the copy button in the upper right hand corner
+   of the declaration.
 
-Below is our declaration for **BIGIP-02**.  Copy **all** of the declaration to
-be used in Postman.
-
-.. code-block:: JSON
+   .. code-block:: JSON
 
     {
         "$schema": "https://raw.githubusercontent.com/F5Networks/f5-declarative-onboarding/master/src/schema/latest/base.schema.json",
@@ -180,33 +179,28 @@ be used in Postman.
         }
     }
 
-Just as we did in the previous lab, you will use VSCode and POST the 
-declaration to **BIGIP-02**
+   Just as we did in the previous lab, you will use VSCode and POST the 
+   declaration to **BIGIP-02**
 
-|
 
-Open a new file within VSCode and paste the declaration above. Be sure to
-set the language mode to JSON.
+#. Open a new file within VSCode and paste the declaration above. Be sure to
+   set the language mode to JSON.
 
-.. note::  If you have forgotten how to change the language mode and POST the
-   DO declaration, refering back to the example in the first lab.
+   .. note::  If you have forgotten how to change the language mode and POST the
+      DO declaration, refering back to the example in the first lab.
 
-|
+   Once you have post the declaration check the status of the declaration being
+   processed.
 
-Once you have post the declaration check the status of the declaration being
-processed.
+   .. note::  Clustering via declarative onboarding can take several minutes
+      to sync and establish, this is normal behavior.
 
-|
+#. Once the declaration is complete return to either BIG-IP in Firefox and 
+   check the cluster configuration and status. Both units should be clustered with
+   all onboarding objects present from the declaration.
 
-.. note::  Clustering via declarative onboarding can take several minutes
-   to sync and establish, this is normal behavior.
-
-Once the declaration is complete return to either **BIG-IP** in Firefox and 
-check the cluster configuration and status. Both units should be clustered with
-all onboarding objects present from the declaration.
-
-#. In the **BIGIP** console navigate to **Device Management -> Device Groups**
+   In the BIG-IP console navigate to **Device Management -> Device Groups**
    and view the device group that was created by the declaration.  Click on the
    ``failoverGroup`` and verify both devices are members of the group.
 
-Feel free to check other objects such as Self IPs, NTP settings, user accounts, etc.
+   Feel free to check other objects such as Self IPs, NTP settings, user accounts, etc.
