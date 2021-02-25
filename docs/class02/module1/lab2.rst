@@ -171,10 +171,10 @@ orchestrator may provide such as Jinja2 in Ansible.
             "trust": {
                 "class": "DeviceTrust",
                 "localUsername": "admin",
-                "localPassword": "@gi1ity2020",
+                "localPassword": "@gi1ity2021",
                 "remoteHost": "/Common/failoverGroup/members/0",
                 "remoteUsername": "admin",
-                "remotePassword": "@gi1ity2020"
+                "remotePassword": "@gi1ity2021"
             }
         }
     }

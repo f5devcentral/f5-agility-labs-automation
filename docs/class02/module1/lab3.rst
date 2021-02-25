@@ -35,7 +35,7 @@ lab, we are going to send our JSON declaration to the BIG-IQ, which will configu
                    "licensePool": "lab-licenses",
                    "licenseType": "licensePool",
                    "bigIpUsername": "admin",
-                   "bigIpPassword": "@gi1ity2020"
+                   "bigIpPassword": "@gi1ity2021"
                },
                "myProvisioning": {
                    "class": "Provision",
