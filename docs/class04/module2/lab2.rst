@@ -14,7 +14,7 @@ During this hands-on lab you will learn the following:
 •	How to use two data consumers to visualize statistics from Telemetry Streaming.
 
 
-This lab will go through initial setup and add you to the Telemetry Streaming Agility 2020 workstation.  
+This lab will go through initial setup and add you to the Telemetry Streaming Agility 2021 workstation.  
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -26,7 +26,7 @@ Follow these steps to complete this lab:
 #. Open your web browser
 #. Navigate to https://udf.f5.com/courses
 #. login using credentials given in email. 
-#. find Telemetry Streaming Agility 2020 and press details in the bottom right corner. 
+#. find Telemetry Streaming Agility 2021 and press details in the bottom right corner. 
 #. Click on the Schedule tab, and press launch under the course listed below. 
 
     .. image:: ./schedule.png
