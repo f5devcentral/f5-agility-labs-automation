@@ -14,8 +14,7 @@ Your lab environment includes:
    expand the 'Access' drop-down menu.  Select 'VS Code' to open the VS Code browser interface, (see below).
 
    .. image:: images/access_vscode.png
-   :width: 600
-
+      :width: 200
 
 #. You will use VS Code to clone and deploy your application environment.  From VS Code, select the
    'Terminal' tab, navigate to the home directory and clone the repo using the below commands.
