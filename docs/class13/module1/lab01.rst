@@ -19,13 +19,13 @@ ADPM system uses Terraform and the student's remot state file to perform scaling
    .. image:: images/access_vscode.png
       :width: 400
 
-#. The client jump box has been preconfigured top interact with  You will use VS Code to clone and deploy your application environment.  From VS Code, select the
+#. The client jump box has been preconfigured top interact with both the cloud environment, (Azure) and the ADPM central repo.  You will use VS Code to clone and deploy your application environment.  From VS Code, select the
    'Terminal' tab, navigate to the home directory and clone the repo using the below commands.
     
     ``cd $home``
     ``git clone http://https://github.com/f5devcentral/adpm-agility.git``
 
-   .. image:: images/vscode_1.png
+   .. image:: images/vscode1.png
       :width: 200
       
 #. Navigate to the scripts directory and execute the application deployment script.
