@@ -29,8 +29,8 @@ ADPM system uses Terraform and the student's remot state file to perform scaling
       
 #. Navigate to the scripts directory and execute the application deployment script.
 
-   ``cd adpm-agility/scripts``
-   ``sh ./deploy.sh``
+   ``cd adpm-agility/scripts && sh ./deploy.sh``
+
 
    .. image:: images/deploy.png
       :width: 200
