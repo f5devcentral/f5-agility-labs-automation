@@ -1,3 +1,4 @@
+====================================================
 Lab 1 - Deploying Sample Application Infrastructure
 ====================================================
 The ADC performance-based scaling, (ADPM) lab utilizes a centralized automation repo consisting of:
