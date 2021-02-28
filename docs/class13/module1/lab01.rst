@@ -16,7 +16,7 @@ ADPM system uses Terraform and the student's remot state file to perform scaling
 #. From the UDF deployment, select the 'Components' tab and navigate to the client component and
    expand the 'Access' drop-down menu.  Select 'VS Code' to open the VS Code browser interface, (see below).
 
-   .. image:: images/access_vscode.png
+   .. figure:: images/access_vscode.png
       :scale: 50 %
 
 #. The client jump box has been preconfigured top interact with both the cloud environment, (Azure) and the
