@@ -10,6 +10,7 @@ The following table lists the virtual resources and credentials you will be depl
     :widths: 20 40 80
     :header-rows: 1
     :stub-columns: 1
+    
     * - **System Type**
       - **Credentials**
       - **Description**
@@ -39,7 +40,7 @@ access tools, (VS Code and Locust).
 
 #. Click on the ``Components`` tab in your UDF deployment
 
-   .. image:: images/access_vscode.png
+   .. image:: images/udf_start.png
       :width: 400
 
 As illustrated above, you will access the 'client' system via 'VS CODE' and 'LOCUST' access
