@@ -36,11 +36,4 @@ ADPM system uses Terraform and the student's remot state file to perform scaling
    (10-15 minutes) you will be presented with a listing of outputs, (see below).  You will use these outputs
    to complete the lab.
 
-<<<<<<< HEAD
    .. image:: images/outputs.png
-
-=======
-   .. figure:: images/outputs.png
-      :scale: 50 %
->>>>>>> c0b58bab038846cdb889e46567075fba5722b562
-
