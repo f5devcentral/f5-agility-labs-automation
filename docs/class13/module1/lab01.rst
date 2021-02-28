@@ -39,4 +39,8 @@ ADPM system uses Terraform and the student's remot state file to perform scaling
 
    .. image:: images/outputs.png
    
+**Exercise 2 - View Infrastructure Components**
 
+   .. image:: images/app_page.png
+
+   .. image:: images/consul_front.png
