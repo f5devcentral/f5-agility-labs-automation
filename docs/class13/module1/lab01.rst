@@ -3,10 +3,10 @@ Lab 1 - Deploying Sample Application Infrastructure
 
 In this lab, you will deploy a sample application environment using Microsoft Visual Studio Code.
 Your lab environment includes:
-* BIG-IP(s) - provding application load balancing
-* Application Server(s) - Bakcend sample application, (NGINX) servers
-* Elastic ELK stack - Fully functioning and integrated analytics provider
-* Hashicorp Consul Server - Providing service discovery and scaling status information
+- BIG-IP(s) - provding application load balancing
+- Application Server(s) - Bakcend sample application, (NGINX) servers
+- Elastic ELK stack - Fully functioning and integrated analytics provider
+- Hashicorp Consul Server - Providing service discovery and scaling status information
 
 **Exercise 1 - Deploy Application Infrastructure**
 
