@@ -31,6 +31,8 @@ ADPM system uses Terraform and the student's remot state file to perform scaling
 #. Navigate to the scripts directory and execute the application deployment script.
 
    ``cd adpm-agility/scripts && sh ./deploy.sh``
+
+   .. image:: images/deploy.png   
    
    The script, (deploy.sh) triggers a series of terraform projects that deploys a fully functioning sample
    application and associated infrastructure into the Azure public cloud.  Once the deployment has completed, 
@@ -40,6 +42,12 @@ ADPM system uses Terraform and the student's remot state file to perform scaling
    .. image:: images/outputs.png
    
 **Exercise 2 - View Infrastructure Components**
+
+As previously mentioned, the Terraform outputs provide the enpdoints that you will use to interact with and
+complete the lab.  Before continuing on to the next steps, (configuring alerts) take a few minutes to familarize
+yourself with your student environment.
+
+#. Either copy of double-click on the application
 
    .. image:: images/app_page.png
 
