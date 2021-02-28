@@ -40,7 +40,6 @@ ADPM system uses Terraform and the student's remot state file to perform scaling
    to complete the lab.
 
    .. image:: images/outputs.png
-      :height: 100px
-      :width: 200 px
-      :scale: 50 %
+      :height: 50 px
+      :width: 100 px
 
