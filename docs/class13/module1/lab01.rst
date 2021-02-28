@@ -1,13 +1,34 @@
-Lab 1 - Deploying a Sample Application Infrastructure to Azure using F5's Automation Toolchain and Hashicorp Terraform
+Lab 1 - Deploying Sample Application Infrastructure
 ====================================================
 
-In this lab, you will deploy a sample environment including:
+In this lab, you will deploy a sample application environment using Microsoft Visual Studio Code.
+Your lab environment includes:
+* BIG-IP(s) - provding application load balancing
+* Application Server(s) - Bakcend sample application, (NGINX) servers
+* Elastic ELK stack - Fully functioning and integrated analytics provider
+* Hashicorp Consul Server - Providing service discovery and scaling status information
 
-**Exercise 1 - AS3 declaration**
+**Exercise 1 - Deploy Application Infrastructure**
 
-#. Expand the AS3 collections folder that we imported by clicking on it.
+#. From the UDF deployment, select the 'Components' tab and navigate to the client component and
+   expand the 'Access' drop-down menu.  Select 'VS Code' to open the VS Code browser interface, (see below).
 
-#. Open the ``Lab 1`` folder.
+   .. image:: images/access_vscode.png
+   :width: 600
+
+
+#. You will use VS Code to clone and deploy your application environment.  From VS Code, select the
+   'Terminal' tab, navigate to the home directory and clone the repo using the below commands.
+    
+    cd $home
+    git clone http://https://github.com/f5devcentral/adpm-agility.git
+
+      
+
+#. Navigate to the scripts directory and execute the application deployment script.
+
+   cd adpm-agility/scripts
+   sh ./deploy.sh
 
 #. For the lab, we will be using token-based authentication via HTTP/HTTPS to
    the BIG-IP API by sending requests to the BIG-IP and including a valid
