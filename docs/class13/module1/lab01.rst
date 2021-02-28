@@ -17,10 +17,7 @@ ADPM system uses Terraform and the student's remot state file to perform scaling
    expand the 'Access' drop-down menu.  Select 'VS Code' to open the VS Code browser interface, (see below).
 
    .. image:: images/access_vscode.png
-      :height: 100px
-      :width: 200 px
-      :scale: 50 %
-
+   
 #. The client jump box has been preconfigured top interact with both the cloud environment, (Azure) and the
    ADPM central repo.  You will use VS Code to clone and deploy your application environment.  From VS Code, 
    select the 'Terminal' tab, navigate to the home directory and clone the repo using the below commands.
@@ -28,7 +25,7 @@ ADPM system uses Terraform and the student's remot state file to perform scaling
     ``cd $home && git clone http://https://github.com/f5devcentral/adpm-agility.git``
 
    .. image:: images/vscode1.png
-      :width: 200
+
       
 #. Navigate to the scripts directory and execute the application deployment script.
 
@@ -40,6 +37,5 @@ ADPM system uses Terraform and the student's remot state file to perform scaling
    to complete the lab.
 
    .. image:: images/outputs.png
-      :height: 50 px
-      :width: 100 px
+
 
