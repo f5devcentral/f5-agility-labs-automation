@@ -45,7 +45,9 @@ your Consul server to view scaling logs entries and monitor service discovery.
    .. image:: images/monitor_1.png
 
 #. To monitor BIG-IP scaling operations, (along with workload scaling) from the Consul server navigate to the '*Key/Value*' tab and
-   transverse the tree to - ``workflows/runs/``.  As scaling events are run on the central ADPM processor, log entries are pushed 
+   transverse the tree to - ``workflows/runs/``.  
+   
+   As scaling events are run on the central ADPM processor, log entries are pushed 
    to the local Consul Server.  As the example shows below, scaling events are reported in JSON format.  Navigate the listed jobs
    to review your scaling events.  Additionally, the class instructors can review your deployments via the Azure portal. 
 
