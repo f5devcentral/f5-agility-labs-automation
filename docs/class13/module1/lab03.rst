@@ -19,22 +19,18 @@ your Consul server to view scaling logs entries and monitor service discovery.
    .. image:: images/locust_2.png
 
 #. Now with Locust running, return to your UDF deployment tab and navigate to the client component.  Select '*Locust*' from
-   the *Access* drop-down menu.  A new browser tab will open
+   the *Access* drop-down menu.  A new browser tab, (Locust UI) will open.
 
    .. image:: images/locust_3.png
 
-#. 
-
-   .. image:: images/locust_4.png
-
-#. 
+#. On the Locust UI, enter amounts for *Number of total users to simulate* and *Spawn rat*.  Enter the application address in
+   host field; (if necessary refer back to the first terminal window). 
 
    .. image:: images/locust_5.png
 
-#. 
+#.  Select '*Start swarming*' to begin taffic generation.  You can monitor traffic from the statistics tab, (see below).
 
    .. image:: images/locust_6.png
-
 
 **Exercise 2 - Monitor Scaling Operations**
 -------------------------------------------
