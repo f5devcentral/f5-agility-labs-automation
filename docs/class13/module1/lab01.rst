@@ -12,6 +12,7 @@ The student terrafrom project utilizes a remote state file hosted on the central
 ADPM system uses Terraform and the student's remot state file to perform scaling operations.
 
 **Exercise 1 - Deploy Application Infrastructure**
+--------------------------------------------------
 
 #. From the UDF deployment, select the 'Components' tab and navigate to the client component and
    expand the 'Access' drop-down menu.  Select 'VS Code' to open the VS Code browser interface, (see below).
@@ -40,6 +41,7 @@ ADPM system uses Terraform and the student's remot state file to perform scaling
    .. image:: images/outputs.png
    
 **Exercise 2 - View Infrastructure Components**
+-----------------------------------------------
 
 As previously mentioned, the Terraform outputs provide the enpdoints that you will use to interact with and
 complete the lab.  Before continuing on to the next steps, (configuring alerts) take a few minutes to familarize

@@ -9,6 +9,7 @@ send alert triggers to the ADPM system when scaling of either the BIG-IP fronten
 
 
 **Exercise 1 - Create Index Pattern**
+-------------------------------------
 
 #. From your VS Code browser page, either copy of double-click on the link entitled **f_elk_public_address**.  You are 
    presented with the logon page shown below.  Use the relevant credentials provided in the startup section to log into
@@ -42,8 +43,8 @@ send alert triggers to the ADPM system when scaling of either the BIG-IP fronten
    .. image:: images/index_3.png
 
 
-
 **Exercise 2 - Enable Elastic Trial License**
+---------------------------------------------
 
 #. Your ELK stack will initially deploy with a free basic license.  However, to make use of alerts and webhook notifications,
    (either via Kibana or Watcher) you must first upgrade the ELK stack license.  To do this, you will enable a 30-day trial
@@ -66,8 +67,8 @@ send alert triggers to the ADPM system when scaling of either the BIG-IP fronten
    .. image:: images/license_3.png
 
 
-
 **Exercise 3 - Create Watcher Alerts**
+--------------------------------------
 
 You will be using Elastic Watcher to monitor telemetry data and provide alert notifications.  While still in the *Stack Management*
 submenu navigate to and select '*Watcher*', (see above).  From the center panel select '*Create*' and then '*Create threshold alert*'.
