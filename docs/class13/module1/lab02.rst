@@ -5,7 +5,7 @@ In this lab, you will work with the `Elastic ELK stack <https://www.googleadserv
 centralized storage, analysis and visualization of organizational data.  As part of your application deployment, 
 BIG-IPs are preconfigured to use `F5 Telemetry Streaming <https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjJlIOD-o3vAhXyNX0KHci7CukQtwIwAHoECAUQAw&url=https%3A%2F%2Fclouddocs.f5.com%2Fproducts%2Fextensions%2Ff5-telemetry-streaming%2Flatest%2F&usg=AOvVaw0VCdzaatz7XyBLeYDA0CYS>`_ to send telemetry 
 data to the ELK stack.  As a student, your job will be to use configure your ELK stack to monitor the log data and
-send alert triggers to the ADPM system when scaling of either the BIG-IP frontend or backend workloads are warrented.
+send alert triggers to the ADPM system when scaling of either the BIG-IP frontend or backend workloads are warranted.
 
 
 **Exercise 1 - Create Index Pattern**
@@ -22,7 +22,7 @@ send alert triggers to the ADPM system when scaling of either the BIG-IP fronten
 
    .. image:: images/elk_explore.png
 
-#. Next, you will need to create an index pattern.  The index pattern will provide a starting base in which to query injested
+#. Next, you will need to create an index pattern.  The index pattern will provide a starting base in which to query ingested
    BIG-IP telemetry.  From the upper-left corner select the menu icon and navigate down the sidebar menu to the '*Analytics*'
    section and select '*Discover*', (see below).
 
@@ -32,7 +32,7 @@ send alert triggers to the ADPM system when scaling of either the BIG-IP fronten
 
    .. image:: images/index_1.png
 
-#. On the *Create Index Pattern* screen enter ``F5-*`` for the index pattern name.  As the exmple below illustrates, you should
+#. On the *Create Index Pattern* screen enter ``F5-*`` for the index pattern name.  As the example below illustrates, you should
    several indexes listed below.  As telemetry data is streamed from the BIG-IP(s) to the ELK stack, (via Logstash - the '*L*' in ELK)
    it is assigned an index with a pattern of **f5-%{+YYYY.MM.dd.hh.mm}**.
 
@@ -78,15 +78,15 @@ submenu navigate to and select '*Watcher*', (see above).  From the center panel 
 You will be creating a total of four (4) alerts.  These alerts will monitor and respond to increases/decreases in BIG-IP cpu
 utilization and current application connections.  In the event a member BIG-IP's cpu utilization exceeds or falls below the
 specified thresholds during the specified interval, an alert will fire triggering a webhook call to the ADPM *alertForwarder*
-service.  The alertForwarder will subsequently post a BIG-IP scaling request to the central processor, (utlizing the 
+service.  The alertForwarder will subsequently post a BIG-IP scaling request to the central processor, (utilizing the 
 repo's **GitHub Actions**).
    
 Likewise, if current connections fall outside of the specified thresholds a similar alert will be fired.  However, rather than
-scaling BIG-IP instaances, this will trigger a scaling (up/down) of the backend application workloads, (lab ex: NGINX).  Use
+scaling BIG-IP instances, this will trigger a scaling (up/down) of the backend application workloads, (lab ex: NGINX).  Use
 the screenshot example below to create the first alert, (*MaxCpuAlert*).
 
 #. Provide a name, select the previously created index pattern of ``f5-*``, timestamp and timing parameters as shown below. Under
-   conditions section seclect **Max()**, **myMaxCpu**, **top 1**, **hostname.keyword**, **5000** and **5 minutes** as shown below.
+   conditions section select **Max()**, **myMaxCpu**, **top 1**, **hostname.keyword**, **5000** and **5 minutes** as shown below.
    
    **Note:** You should see a green line of the displayed chart that represents the selected field's, (*myMaxCpu*) value trend.  
    This will aid you in setting threshold values appropriately to ensure scaling events are triggered.  With that said, the lab

@@ -2,14 +2,14 @@ Lab 1 - Deploying Sample Application Infrastructure
 ====================================================
 The ADC performance-based scaling, (ADPM) lab utilizes a centralized automation repo consisting of:
 
-- Github Actions, (central repo provding automation)
+- Github Actions, (central repo providing automation)
 - Hashicorp Terraform, (Application scaling operations)
 - Hashicorp Consul Server, (scaling params, student Terraform remote state hosting, logging)
 - Alert Forwarding service, (Nodejs proxy providing webhook normalization and security)
 
-As a student you will perform the initial application deployment from your lab jump box utilzing Terraform.
+As a student you will perform the initial application deployment from your lab jump box utilizing Terraform.
 The student terrafrom project utilizes a remote state file hosted on the central Consul server.  The central
-ADPM system uses Terraform and the student's remot state file to perform scaling operations.
+ADPM system uses Terraform and the student's remote state file to perform scaling operations.
 
 **Exercise 1 - Deploy Application Infrastructure**
 --------------------------------------------------
@@ -43,16 +43,16 @@ ADPM system uses Terraform and the student's remot state file to perform scaling
 **Exercise 2 - View Infrastructure Components**
 -----------------------------------------------
 
-As previously mentioned, the Terraform outputs provide the enpdoints that you will use to interact with and
-complete the lab.  Before continuing on to the next steps, (configuring alerts) take a few minutes to familarize
+As previously mentioned, the Terraform outputs provide the endpoints that you will use to interact with and
+complete the lab.  Before continuing on to the next steps, (configuring alerts) take a few minutes to familiarize
 yourself with your student environment.
 
 #. Either copy of double-click on the link entitled **d_application_address**.  This points to the Azure load balancer
    frontend address, (VIP).  As BIG-IP instances are deployed they are added to the Azure load balancer's backend 
-   pool.  **Note:** This solution does not make use of native cloud scaling mechanims.  Rather, scaling decisions and
+   pool.  **Note:** This solution does not make use of native cloud scaling mechanisms.  Rather, scaling decisions and
    actions are performed by the analytics provider, (Elastic "ELK" stack) and the ADPM system, (GitHub Actions)
-   respectively.  Using your browser, navigate to application's frontpage, (you will need to accept the certificate
-   erors to continue).  Your front page will be similar to the example below.
+   respectively.  Using your browser, navigate to application's frontpage, (you will need to accept the certificate errors
+   to continue).  Your front page will be similar to the example below.
 
    .. image:: images/app_page.png
 
@@ -68,7 +68,7 @@ yourself with your student environment.
 
 #. In addition to the above services, the Terraform deployment output includes the management address and credentials for the 
    single BIG-IP initially deployed.  While not necessary for this particular lab, you may use the suppled credentials and address to 
-   connect to BIG-IP's management interface.  **Note:** The BIG-IP management interface is avialable via port *8443*.
+   connect to BIG-IP's management interface.  **Note:** The BIG-IP management interface is available via port *8443*.
 
 
 
