@@ -31,8 +31,6 @@ ADPM system uses Terraform and the student's remot state file to perform scaling
 #. Navigate to the scripts directory and execute the application deployment script.
 
    ``cd adpm-agility/scripts && sh ./deploy.sh``
-
-   .. image:: images/deploy.png   
    
    The script, (deploy.sh) triggers a series of terraform projects that deploys a fully functioning sample
    application and associated infrastructure into the Azure public cloud.  Once the deployment has completed, 
@@ -47,8 +45,19 @@ As previously mentioned, the Terraform outputs provide the enpdoints that you wi
 complete the lab.  Before continuing on to the next steps, (configuring alerts) take a few minutes to familarize
 yourself with your student environment.
 
-#. Either copy of double-click on the application
+#. Either copy of double-click on the link entitled 'd_application_address'.  This points to the Azure load balancer
+   frontend address, (VIP).  As BIG-IP instances are deployed they are added to the Azure load balancer's backend 
+   pool.  Note; this solution does not make use of native cloud scaling mechanims.  Rather, scaling decisions and
+   actions are performed by the analytics provider, (Elastic "ELK" stack) and the ADPM system, (GitHub Actions)
+   respectively.  Using your browser, navigate to application's frontpage, (you will need to accept the certificate
+   erors to continue).  Your front page will be similar to the example below.
 
    .. image:: images/app_page.png
 
+#. Either copy of double-click on the link entitled 'e_consul_public_address' to navigate to your consul server.  In
+   addition to the central ADPM consul server, each student environment includes a consul server instance.  The consul
+   server provides `application service discovery`_ as well as hosting scaling event telemetry data.
+
    .. image:: images/consul_front.png
+
+   .. _application service-discovery: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/declarations/discovery.html#service-discovery-using-hashicorp-consul
