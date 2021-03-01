@@ -40,7 +40,7 @@ your Consul server to view scaling logs entries and monitor service discovery.
    previous lab, you will see instances being added/removed from the service.  
    
    As the example shows below, the backend workloads have been scale up to the maximum of three from the starting quantity of two, (2).
-   For additional testing, you can return to the Kibana UI and modify alert thresholds and/or manually trigger al.
+   For additional testing, you can return to the Kibana UI and modify alert thresholds and/or manually trigger alerts.
 
    .. image:: images/monitor_1.png
 
