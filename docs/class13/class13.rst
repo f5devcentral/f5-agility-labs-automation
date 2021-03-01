@@ -4,7 +4,7 @@ Class 13: ADC Performance Monitoring and Autoscaling Lab
 This instructor-led lab will provide hands on experience with the ADC performance-based autoscaling solution.  The solution, (see below) illustrates how
 F5's Automation Toolchain can integrate with third party analytics provider(s) to provide cloud-agnostic centralized application delivery monitoring and autoscaling.
  
-   .. image:: images/lab_layout.png
+   .. image:: module1/images/lab_layout.png
 
 During this lab attendees will:
 
