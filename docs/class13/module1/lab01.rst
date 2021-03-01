@@ -45,7 +45,7 @@ As previously mentioned, the Terraform outputs provide the enpdoints that you wi
 complete the lab.  Before continuing on to the next steps, (configuring alerts) take a few minutes to familarize
 yourself with your student environment.
 
-#. Either copy of double-click on the link entitled 'd_application_address'.  This points to the Azure load balancer
+#. Either copy of double-click on the link entitled *d_application_address*.  This points to the Azure load balancer
    frontend address, (VIP).  As BIG-IP instances are deployed they are added to the Azure load balancer's backend 
    pool.  Note; this solution does not make use of native cloud scaling mechanims.  Rather, scaling decisions and
    actions are performed by the analytics provider, (Elastic "ELK" stack) and the ADPM system, (GitHub Actions)
@@ -54,9 +54,19 @@ yourself with your student environment.
 
    .. image:: images/app_page.png
 
-#. Either copy of double-click on the link entitled 'e_consul_public_address' to navigate to your consul server.  In
+#. Either copy of double-click on the link entitled *e_consul_public_address* to navigate to your consul server.  In
    addition to the central ADPM consul server, each student environment includes a consul server instance.  The consul
    server provides `application service discovery <https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/declarations/discovery.html#service-discovery-using-hashicorp-consul>`_ as well as hosting scaling event telemetry data.
 
+   As backend application, (NGINX) is scaled up/down the individual workloads are registered with consul service discovery.
+   The associated BIG-IP(s) periodically poll the consul server and add/remove pool members accordingly.  Refer to the above
+   link for specific guidance and information related to F5 Service Discovery with Consul.
+
    .. image:: images/consul_front.png
+
+#. In addition to the above services, the Terraform deployment output includes the management address and credentials for the 
+   initial BIG-IP deployed.  While not necessary for this particular lab, you may use the suppled credentials and address to 
+   connect to BIG-IP's management interface.  *Note:* The BIG-IP management interface is avialable via port *8443*.
+
+
 
