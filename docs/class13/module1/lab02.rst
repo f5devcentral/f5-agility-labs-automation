@@ -7,6 +7,7 @@ BIG-IPs are preconfigured to use `F5 Telemetry Streaming <https://www.google.com
 data to the ELK stack.  As a student, your job will be to use configure your ELK stack to monitor the log data and
 send alert triggers to the ADPM system when scaling of either the BIG-IP frontend or backend workloads are warrented.
 
+
 **Exercise 1 - Create Index Pattern**
 
 #. From your VS Code browser page, either copy of double-click on the link entitled **f_elk_public_address**.  You are 
@@ -40,6 +41,8 @@ send alert triggers to the ADPM system when scaling of either the BIG-IP fronten
 
    .. image:: images/index_3.png
 
+
+
 **Exercise 2 - Enable Elastic Trial License**
 
 #. Your ELK stack will initially deploy with a free basic license.  However, to make use of alerts and webhook notifications,
@@ -61,6 +64,8 @@ send alert triggers to the ADPM system when scaling of either the BIG-IP fronten
 #. You should be presented with a notification screen as shown below signifying license activation and expiration date.  
 
    .. image:: images/license_3.png
+
+
 
 **Exercise 3 - Create Watcher Alerts**
 
@@ -142,5 +147,3 @@ your thresholds, you may already have alerts firing. The Watcher screen provides
 section you will generate some traffic and monitor scaling events using your Consul server.
 
    .. image:: images/alert_final.png
-
-
