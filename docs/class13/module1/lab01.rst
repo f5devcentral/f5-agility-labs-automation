@@ -47,7 +47,7 @@ yourself with your student environment.
 
 #. Either copy of double-click on the link entitled **d_application_address**.  This points to the Azure load balancer
    frontend address, (VIP).  As BIG-IP instances are deployed they are added to the Azure load balancer's backend 
-   pool.  Note; this solution does not make use of native cloud scaling mechanims.  Rather, scaling decisions and
+   pool.  **Note:** This solution does not make use of native cloud scaling mechanims.  Rather, scaling decisions and
    actions are performed by the analytics provider, (Elastic "ELK" stack) and the ADPM system, (GitHub Actions)
    respectively.  Using your browser, navigate to application's frontpage, (you will need to accept the certificate
    erors to continue).  Your front page will be similar to the example below.

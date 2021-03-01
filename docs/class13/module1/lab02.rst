@@ -9,10 +9,58 @@ send alert triggers to the ADPM system when scaling of either the BIG-IP fronten
 
 **Exercise 1 - Create Index Pattern**
 
-#. From your VS Code browser page, either copy of double-click on the link entitled **f_application_address**.  This points to the Azure load balancer
-   frontend address, (VIP).  As BIG-IP instances are deployed they are added to the Azure load balancer's backend 
-   pool.  No
+#. From your VS Code browser page, either copy of double-click on the link entitled **f_elk_public_address**.  You are 
+   presented with the logon page shown below.  Use the relevant credentials provided in the startup section to log into
+   Kibana, (the ELK stack visualization service and the '*K*' in ELK).
+
+   .. image:: images/elk_login.png
+
+#. Upon your initial login, you will be provided an option to add data or explore the environment on your own, (see below).
+   Since we have already configured data ingestion via F5 Telemetry Streaming select *'Explore on my own'*.
+
+   .. image:: images/elk_explore.png
+
+#. Next, you will need to create an index pattern.  The index pattern will provide a starting base in which to query injested
+   BIG-IP telemetry.  From the upper-left corner select the menu icon and navigate down the sidebar menu to the '*Analytics*'
+   section and select '*Discover*', (see below).
+
+   .. image:: images/elk_discover.png
+
+#. From the center panel, select '*Create index pattern*', (see below).
+
+   .. image:: images/index_1.png
+
+#. On the *Create Index Pattern* screen enter ``F5-*`` for the index pattern name.  As the exmple below illustrates, you should
+   several indexes listed below.  As telemetry data is streamed from the BIG-IP(s) to the ELK stack, (via Logstash - the '*L*' in ELK)
+   it is assigned an index with a pattern of **f5-%{+YYYY.MM.dd.hh.mm}**.
+
+   .. image:: images/index_2.png
+
+#. Select **@timestamp** from the drop-down list for the '*Time Field*'.  Select '*Create index pattern*' to complete the process.
+
+   .. image:: images/index_3.png
 
 **Exercise 2 - Enable Elastic Trial License**
 
+#. Your ELK stack will initially deploy with a free basic license.  However, to make use of alerts and webhook notifications,
+   (either via Kibana or Watcher) you must first upgrade the ELK stack license.  To do this, you will enable a 30-day trial
+   license.  From the upper-left corner select the menu icon and navigate down the sidebar menu to the bottom and select '*Stack Management*'
+   to open the *Stack Management* side-bar submenu.  
+   
+   .. image:: images/stack_mgmt.png  
+   
+#. From the Stack Management menu scroll to the bottom and select '*License Management*' 
+   
+   .. image:: images/license_1.png
+
+#. You will be presented with an option to either update your license or start a 30-day trial.  Select '*Start trial*' to activate 
+   the license. 
+
+   .. image:: images/license_2.png
+
+#. You should be presented with a notification screen as shown below signifying license activation and expiration date.  
+
+   .. image:: images/license_3.png
+
 **Exercise 3 - Create Watcher Alerts**
+
