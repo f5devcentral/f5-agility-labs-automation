@@ -28,18 +28,28 @@ your Consul server to view scaling logs entries and monitor service discovery.
 
    .. image:: images/locust_5.png
 
-#.  Select '*Start swarming*' to begin taffic generation.  You can monitor traffic from the statistics tab, (see below).
+#.  Select '*Start swarming*' to begin taffic generation.  You can monitor traffic generation from the statistics tab, (see below).
 
    .. image:: images/locust_6.png
 
 **Exercise 2 - Monitor Scaling Operations**
 -------------------------------------------
     
-#. 
+#. With traffic now flowing through to/from the application, you can now monitor for scaling events.  Return to your Conul server
+   and navigate to '*Services*' tab and select the '*nginx*' service.  Depending upon how you set workload alert threshholds in the 
+   previous lab, you will see instances being added/removed from the service.  As the example shows below, the backend workloads
+   have been scale up to the maximum of three from the starting quantity of two, (2).  For additional testing, you can return to the
+   Kibana UI and modify alert thresholds and/or manually trigger alerts.
+   alert settings
 
    .. image:: images/monitor_1.png
 
-#. 
+#. To monitor BIG-IP scaling operations, (along with workload scaling) from the Consul server navigate to the '*Key/Value*' tab and
+   transverse the tree to - ``workflows/runs/``.  As scaling events are run on the central ADPM processor, log entries are pushed 
+   to the local Consul Server.  As the example shows below, scaling events are reported in JSON format.  Navigate the listed jobs
+   to review your scaling events.  Additionally, the class instructors can review your deployments via the Azure portal. 
 
    .. image:: images/monitor_2.png
+
+
 
