@@ -56,8 +56,7 @@ yourself with your student environment.
 
 #. Either copy of double-click on the link entitled 'e_consul_public_address' to navigate to your consul server.  In
    addition to the central ADPM consul server, each student environment includes a consul server instance.  The consul
-   server provides `application service discovery`_ as well as hosting scaling event telemetry data.
+   server provides `application service discovery <https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/declarations/discovery.html#service-discovery-using-hashicorp-consul>`_ as well as hosting scaling event telemetry data.
 
    .. image:: images/consul_front.png
 
-   .. _application service-discovery: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/declarations/discovery.html#service-discovery-using-hashicorp-consul
