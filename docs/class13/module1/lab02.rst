@@ -102,7 +102,7 @@ the screenshot example below to create the first alert, (*MaxCpuAlert*).
    across alerts.
 
    .. list-table::
-    :widths: 20 40 80
+    :widths: 20 20 20 20 20 20 40
     :header-rows: 1
     :stub-columns: 1
     
