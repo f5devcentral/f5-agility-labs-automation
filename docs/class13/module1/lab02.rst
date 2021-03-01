@@ -64,3 +64,25 @@ send alert triggers to the ADPM system when scaling of either the BIG-IP fronten
 
 **Exercise 3 - Create Watcher Alerts**
 
+#. You will be using Elastic Watcher to monitor telemetry data and alert.  While still in the *Stack Management* submenu
+   navigate to and select '*Watcher*', (see above).  From the center panel select '*Create*' and then '*Create threshold alert*'.
+
+   .. image:: images/create_watch.png
+
+#.  
+
+   .. image:: images/alert_1.png
+
+#. 
+   .. image:: images/alert_2.png
+
+#. 
+   .. image:: images/alert_3.png
+
+#. 
+   .. image:: images/alert2.png
+
+#. 
+   .. image:: images/alert_final.png
+
+
