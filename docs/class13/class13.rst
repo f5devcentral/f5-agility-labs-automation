@@ -7,6 +7,7 @@ F5's Automation Toolchain can integrate with third party analytics provider(s) t
 During this lab attendees will:
 
 #. Utilize various third-party technologies/services along with F5’s automation toolchain including:
+   
    - **F5 BIG-IP(s)** providing L4/L7 ADC Services
    - F5 DO, (**Declarative Onboarding**) and AS3, (**Application Services 3 Extension**) to deploy to configure BIG-IP application services
    - F5 TS, (**Telemetry Streaming**) to stream telemetry data to a third party analytics provider
