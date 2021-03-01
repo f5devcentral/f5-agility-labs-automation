@@ -18,7 +18,8 @@ your Consul server to view scaling logs entries and monitor service discovery.
 
    .. image:: images/locust_2.png
 
-#. 
+#. Now with Locust running, return to your UDF deployment tab and navigate to the client component.  Select '*Locust*' from
+   the *Access* drop-down menu.  A new browser tab will open
 
    .. image:: images/locust_3.png
 
