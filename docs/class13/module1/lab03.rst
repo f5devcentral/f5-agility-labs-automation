@@ -52,3 +52,5 @@ your Consul server to view scaling logs entries and monitor service discovery.
    to review your scaling events.  Additionally, the class instructors can review your deployments via the Azure portal. 
 
    .. image:: images/monitor_2.png
+
+   This concludes the ADPM Performance-based Autoscaling lab.
