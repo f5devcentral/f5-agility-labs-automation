@@ -52,5 +52,3 @@ In this lab section we are introducing Postman, an API Development Environment t
 **NOTE:** By sending this GET request to 'https://10.1.1.9/mgmt/shared/telemetry/info' with the correct credentials, the response shows details of the TS API available on this BIG-IP. 
 
 **NOTE:** This Telemetry Streaming RPM package was pre-installed. For instructions, visit the link here: https://clouddocs.f5.com/products/extensions/f5-telemetry-streaming/latest/userguide/installing-ts.html
-
------------------------------------------------- 

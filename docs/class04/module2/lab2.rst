@@ -33,7 +33,7 @@ Follow these steps to complete this lab:
 
 #. Click continue to enter into the class: 
    
-    .. image:: ./welcome.jpg
+    .. image:: ./welcome.png
 
 
 #. You are now in the class. look around and familiarize yourself with the various comoments of this dashboard. 

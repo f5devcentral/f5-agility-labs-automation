@@ -94,17 +94,15 @@ In this lab we will configure our Telemetry Streaming JSON declaration to establ
 
 #. You can manipulate the search field with our examples.
 
-    .. code-block:: sql
+   .. code-block:: sql
     
-        fields @timestamp, @message, system.hostname, system.cpu, system.tmmCpu
-            | stats avg(system.cpu) as SystemCpu, avg(system.tmmCpu) as TmmCpu by bin(5m), system.hostname
+      fields @timestamp, @message, system.hostname, system.cpu, system.tmmCpu
+         | stats avg(system.cpu) as SystemCpu, avg(system.tmmCpu) as TmmCpu by bin(5m), system.hostname
 
+   .. code-block:: sql
 
-    .. code-block:: sql
-
-        fields @timestamp, @message, system.hostname
-            | parse @message "clientSideTraffic.bitsIn\":*," as clientsin
-            | parse @message "clientSideTraffic.bitsOut\":*," as clientsout
-
+      fields @timestamp, @message, system.hostname
+         | parse @message "clientSideTraffic.bitsIn\":*," as clientsin
+         | parse @message "clientSideTraffic.bitsOut\":*," as clientsout
 
 #. Paste the code blocks in and click Run Query 

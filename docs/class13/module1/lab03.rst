@@ -1,7 +1,7 @@
 Lab 3 - Generating Traffic and Monitoring Scaling Events
 ========================================================
 
-In this lab, you will use a traffic generator, (`Locust<https://locust.io/>`_) to generate traffic.  Afterwards, you use 
+In this lab, you will use a traffic generator, (`Locust <https://locust.io/>`_) to generate traffic.  Afterwards, you use 
 your Consul server to view scaling logs entries and monitor service discovery.
 
 **Exercise 1 - Generate Traffic**
