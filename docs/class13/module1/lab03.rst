@@ -26,6 +26,15 @@ your Consul server to view scaling logs entries and monitor service discovery.
 
    .. image:: images/locust_4.png
 
+#. 
+
+   .. image:: images/locust_5.png
+
+#. 
+
+   .. image:: images/locust_6.png
+
+
 **Exercise 2 - Monitor Scaling Operations**
 -------------------------------------------
     
