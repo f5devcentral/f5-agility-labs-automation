@@ -54,7 +54,7 @@ send alert triggers to the ADPM system when scaling of either the BIG-IP fronten
    .. image:: images/license_1.png
 
 #. You will be presented with an option to either update your license or start a 30-day trial.  Select '*Start trial*' to activate 
-   the license. 
+   the license.  Select the default on the pop-up agreement. 
 
    .. image:: images/license_2.png
 
@@ -64,25 +64,83 @@ send alert triggers to the ADPM system when scaling of either the BIG-IP fronten
 
 **Exercise 3 - Create Watcher Alerts**
 
-#. You will be using Elastic Watcher to monitor telemetry data and alert.  While still in the *Stack Management* submenu
-   navigate to and select '*Watcher*', (see above).  From the center panel select '*Create*' and then '*Create threshold alert*'.
+You will be using Elastic Watcher to monitor telemetry data and provide alert notifications.  While still in the *Stack Management*
+submenu navigate to and select '*Watcher*', (see above).  From the center panel select '*Create*' and then '*Create threshold alert*'.
 
    .. image:: images/create_watch.png
 
-#.  
+You will be creating a total of four (4) alerts.  These alerts will monitor and respond to increases/decreases in BIG-IP cpu
+utilization and current application connections.  In the event a member BIG-IP's cpu utilization exceeds or falls below the
+specified thresholds during the specified interval, an alert will fire triggering a webhook call to the ADPM *alertForwarder*
+service.  The alertForwarder will subsequently post a BIG-IP scaling request to the central processor, (utlizing the 
+repo's **GitHub Actions**).
+   
+Likewise, if current connections fall outside of the specified thresholds a similar alert will be fired.  However, rather than
+scaling BIG-IP instaances, this will trigger a scaling (up/down) of the backend application workloads, (lab ex: NGINX).  Use
+the screenshot example below to create the first alert, (*MaxCpuAlert*).
+
+#. Provide a name, select the previously created index pattern of ``f5-*``, timestamp and timing parameters as shown below. Under
+   conditions section seclect **Max()**, **myMaxCpu**, **top 1**, **hostname.keyword**, **5000** and **5 minutes** as shown below.
+   
+   **Note:** You should see a green line of the displayed chart that represents the selected field's, (*myMaxCpu*) value trend.  
+   This will aid you in setting threshold values appropriately to ensure scaling events are triggered.  With that said, the lab
+   environment has been configured with hard limits of (3) BIG-IP instances and (3) workload instances to ensure availability of
+   resources for all students.  Additionally, the ADPM processor is designed to throttle requests and prevent superfluous "over-scaling".
+   Requests that are triggered but not fullfilled, (along with successful requests) are logged on your environment's Consul server.  
 
    .. image:: images/alert_1.png
 
-#. 
+#. In the *Actions* section select '*Add action*'.  From the menu pop-up select '*Webhook*', (see below).
    .. image:: images/alert_2.png
 
-#. 
+#. Use the below example to complete the webhook section.  When you are done select '*Create alert*'.  For the webhook body 
+   enter ``{"source": "elk", "scaleAction":"scaleOutBigip", "message": "{{ctx.payload}}"}``.
+
    .. image:: images/alert_3.png
 
-#. 
-   .. image:: images/alert2.png
+#. Use the table and example images below to create three additional alerts.  Entries not noted in the table below are identical 
+   across alerts.
 
-#. 
+   .. list-table::
+    :widths: 20 40 80
+    :header-rows: 1
+    :stub-columns: 1
+    
+    * - **Name**
+      - **WHEN**
+      - **OF**
+      - **GROUPED OVER**
+      - **IS**
+      - **FOR THE LAST**
+      - **Webhook body**
+    * - MinCpuAlert
+      - max()
+      - myMaxCpu
+      - top 1 of hostname.keyword
+      - BELOW 1000
+      - 5 minutes
+      - ``{"source": "elk", "scaleAction":"scaleInBigip", "message": "{{ctx.payload}}"}``
+    * - MaxConnsAlert
+      - max()
+      - myCurCons
+      - top 1 of hostname.keyword
+      - ABOVE 500
+      - 5 minutes
+      - ``{"source": "elk", "scaleAction":"scaleOutWorkload", "message": "{{ctx.payload}}"}``
+    * - MinCpuAlert
+      - max()
+      - myCurCons
+      - top 1 of hostname.keyword
+      - BELOW 50
+      - 5 minutes
+      - ``{"source": "elk", "scaleAction":"scaleInWorkload", "message": "{{ctx.payload}}"}``
+
+   .. image:: images/alerts.png
+
+Below is an example of a completed Watcher screen.  TS logs are streamed in 60-second intervals.  Depending upon how you set
+your thresholds, you may already have alerts firing. The Watcher screen provides one way to monitor alert events.  In the next
+section you will generate some traffic and monitor scaling events using your Consul server.
+
    .. image:: images/alert_final.png
 
 
