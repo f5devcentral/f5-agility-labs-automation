@@ -1,9 +1,6 @@
 Lab 4 - Creating FAST Template for future app deployments
 =========================================================
 
-
-
-
 Connecting to F5 Devices
 ------------------------
 
@@ -23,15 +20,14 @@ Connecting to F5 Devices
 
 
 Create AS3 (from Lab03) to FAST YML
-----------------------------------
+-----------------------------------
 #. Click on the F5 logo on the left to access F5 HOST
 
-
 Upload FAST(zip package)  to BIG-IP
----------------------
+-----------------------------------
 
 Render YAML template locally
------------------------------
+----------------------------
 
 Templatize AS3 with WAF Policy to FAST YML
 ------------------------------------------
@@ -40,8 +36,7 @@ Upload FAST(zip package) to BIG-IP
 ----------------------------------
 
 Deploy FAST YML (WAF policy) to BIG-IP using VSCode
---------------------------------------------------
+---------------------------------------------------
 
 Deploy FAST YML (WAF policy) to BIG-IP using GUI
 ------------------------------------------------
-
