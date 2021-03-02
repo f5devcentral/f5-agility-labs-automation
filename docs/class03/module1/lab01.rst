@@ -1,186 +1,192 @@
-Lab 1 - Creating a Simple HTTP Application using AS3
-====================================================
+Lab 1 - Creating a Simple HTTPS Application using FAST - (F5 Application Services Template)
+===========================================================================================
 
-In this lab, we will create a simple HTTP application using AS3. Before sending
-the AS3 declaration, we will use Microsoft Visual Studio Code to validate our
-JSON schema.
+Getting the latest vscode-f5 extension
+--------------------------------------
 
-**Exercise 1 - AS3 declaration**
+To download latest vscode extension
 
-#. Expand the AS3 collections folder that we imported by clicking on it.
+   .. code-block:: bash
+      :linenos:
 
-#. Open the ``Lab 1`` folder.
+      curl -LO https://github.com/f5devcentral/vscode-f5/releases/download/v2.10.7/vscode-f5-2.10.7.vsix 
 
-#. For the lab, we will be using token-based authentication via HTTP/HTTPS to
-   the BIG-IP API by sending requests to the BIG-IP and including a valid
-   BIG-IP authentication token in the ``X-F5-Auth-Token`` header.
 
-   .. image:: images/token_auth.jpg
+To always download latest vscode-f5 extension (requires jq in bash "sudo apt install jq -Y")
 
-#. Click and examine the ``BIG-IP Authenticate`` declaration. Click ``Send``
-   and ensure a 200 OK response in the Postman response window.
-   
-   .. image:: images/Postname200OK_Highlighted.JPG
+   .. code-block:: bash
+      :linenos:
 
-#. Now that we have setup token authentication, we can continue working with
-   our BIG-IP.
+      curl -sL https://api.github.com/repos/f5devcentral/vscode-f5/releases/latest | jq .assets[0].browser_download_url | xargs wget
 
-#. We will send a GET request to our BIG-IP to see information about the AS3
-   software package that was previously installed.
 
-#. Locate the ``GET AS3 Info`` request and double click. Notice that we are
-   sending a GET request to an API endpoint with an empty body. Click the blue
-   **Send** button, and ensure you get a 200 OK response.
+F5 Devices
+----------
 
-#. In the response, you will see the version fo AS3 that is installed on the
-   BIG-IP.
+F5 Device connection information for reference in the following tasks
 
-#. Locate the ``HTTP Application`` request in the same folder. Notice that we
-   are sending a POST request to an API endpoint. To examine the body of our
-   request, click the ``Body`` tab.
+bigip1 - mgmt - 10.1.1.6 - admin/admin
+bigip2 - mgmt - 10.1.1.7 - admin/admin
 
-#. Before we send our AS3 JSON to the BIG-IP, we want to ensure the schema is
-   valid. In order to do this, we will use Visual Studio Code in the next
-   Exercise.
 
-**Exercise 2 - Visual Studio Code Schema Validation**
+Task 1 - Access extesnion documentation
+---------------------------------------
 
-#. Open Visual Studio Code.
+How to access vscode-f5 extension documenation
 
-   .. image:: images/vs_code.jpg
+** gif/screenshot of documentation link in "Documentation/Examples" view **
 
-#. Once open, create a new working file by navigating to ``File -> New File``.
 
-   .. image:: images/vscode_newfile.jpg
+Task 2 - Add F5 device to vscode-f5 extension
+---------------------------------------------
 
-#. Copy the contents of the Postman Job ``AS3 Schema Validation`` JSON body and paste
-   into VS Code. 
-   
-#. Save the file to your desktop by selecting ``File -> Save As``. Note: make sure to save with a .json
-   filename.
+The following describes how to manualy add an F5 device to the extension
 
-#. Once the file has been saved, you will notice a wavy line around line 17.
-   This is notifying you that there is a syntax error. You can hover over the
-   wavy line to see more information.
+** gif/screenshot of main extension hosts view **
 
-   .. image:: images/tenantt.jpg
+#. Click ``ADD HOST`` in the hosts view
+#. Enter ``admin@10.1.1.6``, hit Enter
+#. Click on host entry to connect
+#. type in password of ``admin``
 
-   You **must** save the file before Visual Studio Code will show you a syntax
-   error.
+   Notice the discovered ATC services
 
-#. For a full declaration, it is easier to view the Problems
-   (navigate to ``View -> Problems``).
 
-   .. image:: images/view_problems.jpg
+Task 3 - Import devices
+-----------------------
 
-#. Correct the JSON syntax error by correcting the typo from ``Tenantt`` to
-   ``Tenant``.
+How to import devices for larger/automated environments
 
-   .. image:: images/tenant.jpg
+#. Open a new tab by double clicking in the tab bar along the top
+#. Paste the following into the editor
 
-#. Using Schema Validation can be very useful when creating AS3 JSON
-   declarations. It can help check the accuracy of a declaration before
-   deployment for existing declarations. It can also be used as a powerful tool
-   while composing your declarations.  It can suggest valid options for a
-   property in a declaration and inform you of required values.
 
-   .. image:: images/schema1.jpg
-   .. image:: images/schema2.jpg
+   .. code-block:: bash
+      :linenos:
 
-#. Now that we have validated our JSON schema, we could confidently send this
-   declaration to the BIG-IP to successfully create an HTTP application.
+       {
+        "device": "admin@10.1.1.7",
+        "password": "admin"
+       }
+      
 
-**Exercise 3 - Send AS3 declaration**
+#. Highlight the json object we just pasted, then right-click in editor, select ``Import Devices``
 
-#. Navigate back to Postman and find the ``HTTP Application`` Postman Job file. Note
-   the only difference between this and the one we used to validate is the
-   first line with the key/value of 'schema' and the schema format URL.
+Install FAST extension
+---
 
-#. Send the AS3 declaration by clicking the blue ``Send`` button. Ensure once
-   it is done processing that you receive a 200 OK response.
+How to install ATC services using the extension
 
-   .. image:: images/200.jpg
+#. Connect to admin@10.1.1.6 by clicking the device in the ``F5 HOSTS`` view
+#. Press ``F1``, then type ``f5 install``
+#. Select FAST
+#. Select latest version (or 1.6.0)
 
-**Exercise 4 - Confirm changes on BIG-IP**
+The vscode-f5 extension quieries the repos for the different ATC version to consistantly provide an update to date list.  Once a version is selected, the extension will download the necessary assets to the local machine (in this case the linux host vscode is running on), then it will upload and install the ATC ILX RPM on the F5.  The install happens rather quickly, but it can take another 30-60 seconds for all the servcies to restart and present the changes.  
 
-#. Login to the BIG-IP to confirm our changes. Open Chrome and navigate to
-   ``https://10.1.1.4`` (or you can click on the ``BIG-IP01`` bookmark in
-   Chrome).
+After everything is complete, the vsocde-f5 extension should reconnect and refresh all the details
 
-#. Login with the following credentials: username = admin , password = admin.
+Notice that FAST now shows as installed (with version number) along the bottom of the editor
 
-#. Once you are logged in, expand the ``Local Traffic`` tab by clicking on it
-   on the left and click ``Virtual Servers``.
+** screenshot/gif **
 
-#. Change your partition by choosing the tenant we created, ``http_tenant`` on
-   the top right of your BIG-IP GUI.
 
-   .. image:: images/change_tenant.jpg
+Deploy application via FAST template in tmui
+---
 
-#. You should now see the virtual server that was just created.
+#. Under iApps >> Application Services : Applications LX, select ``F5 Application Services Templates``
 
-   .. image:: images/virtual_server.jpg
+   login if needed ``admin/admin``
 
-#. Navigate to ``Pools`` and examine the pool that was created.
+   Select the ``Deploy`` tab, expand the ``examples`` section, select ``examples/simple_udp_defaults``
 
-   .. image:: images/pool.jpg
+   Notice that the template has default parameters
 
-#. Click on the ``http_pool`` and click on the ``Members`` tab to view the pool
-   members.
+   Click each of the buttons at the bottom, next to the submit button, to see the different outputs:
+   - View Template
+   - View Schema
+   - View Inputs
+   - View Rendered
 
-   .. image:: images/pool_members.jpg
+   Now click  ``Submit`` to deploy an application using the fast template
 
-**Exercise 5 - Modify AS3 declaration**
+   This will bring you back to the ``Deploy Log`` tab and provide a status the application deployment process
 
-#. Currently, our declaration only has 1 pool member. In this exercise, we will
-   modify the AS3 declaration to add another pool member to our virtual server.
 
-#. Go back to Postman and find the AS3 declaration we just pushed previously,
-   ``HTTP Application``.
+#. Back in the vscode-f5 extension refresh the FAST/AS3 views with the refresh icon in the upper right hand corner of each view window
 
-#. Locate in the declaration where we declare the pool members:
+   Explore the windows to see the deployed FAST application/task, and how it resulted in an AS3 Tenant/Task
 
-   .. image:: images/one_pool_member.jpg
+#. Delete application
 
-#. In order to add another pool member, we must follow appropriate syntax and
-   declare an additional pool member, ``10.1.10.31``, as follows:
+   Bank in the TMUI (F5 GUI), in the ``F5 Application Services Templates screen, select the ``Application List``.
 
-   .. image:: images/two_pool_members.jpg
+   We should see the application we deployed with FAST.
 
-#. Once we have done this, we can send this updated declaration by clicking the
-   blue ``Send`` button.
+   On the right side of the application row item, select the trash icon to delete the application.
 
-   .. image:: images/send.jpg
 
-#. Go back to BIG-IP to see the new pool member that was added. Note: if you are still on the ``Pool`` page, you can click ``Refresh`` on the browser to see the newly added pool member.
+Deploy FAST application via API
+---
 
-   .. image:: images/PoolMemberAdded.JPG
+#. In Coder (browser tab for vscode), paste the following into an editor
 
-#. **NOTE**: When changing the AS3 declaration, we changed the end state which
-   we would like the BIG-IP to be in. This is one major advantage of a
-   declarative interface.
+   .. code-block:: json
+      :linenos:
 
-**Exercise 6 - Delete HTTP tenant**
+      {
+      "name": "examples/simple_http",
+      "parameters": {
+         "tenant_name": "apiTenant",
+         "application_name": "apiTenant",
+         "virtual_port": 80,
+         "virtual_address": "192.168.230.40",
+         "server_port": 8080,
+         "server_addresses": [
+               "192.168.100.11",
+               "192.168.100.12"
+         ]
+         }
+      }
 
-#. In order to delete our virtual server, pool, and pool members, we can simply
-   send a POST with an empty tenant body.
+#. Highlight the objec, right-click, then select ``Deploy Fast App``
 
-   .. image:: images/clear_tenant.jpg
+   This should produce the following output in another tab
 
-#. Since AS3 is declarative, it will notice that we are sending a POST with an
-   empty tenant body, and by default AS3 will delete the existing virtual
-   server, pool and pool members.
+      .. code-block:: json
+         :linenos:
 
-#. In Postman, find the ``Delete Application`` declaration. Examine the URI and
-   Body declaration. Notice we are sending a POST to the same API endpoint, but
-   take a close look at the JSON body.
+         {
+            "id": "4b06e4d9-01f1-497e-93e5-662d5eb75d1d",
+            "code": 200,
+            "message": "success",
+            "name": "examples/simple_http",
+            "parameters": {
+               "tenant_name": "apiTenant",
+               "application_name": "apiTenant",
+               "virtual_port": 80,
+               "virtual_address": "192.168.230.40",
+               "server_port": 8080,
+               "server_addresses": [
+                     "192.168.100.11",
+                     "192.168.100.12"
+               ]
+            },
+            "tenant": "apiTenant",
+            "application": "apiTenant",
+            "operation": "create"
+         }
 
-#. The body declares a AS3 tenant called http_tenant, but the body describing
-   the state of the tenant is empty. By default, AS3 will remove the virtual
-   server, pool and pool members. **NOTE:** Since this would cause the entire
-   tenant to be empty, AS3 will also remove the tenant for us.
+#. Check the TMUI to see that the application is now in the ``Application List`` tab
 
-#. Click ``Send`` and ensure a 200 OK response. Navigate back to the BIG-IP,
-   refresh the page and confirm the changes that the tenant has been deleted.
+#. Check out the vscode-f5 FAST/AS3 views to see what was deployed
 
-   .. image:: images/delete_tenant.jpg
+
+Delete application through the FAST API
+---
+
+#. In the Coder UI, right-click on the Deployed FAST application in the FAST view, then select ``Delete Fast App``
+
+
+
+making fast template
