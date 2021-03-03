@@ -99,8 +99,9 @@ the screenshot example below to create the first alert, (*MaxCpuAlert*).
 #. In the *Actions* section select '*Add action*'.  From the menu pop-up select '*Webhook*', (see below).
    .. image:: images/alert_2.png
 
-#. Use the below example to complete the webhook section.  When you are done select '*Create alert*'.  For the webhook body 
-   enter ``{"source": "elk", "scaleAction":"scaleOutBigip", "message": "{{ctx.payload}}"}``.
+#. Use the below example to complete the webhook section.  When you are done select '*Create alert*'.  Specifiy ``alertforwarder.f5demo.net`` for the Host. For the webhook body 
+   enter ``{"source": "elk", "scaleAction":"scaleOutBigip", "message": "{{ctx.payload}}"}``.  The *alertForwarder* service is expecting the JSON formatted 
+   payload and will parse according to source. The *alertForwarder* call the central processer, (via webhook) to trigger scaling.
 
    .. image:: images/alert_3.png
 
