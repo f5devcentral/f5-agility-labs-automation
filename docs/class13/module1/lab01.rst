@@ -24,7 +24,7 @@ ADPM system uses Terraform and the student's remote state file to perform scalin
    ADPM central repo.  You will use VS Code to clone and deploy your application environment.  From VS Code, 
    select the 'Terminal' tab, navigate to the home directory and clone the repo using the below commands.
     
-    ``cd $home && git clone http://https://github.com/f5devcentral/adpm-agility.git``
+    ``cd $home && git clone https://github.com/f5businessdevelopment/adpm-agility.git``
 
    .. image:: images/vscode1.png
 
