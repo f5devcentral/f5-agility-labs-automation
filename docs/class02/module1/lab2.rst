@@ -8,10 +8,17 @@ devices. These differences illustrate examples where templatizing would work
 exceptionally well. For these situation you could use a templating tool that an
 orchestrator may provide such as Jinja2 in Ansible.
 
-Below is our declaration for **BIGIP-02**.  Copy **all** of the declaration to
-be used in Postman.
+#. Lets connect to **BIGIP-02** in VSCode in preparation to send our declaration.
 
-.. code-block:: JSON
+   In the F5 host section select the host for **BIGIP-02**
+
+   .. image:: images/f5_extension_select_host_01.png
+
+#. Below is our declaration for **BIGIP-02**.  Copy the declaration to be used
+   in the VScode extension. Use the copy button in the upper right hand corner
+   of the declaration.
+
+   .. code-block:: JSON
 
     {
         "$schema": "https://raw.githubusercontent.com/F5Networks/f5-declarative-onboarding/master/src/schema/latest/base.schema.json",
@@ -164,48 +171,36 @@ be used in Postman.
             "trust": {
                 "class": "DeviceTrust",
                 "localUsername": "admin",
-                "localPassword": "@gi1ity2020",
+                "localPassword": "@gi1ity2021",
                 "remoteHost": "/Common/failoverGroup/members/0",
                 "remoteUsername": "admin",
-                "remotePassword": "@gi1ity2020"
+                "remotePassword": "@gi1ity2021"
             }
         }
     }
 
-|
+   Just as we did in the previous lab, you will use VSCode and POST the 
+   declaration to **BIGIP-02**
 
-Next, launch Postman on your jump host. Expand the Declarative Onboarding
-Collection folder, then Declarative Onboarding Request, lastly BIGIP-02.  
-Select ``POST DO Declaration to Configure BIG-IP``
 
-.. image:: images/postman_09.png
+#. Open a new file within VSCode and paste the declaration above. Be sure to
+   set the language mode to JSON.
 
-|
+   .. note::  If you have forgotten how to change the language mode and POST the
+      DO declaration, refering back to the example in the first lab.
 
-Notice the following in the request:
+   Once you have post the declaration check the status of the declaration being
+   processed.
 
-- The request URL **https://{{bigip-02}}/mgmt/shared/declarative-onboarding**
-- The language is set to **JSON**
+   .. note::  Clustering via declarative onboarding can take several minutes
+      to sync and establish, this is normal behavior.
 
-|
+#. Once the declaration is complete return to either BIG-IP in Firefox and 
+   check the cluster configuration and status. Both units should be clustered with
+   all onboarding objects present from the declaration.
 
-Paste the JSON declaration into the Body of the Postman application and click
-``Send``
-
-.. image:: images/postman_10.png
-
-Use the ``GET Declarative Onboarding Status`` request to monitor when the
-declartation is complete.
-
-.. note::  Clustering via declarative onboarding can take several minutes
-   to sync and establish, this is normal behavior.
-
-Return to either **BIG-IP** in Chrome and check the cluster configuration and
-status. Both units should be clustered with all onboarding objects present from
-the declaration.
-
-#. In the **BIGIP** console navigate to **Device Management -> Device Groups**
+   In the BIG-IP console navigate to **Device Management -> Device Groups**
    and view the device group that was created by the declaration.  Click on the
    ``failoverGroup`` and verify both devices are members of the group.
 
-Feel free to check other objects such as Self IPs, NTP settings, user accounts, etc.
+   Feel free to check other objects such as Self IPs, NTP settings, user accounts, etc.

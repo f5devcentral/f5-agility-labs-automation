@@ -25,3 +25,5 @@ Class 10- Advanced BIG-IP Configuration Management with Ansible
 Class 11- 101 of Terraform BIG-IP Provider
 
 Class 12- Cisco ACI Integration with BIG-IP
+
+Class 13- ADC Performance Monitoring and Scaling Lab

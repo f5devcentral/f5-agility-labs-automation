@@ -6,9 +6,9 @@ COMMAND="make -C docs html"
 
 . ./containthedocs-image
 
-sudo rm -rf docs/_build/
+sudo rm -rf docs/_build
 
-exec docker run --rm -it \
+exec sudo docker run --rm -t \
   -v "$PWD":"$PWD" --workdir "$PWD" \
   ${DOCKER_RUN_ARGS} \
   -e "LOCAL_USER_ID=$(id -u)" \

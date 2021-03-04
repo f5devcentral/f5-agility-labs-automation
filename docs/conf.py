@@ -86,7 +86,8 @@ extensions = [
   'sphinx.ext.extlinks',
   'sphinx.ext.graphviz',
   'sphinxcontrib.nwdiag',
-  'sphinxcontrib.blockdiag'
+  'sphinxcontrib.blockdiag',
+  'sphinx_copybutton'
   #'sphinx.ext.autosectionlabel'
 ]
 
@@ -184,9 +185,6 @@ html_theme_options = {
                         'next_prev_link': True
                      }
 html_last_updated_fmt = '%Y-%m-%d %I:%M:%S'
-
-def setup(app):
-    app.add_stylesheet('css/f5_agility_theme.css')
 
 extlinks = {
     'issues':( ("%s/issues/%%s" % github_repo), 'issue ' )

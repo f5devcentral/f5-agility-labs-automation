@@ -28,6 +28,7 @@ Install FAST template on BIG-IP
 
 The vscode-f5 extension quieries the repos for the different ATC version to consistantly provide an update to date list. Once a version is selected, the extension will download the necessary assets to the local machine (in this case the linux host vscode is running on), then it will upload and install the ATC ILX RPM on the F5. The install happens rather quickly, but it can take another 30-60 seconds for all the servcies to restart and present the changes.
 
+
 After everything is complete, the vsocde-f5 extension should reconnect and refresh all the details
 
 Notice that FAST now shows as installed (with version number) along the bottom of the editor
@@ -105,14 +106,18 @@ Templatize Simple AS3 to FAST YML
 
 .. image:: ../images/yml.png
 
+=======
+Create AS3 (from Lab03) to FAST YML
+-----------------------------------
+#. Click on the F5 logo on the left to access F5 HOST
 
 
 Upload FAST(zip package)  to BIG-IP
 -----------------------------------
-#. 
+
 
 Render YAML template locally
------------------------------
+----------------------------
 
 Templatize AS3 with WAF Policy to FAST YML
 ------------------------------------------
@@ -121,8 +126,7 @@ Upload FAST(zip package) to BIG-IP
 ----------------------------------
 
 Deploy FAST YML (WAF policy) to BIG-IP using VSCode
---------------------------------------------------
+---------------------------------------------------
 
 Deploy FAST YML (WAF policy) to BIG-IP using GUI
 ------------------------------------------------
-
