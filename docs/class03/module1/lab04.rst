@@ -54,50 +54,6 @@ Templatize Simple AS3 to FAST YML
 .. literalinclude:: oo.json
   :language: JSON
 
-.. code block:: 
-   {
-	"$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
-	"class": "AS3",
-	"action": "deploy",
-	"persist": true,
-	"declaration": {
-		"class": "ADC",
-		"schemaVersion": "3.0.0",
-		"id": "urn:uuid:33045210-3ab8-4636-9b2a-c98d22ab915d",
-		"label": "Sample 1",
-		"remark": "Simple HTTP application with RR pool",
-		"Sample_01": {
-			"class": "Tenant",
-			"A1": {
-				"class": "Application",
-				"template": "http",
-				"serviceMain": {
-					"class": "Service_HTTP",
-					"virtualAddresses": [
-						"10.0.1.10"
-					],
-					"pool": "web_pool"
-				},
-				"web_pool": {
-					"class": "Pool",
-					"monitors": [
-						"http"
-					],
-					"members": [{
-						"servicePort": 80,
-						"serverAddresses": [
-							"192.0.1.10",
-							"192.0.1.11"
-						]
-					}]
-				}
-			}
-		}
-	}
-}
-
-
-
 #. Remaining on the Same window Right Click and Select AS3 to FAST YML Option
 
 .. image:: ../images/as3tofast.png
