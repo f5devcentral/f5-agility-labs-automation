@@ -29,23 +29,22 @@ networks and credentials to use.
     * - BIG-IP01
       - Management: 10.1.1.6,
         Internal: 10.1.10.6,
-        External: 10.1.20.6
+        External: 10.1.20.6, 10.1.20.10
       - admin / admin
     * - BIG-IP02
       - Management: 10.1.1.7,
         Internal: 10.1.10.7,
-        External: 10.1.20.7
+        External: 10.1.20.7, 10.1.20.20
       - admin / admin
-    * - Ubuntu "app" Server,
-      - Management: 10.1.1.5,
-        Internal: 10.1.10.10,
-        None
-      - ubuntu / HelloUDF
-    * - Ubuntu "client" Server
+    * - Ubuntu Server
       - Management: 10.1.1.4,
         Internal: 10.1.10.4,
-        None
-      - ubuntu / HelloUDF
+        External: 10.1.20.4
+      - user / user
+    * - App Server
+      - Management: 10.1.1.5,
+        Internal: 10.1.10.10, 10.1.10.5
+      - None
 
 Starting the Lab
 ----------------
@@ -58,16 +57,15 @@ There is also an instance of Firefox, which will be used to validate virtual ser
 
 #. Click on the ``Components`` tab in your UDF deployment
 
-   .. image:: images/components.jpg
+   .. image:: /class03/images/components.jpg
 
 #. Under ``Systems`` find the ``client`` system, and click ``Access``,
    then click ``VS CODE``.  
    
-   .. image:: images/AccessVScode.jpg
+   .. image:: /class03/images/AccessVScode.jpg
 
 #. A new window will open for the VS-Code program.
 
-   .. image:: images/VScode.jpg
-
+   .. image:: /class03/images/VScode.jpg
 
 

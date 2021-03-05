@@ -1,20 +1,18 @@
-Class 3: Application Deployments with BIG-IP and Application Services (AS3)
-============================================================================
+Class 3: Deploy apps with AS3, FAST, and ACC
+============================================
 
-This class provides hands-on experience using F5's declarative interfaces
-for configuration of a BIG-IP.  Included in this lab is hands-on experience with
-AS3 (Application Services 3), FAST (F5 Application Services Templates), and 
-ACC (F5 AS3 Configuration Converter). You will use each of these tools for 
-deploying configurations to BIG-IP.
+Explore F5 Application Services v3, F5 Application Services Template, and AS3 Configuration Converter. Using a declarative API model to create applications and convert existing configuration to declarative API.
+During this hands-on lab you will learn the following:
 
-The class will cover the following topics in the labs that follow:
+•	How to use FAST to deploy HTTPS applications.
 
-- Using FAST to deploy HTTP application
-- Using AS3 to deploy HTTPS application
-- ACC for converting BIG-IP configuration to AS3
-- FAST templating
+•	AS3 as a declarative endpoint for Virtual Server configuration. 
 
-Expected time to complete: **TBD**
+•	How to convert an existing configuration to AS3 JSON declaration.
+
+•	How to use FAST to create your own Automation Templates.
+
+Expected time to complete: **2 hours**
 
 Go to the next section for details on how to connect to the lab environment.
 
