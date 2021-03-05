@@ -1,7 +1,3 @@
-
-In this portion of the lab, you will be creating an application via AS3 using the extension for ``VS CODE``.
-The focus in this lab is creating an application that require SSL.  You will configure the virtual server to terminate the SSL connection and send the connection as HTTP to the application server.
-=======
 Lab 2 - Using AS3 to Create a HTTPS and HTTP applications
 =========================================================
 
