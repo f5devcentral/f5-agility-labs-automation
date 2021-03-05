@@ -1,12 +1,21 @@
 Lab 4 - Creating FAST Template for future app deployments
 =========================================================
 
-Connecting to F5 Devices
+
+F5 Devices
+----------
+
+F5 Device connection information for reference in the following tasks
+
+======= ========= ============
+Device  Mgmt. IP  user/pass
+======= ========= ============
+bigip1  10.1.1.6  admin/admin 
+bigip2  10.1.1.7  admin/admin 
+======= ========= ============
+
+Quick FAST YAML Template
 ------------------------
-
-#. F5 Device connection information for reference in the following tasks
-
-   bigip1 - mgmt - 10.1.1.6 - admin/admin
 
 #. Connect to bigip1 in the vscode-f5 extension
 
@@ -18,25 +27,53 @@ Connecting to F5 Devices
 
     We need to delete all the next in the window to prepare for the next step
 
+#. Type ``as`` and select the ``as3-sample_01`` that pops up from the text in the editor
 
-Create AS3 (from Lab03) to FAST YML
------------------------------------
-#. Click on the F5 logo on the left to access F5 HOST
+    This flow should result in an example AS3 declaration that can be easiliy modified and deployed (might have seen it in the last lab)
 
-Upload FAST(zip package)  to BIG-IP
------------------------------------
+#. Convert AS3 to FAST YAML
 
-Render YAML template locally
-----------------------------
+    Make sure nothing is highlighted in the editor, right-click, and select ``AS3 -> FAST YAML``
 
-Templatize AS3 with WAF Policy to FAST YML
-------------------------------------------
+    This command should take the AS3 declaration in the editor, confirm it is a valid JSON object and wrap the entire declaration in the necessary paramters for a FAST YAML template
 
-Upload FAST(zip package) to BIG-IP
-----------------------------------
+    .. NOTE:: YAML files for FAST templates is the recommended route since they provide an interface for customizing UI elements of the template
 
-Deploy FAST YML (WAF policy) to BIG-IP using VSCode
----------------------------------------------------
+    .. NOTE:: Notice how the "tenant" definition has already been replaced with a FAST template string in line 22
 
-Deploy FAST YML (WAF policy) to BIG-IP using GUI
-------------------------------------------------
+#. Post as FAST template to F5
+
+    Press ``F1``, type ``f5 fast``, then select ``F5-FAST: Post Template``
+
+    See the pop-up at the top of the screen, enter to accept the default folder and template names
+
+    This will take the text in the current editor and upload it as a FAST template to the connected F5.
+
+    .. NOTE:: Like AS3 tenants, uploading a new template to an existing templates folder will over write all other templates.  Templates should be managed as "sets".  This individual template flow is just for development and testing of templates
+
+    Once the process is complete, check the FAST view or the TMUI for the template we just uploaded
+
+
+
+
+EXTRA: Render FAST YAML template locally
+----------------------------------------
+
+    This is a way to test the rendered HTML output before uploading to an F5
+
+    Using the same editor window with the YAML FAST Template
+
+    With nothing selected, right-click, then select ``Render FAST Template HTML Preview``
+
+    This process will take the FAST template in the editor, and render the HTML output.
+
+    This command can also be access from the F5 FAST view under templates, which will download a template from the F5 and render the the HTML preview locally.
+
+    .. NOTE:: Rendering a FAST Template from an F5 only works when the template is self contained, meaning it doesn't reference any other files for schema or validation
+
+
+EXTRA:  Render output of HTML Preview
+-------------------------------------
+
+    Selecting the ``Render`` button at the bottom of the HTML preview FAST Template will produce the rendered template output
+

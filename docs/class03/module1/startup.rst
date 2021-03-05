@@ -39,48 +39,23 @@ networks and credentials to use.
 Starting the Lab
 ----------------
 
-In order to complete this lab, you will connect to an Ubuntu jump host, and you
-will perform all steps from there.  In the instructions below, there are steps
-to connect to that jump host first, then you will complete the other steps from
-there. You can open the lab guide from the Windows jump host in order to make
-it easier to follow the rest of the lab.
+In order to complete this lab, you will connect to environment using VS-Code on the Ubuntu server
+called "client".  From VS-Code you will use all tools and interact with BIG-IPs for configuration.
+There is also an instance of Firefox, which will be used to validate virtual server configurations.
 
-**Exercise 1 - Login to Ubuntu jump host**
+**Exercise 1 - Connect to VS-Code**
 
 #. Click on the ``Components`` tab in your UDF deployment
 
    .. image:: /class03/images/components.jpg
 
-#. Under ``Systems`` find the Client and click ``Access``,
-   then click ``RDP``.  When prompted, select option to ``Save`` RDP file. RDP
-   file will be downloaded to your local machine.
+#. Under ``Systems`` find the ``client`` system, and click ``Access``,
+   then click ``VS CODE``.  
+   
+   .. image:: /class03/images/AccessVScode.jpg
 
-   .. image:: /class03/images/Win2019_RDP_Access.JPG
+#. A new window will open for the VS-Code program.
 
-#. Open the RDP file downloaded in the previous step and click ``Continue``
-   when prompted.
-
-   .. image:: /class03/images/Win2019_RDP_Connect.JPG
-
-#. When prompted for login credentials, select ``More Choices``.
-
-#. Select ``Use a different account`` under ``More Choices`` option.
-
-#. Enter credentials: user / user
-
-   .. image:: /class03/images/Win2019_RDP_DiffAccount.JPG
-
-#. Click ``OK``.
-
-   .. image:: /class03/images/Win2019_RDP_Login.JPG
-
-#. When prompted, click ``Yes`` to connection, and session will be established
-   to Windows host.
-
-   .. image:: /class03/images/Win2019_RDP_YesConnect.JPG
-
-#. Congratulations! You are now connected to your Windows jump host.
-
-
+   .. image:: /class03/images/VScode.jpg
 
 
