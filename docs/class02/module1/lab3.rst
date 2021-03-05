@@ -119,7 +119,7 @@ lab, we are going to send our JSON declaration to the BIG-IQ, which will configu
            }
          },
          "targetUsername": "admin",
-         "targetHost": "bigip-03",
+         "targetHost": "10.1.1.8",
          "targetPort": 443,
          "targetPassphrase": "@gi1ity2021",
          "bigIqSettings": {
