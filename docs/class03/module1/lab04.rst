@@ -37,43 +37,64 @@ Notice that FAST now shows as installed (with version number) along the bottom o
 
 Templatize Simple AS3 to FAST YML
 ----------------------------------
-#. From the VScode click on the F5 logo on the left to access F5 HOST
+- From the VScode click on the F5 logo on the left to access F5 HOST
 
-#. Right clock on the F5 Host to Display Show Device Info 
+-  Right clock on the F5 Host to Display Show Device Info 
 
 .. image:: ../images/showdeviceinfo.png
   
-#. Issue a Command A to highlight and Esc to Delete or clear the contents
+-  Issue a Command A to highlight and Esc to Delete or clear the contents
 
 .. image:: ../images/highlight.png
 
-#. Type as3 in the window and select as3-sample file or copy the Sample AS3 file
+#. Copy the Simple HTTP YAML file
 
 .. image:: ../images/searchas3.png
 
-.. literalinclude:: oo.json
-  :language: JSON
-
-#. Remaining on the Same window Right Click and Select AS3 to FAST YML Option
-
-.. image:: ../images/as3tofast.png
-
-#. You will get the YML template as shown below
-
-.. image:: ../images/yml.png
-
-=======
-Create AS3 (from Lab03) to FAST YML
------------------------------------
-#. Click on the F5 logo on the left to access F5 HOST
+.. literalinclude:: http.yml
+  :language: YAML
 
 
-Upload FAST(zip package)  to BIG-IP
------------------------------------
+- Remaining on the VScode, Render FAST template HTML review 
+
+.. image:: ../images/render.png
 
 
-Render YAML template locally
-----------------------------
+- Review the Simple HTTP Application details 
+
+.. image:: ../images/simplehttp.png
+
+- Click on the Render TAB to see the AS3 generated 
+
+.. image:: ../images/renderas3.png
+
+
+- Review the generated AS3
+
+.. image:: ../images/as3.png
+
+
+- Remaining on VScode Right Click to POST the AS3 to BIG-IP
+
+.. image:: ../images/postas3.png
+
+
+- Remaining on VScode Click on the AS3 tab --> Tenant 1 you can see your tophhtp 1 Application 
+
+.. image:: ../images/tophttp1.png
+
+- Go to UDF bigip1 access Click on TMUI to access bigip1, you can see your application is deployed.
+
+.. image:: ../images/udf.png
+
+- Access BIG-IP1 by logging into the GUI to review the configuration, Select partition as tophttp1 to see the details
+
+.. image:: ../images/bigip1.png
+
+- Clean up the tenant after use, remianing at VScode right click on the tophttp1 tenant and delete
+
+.. image:: ../images/deletetophttp1.png
+
 
 Templatize AS3 with WAF Policy to FAST YML
 ------------------------------------------
