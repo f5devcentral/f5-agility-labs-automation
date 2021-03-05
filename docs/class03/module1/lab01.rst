@@ -1,40 +1,24 @@
 Lab 1 - Creating a Simple HTTPS Application using FAST - (F5 Application Services Template)
 ===========================================================================================
 
-Getting the latest vscode-f5 extension
---------------------------------------
-
-To download latest vscode extension
-
-   .. code-block:: bash
-      :linenos:
-
-      curl -LO https://github.com/f5devcentral/vscode-f5/releases/download/v2.10.7/vscode-f5-2.10.7.vsix 
-
-
-To always download latest vscode-f5 extension (requires jq in bash "sudo apt install jq -Y")
-
-   .. code-block:: bash
-      :linenos:
-
-      curl -sL https://api.github.com/repos/f5devcentral/vscode-f5/releases/latest | jq .assets[0].browser_download_url | xargs wget
-
-
 F5 Devices
 ----------
 
 F5 Device connection information for reference in the following tasks
 
-bigip1 - mgmt - 10.1.1.6 - admin/admin
-bigip2 - mgmt - 10.1.1.7 - admin/admin
+======= ========= ============
+Device  Mgmt. IP  user/pass
+======= ========= ============
+bigip1  10.1.1.6  admin/admin 
+bigip2  10.1.1.7  admin/admin 
+======= ========= ============
 
-
-Task 1 - Access extesnion documentation
+Task 1 - Access extension documentation
 ---------------------------------------
 
-How to access vscode-f5 extension documenation
+Click on the ``vscode-f5 Documentation`` button in the ``DOCUMENTATION/EXAMPLES`` view
 
-** gif/screenshot of documentation link in "Documentation/Examples" view **
+   .. image:: /class03/images/lab01_vscode_documentation_button.jpg
 
 
 Task 2 - Add F5 device to vscode-f5 extension
@@ -43,6 +27,7 @@ Task 2 - Add F5 device to vscode-f5 extension
 The following describes how to manualy add an F5 device to the extension
 
 ** gif/screenshot of main extension hosts view **
+** move over lab02 initial connectivity steps **
 
 #. Click ``ADD HOST`` in the hosts view
 #. Enter ``admin@10.1.1.6``, hit Enter
@@ -57,46 +42,52 @@ Task 3 - Import devices
 
 How to import devices for larger/automated environments
 
-#. Open a new tab by double clicking in the tab bar along the top
+#. Open a new tab by double clicking in the main editor area
 #. Paste the following into the editor
-
 
    .. code-block:: bash
       :linenos:
 
-       {
-        "device": "admin@10.1.1.7",
-        "password": "admin"
-       }
+      [
+         {
+           "device": "admin@10.1.1.7",
+           "password": "admin"
+         }
+      ]
       
 
 #. Highlight the json object we just pasted, then right-click in editor, select ``Import Devices``
 
+   .. image:: /class03/images/lab01_vscode_deviceImport.png
+
 Install FAST extension
----
+----------------------
 
-How to install ATC services using the extension
+How to install ATC services using the extension.
 
-#. Connect to admin@10.1.1.6 by clicking the device in the ``F5 HOSTS`` view
-#. Press ``F1``, then type ``f5 install``
-#. Select FAST
-#. Select latest version (or 1.6.0)
+   This method is considered the "offline" method so all the lab users are not trying to download the same files from github at the same time.  For additional information on alternate install methods see:  https://f5devcentral.github.io/vscode-f5/#/atc_rpm_mgmt
 
-The vscode-f5 extension quieries the repos for the different ATC version to consistantly provide an update to date list.  Once a version is selected, the extension will download the necessary assets to the local machine (in this case the linux host vscode is running on), then it will upload and install the ATC ILX RPM on the F5.  The install happens rather quickly, but it can take another 30-60 seconds for all the servcies to restart and present the changes.  
+#. In VSCode, go to the file explorer view
+#. Open the files folder
+#. Right-click ``f5-appsvcs-templates-1.7.0.noarch.rpm``, then select ``Install RPM``
 
-After everything is complete, the vsocde-f5 extension should reconnect and refresh all the details
+   This process will upload the local RPM and install it on the F5.  The install happens rather quickly, but it can take another 30-60 seconds for all the servcies to restart and present the changes.  
+
+When complete, the vsocde-f5 extension should reconnect and refresh all the details.
+
+   You may need to click on the device in the HOSTS view to reconnect and refresh the discovered services
 
 Notice that FAST now shows as installed (with version number) along the bottom of the editor
 
-** screenshot/gif **
+   .. image:: /class03/images/lab01_vscode_fastInstalledVersion.png
 
 
 Deploy application via FAST template in tmui
----
+--------------------------------------------
 
 #. Under iApps >> Application Services : Applications LX, select ``F5 Application Services Templates``
 
-   login if needed ``admin/admin``
+   login if needed: ``admin/admin``
 
    Select the ``Deploy`` tab, expand the ``examples`` section, select ``examples/simple_udp_defaults``
 
@@ -112,22 +103,24 @@ Deploy application via FAST template in tmui
 
    This will bring you back to the ``Deploy Log`` tab and provide a status the application deployment process
 
-
 #. Back in the vscode-f5 extension refresh the FAST/AS3 views with the refresh icon in the upper right hand corner of each view window
 
    Explore the windows to see the deployed FAST application/task, and how it resulted in an AS3 Tenant/Task
 
+   .. image:: /class03/images/lab01_vscode_fastAppFromTMUI.png
+
 #. Delete application
 
-   Bank in the TMUI (F5 GUI), in the ``F5 Application Services Templates screen, select the ``Application List``.
+   Bank in the TMUI (F5 GUI), in the ``F5 Application Services Templates`` screen, select the ``Application List``.
 
    We should see the application we deployed with FAST.
 
-   On the right side of the application row item, select the trash icon to delete the application.
+   On the right side of the application row item, select the ``trash`` icon to delete the application.
 
+   .. image:: /class03/images/lab01_vscode_deleteFastAppFromTMUI.png
 
 Deploy FAST application via API
----
+-------------------------------
 
 #. In Coder (browser tab for vscode), paste the following into an editor
 
@@ -145,37 +138,39 @@ Deploy FAST application via API
          "server_addresses": [
                "192.168.100.11",
                "192.168.100.12"
-         ]
+            ]
          }
       }
 
-#. Highlight the objec, right-click, then select ``Deploy Fast App``
+#. Highlight the object, right-click, then select ``Deploy Fast App``
 
    This should produce the following output in another tab
 
-      .. code-block:: json
-         :linenos:
+   .. code-block:: json
+      :linenos:
 
-         {
-            "id": "4b06e4d9-01f1-497e-93e5-662d5eb75d1d",
-            "code": 200,
-            "message": "success",
-            "name": "examples/simple_http",
-            "parameters": {
-               "tenant_name": "apiTenant",
-               "application_name": "apiTenant",
-               "virtual_port": 80,
-               "virtual_address": "192.168.230.40",
-               "server_port": 8080,
-               "server_addresses": [
-                     "192.168.100.11",
-                     "192.168.100.12"
-               ]
-            },
-            "tenant": "apiTenant",
-            "application": "apiTenant",
-            "operation": "create"
-         }
+      {
+         "id": "4b06e4d9-01f1-497e-93e5-662d5eb75d1d",
+         "code": 200,
+         "message": "success",
+         "name": "examples/simple_http",
+         "parameters": {
+            "tenant_name": "apiTenant",
+            "application_name": "apiTenant",
+            "virtual_port": 80,
+            "virtual_address": "192.168.230.40",
+            "server_port": 8080,
+            "server_addresses": [
+                  "192.168.100.11",
+                  "192.168.100.12"
+            ]
+         },
+         "tenant": "apiTenant",
+         "application": "apiTenant",
+         "operation": "create"
+      }
+
+   .. image:: /class03/images/lab01_vscode_deployFastAppAPI.gif
 
 #. Check the TMUI to see that the application is now in the ``Application List`` tab
 
@@ -183,10 +178,8 @@ Deploy FAST application via API
 
 
 Delete application through the FAST API
----
+---------------------------------------
 
-#. In the Coder UI, right-click on the Deployed FAST application in the FAST view, then select ``Delete Fast App``
+#. In the Coder UI, right-click on the ``Deployed Application`` in the FAST view, then select ``Delete Fast App``
 
-
-
-making fast template
+   .. image:: /class03/images/lab01_vscode_deleteFastAppAPI.gif

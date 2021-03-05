@@ -131,7 +131,7 @@ SSL Offload.
 
 #. You should see the following virtal servers:
 
-   .. image:: /class03/images/BIGIP_VirtualServers.jpg
+   .. image:: /class03/images/BIGIP_VirtualServersNew.jpg
 
 #. ``acme_https_vs`` is the name of the virtual server.  You can see that ``AS3`` automatically created the HTTP-to-HTTPS redirect virtual server also.  That was done because the declaration specified ``"class": "Service_HTTPS"``.  When using ``AS3``, it will take care of some things for you.
 

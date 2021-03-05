@@ -1,73 +1,35 @@
 Lab 3 - Converting existing configuration to AS3 using ACC - (AS3 Configuration Converter)
 ==========================================================================================
 
+ACC or AS3 Configuration Converter is another great tool from the F5 Automation Toolchain group.  This tool can help convert TMOS based applications to AS3 declarations.
 
+This tool handles the bulk of the conversion process, but most customer configurations will require modification before deployment.
 
+Things to keep in mind when migrating applications from TMOS to AS3:
+    * Certificates/keys are not included in this process at this time
+  
+        * this includes any other secrets or pre-shared-keys
 
-F5 Devices
----
+    * ACC/AS3 does not support ASM/APM policy converstion or deployment
+    
+        * AS3 supports ASM/APM policy reference
+  
+    * Don't forget to put the application into the appropriate tenant
 
-F5 Device connection information for reference in the following tasks
+#. Find and open the demo app in TMOS object form in the VSCode file explorer: ``testApp.conf``
 
-bigip1 - mgmt - 10.1.1.6 - admin/admin
+#. Right-click in the editor, then select ``Convert with ACC``
 
+    This process takes the text in the editor and attempts to convert it to AS3.  A new editor tab with the converted objects
 
+    .. NOTE:: For more detailed information about the converstion process, check out the f5-chariot OUTPUT window
 
-Quick FAST YAML Template
----
+    .. image:: /class03/images/lab01_vscode_chariot_output.png
 
-#. Connect to bigip1 in the vscode-f5 extension
+#. Right-click on the declaration, then select ``Inject/Remove Schema Reference``
 
-#. Click on the ``bigip1.f5demos.com`` at the bottom of the window
+    This process will attempt to detect what type of declaration (as3/do/ts/cf) and inject the appropriate schema reference
 
-    This shows the ``/mgmt/shared/identified-devices/config/device-info`` output, but also provides a json editor
+    The schema reference provides real-time feedback during modification or authoring process.
 
-#. Select All, delete.
-
-    We need to delete all the next in the window to prepare for the next step
-
-#. Type ``as`` and select the ``as3-sample_01`` that pops up from the text in the editor
-
-    This flow should result in an example AS3 declaration that can be easiliy modified and deployed (might have seen it in the last lab)
-
-#. Convert AS3 to FAST YAML
-
-    Make sure nothing is highlighted in the editor, right-click, and select ``AS3 -> FAST YAML``
-
-    This command should take the AS3 declaration in the editor, confirm it is a valid JSON object and wrap the entire declaration in the necessary paramters for a FAST YAML template
-
-    .. NOTE:: YAML files for FAST templates is the recommended route since they provide an interface for customizing UI elements of the template
-
-    .. NOTE:: Notice how the "tenant" definition has already been replaced with a FAST template string in line 22
-
-#. Post as FAST template to F5
-
-    Press ``F1``, type ``f5 fast``, then select ``F5-FAST: Post Template``
-
-    See the pop-up at the top of the screen, enter to accept the default folder and template names
-
-    This will take the text in the current editor and upload it as a FAST template to the connected F5.
-
-    .. NOTE:: Like AS3 tenants, uploading a new template to an existing templates folder will over write all other templates.  Templates should be managed as "sets".  This individual template flow is just for development and testing of templates
-
-    Once the process is complete, check the FAST view or the TMUI for the template we just uploaded
-
-
-
-EXTRA: Render YAML template locally
----
-
-    Using the same editor window with the YAML FAST Template, there is a was to test the rendered HTML output before uploading to an F5
-
-    With nothing selected, right-click, then select ``Render FAST Template HTML Preview``
-
-    This process will take the FAST template in the editor, and render the HTML output.
-
-    This command can also be access from the F5 FAST view under templates, which will download a template from the F5 and render the the HTML preview locally.
-
-    .. NOTE:: Rendering a FAST Template from an F5 only works when the template is self contained, meaning it doesn't reference any other files for schema or validation
-
-
-EXTRA:  Render output of HTML Preview
-
-
+    https://f5devcentral.github.io/vscode-f5/#/schema_validation
