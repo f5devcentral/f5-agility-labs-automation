@@ -53,6 +53,9 @@ yourself with your student environment.
    actions are performed by the analytics provider, (Elastic "ELK" stack) and the ADPM system, (GitHub Actions)
    respectively.  Using your browser, navigate to application's frontpage, (you will need to accept the certificate errors
    to continue).  Your front page will be similar to the example below.
+   
+   **Note:** If you are using the Chrome browser, you
+   may need to enter ``thisisunsafe`` while on the page to bypass warnings.
 
    .. image:: images/app_page.png
 
