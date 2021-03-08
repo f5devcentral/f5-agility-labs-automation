@@ -31,22 +31,26 @@ Task 1 - Getting connected
       Once connected, click on the ``F5`` logo on the left-hand side of window.
 
       .. image:: /class03/images/VScode_F5Logo.jpg
+         :scale: 50 %
 
 #. Add F5 Host
 
       If ``BIG-IP`` host ``10.1.10.6`` is not listed under ``F5 HOSTS``, click on ``ADD HOST``.
 
       .. image:: /class03/images/VScode_F5AddHost.jpg
+         :scale: 50 %
 
       When prompted, enter: admin@10.1.10.6
 
       .. image:: /class03/images/VScode_F5AddBIGIP01.jpg
+         :scale: 50 %
 
 #. Connect to F5 Host
 
       Click on the newly created host entry in the ``Hosts`` view to connect
 
       .. image:: /class03/images/lab01_vscode_selectDeviceHostsView.png
+         :scale: 50 %
 
       Enter the password of ``admin`` when prompted
       
@@ -56,10 +60,12 @@ Task 1 - Getting connected
       .. NOTE:: An alternative method to connect is to select ``F5 -> Connect!`` at the bottom of the screen
       
       .. image:: /class03/images/VScode_F5Connect.jpg
+         :scale: 50 %
 
       When prompted choose ``admin@10.1.10.6`` from the list of choices:
       
       .. image:: /class03/images/VScode_F5ConnectBIGIP01.jpg
+         :scale: 50 %
 
 
 
@@ -68,6 +74,7 @@ Task 1 - Getting connected
       You can confirm ``VS CODE`` is connected by looking at detail on ``F5 -> Connect!`` at bottom of screen.  In the status you can see the version of AS3 that is installed on the ``BIG-IP``.  In this case, it is version ``3.22.0``.
 
       .. image:: /class03/images/VScode_F5ConnectedBIGIP01.jpg
+         :scale: 50 %
 
 
 
@@ -105,6 +112,7 @@ Task 3 - Import devices
 #. Highlight the json object we just pasted, then right-click in editor, select ``Import Devices``
 
       .. image:: /class03/images/lab01_vscode_deviceImport.png
+         :scale: 75 %
 
 
 Task 4 - Install FAST extension
@@ -119,6 +127,7 @@ Task 4 - Install FAST extension
 #. Right-click ``f5-appsvcs-templates-1.7.0.noarch.rpm``, then select ``Install RPM``
 
       .. image:: /class03/images/VSCode-FAST-RPMinstall.png
+         :scale: 50 %
 
       .. Note:: This process will upload the local RPM and install it on the F5.  The install happens rather quickly, but it can take another 30-60 seconds for all the servcies to restart and present the changes.  
 
@@ -130,6 +139,7 @@ When complete, the vscode-f5 extension should reconnect and refresh all the deta
 Notice that FAST now shows as installed (with version number) along the bottom of the editor
 
       .. image:: /class03/images/lab01_vscode_fastInstalledVersion.png
+         :scale: 80 %
       
       
 Task 5 - Deploy application via FAST template in tmui
@@ -156,6 +166,7 @@ Task 5 - Deploy application via FAST template in tmui
       Now click  ``Submit`` to deploy an application using the fast template
 
       .. image:: /class03/images/lab01_tmui_fast_template01.png
+         :scale: 80 %
       
       This will bring you back to the ``Deploy Log`` tab and provide a status the application deployment process
 
@@ -164,6 +175,7 @@ Task 5 - Deploy application via FAST template in tmui
       Explore the windows to see the deployed FAST application/task, and how it resulted in an AS3 Tenant/Task
 
       .. image:: /class03/images/lab01_vscode_fastAppFromTMUI.png
+         :scale: 80 %
 
 #. Delete application
 
