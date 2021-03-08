@@ -35,12 +35,12 @@ Task 1 - Getting connected
 
 #. Add F5 Host
 
-      If ``BIG-IP`` host ``10.1.10.6`` is not listed under ``F5 HOSTS``, click on ``ADD HOST``.
+      If ``BIG-IP`` host ``10.1.1.6`` is not listed under ``F5 HOSTS``, click on ``ADD HOST``.
 
       .. image:: /class03/images/VScode_F5AddHost.jpg
          :scale: 50 %
 
-      When prompted, enter: admin@10.1.10.6
+      When prompted, enter: admin@10.1.1.6
 
       .. image:: /class03/images/VScode_F5AddBIGIP01.jpg
          :scale: 50 %
@@ -62,7 +62,7 @@ Task 1 - Getting connected
       .. image:: /class03/images/VScode_F5Connect.jpg
          :scale: 50 %
 
-      When prompted choose ``admin@10.1.10.6`` from the list of choices:
+      When prompted choose ``admin@10.1.1.6`` from the list of choices:
       
       .. image:: /class03/images/VScode_F5ConnectBIGIP01.jpg
          :scale: 50 %
