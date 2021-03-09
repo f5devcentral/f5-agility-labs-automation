@@ -1,10 +1,10 @@
 Lab 1 Configure Standalone BIG-IP with Declarative Onboarding
 ==============================================================
 
-In this lab we will use the F5 VSCode extenion to install declarative 
-onboarding (DO). For other installation options please see appendix A.
+In this lab we will use the F5 VSCode extenion to install Declarative 
+Onboarding (DO). For other installation options please see appendix A.
 
-Before we jump into declarative onboarding (DO) lets take a look at the current
+Before we jump into Declarative Onboarding (DO) lets take a look at the current
 state of one of our BIG-IP appliances.
 
 #. Login to **BIGIP-01** and notice that it is not licensed and nothing has been
@@ -14,7 +14,7 @@ state of one of our BIG-IP appliances.
 
    .. image:: images/bigip01_01.png
 
-#. In order to install declarative onboarding using the VSCode extension we
+#. In order to install Declarative Onboarding using the VSCode extension we
    need to add our BIG-IP devices to VSCode.
 
    Within the VSCode window click on the ``F5 Extension icon`` then click
@@ -22,8 +22,10 @@ state of one of our BIG-IP appliances.
 
    .. image:: images/f5_extension_add_host_01.png
 
-   Within the add host prompt add each BIG-IP using the username@X.X.X.X format
+   Within the add host prompt add each BIG-IP using the username\@X.X.X.X format
    and press enter.
+
+   .. note :: Username and password are: **admin/@gility2021**
 
    .. image:: images/f5_extension_add_host_02.png
 
@@ -34,7 +36,7 @@ state of one of our BIG-IP appliances.
 
    .. note:: Once you have successfully connected and authenticated to the 
       BIG-IP device you will notice that the bottom of your VSCode window 
-      will show the version of declarative onboarding that is installed 
+      will show the version of Declarative Onboarding that is installed 
       (as well as other components).
 
    .. image:: images/do_version.png
@@ -73,7 +75,7 @@ state of one of our BIG-IP appliances.
       attempt to install DO on the BIG-IQ device.
 
 
-#. With the declarative onboarding (DO) package now installed on BIG-IP, we are 
+#. With the Declarative Onboarding (DO) package now installed on BIG-IP, we are 
    ready to build out our first BIG-IP.
 
    The desired end state of these DO declarations is to configure the objects
@@ -93,7 +95,7 @@ state of one of our BIG-IP appliances.
    - Self-IPs
    - Vlans
 
-   Copy the declarative onboarding (DO) declaration below.
+   Copy the Declarative Onboarding (DO) declaration below.
    Use the copy button in the upper left hand corner of the declaration.
 
    .. code-block:: JSON
@@ -318,10 +320,12 @@ state of one of our BIG-IP appliances.
    **BIGIP-01** and notice the host name has changed and the device is now
    licensed.
 
+   .. note :: Username and password are: **admin/@gility2021**
+
    .. image:: images/bigip01_02.png
 
    Futhermore, take a look at the following settings on **BIGIP-01** to see what
-   all was configured with declarative onboarding (DO)
+   all was configured with Declarative Onboarding (DO)
 
    - Credentials
    - Provisioning
