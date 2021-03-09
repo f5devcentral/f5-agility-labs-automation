@@ -18,13 +18,10 @@ Task 1 - Getting connected
 
 #. Open VS Code
 
-      To connect to ``VS CODE``, select the ``ACCESS`` dropdown from the ``client`` ``system``, on the right side, then select ``VS CODE``
+      To connect to ``VS CODE``, select the ``ACCESS`` dropdown from the ``client`` ``system``, then select ``VS CODE``
 
-      .. image:: /class03/images/VSCode-UDF-DropDown.png
-      
-      .. Note:: This can also be reached via the client access methods
-      
-      .. image:: /class03/images/AccessVScode.jpg
+      .. image:: /class03/images/VScode.jpg
+
       
 #. Access F5 VSCode extension
 
@@ -145,9 +142,12 @@ Notice that FAST now shows as installed (with version number) along the bottom o
 Task 5 - Deploy application via FAST template in tmui
 -----------------------------------------------------
    
-#. Connect to the F5 UI
+#. Go back to UDF deployment screen, and choose the component ``bigip1``.  Then choose the ``Access Method`` of ``TMUI``.  This will allow you to login to the ``BIG-IP`` GUI.
       
       .. image:: /class03/images/VSCode-bigip1_tmui_access.png
+         :scale: 75%
+
+#. Login with the following credentials: username = admin , password = admin.
 
 #. Under ``iApps`` >> ``Application Services`` : ``Applications LX``, select ``F5 Application Services Templates``
 

@@ -93,7 +93,8 @@ SSL Offload.
 
 #. Login to the BIG-IP to confirm our changes. Go back to UDF deployment screen, and choose the component ``bigip1``.  Then choose the ``Access Method`` of ``TMUI``.  This will allow you to login to the ``BIG-IP`` GUI.
 
-   .. image:: /class03/images/BIGIP_TMUIlogin.jpg
+      .. image:: /class03/images/VSCode-bigip1_tmui_access.png
+         :scale: 75%
 
 #. Login with the following credentials: username = admin , password = admin.
 
@@ -272,7 +273,8 @@ In this section of the lab, it is assumed that you have already created the firs
 
 #. Login to the BIG-IP to confirm our changes. Go back to UDF deployment screen, and choose the component ``bigip1``.  Then choose the ``Access Method`` of ``TMUI``.  This will allow you to login to the ``BIG-IP`` GUI.
 
-   .. image:: /class03/images/BIGIP_TMUIlogin.jpg
+      .. image:: /class03/images/VSCode-bigip1_tmui_access.png
+         :scale: 75%
 
 #. Login with the following credentials: username = admin , password = admin.
 
