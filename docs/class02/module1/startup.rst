@@ -69,6 +69,6 @@ for your convenience.
 |
 
 Bypass any security warning you may receive by clicking ``Advanced`` in the
-browser, then clicking ``Proceed``
+browser, then clicking ``Accept the Risk and Continue``
 
 .. image:: images/firefox_warnings.png
