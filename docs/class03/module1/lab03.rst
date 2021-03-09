@@ -24,12 +24,12 @@ Lab 3 - Converting existing configuration to AS3 using ACC - (AS3 Configuration 
 
 #. Right-click in the editor, then select ``Convert with ACC``
 
-    This process takes the text in the editor and attempts to convert it to AS3.  A new editor tab with the converted object should appear
+   This process takes the text in the editor and attempts to convert it to AS3.  A new editor tab with the converted object should appear
+       
+   .. image:: /class03/images/lab01_vscode_chariot_output.png
+      :scale: 75%
 
-    .. NOTE:: For more detailed information about the converstion process, check out the f5-chariot OUTPUT window
-
-    .. image:: /class03/images/lab01_vscode_chariot_output.png
-       :scale: 60%
+   .. NOTE:: For more detailed information about the converstion process, check out the f5-chariot OUTPUT window
 
 #. Right-click on the declaration (Untitled-1), then select ``Inject/Remove Schema Reference``
 
@@ -65,11 +65,21 @@ Lab 3 - Converting existing configuration to AS3 using ACC - (AS3 Configuration 
     
 #. There are two options:
     
-    #. Change the ``schemaVersion`` in the declaration to ``3.22.0`` or less
+    #. Change the ``schemaVersion`` in the declaration to ``3.22.0`` or less.
     
-    #. Update the installed AS3 version using the same method as we did with installing the FAST extension
+    #. Update the installed AS3 version using the same method as we did with installing the FAST extension.
 
         * ``F1``, ``F5: Install RPM``, select ``AS3``, then select a version (3.25.0 or newer)
 
-#. 
+#. Let's use the first option and modify our schema version to ``3.22.0``
+
+#. We also want to modify line 10 of our AS3 declaration so it is not trying to publish to the /Common partition.  We will change this to "JuiceShop".
+
+   .. image:: /class03/images/accfixes.png
+      :scale: 60%
+
+#. Now right click your AS3 configuration and click on ``Post as AS3 Declaration``.  You will get an output like this:
+
+   .. image:: /class03/images/as3-declaration-success.png
+      :scale: 60%
 
