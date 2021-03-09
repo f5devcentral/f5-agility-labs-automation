@@ -39,11 +39,11 @@ Templatize Simple AS3 to FAST YML
 ----------------------------------
 - From the VScode click on the F5 logo on the left to access F5 HOST
 
--  Right clock on the F5 Host to Display Show Device Info 
+- Right clock on the F5 Host to Display Show Device Info, the show device info shows details about the  bigip like chassis serial number, license, number of interfaces etc. 
 
 .. image:: ../images/showdeviceinfo.png
   
--  Issue a Command A to highlight and Esc to Delete or clear the contents
+- Issue a Command A to highlight and Esc to Delete or clear the contents. We are deleting these conten  ts so that we can enter the yml file which can be rendered later in the lab.
 
 .. image:: ../images/highlight.png
 
@@ -51,8 +51,12 @@ Templatize Simple AS3 to FAST YML
 
 .. image:: ../images/searchas3.png
 
+- Copy the below YML file into the VScode browser.
+  The below yml shows the values already populated for tenant name, virtual address, virtual port,
+  server addresses and server port. The template portion has those variables already templatize with d  double curly braces. 
+
 .. literalinclude:: http.yml
-  :language: YAML
+   :language: YAML
 
 
 - Remaining on the VScode, Render FAST template HTML review 
