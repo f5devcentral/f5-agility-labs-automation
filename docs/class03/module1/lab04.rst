@@ -1,21 +1,12 @@
 Lab 4 - Creating FAST Template for future app deployments
 =========================================================
 
-
-F5 Devices
-----------
-
-F5 Device connection information for reference in the following tasks
-
-======= ========= ============
-Device  Mgmt. IP  user/pass
-======= ========= ============
-bigip1  10.1.1.6  admin/admin 
-bigip2  10.1.1.7  admin/admin 
-======= ========= ============
-
-Quick FAST YAML Template
+Connecting to F5 Devices
 ------------------------
+
+#. F5 Device connection information for reference in the following tasks
+
+   bigip1 - mgmt - 10.1.1.6 - admin/admin
 
 #. Connect to bigip1 in the vscode-f5 extension
 
@@ -27,53 +18,83 @@ Quick FAST YAML Template
 
     We need to delete all the next in the window to prepare for the next step
 
-#. Type ``as`` and select the ``as3-sample_01`` that pops up from the text in the editor
+Install FAST template on BIG-IP
+-------------------------------
 
-    This flow should result in an example AS3 declaration that can be easiliy modified and deployed (might have seen it in the last lab)
+#. Connect to admin@10.1.1.6 by clicking the device in the F5 HOSTS view
+   Press F1, then type f5 install
+   Select FAST
+   Select latest version (or 1.6.0)
 
-#. Convert AS3 to FAST YAML
-
-    Make sure nothing is highlighted in the editor, right-click, and select ``AS3 -> FAST YAML``
-
-    This command should take the AS3 declaration in the editor, confirm it is a valid JSON object and wrap the entire declaration in the necessary paramters for a FAST YAML template
-
-    .. NOTE:: YAML files for FAST templates is the recommended route since they provide an interface for customizing UI elements of the template
-
-    .. NOTE:: Notice how the "tenant" definition has already been replaced with a FAST template string in line 22
-
-#. Post as FAST template to F5
-
-    Press ``F1``, type ``f5 fast``, then select ``F5-FAST: Post Template``
-
-    See the pop-up at the top of the screen, enter to accept the default folder and template names
-
-    This will take the text in the current editor and upload it as a FAST template to the connected F5.
-
-    .. NOTE:: Like AS3 tenants, uploading a new template to an existing templates folder will over write all other templates.  Templates should be managed as "sets".  This individual template flow is just for development and testing of templates
-
-    Once the process is complete, check the FAST view or the TMUI for the template we just uploaded
+The vscode-f5 extension quieries the repos for the different ATC version to consistantly provide an update to date list. Once a version is selected, the extension will download the necessary assets to the local machine (in this case the linux host vscode is running on), then it will upload and install the ATC ILX RPM on the F5. The install happens rather quickly, but it can take another 30-60 seconds for all the servcies to restart and present the changes.
 
 
+After everything is complete, the vsocde-f5 extension should reconnect and refresh all the details
+
+Notice that FAST now shows as installed (with version number) along the bottom of the editor
+
+.. image:: ../images/4-1.png
+
+Templatize Simple AS3 to FAST YML
+----------------------------------
+- From the VScode click on the F5 logo on the left to access F5 HOST
+
+- Right clock on the F5 Host to Display Show Device Info, the show device info shows details about the  bigip like chassis serial number, license, number of interfaces etc. 
+
+.. image:: ../images/showdeviceinfo.png
+  
+- Issue a Command A to highlight and Esc to Delete or clear the contents. We are deleting these conten  ts so that we can enter the yml file which can be rendered later in the lab.
+
+.. image:: ../images/highlight.png
+
+- Copy the Simple HTTP YAML file as shown below
+
+.. image:: ../images/searchas3.png
+
+- Copy the below YML file into the VScode browser.
+  The below yml shows the values already populated for tenant name, virtual address, virtual port,
+  server addresses and server port. The template portion has those variables already templatize with d  double curly braces. 
+
+.. literalinclude:: http.yml
+   :language: YAML
 
 
-EXTRA: Render FAST YAML template locally
-----------------------------------------
+- Remaining on the VScode, Render FAST template HTML review 
 
-    This is a way to test the rendered HTML output before uploading to an F5
-
-    Using the same editor window with the YAML FAST Template
-
-    With nothing selected, right-click, then select ``Render FAST Template HTML Preview``
-
-    This process will take the FAST template in the editor, and render the HTML output.
-
-    This command can also be access from the F5 FAST view under templates, which will download a template from the F5 and render the the HTML preview locally.
-
-    .. NOTE:: Rendering a FAST Template from an F5 only works when the template is self contained, meaning it doesn't reference any other files for schema or validation
+.. image:: ../images/render.png
 
 
-EXTRA:  Render output of HTML Preview
--------------------------------------
+- Review the Simple HTTP Application details 
 
-    Selecting the ``Render`` button at the bottom of the HTML preview FAST Template will produce the rendered template output
+.. image:: ../images/simplehttp.png
 
+- Click on the Render TAB to see the AS3 generated 
+
+.. image:: ../images/renderas3.png
+
+
+- Review the generated AS3
+
+.. image:: ../images/as3.png
+
+
+- Remaining on VScode Right Click to POST the AS3 to BIG-IP
+
+.. image:: ../images/postas3.png
+
+
+- Remaining on VScode Click on the AS3 tab --> Tenant 1 you can see your tophhtp 1 Application 
+
+.. image:: ../images/tophttp1.png
+
+- Go to UDF bigip1 access Click on TMUI to access bigip1, you can see your application is deployed.
+
+.. image:: ../images/udf.png
+
+- Access BIG-IP1 by logging into the GUI to review the configuration, Select partition as tophttp1 to see the details
+
+.. image:: ../images/bigip1.png
+
+- Clean up the tenant after use, remianing at VScode right click on the tophttp1 tenant and delete
+
+.. image:: ../images/deletetophttp1.png

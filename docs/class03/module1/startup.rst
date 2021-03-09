@@ -55,14 +55,14 @@ There is also an instance of Firefox, which will be used to validate virtual ser
 
 **Exercise 1 - Connect to VS-Code**
 
-#. Click on the ``Components`` tab in your UDF deployment
+#. Click on the ``Deployment`` tab in your UDF deployment
 
    .. image:: /class03/images/components.jpg
 
-#. Under ``Systems`` find the ``client`` system, and click ``Access``,
-   then click ``VS CODE``.  
+#. Find the ``client`` system, and click ``Access``, then click ``VS CODE``.  
    
    .. image:: /class03/images/AccessVScode.jpg
+      :scale: 70 %
 
 #. A new window will open for the VS-Code program.
 
