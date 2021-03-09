@@ -98,3 +98,11 @@ Templatize Simple AS3 to FAST YML
 - Clean up the tenant after use, remianing at VScode right click on the tophttp1 tenant and delete
 
 .. image:: ../images/deletetophttp1.png
+
+Use VScode for Posting Template Set
+-----------------------------------
+
+- Go to VScode create a folder Agility as shown below
+
+.. image:: ../images/agility.png
+
