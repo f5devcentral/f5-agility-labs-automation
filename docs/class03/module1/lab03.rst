@@ -3,7 +3,7 @@ Lab 3 - Converting existing configuration to AS3 using ACC - (AS3 Configuration 
 
         ACC or AS3 Configuration Converter is another great tool from the F5 Automation Toolchain group.  This tool can help convert TMOS based applications to AS3 declarations.
 
-        This tool handles the bulk of the conversion process, but most customer configurations will require modification before deployment.
+        This tool handles the bulk of the conversion process, but most customer configurations **will require modification** before deployment.
 
         Things to keep in mind when migrating applications from TMOS to AS3:
             * Certificates/keys are not included in this process at this time
@@ -12,7 +12,15 @@ Lab 3 - Converting existing configuration to AS3 using ACC - (AS3 Configuration 
                 * AS3 supports ASM/APM policy reference
             * Don't forget to put the application into the appropriate tenant
 
-#. Find and open the demo app in TMOS object form in the VSCode file explorer: ``testApp.conf``
+#. In VSCODE tab select ``Explorer`` and then expand ``Project Folder, Files`` and right click on bigip1.ucs and select ``Explore TMOS Config``
+
+    .. image:: /class03/images/exploretmos.png
+       :scale: 60%
+
+#. Click on the F5 Extension in VSCODE and expand the ``CONFIG EXPLORER`` area.  Expand Apps and select //Common/juiceshop_vs.  Notice this is the entire configuration for the JuiceShop application, including virtual servers, pools, nodes, and iRules if any.
+
+   .. image:: /class03/images/juiceshop.png
+      :scale: 60%
 
 #. Right-click in the editor, then select ``Convert with ACC``
 
@@ -21,8 +29,9 @@ Lab 3 - Converting existing configuration to AS3 using ACC - (AS3 Configuration 
     .. NOTE:: For more detailed information about the converstion process, check out the f5-chariot OUTPUT window
 
     .. image:: /class03/images/lab01_vscode_chariot_output.png
+       :scale: 60%
 
-#. Right-click on the declaration, then select ``Inject/Remove Schema Reference``
+#. Right-click on the declaration (Untitled-1), then select ``Inject/Remove Schema Reference``
 
     This process will attempt to detect what type of declaration (as3/do/ts/cf) and inject the appropriate schema reference
 
@@ -30,9 +39,9 @@ Lab 3 - Converting existing configuration to AS3 using ACC - (AS3 Configuration 
 
     https://f5devcentral.github.io/vscode-f5/#/schema_validation
 
-#. BONUS
+#. Once the configuration has been converted you can connect to Bigip2 (admin@10.1.1.7) and try pushing the declaration by right click and select ``Post as AS3 declaration``. 
 
-    If you tried to deploy the AS3 declaration from the previous steps, it probably failed with something like:
+#. When you tried to deploy the AS3 declaration from the previous steps, it failed with something like:
 
     .. code-block:: json
         :linenos:
@@ -52,11 +61,15 @@ Lab 3 - Converting existing configuration to AS3 using ACC - (AS3 Configuration 
             "declaration": {}
         }
 
-    This is because the there is an older version of AS3 installed.
+#. This is because the there is an older version of AS3 installed.
     
-    There are two options:
-        #. Change the ``schemaVersion`` in the declaration to ``3.22.0`` or less
-        #. Update the installed AS3 version using the same method as we did with installing the FAST extension
+#. There are two options:
+    
+    #. Change the ``schemaVersion`` in the declaration to ``3.22.0`` or less
+    
+    #. Update the installed AS3 version using the same method as we did with installing the FAST extension
 
         * ``F1``, ``F5: Install RPM``, select ``AS3``, then select a version (3.25.0 or newer)
+
+#. 
 
