@@ -47,7 +47,7 @@ Templatize Simple AS3 to FAST YML
 
 .. image:: ../images/highlight.png
 
-#. Copy the Simple HTTP YAML file
+- Copy the Simple HTTP YAML file as shown below
 
 .. image:: ../images/searchas3.png
 
@@ -94,16 +94,3 @@ Templatize Simple AS3 to FAST YML
 - Clean up the tenant after use, remianing at VScode right click on the tophttp1 tenant and delete
 
 .. image:: ../images/deletetophttp1.png
-
-
-Templatize AS3 with WAF Policy to FAST YML
-------------------------------------------
-
-Upload FAST(zip package) to BIG-IP
-----------------------------------
-
-Deploy FAST YML (WAF policy) to BIG-IP using VSCode
----------------------------------------------------
-
-Deploy FAST YML (WAF policy) to BIG-IP using GUI
-------------------------------------------------
