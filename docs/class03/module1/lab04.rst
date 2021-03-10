@@ -104,5 +104,38 @@ Use VScode for Posting Template Set
 
 - Go to VScode create a folder Agility as shown below
 
-.. image:: ../images/agility.png
+.. image:: ../images/ag1.png
+.. image:: ../images/ag2.png
+.. image:: ../images/ag4.png
+.. image:: ../images/ag5.png
+.. image:: ../images/ag6.png
+.. image:: ../images/ag7.png
 
+.. literalinclude:: as3.json
+   :language: JSON
+
+.. image:: ../images/ag8.png
+.. image:: ../images/ag9.png
+.. image:: ../images/ag11.png
+.. image:: ../images/ag12.png
+.. image:: ../images/ag13.png
+.. image:: ../images/ag14.png
+
+.. literalinclude:: as3.yml
+   :language: YAML
+
+.. image:: ../images/ag15.png
+.. image:: ../images/ag16.png
+.. image:: ../images/ag17.png
+.. image:: ../images/ag18.png
+.. image:: ../images/ag19.png
+.. image:: ../images/ag20.png
+.. image:: ../images/ag21.png
+.. image:: ../images/ag22.png
+.. image:: ../images/ag24.png
+.. image:: ../images/ag25.png
+.. image:: ../images/ag26.png
+.. image:: ../images/ag27.png
+.. image:: ../images/ag28.png
+
+- Click on F5 logo on the left
