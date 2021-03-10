@@ -63,7 +63,7 @@ declaration which can posted to BIG-IP in VScode istself.
 
    .. image:: ../images/postas3.png
 
-#. Remaining on VScode Click on the AS3 tab --> Tenant 1 you can see your tophhtp 1 Application 
+#. Remaining on VScode Click on the AS3 tab --> Tenant 1 you can see your **tophhtp** 1 Application 
 
    .. image:: ../images/tophttp1.png
       :scale: 60%
@@ -76,21 +76,38 @@ declaration which can posted to BIG-IP in VScode istself.
 
    .. image:: ../images/bigip1.png
 
-#. Clean up the tenant after use, remianing at VScode right click on the tophttp1 tenant and delete
+#. Clean up the tenant after use, remaining  at VScode right click on the **tophttp1** tenant and delete
 
    .. image:: ../images/deletetophttp1.png
       :scale: 50%
 
-Use VScode for Posting Template Set
------------------------------------
+Use VScode for Posting FAST Template Set
+----------------------------------------
+This lab will focus on converting a AS3 declaration into FAST YML and then packaging into FAST Template Set, 
+this template Set then can be pushed to the BIG-IP. The FAST App can be deployed using the recently pushed template set.
 
-#. Go to VScode create a folder Agility as shown below
+#. Go to VScode right click on fast/templates folder and click on New folder as shown below
 
    .. image:: ../images/ag1.png
+
+#. Type name of the folder as **Agility** and hit return
+
    .. image:: ../images/ag2.png
+
+#. Access BIG-IP through VScode by clicking on the F5 Log on bottom left then Click on **F5 HOSTS**, right 
+   click on the F5 HOST and then click on **Show Device info**
+
    .. image:: ../images/ag4.png
    .. image:: ../images/ag5.png
+
+#. You can see the BIG-IP info details here, clear the contents by pressing Cmd A & Backspace if you are 
+   using Mac 
+
    .. image:: ../images/ag6.png
+
+#. Type as3 in the box to list **as3-Sample_01** file and hit enter this will display the sample http as3
+
+
    .. image:: ../images/ag7.png
 
    .. literalinclude:: as3.json
