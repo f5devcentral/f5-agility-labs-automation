@@ -1,23 +1,6 @@
 Lab 4 - Creating FAST Template for future app deployments
 =========================================================
 
-Connecting to F5 Devices
-------------------------
-
-#. F5 Device connection information for reference in the following tasks
-
-   bigip1 - mgmt - 10.1.1.6 - admin/admin
-
-#. Connect to bigip1 (admin@10.1.1.6) in the vscode-f5 extension
-
-#. Click on the ``bigip1.f5demos.com`` at the bottom of the window
-
-    This shows the ``/mgmt/shared/identified-devices/config/device-info`` output, but also provides a json editor
-
-#. Select All, delete.
-
-    We need to delete all the text in the window to prepare for the next step
-
 Install FAST template on BIG-IP
 -------------------------------
 
@@ -48,19 +31,16 @@ Templatize Simple AS3 to FAST YML
 
    .. image:: ../images/showdeviceinfo.png
   
-#. Issue a Command A to highlight and Esc to Delete or clear the contents. We are deleting these conten  ts so that we can enter the yml file which can be rendered later in the lab.
+#. Select the contents of the file and Delete or clear the contents. We are deleting these contents so that we can enter the yml file which can be rendered later in the lab.
 
    .. image:: ../images/highlight.png
-
-#. Copy the Simple HTTP YAML file as shown below
-
-   .. image:: ../images/searchas3.png
 
 #. Copy the below YML file into the VScode browser.  The below yml shows the values already populated for tenant name, virtual address, virtual port, server addresses and server port. The template portion has those variables already templatize with d  double curly braces. 
 
    .. literalinclude:: http.yml
       :language: YAML
 
+   .. image:: ../images/searchas3.png
 
 #. Remaining on the VScode, Render FAST template HTML review 
 
@@ -93,7 +73,7 @@ Templatize Simple AS3 to FAST YML
 
 #. Go to UDF bigip1 access Click on TMUI to access bigip1, you can see your application is deployed.
 
-   .. image:: ../images/udf.png
+   .. image:: ../images/BIGIP_TMUIlogin.jpg
 
 #. Access BIG-IP1 by logging into the GUI to review the configuration, Select partition as tophttp1 to see the details
 
@@ -103,35 +83,6 @@ Templatize Simple AS3 to FAST YML
 
    .. image:: ../images/deletetophttp1.png
 
-
-   .. image:: ../images/renderas3.png
-
-
-#. Review the generated AS3
-
-   .. image:: ../images/as3.png
-
-
-#. Remaining on VScode Right Click to POST the AS3 to BIG-IP
-
-   .. image:: ../images/postas3.png
-
-
-#. Remaining on VScode Click on the AS3 tab --> Tenant 1 you can see your tophhtp 1 Application 
-
-   .. image:: ../images/tophttp1.png
-
-#. Go to UDF bigip1 access Click on TMUI to access bigip1, you can see your application is deployed.
-
-   .. image:: ../images/udf.png
-
-#. Access BIG-IP1 by logging into the GUI to review the configuration, Select partition as tophttp1 to see the details
-
-   .. image:: ../images/bigip1.png
-
-#. Clean up the tenant after use, remianing at VScode right click on the tophttp1 tenant and delete
-
-   .. image:: ../images/deletetophttp1.png
 
 Use VScode for Posting Template Set
 -----------------------------------
