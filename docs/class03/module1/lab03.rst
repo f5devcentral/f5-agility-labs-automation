@@ -22,12 +22,11 @@ Lab 3 - Converting existing configuration to AS3 using ACC - (AS3 Configuration 
    .. image:: /class03/images/juiceshop.png
       :scale: 60%
 
-#. Right-click in the editor, then select ``Convert with ACC``
+#. Right-click in the editor, then select ``Convert with ACC``.  his process takes the text in the editor and attempts to convert it to AS3.  A new editor tab with the converted object should appear:
 
-   This process takes the text in the editor and attempts to convert it to AS3.  A new editor tab with the converted object should appear
+   .. NOTE:: In order to see the two docs side by side click on the highlighted icon in the image below, in the top right corner of VSCode.
        
    .. image:: /class03/images/lab01_vscode_chariot_output.png
-      :scale: 75%
 
    .. NOTE:: For more detailed information about the converstion process, check out the f5-chariot OUTPUT window
 
@@ -83,3 +82,16 @@ Lab 3 - Converting existing configuration to AS3 using ACC - (AS3 Configuration 
    .. image:: /class03/images/as3-declaration-success.png
       :scale: 60%
 
+#. Login to the BIG-IP to confirm our changes. Go back to UDF deployment screen, and choose the component ``bigip2``.  Then choose the ``Access Method`` of ``TMUI``.  This will allow you to login to the ``BIG-IP`` GUI with userid ``admin`` and password ``admin``.
+
+      .. image:: /class03/images/VSCode-bigip2_tmui_access.png
+         :scale: 75%
+
+#. Select Local Traffic, Virtual Servers.  Notice there is no virtual server listed.
+
+#. Now go to the partitions section in the upper right corner and select the JuiceShop partition.
+
+   .. image:: /class03/images/JuiceShop-partition.png
+      :scale: 75%
+
+#.  You should now see your juiceshop_vs virtual server.

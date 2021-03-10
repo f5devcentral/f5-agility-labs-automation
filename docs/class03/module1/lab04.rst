@@ -8,7 +8,7 @@ Connecting to F5 Devices
 
    bigip1 - mgmt - 10.1.1.6 - admin/admin
 
-#. Connect to bigip1 in the vscode-f5 extension
+#. Connect to bigip1 (admin@10.1.1.6) in the vscode-f5 extension
 
 #. Click on the ``bigip1.f5demos.com`` at the bottom of the window
 
@@ -16,36 +16,29 @@ Connecting to F5 Devices
 
 #. Select All, delete.
 
-    We need to delete all the next in the window to prepare for the next step
+    We need to delete all the text in the window to prepare for the next step
 
 Install FAST template on BIG-IP
 -------------------------------
 
 #. Connect to admin@10.1.1.6 by clicking the device in the F5 HOSTS view
-   Press F1, then type f5 install
-   Select FAST
    
-   Select latest version (or 1.6.0)
+#. You should see that FAST(1.7.0) is already installed.  
 
-The vscode-f5 extension quieries the repos for the different ATC version to consistantly provide an update to date list. Once a version is selected, the extension will download the necessary assets to the local machine (in this case the linux host vscode is running on), then it will upload and install the ATC ILX RPM on the F5. The install happens rather quickly, but it can take another 30-60 seconds for all the servcies to restart and present the changes.
+   .. image:: /class03/images/lab01_vscode_fastInstalledVersion.png
 
+#. If you do not see FAST(1.7.0) installed you can do the following:
 
-After everything is complete, the vsocde-f5 extension should reconnect and refresh all the details
+#. Press F1 (Windows), Command/Shift/P (Mac), then type ``f5 install``
 
-Notice that FAST now shows as installed (with version number) along the bottom of the editor
+#. Select FAST
+   
+#. Select latest version (or 1.7.0)
 
+   .. NOTE:: The vscode-f5 extension queries the repos for the different ATC version to consistently provide an up to date list. Once a version is selected, the extension will download the necessary assets to the local machine (in this case the linux host vscode is running on), then it will upload and install the ATC ILX RPM on the F5. The install happens rather quickly, but it can take another 30-60 seconds for all the servcies to restart and present the changes.
 
-   Select version  1.4.0
+  After everything is complete, the vsocde-f5 extension should reconnect and refresh all the details
 
-The vscode-f5 extension quieries the repos for the different ATC version to consistantly provide an update to date list. Once a version is selected, the extension will download the necessary assets to the local machine (in this case the linux host vscode is running on), then it will upload and install the ATC ILX RPM on the F5. The install happens rather quickly, but it can take another 30-60 seconds for all the servcies to restart and present the changes.
-
-
-After everything is complete, the vsocde-f5 extension should reconnect and refresh all the details
-
-Notice that FAST now shows as installed (with version number) along the bottom of the editor
-
-
-.. image:: ../images/4-1.png
 
 Templatize Simple AS3 to FAST YML
 ----------------------------------
