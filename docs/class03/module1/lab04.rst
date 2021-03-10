@@ -23,8 +23,11 @@ Install FAST template on BIG-IP
   After everything is complete, the vsocde-f5 extension should reconnect and refresh all the details
 
 
-Templatize Simple AS3 to FAST YML
-----------------------------------
+Render Simple FAST YML template to AS3
+--------------------------------------
+This lab will focus on rendering a FAST yml template using VScode template HTML Preview and generating AS3
+declaration which can posted to BIG-IP in VScode istself.
+
 #. From the VScode click on the F5 logo on the left to access F5 HOST
 
 #. Right clock on the F5 Host to Display Show Device Info, the show device info shows details about the  bigip like chassis serial number, license, number of interfaces etc. 
