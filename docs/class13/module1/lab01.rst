@@ -54,7 +54,12 @@ yourself with your student environment.
    respectively.  Using your browser, navigate to application's frontpage, (you will need to accept the certificate errors
    to continue).  Your front page will be similar to the example below.
    
+
    **Note:** If you are using the Chrome browser, you may need to enter ``thisisunsafe`` while on the page to bypass warnings.
+
+   **Note:** If you are using the Chrome browser, you
+   may need to enter ``thisisunsafe`` while on the page to bypass warnings.
+
 
    .. image:: images/app_page.png
 
