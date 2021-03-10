@@ -24,7 +24,7 @@ Install FAST template on BIG-IP
 #. Connect to admin@10.1.1.6 by clicking the device in the F5 HOSTS view
    Press F1, then type f5 install
    Select FAST
-   Select latest version (or 1.6.0)
+   Select version  1.4.0
 
 The vscode-f5 extension quieries the repos for the different ATC version to consistantly provide an update to date list. Once a version is selected, the extension will download the necessary assets to the local machine (in this case the linux host vscode is running on), then it will upload and install the ATC ILX RPM on the F5. The install happens rather quickly, but it can take another 30-60 seconds for all the servcies to restart and present the changes.
 
