@@ -12,7 +12,7 @@ SSL Offload.
 
 #. Click ``New file`` under the ``Start`` option for ``VS CODE``:
 
-   .. image:: /class03/images/VScode_NewFile.jpg
+   .. image:: ../images/VScode_NewFile.jpg
       :scale: 50 %
 
 #. Copy and paste the AS3 declaration below into the new file window.
@@ -81,43 +81,43 @@ SSL Offload.
 
 #. In the editing window, right click and select ``Post as AS3 declaration``.  
 
-   .. image:: /class03/images/VScode_PostAS3.jpg
+   .. image:: ../images/VScode_PostAS3.jpg
       :scale: 50 %
 
 #. You will see a status window of the ``AS3`` declaration being sent to the ``BIG-IP``.
 
-   .. image:: /class03/images/VScode_AS3PostProgress.jpg
+   .. image:: ../images/VScode_AS3PostProgress.jpg
       :scale: 50 %
 
 #. Once the declaration has been processed by the BIG-IP, a status window will appear.  You will see a ``"code": 200,`` and ``"message": "success",``.  If you do not see that, ask lab assistant for help.
 
 #. Login to the BIG-IP to confirm our changes. Go back to UDF deployment screen, and choose the component ``bigip1``.  Then choose the ``Access Method`` of ``TMUI``.  This will allow you to login to the ``BIG-IP`` GUI.
 
-      .. image:: /class03/images/VSCode-bigip1_tmui_access.png
+      .. image:: ../images/VSCode-bigip1_tmui_access.png
          :scale: 75%
 
 #. Login with the following credentials: username = admin , password = admin.
 
 #. Expand ``Local Traffic`` and then ``Virtual Servers``.  In the Partition pull-down menu, select ``Tenant_Acme``.  
    
-   .. image:: /class03/images/BIGIP_ChoosePart.jpg
+   .. image:: ../images/BIGIP_ChoosePart.jpg
 
 #. You should see the following virtal servers:
 
-   .. image:: /class03/images/BIGIP_VirtualServersNew.jpg
+   .. image:: ../images/BIGIP_VirtualServersNew.jpg
 
 #. ``acme_https_vs`` is the name of the virtual server.  You can see that ``AS3`` automatically created the HTTP-to-HTTPS redirect virtual server also.  That was done because the declaration specified ``"class": "Service_HTTPS"``.  When using ``AS3``, it will take care of some things for you.
 
 #. In order to see all the options for the ``AS3`` declaration, go page to the ``VS CODE`` window, and look for the list of ``Tenants`` under the ``AS3`` section of the left window pane:
 
-   .. image:: /class03/images/VScode_TenantsMenu.jpg
+   .. image:: ../images/VScode_TenantsMenu.jpg
       :scale: 50 %
 
 #. Click on the down arrow next to ``Tenant 1``, and you will see the ``Tenant_Acme`` in the list.
 
 #. Right click on the ``Tenant_Acme``, and right click.  Choose the option ``Expanded Tenant``.
 
-   .. image:: /class03/images/VScode_TenantExpand.jpg
+   .. image:: ../images/VScode_TenantExpand.jpg
       :scale: 50 %
 
 #. In the results of query, you will see the full AS3 declaration with all the options.  Scroll down the data and look at the options. As you can see, there are many aspects of the configuration that ``AS3`` took care of for you.  You always have the option to specify all the options, but that is not required.
@@ -165,17 +165,17 @@ In this section of the lab, it is assumed that you have already created the firs
                 }
               }
 
-   .. image:: /class03/images/VScode_combineDecHighlight.jpg
+   .. image:: ../images/VScode_combineDecHighlight.jpg
       :scale: 50 %
 
 #. In the editing window, right click and select ``Post as AS3 declaration``.  
 
-   .. image:: /class03/images/VScode_PostAS3.jpg
+   .. image:: ../images/VScode_PostAS3.jpg
       :scale: 50 %
 
 #. You will see a status window of the ``AS3`` declaration being sent to the ``BIG-IP``.
 
-   .. image:: /class03/images/VScode_AS3PostProgress.jpg
+   .. image:: ../images/VScode_AS3PostProgress.jpg
       :scale: 50 %
 #. Once the declaration has been processed by the BIG-IP, a status window will appear.  You will see a ``"code": 200,`` and ``"message": "success",``.  If you do not see that, check the syntax of your ``AS3`` declaration. If you need help, ask a lab attendant.
 
@@ -273,18 +273,18 @@ In this section of the lab, it is assumed that you have already created the firs
 
 #. Login to the BIG-IP to confirm our changes. Go back to UDF deployment screen, and choose the component ``bigip1``.  Then choose the ``Access Method`` of ``TMUI``.  This will allow you to login to the ``BIG-IP`` GUI.
 
-      .. image:: /class03/images/VSCode-bigip1_tmui_access.png
+      .. image:: ../images/VSCode-bigip1_tmui_access.png
          :scale: 75%
 
 #. Login with the following credentials: username = admin , password = admin.
 
 #. Expand ``Local Traffic`` and then ``Virtual Servers``.  In the Partition pull-down menu, select ``Tenant_Acme``.  
    
-   .. image:: /class03/images/BIGIP_ChoosePart.jpg
+   .. image:: ../images/BIGIP_ChoosePart.jpg
 
 #. You should see the following virtal servers:
 
-   .. image:: /class03/images/BIGIP_VirtualServers2.jpg
+   .. image:: ../images/BIGIP_VirtualServers2.jpg
 
 Delete Tenant
 -------------
@@ -293,7 +293,7 @@ Now that you have completed this section of the lab, let's clean-up by deleting 
 
 #. In the ``VS CODE`` window, select the tenant ``Tenant_Acme``, then right click and select ``Delete Tenant``.
 
-   .. image:: /class03/images/VScode_TenantDelete.jpg
+   .. image:: ../images/VScode_TenantDelete.jpg
       :scale: 50 %
 
 #. The tenant ``Tenant_Acme`` should now be deleted.

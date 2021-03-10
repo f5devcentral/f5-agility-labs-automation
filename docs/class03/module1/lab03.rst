@@ -14,19 +14,19 @@ Lab 3 - Converting existing configuration to AS3 using ACC - (AS3 Configuration 
 
 #. In VSCODE tab select ``Explorer`` and then expand ``Project Folder, Files`` and right click on bigip1.ucs and select ``Explore TMOS Config``
 
-    .. image:: /class03/images/exploretmos.png
+    .. image:: ../images/exploretmos.png
        :scale: 60%
 
 #. Click on the F5 Extension in VSCODE and expand the ``CONFIG EXPLORER`` area.  Expand Apps and select //Common/juiceshop_vs.  Notice this is the entire configuration for the JuiceShop application, including virtual servers, pools, nodes, and iRules if any.
 
-   .. image:: /class03/images/juiceshop.png
+   .. image:: ../images/juiceshop.png
       :scale: 60%
 
 #. Right-click in the editor, then select ``Convert with ACC``.  his process takes the text in the editor and attempts to convert it to AS3.  A new editor tab with the converted object should appear:
 
    .. NOTE:: In order to see the two docs side by side click on the highlighted icon in the image below, in the top right corner of VSCode.
        
-   .. image:: /class03/images/lab01_vscode_chariot_output.png
+   .. image:: ../images/lab01_vscode_chariot_output.png
 
    .. NOTE:: For more detailed information about the converstion process, check out the f5-chariot OUTPUT window
 
@@ -74,24 +74,24 @@ Lab 3 - Converting existing configuration to AS3 using ACC - (AS3 Configuration 
 
 #. We also want to modify line 10 of our AS3 declaration so it is not trying to publish to the /Common partition.  We will change this to "JuiceShop".
 
-   .. image:: /class03/images/accfixes.png
+   .. image:: ../images/accfixes.png
       :scale: 60%
 
 #. Now right click your AS3 configuration and click on ``Post as AS3 Declaration``.  You will get an output like this:
 
-   .. image:: /class03/images/as3-declaration-success.png
+   .. image:: ../images/as3-declaration-success.png
       :scale: 60%
 
 #. Login to the BIG-IP to confirm our changes. Go back to UDF deployment screen, and choose the component ``bigip2``.  Then choose the ``Access Method`` of ``TMUI``.  This will allow you to login to the ``BIG-IP`` GUI with userid ``admin`` and password ``admin``.
 
-      .. image:: /class03/images/VSCode-bigip2_tmui_access.png
+      .. image:: ../images/VSCode-bigip2_tmui_access.png
          :scale: 75%
 
 #. Select Local Traffic, Virtual Servers.  Notice there is no virtual server listed.
 
 #. Now go to the partitions section in the upper right corner and select the JuiceShop partition.
 
-   .. image:: /class03/images/JuiceShop-partition.png
+   .. image:: ../images/JuiceShop-partition.png
       :scale: 75%
 
 #.  You should now see your juiceshop_vs virtual server.
