@@ -1,73 +1,97 @@
 Lab 3 - Converting existing configuration to AS3 using ACC - (AS3 Configuration Converter)
 ==========================================================================================
 
+        ACC or AS3 Configuration Converter is another great tool from the F5 Automation Toolchain group.  This tool can help convert TMOS based applications to AS3 declarations.
 
+        This tool handles the bulk of the conversion process, but most customer configurations **will require modification** before deployment.
 
+        Things to keep in mind when migrating applications from TMOS to AS3:
+            * Certificates/keys are not included in this process at this time
+                * this includes any other secrets or pre-shared-keys
+            * ACC/AS3 does not support ASM/APM policy converstion or deployment
+                * AS3 supports ASM/APM policy reference
+            * Don't forget to put the application into the appropriate tenant
 
-F5 Devices
----
+#. In VSCODE tab select ``Explorer`` and then expand ``Project Folder, Files`` and right click on bigip1.ucs and select ``Explore TMOS Config``
 
-F5 Device connection information for reference in the following tasks
+    .. image:: ../images/exploretmos.png
+       :scale: 60%
 
-bigip1 - mgmt - 10.1.1.6 - admin/admin
+#. Click on the F5 Extension in VSCODE and expand the ``CONFIG EXPLORER`` area.  Expand Apps and select //Common/juiceshop_vs.  Notice this is the entire configuration for the JuiceShop application, including virtual servers, pools, nodes, and iRules if any.
 
+   .. image:: ../images/juiceshop.png
+      :scale: 60%
 
+#. Right-click in the editor, then select ``Convert with ACC``.  his process takes the text in the editor and attempts to convert it to AS3.  A new editor tab with the converted object should appear:
 
-Quick FAST YAML Template
----
+   .. NOTE:: In order to see the two docs side by side click on the highlighted icon in the image below, in the top right corner of VSCode.
+       
+   .. image:: ../images/lab01_vscode_chariot_output.png
 
-#. Connect to bigip1 in the vscode-f5 extension
+   .. NOTE:: For more detailed information about the converstion process, check out the f5-chariot OUTPUT window
 
-#. Click on the ``bigip1.f5demos.com`` at the bottom of the window
+#. Right-click on the declaration (Untitled-1), then select ``Inject/Remove Schema Reference``
 
-    This shows the ``/mgmt/shared/identified-devices/config/device-info`` output, but also provides a json editor
+    This process will attempt to detect what type of declaration (as3/do/ts/cf) and inject the appropriate schema reference
 
-#. Select All, delete.
+    The schema reference provides real-time feedback during modification or authoring process.
 
-    We need to delete all the next in the window to prepare for the next step
+    https://f5devcentral.github.io/vscode-f5/#/schema_validation
 
-#. Type ``as`` and select the ``as3-sample_01`` that pops up from the text in the editor
+#. Once the configuration has been converted you can connect to Bigip2 (admin@10.1.1.7) and try pushing the declaration by right click and select ``Post as AS3 declaration``. 
 
-    This flow should result in an example AS3 declaration that can be easiliy modified and deployed (might have seen it in the last lab)
+#. When you tried to deploy the AS3 declaration from the previous steps, it failed with something like:
 
-#. Convert AS3 to FAST YAML
+    .. code-block:: json
+        :linenos:
 
-    Make sure nothing is highlighted in the editor, right-click, and select ``AS3 -> FAST YAML``
+        {
+            "id": "498aba1f-a27c-4a63-a08b-6acaae7a4c68",
+            "results": [
+                {
+                    "code": 422,
+                    "errors": [
+                        "/schemaVersion: should be equal to one of the allowed values [\"3.0.0\",\"3.1.0\",\"3.2.0\",\"3.3.0\",\"3.4.0\",\"3.5.0\",\"3.6.0\",\"3.7.0\",\"3.8.0\",\"3.9.0\",\"3.10.0\",\"3.11.0\",\"3.12.0\",\"3.13.0\",\"3.14.0\",\"3.15.0\",\"3.16.0\",\"3.17.0\",\"3.18.0\",\"3.19.0\",\"3.20.0\",\"3.21.0\",\"3.22.0\"]"
+                    ],
+                    "declarationFullId": "",
+                    "message": "declaration is invalid"
+                }
+            ],
+            "declaration": {}
+        }
 
-    This command should take the AS3 declaration in the editor, confirm it is a valid JSON object and wrap the entire declaration in the necessary paramters for a FAST YAML template
+#. This is because the there is an older version of AS3 installed.
+    
+#. There are two options:
+    
+    #. Change the ``schemaVersion`` in the declaration to ``3.22.0`` or less.
+    
+    #. Update the installed AS3 version using the same method as we did with installing the FAST extension.
 
-    .. NOTE:: YAML files for FAST templates is the recommended route since they provide an interface for customizing UI elements of the template
+        * ``F1``, ``F5: Install RPM``, select ``AS3``, then select a version (3.25.0 or newer)
 
-    .. NOTE:: Notice how the "tenant" definition has already been replaced with a FAST template string in line 22
+#. Let's use the first option and modify our schema version to ``3.22.0``
 
-#. Post as FAST template to F5
+#. We also want to modify line 10 of our AS3 declaration so it is not trying to publish to the /Common partition.  We will change this to "JuiceShop".
 
-    Press ``F1``, type ``f5 fast``, then select ``F5-FAST: Post Template``
+   .. image:: ../images/accfixes.png
+      :scale: 60%
 
-    See the pop-up at the top of the screen, enter to accept the default folder and template names
+#. Now right click your AS3 configuration and click on ``Post as AS3 Declaration``.  You will get an output like this:
 
-    This will take the text in the current editor and upload it as a FAST template to the connected F5.
+   .. image:: ../images/as3-declaration-success.png
+      :scale: 60%
 
-    .. NOTE:: Like AS3 tenants, uploading a new template to an existing templates folder will over write all other templates.  Templates should be managed as "sets".  This individual template flow is just for development and testing of templates
+#. Login to the BIG-IP to confirm our changes. Go back to UDF deployment screen, and choose the component ``bigip2``.  Then choose the ``Access Method`` of ``TMUI``.  This will allow you to login to the ``BIG-IP`` GUI with userid ``admin`` and password ``admin``.
 
-    Once the process is complete, check the FAST view or the TMUI for the template we just uploaded
+      .. image:: ../images/VSCode-bigip2_tmui_access.png
+         :scale: 75%
 
+#. Select Local Traffic, Virtual Servers.  Notice there is no virtual server listed.
 
+#. Now go to the partitions section in the upper right corner and select the JuiceShop partition.
 
-EXTRA: Render YAML template locally
----
+   .. image:: ../images/JuiceShop-partition.png
+      :scale: 75%
 
-    Using the same editor window with the YAML FAST Template, there is a was to test the rendered HTML output before uploading to an F5
-
-    With nothing selected, right-click, then select ``Render FAST Template HTML Preview``
-
-    This process will take the FAST template in the editor, and render the HTML output.
-
-    This command can also be access from the F5 FAST view under templates, which will download a template from the F5 and render the the HTML preview locally.
-
-    .. NOTE:: Rendering a FAST Template from an F5 only works when the template is self contained, meaning it doesn't reference any other files for schema or validation
-
-
-EXTRA:  Render output of HTML Preview
-
-
+#.  You should now see your juiceshop_vs virtual server.

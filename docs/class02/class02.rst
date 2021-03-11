@@ -1,10 +1,10 @@
 Class 2: A&O Toolchain 111: BIG-IP Deployments with Declarative Onboarding (DO)
 ===============================================================================
 
-This class provides hands-on experience using F5's AS3 declarative onboarding
-interface for initial configuration of a BIG-IP.  You will use declarative
-onboarding (DO) for the initial configuration by sending the declaration to
-BIG-IP.
+This class provides hands-on experience using F5's Declarative Onboarding
+interface for initial configuration of a BIG-IP.  You will use Declarative
+Onboarding (DO) for the initial configuration of BIG-IP by sending the 
+declaration to the BIG-IPs declarative interface.
 
 The class will cover the following topics:
 
@@ -13,7 +13,7 @@ The class will cover the following topics:
 - Why you would use DO
 - Declarative versus imperative API
 - Using Visual Studio Code to send declarations and validate DO schema
-- Create VLANs, Self-IPs, user accounts and more using DO
+- Create VLANs, Self-IPs, user accounts and more
 
 Expected time to complete: **1 hour, 30 minutes**
  
