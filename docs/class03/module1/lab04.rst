@@ -22,7 +22,6 @@ Install FAST template on BIG-IP
 
   After everything is complete, the vsocde-f5 extension should reconnect and refresh all the details
 
-
 Render Simple FAST YML template to AS3
 --------------------------------------
 This lab will focus on rendering a FAST yml template using VScode template HTML Preview and generating AS3
@@ -141,7 +140,6 @@ this template Set then can be pushed to the BIG-IP. The FAST App can be deployed
 
    .. image:: ../images/ag14.png
 
-
 #. Review the YML template file which was just created       
 
    .. literalinclude:: as3.yml
@@ -157,25 +155,20 @@ this template Set then can be pushed to the BIG-IP. The FAST App can be deployed
 
    .. image:: ../images/ag16.png
 
-#. Go to UDF and Click on the bigip1 TMUI and login into the BIG-IP, Click on the **iApps**
-   **Application Services --> Application LX 
-
+#. Go to UDF and Click on the bigip1 TMUI and login into the BIG-IP, Click on the
+   **iApps --> Application Services --> Application LX**
 
    .. image:: ../images/ag17.png
 
 
 #. Go to the F5 Application Services Templates to see the **Agility** Template Set 
 
-
    .. image:: ../images/ag18.png
    
 
 #. Click on the Deploy while you are in the F5 Application Services Templates 
 
-
    .. image:: ../images/ag19.png
-
-
    .. image:: ../images/ag21.png
    .. image:: ../images/ag22.png
    .. image:: ../images/ag24.png
@@ -185,4 +178,3 @@ this template Set then can be pushed to the BIG-IP. The FAST App can be deployed
    .. image:: ../images/ag28.png
 
 #. Click on F5 logo on the left
-
