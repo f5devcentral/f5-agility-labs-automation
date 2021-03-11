@@ -8,6 +8,8 @@ After you complete Step #1 you should see URLs for Consul and BIG-IP.
 .. warning:: It may take several minutes for the BIG-IP to become available.
 
 Visit these URLS.
+Note the F5 authentication credentials are displayed in the Terraform output.
+Otherwise you can run "terraform output" manually to display them.
 
 Consul
 ------
