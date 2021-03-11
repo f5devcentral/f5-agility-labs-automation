@@ -22,7 +22,7 @@ state of one of our BIG-IP appliances.
 
    .. image:: images/f5_extension_add_host_01.png
 
-   Within the add host prompt add each BIG-IP using the username\@X.X.X.X format
+   Within the add host prompt add each BIG-IP using the username\@hostname format
    and press enter.
 
    .. note :: Username and password are: **admin/@gility2021**

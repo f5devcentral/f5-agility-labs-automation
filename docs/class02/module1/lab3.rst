@@ -137,11 +137,12 @@ the BIG-IP. Additionally, the device will be onboarded and managed by BIG-IQ.
 
 #. Once the declaration completes, login to **BIGIQ-01**. 
 
-   .. note :: Username and password are: **admin/@gility2021**
-      When the declaration is complete you may notice that BIG-IQ is still
-      adding the device. This is expected as BIG-IQ will perform the device
-      onboarding first. Afterwards it will proceed to add the device and
-      discover services on the BIG-IP.
+   .. note :: 
+      | Username and password are: **admin/@gility2021**
+      | When the declaration is complete you may notice that BIG-IQ is still
+        adding the device. This is expected as BIG-IQ will perform the device
+        onboarding first. Afterwards it will proceed to add the device and
+        discover services on the BIG-IP.
 
 #. Navigate to the devices tab and then click on BIG-IP devices.
 
