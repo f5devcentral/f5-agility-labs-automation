@@ -7,7 +7,7 @@ After you complete Step #1 you should see URLs for Consul and BIG-IP.
 
 .. warning:: It may take several minutes for the BIG-IP to become available.
 
-Visit these URLS.
+Visit these URLS. Note the F5 credentials displayed in the output.
 
 Consul
 ------
@@ -34,7 +34,7 @@ On the Ubuntu host run the following commands
   $ terraform apply
   
 In this scenario we are executing a shell script that will
-deploy the "nginx.json" declaration that is configure to use Consul's API for
+deploy the "nginx.json" declaration that is configured to use Consul's API for
 service discovery.
 
 You should see the following output.
@@ -45,7 +45,7 @@ Follow the URL and you should see NGINX.
 
 .. image:: ./images/terraform-2-nginx-1.png
 
-At this point you should observe that on the BIG-IP there is partition named "Consul_SD".  Select the partition (top right of screen).
+At this point you should observe on the BIG-IP there is a partition named "Consul_SD".  Select the partition (top right of screen).
 
 This partition was created by the "nginx.json" that contains the following.
 
