@@ -110,25 +110,72 @@ this template Set then can be pushed to the BIG-IP. The FAST App can be deployed
 
    .. image:: ../images/ag7.png
 
+#. Below shows the complete AS3 which you plan to templatize 
+
+
    .. literalinclude:: as3.json
       :language: JSON
 
+#. AS3 Json which we need to convert from AS3 to YML FAST template
+
    .. image:: ../images/ag8.png
+
+#. While in the VScode Right Click to see the **AS3-->FAST YAML** option
+
    .. image:: ../images/ag9.png
+
+#. Review the converted YML file and replace the IP address **"10.0.1.10"** by **{{virtual_server}} and
+   replace **["192.0.1.10", "192.0.1.11"]** by **{{server_address::array}}** and **80** by **{{service_port}}**
+
    .. image:: ../images/ag11.png
+
+#. Below shows the replacement or tempaltize parameters.
+
    .. image:: ../images/ag12.png
+
+#. Also add the **service_address service_port** and **virtual_server** alongwith description as shown below 
+  
    .. image:: ../images/ag13.png
+
+#. Save the file as http.yml in the **Agility** folder
+
    .. image:: ../images/ag14.png
+
+
+#. Review the YML template file which was just created       
 
    .. literalinclude:: as3.yml
       :language: YAML
 
+#. Review the YML template file which was just created       
+
    .. image:: ../images/ag15.png
+
+#. While you are in the VScode highlight the **Agility** folder Right Click to get at 
+   the **Post Template Set**
+   This will post the **Template Set** on the BIG-IP
+
    .. image:: ../images/ag16.png
+
+#. Go to UDF and Click on the bigip1 TMUI and login into the BIG-IP, Click on the **iApps**
+   **Application Services --> Application LX 
+
+
    .. image:: ../images/ag17.png
+
+
+#. Go to the F5 Application Services Templates to see the **Agility** Template Set 
+
+
    .. image:: ../images/ag18.png
+   
+
+#. Click on the Deploy while you are in the F5 Application Services Templates 
+
+
    .. image:: ../images/ag19.png
-   .. image:: ../images/ag20.png
+
+
    .. image:: ../images/ag21.png
    .. image:: ../images/ag22.png
    .. image:: ../images/ag24.png
