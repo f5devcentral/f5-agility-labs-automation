@@ -14,8 +14,7 @@ During this hands-on lab you will learn the following:
 
 Expected time to complete: **2 hours**
 
-We will be using a jumpbox to connect to the lab environment. Go to the next
-section for details on how to connect to the lab environment.
+Go to the next section for details on how to connect to the lab environment.
 
 .. toctree::
    :maxdepth: 1

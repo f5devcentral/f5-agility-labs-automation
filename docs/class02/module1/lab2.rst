@@ -3,9 +3,9 @@ Lab 2 Configure Clustered BIG-IP with Declarative Onboarding
 
 In this lab we are going to configure **BIGIP-02**.  The build out will be
 similar but the declaration will be slightly different than **BIGIP-01**. There
-are some device specific items, like Self-IPs that will be different between
+are some device specific items, like Self-IPs, that will be different between
 devices. These differences illustrate examples where templatizing would work
-exceptionally well. For these situation you could use a templating tool that an
+exceptionally well. For these situations you could use a templating tool that an
 orchestrator may provide such as Jinja2 in Ansible.
 
 #. Lets connect to **BIGIP-02** in VSCode in preparation to send our declaration.
@@ -192,12 +192,14 @@ orchestrator may provide such as Jinja2 in Ansible.
    Once you have post the declaration check the status of the declaration being
    processed.
 
-   .. note::  Clustering via declarative onboarding can take several minutes
+   .. note::  Clustering via Declarative Onboarding can take several minutes
       to sync and establish, this is normal behavior.
 
 #. Once the declaration is complete return to either BIG-IP in Firefox and 
    check the cluster configuration and status. Both units should be clustered with
    all onboarding objects present from the declaration.
+
+   .. note :: Username and password are: **admin/@gility2021**
 
    In the BIG-IP console navigate to **Device Management -> Device Groups**
    and view the device group that was created by the declaration.  Click on the
