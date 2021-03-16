@@ -169,7 +169,17 @@ this template Set then can be pushed to the BIG-IP. The FAST App can be deployed
 #. Click on the Deploy while you are in the F5 Application Services Templates 
 
    .. image:: ../images/ag19.png
+
+#. Once you click on Deploy, you will see the template ***Agility/http*** is rendered and is ready
+   to take different values, in the next step we will see the actual values you need to enter.
+
+
    .. image:: ../images/ag21.png
+
+#. Enter the values for *** Tenant Name  virtual_server service_port *** Click on the row tab to expand the
+   it and enter the server addresses ***10.1.20.10 & 10.1.20.11 ***
+
+   
    .. image:: ../images/ag22.png
    .. image:: ../images/ag24.png
    .. image:: ../images/ag25.png
