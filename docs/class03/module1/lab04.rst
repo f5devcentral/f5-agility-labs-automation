@@ -176,12 +176,18 @@ this template Set then can be pushed to the BIG-IP. The FAST App can be deployed
 
    .. image:: ../images/ag21.png
 
-#. Enter the values for *** Tenant Name  virtual_server service_port *** Click on the row tab to expand the
-   it and enter the server addresses ***10.1.20.10 & 10.1.20.11 ***
+#. Enter the values for ***Tenant Name,  virtual_server, service_port*** Click on the row tab to expand the
+   it and enter the server addresses ***10.1.20.10 & 10.1.20.11*** and hit Enter
+
+
+   .. image:: ../images/ag22.png
+
+#. Check the ***Result** it should say *Success* in the Deploy log
+
+
+   .. image:: ../images/ag24.png
 
    
-   .. image:: ../images/ag22.png
-   .. image:: ../images/ag24.png
    .. image:: ../images/ag25.png
    .. image:: ../images/ag26.png
    .. image:: ../images/ag27.png
