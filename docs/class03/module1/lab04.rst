@@ -170,22 +170,24 @@ this template Set then can be pushed to the BIG-IP. The FAST App can be deployed
 
    .. image:: ../images/ag19.png
 
-#. Once you click on Deploy, you will see the template ***Agility/http*** is rendered and is ready
+#. Once you click on Deploy ---> Agility, which will load the template with default values
+   you will see the template ***Agility/http*** is rendered and is ready
    to take different values, in the next step we will see the actual values you need to enter.
 
 
    .. image:: ../images/ag21.png
 
-#. Enter the values for ***Tenant Name,  virtual_server, service_port*** Click on the row tab to expand the
-   it and enter the server addresses ***10.1.20.10 & 10.1.20.11*** and hit Enter
+#. Click on *Agility/http* Enter the values for ***Tenant Name,  virtual_server, service_port*** Click on the row tab to expand the
+   it and enter the server addresses ***10.1.20.10 & 10.1.20.11*** and hit *Submit* you can also render it as see.
 
 
    .. image:: ../images/ag22.png
 
-#. Check the ***Result** it should say *Success* in the Deploy log
+#. Check the ***Result** it should say *Success* in the *Deploy log*
 
 
    .. image:: ../images/ag24.png
+   
 
 #. Go to UDF bigip1 access Click on TMUI to access bigip1, you can see your application is deployed.
 
