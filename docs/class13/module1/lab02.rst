@@ -13,8 +13,7 @@ send alert triggers to the ADPM system when scaling of either the BIG-IP fronten
 
 #. From your VS Code browser page, either copy of double-click on the link entitled **f_elk_public_address**.  You are 
    presented with the logon page shown below.  Use the relevant credentials provided in the startup section to log into
-   Kibana, (the ELK stack visualization service and the '*K*' in ELK).  In the unlikely event, you receive a **502** browser error
-   when trying to access the Kibana front end, refer to the *Troubleshooting* section at the bottom of this page.
+   Kibana, (the ELK stack visualization service and the '*K*' in ELK).
 
    .. image:: images/elk_login.png
 
