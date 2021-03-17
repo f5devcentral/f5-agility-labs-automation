@@ -158,26 +158,4 @@ By successfully completing the previous exercises you will have:
    - Created four (4) alerts - (two alerts configured to monitor and trigger BIG-IP instance scaling,  two alerts 
      configured to monitor and trigger backend application pool scaling)
 
-
-
-
-
-
-**Troubleshooting**
--------------------------------------
-
-**Issue:**  
-   - Symptom:    HTTP 502 error code received when trying to access ELK stack web interface
-   - Cause:      There was an issue with configuration of ELK stack services during initial deployment
-   - Resolution: Install missing ELK stack configuration
-
-      #. From the VS Code browser tab open a new terminal window.
-
-      #. Using the new terminal window, navigate to the home directory and run the ELK stack configuration script, (see below). 
-
-         ``cd /home/ubuntu && sudo sh ./elk.sh``
-
-         .. image:: images/trouble_1.png
-
-      #. The *elk.sh* script will create and configure the missing ELK stack components.  Once script completes, verify
-         connectivity to the ELK stack UI and close the VS Code tab.
+In the next lab, (Lab #3) you will generate application traffic and monitor for scaling events.

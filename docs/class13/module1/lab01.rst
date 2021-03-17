@@ -86,5 +86,6 @@ By successfully completing the previous exercises you will have:
    - Deployed a fully functioning infrastructure and application stack
    - Verified application connectivity
 
+In the next lab, (Lab #2) you will configure your Elastic "ELK" stack for telemetry data ingestion and setup alerts, (via Watcher).
 
 
