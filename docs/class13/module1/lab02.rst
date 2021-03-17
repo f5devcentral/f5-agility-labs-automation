@@ -159,6 +159,8 @@ By successfully completing the previous exercises you will have:
      configured to monitor and trigger backend application pool scaling)
 
 
+
+
 **Troubleshooting**
 -------------------------------------
 
