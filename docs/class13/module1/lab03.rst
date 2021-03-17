@@ -7,7 +7,7 @@ your Consul server to view scaling logs entries and monitor service discovery.
 **Exercise 1 - Generate Traffic**
 ---------------------------------
 
-#. Before using Locust you must first start the locust application.  From VS Code browser tab open a new terminal 
+#. Before using Locust you must first start the locust application.  From the VS Code browser tab open a new terminal 
    window, (see below).
 
    .. image:: images/locust_1.png
@@ -53,4 +53,11 @@ your Consul server to view scaling logs entries and monitor service discovery.
 
    .. image:: images/monitor_2.png
 
-   This concludes the ADPM Performance-based Autoscaling lab.
+**Lab Summary**
+---------------
+By successfully completing the previous exercises you will have:
+   - Used Locust.io to generate application traffic load 
+   - Used the BIG-IP and Hashicorp Consul server to monitor backend workload scaling
+   - Used Hashicorp Consul server to monitor scaling events, (BIG-IP and backend workloads)
+   
+This concludes the ADPM Performance-based Autoscaling lab.

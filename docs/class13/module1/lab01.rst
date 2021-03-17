@@ -49,12 +49,13 @@ yourself with your student environment.
 
 #. Either copy of double-click on the link entitled **d_application_address**.  This points to the Azure load balancer
    frontend address, (VIP).  As BIG-IP instances are deployed they are added to the Azure load balancer's backend 
-   pool.  **Note:** This solution does not make use of native cloud scaling mechanisms.  Rather, scaling decisions and
+   pool.  The BIG-IP(s) in turn sit in front of the application pool, (NGINX webserver pool) providing load balancing and 
+   advanced traffic services. In later exercises, you will be setting up alerts and scaling both the BIG-IP ADC cluster
+   and the backend application pool.  **Note:** This solution does not make use of native cloud scaling mechanisms.  Rather, scaling decisions and
    actions are performed by the analytics provider, (Elastic "ELK" stack) and the ADPM system, (GitHub Actions)
-   respectively.  Using your browser, navigate to application's frontpage, (you will need to accept the certificate errors
-   to continue).  Your front page will be similar to the example below.
+   respectively.  Using your browser, navigate to application's frontpage; you will need to accept the certificate errors
+   to continue.  Your front page will be similar to the example below.
    
-
    **Note:** If you are using the Chrome browser, you may need to enter ``thisisunsafe`` while on the page to bypass warnings.
 
    **Note:** If you are using the Chrome browser, you
@@ -73,9 +74,17 @@ yourself with your student environment.
 
    .. image:: images/consul_front.png
 
-#. In addition to the above services, the Terraform deployment output includes the management address and credentials for the 
-   single BIG-IP initially deployed.  While not necessary for this particular lab, you may use the suppled credentials and address to 
+#. In addition to the above services, the Terraform deployment output includes the management address for the 
+   single BIG-IP initially deployed.  While not necessary for this particular lab, you may use the supplied credentials and address to 
    connect to BIG-IP's management interface.  **Note:** The BIG-IP management interface is available via port *8443*.
+
+**Lab Summary**
+---------------
+By successfully completing the previous exercises you will have:
+   - Accessed and deployed a new student UDF lab blueprint
+   - Cloned the lab GitHub repository to the UDF jump box using VS Code
+   - Deployed a fully functioning infrastructure and application stack
+   - Verified application connectivity
 
 
 

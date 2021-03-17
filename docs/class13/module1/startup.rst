@@ -33,10 +33,12 @@ The following table lists the virtual resources and credentials you will be depl
 Starting the Lab
 ----------------
 
-In order to complete this lab, you will connect to a linux jump host as well as your
+In order to complete this lab, you utilize F5's Unified Demo Framework (UDF) and connect to a linux jump host as well as your
 local browser, (Mozilla Firefox recommended).  Use the below steps to access your jump box.
 In later lab sections you will interact with the environment using the jump box too 
 access tools, (VS Code and Locust).
+
+#. Navigate to the UDF environment, (*https://udf.f5.com*) and deploy the **Agility 2021 - Performance-based Autoscaling** blueprint.
 
 #. Click on the ``Components`` tab in your UDF deployment
 

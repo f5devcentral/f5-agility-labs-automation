@@ -13,7 +13,8 @@ send alert triggers to the ADPM system when scaling of either the BIG-IP fronten
 
 #. From your VS Code browser page, either copy of double-click on the link entitled **f_elk_public_address**.  You are 
    presented with the logon page shown below.  Use the relevant credentials provided in the startup section to log into
-   Kibana, (the ELK stack visualization service and the '*K*' in ELK).
+   Kibana, (the ELK stack visualization service and the '*K*' in ELK).  In the unlikely event, you receive a **502** browser error
+   when trying to access the Kibana front end, refer to the *Troubleshooting* section at the bottom of this page.
 
    .. image:: images/elk_login.png
 
@@ -75,11 +76,10 @@ submenu navigate to and select '*Watcher*', (see above).  From the center panel 
 
    .. image:: images/create_watch.png
 
-You will be creating a total of four (4) alerts.  These alerts will monitor and respond to increases/decreases in BIG-IP cpu
-utilization and current application connections.  In the event a member BIG-IP's cpu utilization exceeds or falls below the
-specified thresholds during the specified interval, an alert will fire triggering a webhook call to the ADPM *alertForwarder*
-service.  The alertForwarder will subsequently post a BIG-IP scaling request to the central processor, (utilizing the 
-repo's **GitHub Actions**).
+For the lab, you will be creating a total of four (4) alerts.  These alerts will monitor and respond to increases/decreases in BIG-IP CPU
+utilization and current application connections.  In the event a member BIG-IP's CPU utilization exceeds or falls below the specified 
+thresholds during the specified interval, an alert will fire triggering a webhook call to the ADPM *alertForwarder* service. 
+The alertForwarder will subsequently post a BIG-IP scaling request to the central processor, (utilizing the repo's **GitHub Actions**).  
    
 Likewise, if current connections fall outside of the specified thresholds a similar alert will be fired.  However, rather than
 scaling BIG-IP instances, this will trigger a scaling (up/down) of the backend application workloads, (lab ex: NGINX).  Use
@@ -149,3 +149,31 @@ your thresholds, you may already have alerts firing. The Watcher screen provides
 section you will generate some traffic and monitor scaling events using your Consul server.
 
    .. image:: images/alert_final.png
+
+
+**Lab Summary**
+---------------
+By successfully completing the previous exercises you will have:
+   - Configured Elastic (ELK) stack for telemetry ingestion
+   - Created four (4) alerts - (two alerts configured to monitor and trigger BIG-IP instance scaling,  two alerts 
+     configured to monitor and trigger backend application pool scaling)
+
+
+**Troubleshooting**
+-------------------------------------
+
+**Issue:**  
+   - Symptom:    HTTP 502 error code received when trying to access ELK stack web interface
+   - Cause:      There was an issue with configuration of ELK stack services during initial deployment
+   - Resolution: Install missing ELK stack configuration
+
+      #. From the VS Code browser tab open a new terminal window.
+
+      #. Using the new terminal window, navigate to the home directory and run the ELK stack configuration script, (see below). 
+
+         ``cd /home/ubuntu && sudo sh ./elk.sh``
+
+         .. image:: images/trouble_1.png
+
+      #. The *elk.sh* script will create and configure the missing ELK stack components.  Once script completes, verify
+         connectivity to the ELK stack UI and close the VS Code tab.
