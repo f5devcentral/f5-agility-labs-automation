@@ -125,6 +125,11 @@ Task 4 - Install FAST extension
 
       .. NOTE::  This method is considered the "offline" method so all the lab users are not trying to download the same files from github at the same time.  For additional information on alternate install methods see:  https://f5devcentral.github.io/vscode-f5/#/atc_rpm_mgmt
 
+#. In VSCode, make sure you are connected to BIG-IP01 (10.1.1.6) by looking at the bottom ribbon:
+
+   .. image:: ../images/VScode_F5ConnectedBIGIP01.jpg
+      :scale: 60%
+
 #. In VSCode, go to the File Explorer view by choosing ``Menu`` >> ``View`` >> ``Explorer``
       .. image:: ../images/VScodeOpenFileExplorer.jpg
 
