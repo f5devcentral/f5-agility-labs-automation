@@ -143,11 +143,11 @@ Task 4 - Install FAST extension
       .. Note:: This process will upload the local RPM and install it on the F5.  The install happens rather quickly, but it can take another 30-60 seconds for all the servcies to restart and present the changes.  
 
 
-When complete, the vscode-f5 extension should reconnect and refresh all the details.
+#. When complete, the vscode-f5 extension should reconnect and refresh all the details.
 
       You may need to click on the device in the HOSTS view to reconnect and refresh the discovered services
 
-Notice that FAST now shows as installed (with version number) along the bottom of the editor
+#. Notice that FAST now shows as installed (with version number) along the bottom of the editor
 
       .. image:: ../images/lab01_vscode_fastInstalledVersion.png
          :scale: 80 %
