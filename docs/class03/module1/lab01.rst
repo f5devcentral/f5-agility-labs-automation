@@ -79,11 +79,11 @@ Task 1 - Getting connected
 Task 2 - Access extension documentation
 ---------------------------------------
 
-Click on the ``vscode-f5 Documentation`` button in the ``DOCUMENTATION/EXAMPLES`` view.
+#. Click on the ``vscode-f5 Documentation`` button in the ``DOCUMENTATION/EXAMPLES`` view.
 
       .. image:: ../images/lab01_vscode_documentation_button.jpg
 
-When prompted, Select ``Open`` to continue, which will open a new browser window to the documentation. 
+#. When prompted, Select ``Open`` to continue, which will open a new browser window to the documentation. 
 
       .. image:: ../images/OpenVScodeExtension.jpg
    
