@@ -20,7 +20,7 @@ ADPM system uses Terraform and the student's remote state file to perform scalin
    .. image:: images/access_vscode.png
 
 
-#. The client jump box has been preconfigured top interact with both the cloud environment, (Azure) and the
+#. The client jump box has been preconfigured to interact with both the cloud environment, (Azure) and the
    ADPM central repo.  You will use VS Code to clone and deploy your application environment.  From VS Code, 
    select the 'Terminal' tab, navigate to the home directory and clone the repo using the below commands.
     
@@ -35,8 +35,8 @@ ADPM system uses Terraform and the student's remote state file to perform scalin
    
    The script, (deploy.sh) triggers a series of terraform projects that deploys a fully functioning sample
    application and associated infrastructure into the Azure public cloud.  Once the deployment has completed, 
-   (10-15 minutes) you will be presented with a listing of outputs, (see below).  You will use these outputs
-   to complete the lab.
+   (10-15 minutes) you will be presented with a listing of outputs, (see below).  **IMPORTANT:** Leave the VS Code
+   terminal window open.  You will use these outputs to complete the remainder of the lab.
 
    .. image:: images/outputs.png
    
@@ -47,7 +47,7 @@ As previously mentioned, the Terraform outputs provide the endpoints that you wi
 complete the lab.  Before continuing on to the next steps, (configuring alerts) take a few minutes to familiarize
 yourself with your student environment.
 
-#. Either copy of double-click on the link entitled **d_application_address**.  This points to the Azure load balancer
+#. Either copy or double-click on the link entitled **d_application_address**.  This points to the Azure load balancer
    frontend address, (VIP).  As BIG-IP instances are deployed they are added to the Azure load balancer's backend 
    pool.  The BIG-IP(s) in turn sit in front of the application pool, (NGINX webserver pool) providing load balancing and 
    advanced traffic services. In later exercises, you will be setting up alerts and scaling both the BIG-IP ADC cluster
@@ -57,9 +57,6 @@ yourself with your student environment.
    to continue.  Your front page will be similar to the example below.
    
    **Note:** If you are using the Chrome browser, you may need to enter ``thisisunsafe`` while on the page to bypass warnings.
-
-   **Note:** If you are using the Chrome browser, you
-   may need to enter ``thisisunsafe`` while on the page to bypass warnings.
 
 
    .. image:: images/app_page.png

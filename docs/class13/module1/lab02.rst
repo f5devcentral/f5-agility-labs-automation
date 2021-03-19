@@ -11,7 +11,7 @@ send alert triggers to the ADPM system when scaling of either the BIG-IP fronten
 **Exercise 1 - Create Index Pattern**
 -------------------------------------
 
-#. From your VS Code browser page, either copy of double-click on the link entitled **f_elk_public_address**.  You are 
+#. From your VS Code browser page, either copy or double-click on the link entitled **f_elk_public_address**.  You are 
    presented with the logon page shown below.  Use the relevant credentials provided in the startup section to log into
    Kibana, (the ELK stack visualization service and the '*K*' in ELK).  In the unlikely event you receive a **502** browser error
    when trying to access the Kibana front end, notify your instructor for assistance.
@@ -33,9 +33,9 @@ send alert triggers to the ADPM system when scaling of either the BIG-IP fronten
 
    .. image:: images/index_1.png
 
-#. On the *Create Index Pattern* screen enter ``F5-*`` for the index pattern name.  As the example below illustrates, you should
+#. On the *Create Index Pattern* screen enter ``f5-*`` for the index pattern name.  As the example below illustrates, you should see
    several indexes listed below.  As telemetry data is streamed from the BIG-IP(s) to the ELK stack, (via Logstash - the '*L*' in ELK)
-   it is assigned an index with a pattern of **f5-%{+YYYY.MM.dd.hh.mm}**.
+   it is assigned an index with a pattern of **f5-%{+YYYY.MM.dd.hh.mm}**.  Click '*Next Step*' to continue.
 
    .. image:: images/index_2.png
 
@@ -97,6 +97,7 @@ the screenshot example below to create the first alert, (*MaxCpuAlert*).
    .. image:: images/alert_1.png
 
 #. In the *Actions* section select '*Add action*'.  From the menu pop-up select '*Webhook*', (see below).
+   
    .. image:: images/alert_2.png
 
 #. Use the below example to complete the webhook section.  When you are done select '*Create alert*'.  Specifiy ``alertforwarder.f5demo.net`` for the Host. For the webhook body 
@@ -120,13 +121,13 @@ the screenshot example below to create the first alert, (*MaxCpuAlert*).
       - **IS**
       - **LAST**
       - **Webhook body**
-    * - MinCpuAlert
+   * - MinConnsAlert
       - max()
-      - myMaxCpu
+      - myCurCons
       - top 1 of hostname.keyword
-      - BELOW 1000
+      - BELOW 50
       - 5 minutes
-      - ``{"source": "elk", "scaleAction":"scaleInBigip", "message": "{{ctx.payload}}"}``
+      - ``{"source": "elk", "scaleAction":"scaleInWorkload", "message": "{{ctx.payload}}"}``
     * - MaxConnsAlert
       - max()
       - myCurCons
@@ -134,13 +135,6 @@ the screenshot example below to create the first alert, (*MaxCpuAlert*).
       - ABOVE 500
       - 5 minutes
       - ``{"source": "elk", "scaleAction":"scaleOutWorkload", "message": "{{ctx.payload}}"}``
-    * - MinConnsAlert
-      - max()
-      - myCurCons
-      - top 1 of hostname.keyword
-      - BELOW 50
-      - 5 minutes
-      - ``{"source": "elk", "scaleAction":"scaleInWorkload", "message": "{{ctx.payload}}"}``
 
    .. image:: images/alerts.png
 
