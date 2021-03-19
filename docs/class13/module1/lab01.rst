@@ -51,7 +51,7 @@ yourself with your student environment.
    frontend address, (VIP).  As BIG-IP instances are deployed they are added to the Azure load balancer's backend 
    pool.  The BIG-IP(s) in turn sit in front of the application pool, (NGINX webserver pool) providing load balancing and 
    advanced traffic services. In later exercises, you will be setting up alerts and scaling both the BIG-IP ADC cluster
-   and the backend application pool.  **Note:** This solution does not make use of native cloud scaling mechanisms.  Rather, scaling decisions and
+   and the backend application pool.  This solution does not make use of native cloud scaling mechanisms.  Rather, scaling decisions and
    actions are performed by the analytics provider, (Elastic "ELK" stack) and the ADPM system, (GitHub Actions)
    respectively.  Using your browser, navigate to application's frontpage; you will need to accept the certificate errors
    to continue.  Your front page will be similar to the example below.
