@@ -79,11 +79,11 @@ Task 1 - Getting connected
 Task 2 - Access extension documentation
 ---------------------------------------
 
-Click on the ``vscode-f5 Documentation`` button in the ``DOCUMENTATION/EXAMPLES`` view.
+#. Click on the ``vscode-f5 Documentation`` button in the ``DOCUMENTATION/EXAMPLES`` view.
 
       .. image:: ../images/lab01_vscode_documentation_button.jpg
 
-When prompted, Select ``Open`` to continue, which will open a new browser window to the documentation. 
+#. When prompted, Select ``Open`` to continue, which will open a new browser window to the documentation. 
 
       .. image:: ../images/OpenVScodeExtension.jpg
    
@@ -125,6 +125,11 @@ Task 4 - Install FAST extension
 
       .. NOTE::  This method is considered the "offline" method so all the lab users are not trying to download the same files from github at the same time.  For additional information on alternate install methods see:  https://f5devcentral.github.io/vscode-f5/#/atc_rpm_mgmt
 
+#. In VSCode, make sure you are connected to BIG-IP01 (10.1.1.6) by looking at the bottom ribbon:
+
+   .. image:: ../images/VScode_F5ConnectedBIGIP01.jpg
+      :scale: 60%
+
 #. In VSCode, go to the File Explorer view by choosing ``Menu`` >> ``View`` >> ``Explorer``
       .. image:: ../images/VScodeOpenFileExplorer.jpg
 
@@ -138,11 +143,11 @@ Task 4 - Install FAST extension
       .. Note:: This process will upload the local RPM and install it on the F5.  The install happens rather quickly, but it can take another 30-60 seconds for all the servcies to restart and present the changes.  
 
 
-When complete, the vscode-f5 extension should reconnect and refresh all the details.
+#. When complete, the vscode-f5 extension should reconnect and refresh all the details.
 
       You may need to click on the device in the HOSTS view to reconnect and refresh the discovered services
 
-Notice that FAST now shows as installed (with version number) along the bottom of the editor
+#. Notice that FAST now shows as installed (with version number) along the bottom of the editor
 
       .. image:: ../images/lab01_vscode_fastInstalledVersion.png
          :scale: 80 %
