@@ -2,7 +2,7 @@ Lab 2 Configure Clustered BIG-IP with Declarative Onboarding
 ==============================================================
 
 In this lab we are going to configure **BIGIP-02**.  The build out will be
-similar but the declaration will be slightly different than **BIGIP-01**. There
+similar, but the declaration will be slightly different than **BIGIP-01**. There
 are some device specific items, like Self-IPs, that will be different between
 devices. These differences illustrate examples where templatizing would work
 exceptionally well. For these situations you could use a templating tool that an
@@ -199,7 +199,9 @@ orchestrator may provide such as Jinja2 in Ansible.
    check the cluster configuration and status. Both units should be clustered with
    all onboarding objects present from the declaration.
 
-   .. note :: Username and password are: **admin/@gility2021**
+   .. note :: 
+      | URL: https://bigip-02
+      | Username/password: **admin/@gi1ity2021**
 
    In the BIG-IP console navigate to **Device Management -> Device Groups**
    and view the device group that was created by the declaration.  Click on the

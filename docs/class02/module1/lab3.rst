@@ -138,11 +138,19 @@ the BIG-IP. Additionally, the device will be onboarded and managed by BIG-IQ.
 #. Once the declaration completes, login to **BIGIQ-01**. 
 
    .. note :: 
-      | Username and password are: **admin/@gility2021**
-      | When the declaration is complete you may notice that BIG-IQ is still
-        adding the device. This is expected as BIG-IQ will perform the device
-        onboarding first. Afterwards it will proceed to add the device and
-        discover services on the BIG-IP.
+      | URL: https://bigiq-01
+      | Username/password: **admin/@gi1ity2021**
+   
+   .. attention ::
+      When onboarding BIGIP-03 vi BIGIQ-01 the DO post may take a few minutes
+      to complete. Be sure to refresh DO in VSCode until you receive a 200 OK
+      message before proceeding.
+   
+   .. attention ::
+      When the declaration is complete you may notice that BIG-IQ is still
+      adding the device. This is expected as BIG-IQ will perform the device
+      onboarding first. Afterwards, it will proceed to add the device and
+      discover services on the BIG-IP.
 
 #. Navigate to the devices tab and then click on BIG-IP devices.
 
@@ -152,7 +160,7 @@ the BIG-IP. Additionally, the device will be onboarded and managed by BIG-IQ.
 
 #. Login into **BIGIP-03** and review the configurations. 
 
-   .. note :: Username and password are: **admin/@gility2021**
+   .. note :: Username/password: **admin/@gi1ity2021**
 
 This completes the Declarative Onboarding lab
 ---------------------------------------------
