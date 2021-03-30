@@ -10,7 +10,9 @@ state of one of our BIG-IP appliances.
 #. Login to **BIGIP-01** and notice that it is not licensed and nothing has been
    provisioned.  Also notice the hostname in the upper left hand corner.
 
-   .. note :: Username and password are: **admin/@gility2021**
+   .. note :: 
+      | URL: https://bigip-01 
+      | Username/password: **admin/@gi1ity2021**
 
    .. image:: images/bigip01_01.png
 
@@ -25,7 +27,7 @@ state of one of our BIG-IP appliances.
    Within the add host prompt add each BIG-IP using the username\@hostname format
    and press enter.
 
-   .. note :: Username and password are: **admin/@gility2021**
+   .. note :: Username/password: **admin/@gi1ity2021**
 
    .. image:: images/f5_extension_add_host_02.png
 
@@ -33,13 +35,6 @@ state of one of our BIG-IP appliances.
    the device.
 
    .. image:: images/f5_extension_add_host_03.png
-
-   .. note:: Once you have successfully connected and authenticated to the 
-      BIG-IP device you will notice that the bottom of your VSCode window 
-      will show the version of Declarative Onboarding that is installed 
-      (as well as other components).
-
-   .. image:: images/do_version.png
 
    .. note:: Be sure to add all three BIG-IPs and BIG-IQ to the F5 VSCode 
       extension.
@@ -70,6 +65,13 @@ state of one of our BIG-IP appliances.
 
       - Proceed to install DO on the other three BIG-IPs. BIG-IQ already has DO
         installed.
+
+      .. note:: Once you have successfully installed DO on the BIG-IP device
+         you will notice that the bottom of your VSCode window will show the
+         version of Declarative Onboarding that is installed
+         (as well as other ATC components that may be installed).
+
+      .. image:: images/do_version.png
 
    .. attention:: The BIG-IQ device already has DO installed, theres no need to
       attempt to install DO on the BIG-IQ device.
@@ -320,7 +322,7 @@ state of one of our BIG-IP appliances.
    **BIGIP-01** and notice the host name has changed and the device is now
    licensed.
 
-   .. note :: Username and password are: **admin/@gility2021**
+   .. note :: Username/password: **admin/@gi1ity2021**
 
    .. image:: images/bigip01_02.png
 
