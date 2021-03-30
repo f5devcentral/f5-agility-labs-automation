@@ -121,6 +121,13 @@ the screenshot example below to create the first alert, (*MaxCpuAlert*).
       - **IS**
       - **LAST**
       - **Webhook body**
+   * - MinCpuAlert
+      - max()
+      - myCurCons
+      - top 1 of hostname.keyword
+      - BELOW 1000
+      - 5 minutes
+      - ``{"source": "elk", "scaleAction":"scaleInBigip", "message": "{{ctx.payload}}"}``
    * - MinConnsAlert
       - max()
       - myCurCons
