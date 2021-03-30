@@ -113,7 +113,7 @@ SSL Offload.
    .. image:: ../images/VScode_TenantsMenu.jpg
       :scale: 50 %
 
-#. Click on the down arrow next to ``Tenant 1``, and you will see the ``Tenant_Acme`` in the list.
+#. Click on the down arrow next to ``Tenants``, and you will see the ``Tenant_Acme`` in the list.
 
 #. Right click on the ``Tenant_Acme``, and right click.  Choose the option ``Expanded Tenant``.
 

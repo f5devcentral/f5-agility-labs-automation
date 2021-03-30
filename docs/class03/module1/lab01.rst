@@ -20,7 +20,7 @@ Task 1 - Getting connected
 
       To connect to ``VS CODE``, select the ``ACCESS`` dropdown from the ``client`` ``system``, then select ``VS CODE``
 
-      .. image:: ../images/VScode.jpg
+      .. image:: ../images/VSCode-UDF-DropDown.png
 
       
 #. Access F5 VSCode extension
@@ -78,6 +78,8 @@ Task 1 - Getting connected
 
 Task 2 - Access extension documentation
 ---------------------------------------
+
+      This task is just to highlight the quick access to documentation and examples accessible from within the extension.  Explore the different options
 
       Click on the ``vscode-f5 Documentation`` button in the ``DOCUMENTATION/EXAMPLES`` view
 

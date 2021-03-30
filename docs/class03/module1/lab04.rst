@@ -50,7 +50,7 @@ declaration which can posted to BIG-IP in VScode istself.
 
    .. image:: ../images/simplehttp.png
 
-#. Click on the Render TAB to see the AS3 generated 
+#. Click on the ``Render`` button on the bottm to see the AS3 generated 
 
    .. image:: ../images/renderas3.png
 
@@ -144,10 +144,6 @@ this template Set then can be pushed to the BIG-IP. The FAST App can be deployed
 
    .. literalinclude:: as3.yml
       :language: YAML
-
-#. Review the YML template file which was just created       
-
-   .. image:: ../images/ag15.png
 
 #. While you are in the VScode highlight the **Agility** folder Right Click to get at 
    the **Post Template Set**
