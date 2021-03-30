@@ -165,12 +165,50 @@ this template Set then can be pushed to the BIG-IP. The FAST App can be deployed
 #. Click on the Deploy while you are in the F5 Application Services Templates 
 
    .. image:: ../images/ag19.png
+
+#. Once you click on Deploy ---> Agility, which will load the template with default values
+   you will see the template ***Agility/http*** is rendered and is ready
+   to take different values, in the next step we will see the actual values you need to enter.
+
+
    .. image:: ../images/ag21.png
+
+#. Click on *Agility/http* Enter the values for ***Tenant Name,  virtual_server, service_port*** Click on the row tab to expand the
+   it and enter the server addresses ***10.1.20.10 & 10.1.20.11*** and hit *Submit* you can also render it as see.
+
+
    .. image:: ../images/ag22.png
+
+#. Check the ***Result** it should say *Success* in the *Deploy log*
+
+
    .. image:: ../images/ag24.png
+   
+
+#. Go to UDF bigip1 access Click on TMUI to access bigip1, you can see your application is deployed.
+
+   .. image:: ../images/BIGIP_TMUIlogin.jpg
+
+#. Click on *Partition* on the top right on bigip1 and select **Agility1**
+
+
    .. image:: ../images/ag25.png
+
+#. Click on Local Traffic Manager and Select Virtual Server to see the new Virtual Server created
+
+
    .. image:: ../images/ag26.png
+
+#. Go back to VScode and click on the F5 Hosts  and then click on FAST VIEW in VScode to see what
+   applications are deployed, lookout for *Agility/A1* 
+
+
    .. image:: ../images/ag27.png
+
+
+#. Remianing on the *Agility/A1* Right Click and Select *Delete FAST App* to remove the application frm BIG-IP
+
+
    .. image:: ../images/ag28.png
 
-#. Click on F5 logo on the left
+#. You can go back to bigip1 GUI and check the application / Tenant is deleted.

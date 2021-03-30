@@ -61,7 +61,7 @@ There is also an instance of Firefox, which will be used to validate virtual ser
 
 #. Find the ``client`` system, and click ``Access``, then click ``VS CODE``.  
    
-   .. image:: ../images/AccessVScode.jpg
+   .. image:: ../images/AccessVScode2.jpg
       :scale: 70 %
 
 #. A new window will open for the VS-Code program.

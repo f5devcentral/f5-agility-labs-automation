@@ -68,12 +68,12 @@ Task 1 - Getting connected
 
 #. Confirming connection
 
-      You can confirm ``VS CODE`` is connected by looking at detail on ``F5 -> Connect!`` at bottom of screen.  In the status you can see the version of AS3 that is installed on the ``BIG-IP``.  In this case, it is version ``3.22.0``.
+      You can confirm ``VS CODE`` is connected by looking at detail on ``F5 -> Connect!`` at bottom of screen.  In the status you can see the version of AS3 that is installed on the ``BIG-IP``.  In this case, it is version ``3.26.0``.
 
       .. image:: ../images/VScode_F5ConnectedBIGIP01.jpg
          :scale: 50 %
 
-
+      .. NOTE:: The version of ``AS3`` in the graphic could differ from the lab guide. 
 
 
 Task 2 - Access extension documentation
@@ -81,20 +81,22 @@ Task 2 - Access extension documentation
 
       This task is just to highlight the quick access to documentation and examples accessible from within the extension.  Explore the different options
 
-      Click on the ``vscode-f5 Documentation`` button in the ``DOCUMENTATION/EXAMPLES`` view
+#. Click on the ``vscode-f5 Documentation`` button in the ``DOCUMENTATION/EXAMPLES`` view.
 
       .. image:: ../images/lab01_vscode_documentation_button.jpg
 
+#. When prompted, Select ``Open`` to continue, which will open a new browser window to the documentation. 
 
+      .. image:: ../images/OpenVScodeExtension.jpg
    
 
 
 Task 3 - Import devices
 -----------------------
 
-      How to import devices for larger/automated environments
+How to import devices for larger/automated environments
 
-      #. Open a new tab by double clicking in the main editor area
+      #. Open a new tab by double clicking in the main editor area, or select ``New file`` in main ``VS CODE`` window.
       #. Paste the following into the editor
 
          .. code-block:: bash
@@ -113,6 +115,10 @@ Task 3 - Import devices
       .. image:: ../images/lab01_vscode_deviceImport.png
          :scale: 75 %
 
+#. You will see the ``10.1.1.7`` device added to the list of ``F5 HOSTS``.
+
+      .. image:: ../images/ImportDeviceResults.jpg
+
 
 Task 4 - Install FAST extension
 -------------------------------
@@ -121,8 +127,16 @@ Task 4 - Install FAST extension
 
       .. NOTE::  This method is considered the "offline" method so all the lab users are not trying to download the same files from github at the same time.  For additional information on alternate install methods see:  https://f5devcentral.github.io/vscode-f5/#/atc_rpm_mgmt
 
-#. In VSCode, go to the file explorer view
+#. In VSCode, make sure you are connected to BIG-IP01 (10.1.1.6) by looking at the bottom ribbon:
+
+   .. image:: ../images/VScode_F5ConnectedBIGIP01.jpg
+      :scale: 60%
+
+#. In VSCode, go to the File Explorer view by choosing ``Menu`` >> ``View`` >> ``Explorer``
+      .. image:: ../images/VScodeOpenFileExplorer.jpg
+
 #. Open the files folder
+
 #. Right-click ``f5-appsvcs-templates-1.7.0.noarch.rpm``, then select ``Install RPM``
 
       .. image:: ../images/VSCode-FAST-RPMinstall.png
@@ -131,17 +145,17 @@ Task 4 - Install FAST extension
       .. Note:: This process will upload the local RPM and install it on the F5.  The install happens rather quickly, but it can take another 30-60 seconds for all the servcies to restart and present the changes.  
 
 
-When complete, the vscode-f5 extension should reconnect and refresh all the details.
+#. When complete, the vscode-f5 extension should reconnect and refresh all the details.
 
       You may need to click on the device in the HOSTS view to reconnect and refresh the discovered services
 
-Notice that FAST now shows as installed (with version number) along the bottom of the editor
+#. Notice that FAST now shows as installed (with version number) along the bottom of the editor
 
       .. image:: ../images/lab01_vscode_fastInstalledVersion.png
          :scale: 80 %
       
       
-Task 5 - Deploy application via FAST template in tmui
+Task 5 - Deploy application via FAST template in TMUI
 -----------------------------------------------------
    
 #. Go back to UDF deployment screen, and choose the component ``bigip1``.  Then choose the ``Access Method`` of ``TMUI``.  This will allow you to login to the ``BIG-IP`` GUI.
@@ -153,28 +167,32 @@ Task 5 - Deploy application via FAST template in tmui
 
 #. Under ``iApps`` >> ``Application Services`` : ``Applications LX``, select ``F5 Application Services Templates``
 
-      login if needed: ``admin/admin``
+      Login if needed: ``admin/admin``
 
       Select the ``Deploy`` tab, expand the ``examples`` section, select ``examples/simple_udp_defaults``
 
       Notice that the template has default parameters
 
       Click each of the buttons at the bottom, next to the submit button, to see the different outputs:
+
       - View Template
+
       - View Schema
+
       - View Inputs
+
       - View Rendered
 
-      Now click  ``Submit`` to deploy an application using the fast template
+      Now click  ``Submit`` to deploy an application using the ``FAST`` template
 
-      .. image:: ../images/lab01_tmui_fast_template01.png
+      .. image:: ../images/lab01_tmui_fast_template01b.jpg
          :scale: 80 %
       
       This will bring you back to the ``Deploy Log`` tab and provide a status the application deployment process
 
-#. In the vscode-f5 extension refresh the FAST/AS3 views with the refresh icon in the upper right hand corner of each view window
+#. In the vscode-f5 extension refresh the ``FAST/AS3`` views with the refresh icon in the upper right hand corner of each view window
 
-      Explore the windows to see the deployed FAST application/task, and how it resulted in an AS3 Tenant/Task
+      Explore the windows to see the deployed ``FAST`` application/task, and how it resulted in an AS3 Tenant/Task
 
       .. image:: ../images/lab01_vscode_fastAppFromTMUI.png
          :scale: 80 %
@@ -183,7 +201,7 @@ Task 5 - Deploy application via FAST template in tmui
 
       In the TMUI (F5 GUI), in the ``F5 Application Services Templates`` screen, select the ``Application List``.
 
-      We should see the application we deployed with FAST.
+      We should see the application we deployed with ``FAST``.
 
       On the right side of the application row item, select the ``trash`` icon to delete the application.
 
@@ -192,7 +210,7 @@ Task 5 - Deploy application via FAST template in tmui
 Task 6 - Deploy FAST application via API
 ----------------------------------------
 
-#. In Coder (browser tab for vscode), paste the following into an editor
+#. In Coder (browser tab for ``VS CODE``), paste the following into an editor
 
       .. code-block:: json
          :linenos:
@@ -242,7 +260,7 @@ Task 6 - Deploy FAST application via API
 
       .. image:: ../images/lab01_vscode_deployFastAppAPI.gif
 
-#. Check the TMUI to see that the application is now in the ``Application List`` tab
+#. Check the ``BIG-IP`` TMUI to see that the application is now in the ``Application List`` tab.
 
 #. Check out the vscode-f5 FAST/AS3 views to see what was deployed
 

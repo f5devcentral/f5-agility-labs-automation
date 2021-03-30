@@ -61,12 +61,8 @@ VSCode, Firefox, and the lab guide.
 Using browser to connect to BIGIP UI
 ------------------------------------
 
-When using Firefox there are three shortcuts to each appliance
-for your convenience.
-
-.. image:: images/firefox_shortcuts.png
-
-|
+When using Firefox to connect to the F5 appliances you will receive certificate
+warnings as we are using self signed certs in this lab.
 
 Bypass any security warning you may receive by clicking ``Advanced`` in the
 browser, then clicking ``Accept the Risk and Continue``
