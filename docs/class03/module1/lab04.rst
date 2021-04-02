@@ -150,11 +150,7 @@ This lab will focus on converting a AS3 declaration into FAST YML and then packa
    .. literalinclude:: as3.yml
       :language: YAML
 
-#. While you are in the ``VScode`` window highlight the file **http.yml** in the **Agility** folder. Right click and select **Post Template** to post the new template to BIG-IP.  
-   
-   When prompted for ``Destination FAST Template Folder Name", enter **Agility**.
-   
-   When prompted for ``Input Destination FAST Template Name", enter **httpTemplate**.
+#. While you are in the ``VScode`` window highlight the folder **Agility**. Right click and select **Post Template Set** to post the new template to BIG-IP.  
 
    .. image:: ../images/ag16.png
 
@@ -221,4 +217,4 @@ This lab will focus on converting a AS3 declaration into FAST YML and then packa
 
    .. image:: ../images/ag28.png
 
-#. You can go back to bigip1 GUI and check the application / Tenant is deleted.
+#. You can go back to ``bigip1`` GUI and check the application / Tenant is deleted.
