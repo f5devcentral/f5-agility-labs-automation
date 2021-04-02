@@ -185,6 +185,8 @@ This lab will focus on converting a AS3 declaration into FAST YML and then packa
 
    .. image:: ../images/ag22.png
 
+#. If prompted to login, login with credentials admin / admin
+
 #. Check the ***Result** it should say *Success* in the *Deploy log*
 
 
