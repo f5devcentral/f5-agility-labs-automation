@@ -29,9 +29,9 @@ Render Simple FAST YML template to AS3
 This lab will focus on rendering a FAST yml template using VScode template HTML Preview and generating AS3
 declaration which can posted to BIG-IP in VScode istself.
 
-#. From the ``VScode`` window click on the F5 logo on the left to access F5 HOST
+#. From the ``VScode`` window click on the ``F5 logo`` on the left to access ``F5 HOST``
 
-#. Right clock on the F5 Host to display ``Show Device Info``, the show device info shows details about the BIG-IP like chassis serial number, license, number of interfaces etc. 
+#. Right click on the F5 Host to display ``Show Device Info``.  This will show device info details about the BIG-IP like chassis serial number, license, number of interfaces etc. 
 
    .. image:: ../images/showdeviceinfo.png
       :scale: 50%
@@ -86,7 +86,7 @@ Use VScode for Posting FAST Template Set
 ----------------------------------------
 This lab will focus on converting a AS3 declaration into FAST YML and then packaging into FAST Template Set. The template set can be pushed to the BIG-IP. The FAST App can be deployed using the recently pushed template set.
 
-#. Go to ``VScode`` right click on fast/templates folder and click on New folder as shown below
+#. Go to ``VScode`` right click on fast/templates folder and click on ``New Folder`` as shown below
 
    .. image:: ../images/ag1.png
 
@@ -125,11 +125,11 @@ This lab will focus on converting a AS3 declaration into FAST YML and then packa
 
 #. Review the converted YML file.
 
-#. Replace the Virtual Server IP address **"10.0.1.10"** with **{{virtual_server}}**.
+#. Replace the Virtual Server IP address **"10.0.1.10"** with **"{{virtual_server}}"**.
 
 #. Replace **["192.0.1.10", "192.0.1.11"]** with **{{server_address::array}}**.
 
-#. Replace **80** with **{{service_port}}**.
+#. Replace **80** with **{{service_port::integer}}**.
 
    .. image:: ../images/ag11.png
 
@@ -150,8 +150,7 @@ This lab will focus on converting a AS3 declaration into FAST YML and then packa
    .. literalinclude:: as3.yml
       :language: YAML
 
-#. While you are in the ``VScode`` window highlight the **Agility** folder Right Click to get at 
-   the **Post Template** to post the new template to BIG-IP.  
+#. While you are in the ``VScode`` window highlight the file **http.yml** in the **Agility** folder. Right click and select **Post Template** to post the new template to BIG-IP.  
    
    When prompted for ``Destination FAST Template Folder Name", enter **Agility**.
    
@@ -165,7 +164,7 @@ This lab will focus on converting a AS3 declaration into FAST YML and then packa
    .. image:: ../images/ag17.png
 
 
-#. Go to the F5 Application Services Templates to see the **Agility** Template Set 
+#. Go to ``Templates`` to see the **Agility** Template Set 
 
    .. image:: ../images/ag18.png
    
@@ -174,15 +173,18 @@ This lab will focus on converting a AS3 declaration into FAST YML and then packa
 
    .. image:: ../images/ag19.png
 
-#. Once you click on Deploy ---> Agility, which will load the template with default values
-   you will see the template ***Agility/http*** is rendered and is ready
-   to take different values, in the next step we will see the actual values you need to enter.
+#. Once you click on **Deploy ---> Agility**, the template with default values will appear.
+   you will see the template ***Agility/httpTemplate*** is rendered and is ready
+   to take different values. In the next step we will see the actual values you need to enter.
 
 
    .. image:: ../images/ag21.png
 
-#. Click on *Agility/http* Enter the values for ***Tenant Name,  virtual_server, service_port*** Click on the row tab to expand the
-   it and enter the server addresses ***10.1.20.10 & 10.1.20.11*** and hit *Submit* you can also render it as see.
+#. Click on *Agility/http* Enter the values for **Tenant Name**,  **virtual_server**, **service_port**.
+
+#. Click on the row tab under **server_addresses** to expand.  Enter the server addresses ***10.1.20.10** and **10.1.20.11***.
+
+#. Hit *Submit* you can also render it as see.
 
 
    .. image:: ../images/ag22.png
