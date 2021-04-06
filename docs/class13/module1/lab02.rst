@@ -110,38 +110,41 @@ the screenshot example below to create the first alert, (*MaxCpuAlert*).
    across alerts.
 
    .. list-table::
-    :widths: 10 10 20 40 20 60 80
-    :header-rows: 1
-    :stub-columns: 1
-    
-    * - **Name**
-      - **WHEN**
-      - **OF**
-      - **GROUPED OVER**
-      - **IS**
-      - **LAST**
-      - **Webhook body**
-   * - MinCpuAlert
-      - max()
-      - myCurCons
-      - top 1 of hostname.keyword
-      - BELOW 1000
-      - 5 minutes
-      - ``{"source": "elk", "scaleAction":"scaleInBigip", "message": "{{ctx.payload}}"}``
-   * - MinConnsAlert
-      - max()
-      - myCurCons
-      - top 1 of hostname.keyword
-      - BELOW 50
-      - 5 minutes
-      - ``{"source": "elk", "scaleAction":"scaleInWorkload", "message": "{{ctx.payload}}"}``
-    * - MaxConnsAlert
-      - max()
-      - myCurCons
-      - top 1 of hostname.keyword
-      - ABOVE 500
-      - 5 minutes
-      - ``{"source": "elk", "scaleAction":"scaleOutWorkload", "message": "{{ctx.payload}}"}``
+      :widths: 10 10 20 40 20 60 80
+      :header-rows: 1
+      :stub-columns: 1
+
+      * - **Name**
+        - **WHEN**
+        - **OF**
+        - **GROUPED OVER**
+        - **IS**
+        - **LAST**
+        - **Webhook body**
+
+      * - MinCpuAlert
+        - max()
+        - myCurCons
+        - top 1 of hostname.keyword
+        - BELOW 1000
+        - 5 minutes
+        - ``{"source": "elk", "scaleAction":"scaleInBigip", "message": "{{ctx.payload}}"}``
+
+      * - MinConnsAlert
+        - max()
+        - myCurCons
+        - top 1 of hostname.keyword
+        - BELOW 50
+        - 5 minutes
+        - ``{"source": "elk", "scaleAction":"scaleInWorkload", "message": "{{ctx.payload}}"}``
+
+      * - MaxConnsAlert
+        - max()
+        - myCurCons
+        - top 1 of hostname.keyword
+        - ABOVE 500
+        - 5 minutes
+        - ``{"source": "elk", "scaleAction":"scaleOutWorkload", "message": "{{ctx.payload}}"}``
 
    .. image:: images/alerts.png
 
