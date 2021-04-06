@@ -16,7 +16,7 @@ Install FAST template on BIG-IP
 
 #. Select FAST
    
-#. Select latest version (or 1.7.1)
+#. Select latest version (or 1.7.0)
 
    .. NOTE:: The vscode-f5 extension queries the repos for the different ATC version to consistently provide an up to date list. Once a version is selected, the extension will download the necessary assets to the local machine (in this case the linux host vscode is running on), then it will upload and install the ATC ILX RPM on the F5. The install happens rather quickly, but it can take another 30-60 seconds for all the servcies to restart and present the changes.
 
@@ -24,33 +24,33 @@ Install FAST template on BIG-IP
 
 Render Simple FAST YML template to AS3
 --------------------------------------
-This lab will focus on rendering a FAST yml template using VScode template, HTML Preview, and generating AS3
+This lab will focus on rendering a FAST yml template using VScode template HTML Preview and generating AS3
 declaration which can posted to BIG-IP in VScode istself.
 
 #. From the VScode click on the F5 logo on the left to access F5 HOST
 
-#. Right click on the ``F5`` Host to Display ``Show Device Info``, the show device info shows details about the  BIG-IP like chassis serial number, license, number of interfaces etc. 
+#. Right clock on the F5 Host to Display Show Device Info, the show device info shows details about the  bigip like chassis serial number, license, number of interfaces etc. 
 
    .. image:: ../images/showdeviceinfo.png
       :scale: 50%
   
 #. Select the contents of the file and Delete or clear the contents. We are deleting these contents so that we can enter the yml file which can be rendered later in the lab.
 
-#. Copy the below YML file into the VScode browser.  The below yml shows the values already populated for tenant name, virtual address, virtual port, server addresses and server port. The template portion has those variables already templatize with double curly braces. 
+#. Copy the below YML file into the VScode browser.  The below yml shows the values already populated for tenant name, virtual address, virtual port, server addresses and server port. The template portion has those variables already templatize with d  double curly braces. 
 
    .. literalinclude:: http.yml
       :language: YAML
 
-#. Remaining on the VScode, right click and select ``Render FAST template HTML Preview``
+#. Remaining on the VScode, Render FAST template HTML review 
 
    .. image:: ../images/render.png
       :scale: 50%
 
-#. Review the Simple HTTP Application details.
+#. Review the Simple HTTP Application details 
 
    .. image:: ../images/simplehttp.png
 
-#. Click on the ``Render`` button on the bottom to see the generated AS3 declaration.
+#. Click on the ``Render`` button on the bottm to see the AS3 generated 
 
    .. image:: ../images/renderas3.png
 
@@ -58,34 +58,34 @@ declaration which can posted to BIG-IP in VScode istself.
 
    .. image:: ../images/as3.png
 
-#. Remaining on VScode right Click to ``POST as AS3 Declaration`` to BIG-IP
+#. Remaining on VScode Right Click to POST the AS3 to BIG-IP
 
    .. image:: ../images/postas3.png
 
-#. Remaining on VScode Click on the AS3 tab --> ``Tenant`` you can see your **tophttp** application 
+#. Remaining on VScode Click on the AS3 tab --> Tenant 1 you can see your **tophhtp** 1 Application 
 
    .. image:: ../images/tophttp1.png
       :scale: 60%
 
-#. Go to UDF bigip1 access Click on ``TMUI`` to access bigip1, you can see your application is deployed.
+#. Go to UDF bigip1 access Click on TMUI to access bigip1, you can see your application is deployed.
 
    .. image:: ../images/BIGIP_TMUIlogin.jpg
 
-#. Access BIG-IP1 by logging into the GUI to review the configuration, Select partition as ``tophttp`` to see the details
+#. Access BIG-IP1 by logging into the GUI to review the configuration, Select partition as tophttp1 to see the details
 
    .. image:: ../images/bigip1.png
 
-#. Clean up the tenant after use, remaining  at VScode right click on the **tophttp** tenant and select ``Delete Tenant``
+#. Clean up the tenant after use, remaining  at VScode right click on the **tophttp1** tenant and delete
 
    .. image:: ../images/deletetophttp1.png
       :scale: 50%
 
 Use VScode for Posting FAST Template Set
 ----------------------------------------
-This lab will focus on converting a AS3 declaration into FAST YML and then packaging into FAST Template Set.
-This template Set can then be pushed to the BIG-IP. The FAST App can be deployed using the recently pushed template set.
+This lab will focus on converting a AS3 declaration into FAST YML and then packaging into FAST Template Set, 
+this template Set then can be pushed to the BIG-IP. The FAST App can be deployed using the recently pushed template set.
 
-#. Go to ``VScode`` right click on fast/templates folder and click on ``New Folder`` as shown below
+#. Go to VScode right click on fast/templates folder and click on New folder as shown below
 
    .. image:: ../images/ag1.png
 
@@ -99,11 +99,12 @@ This template Set can then be pushed to the BIG-IP. The FAST App can be deployed
    .. image:: ../images/ag4.png
    .. image:: ../images/ag5.png
 
-#. You can see the BIG-IP info details. Clear the contents of the file. 
+#. You can see the BIG-IP info details here, clear the contents by pressing Cmd A & Backspace if you are 
+   using Mac 
 
    .. image:: ../images/ag6.png
 
-#. Type **as3** in the box to list **as3-Sample_01** file and hit enter this will display the sample http AS3
+#. Type as3 in the box to list **as3-Sample_01** file and hit enter this will display the sample http as3
 
 
    .. image:: ../images/ag7.png
@@ -114,7 +115,7 @@ This template Set can then be pushed to the BIG-IP. The FAST App can be deployed
    .. literalinclude:: as3.json
       :language: JSON
 
-#. AS3 JSON, which we need to convert from AS3 to YML FAST template
+#. AS3 Json which we need to convert from AS3 to YML FAST template
 
    .. image:: ../images/ag8.png
 
@@ -131,7 +132,7 @@ This template Set can then be pushed to the BIG-IP. The FAST App can be deployed
 
    .. image:: ../images/ag12.png
 
-#. Also add the **service_address service_port** and **virtual_server** along with description as shown below in the ``parameters`` section:
+#. Also add the **service_address service_port** and **virtual_server** alongwith description as shown below 
   
    .. image:: ../images/ag13.png
 
@@ -145,17 +146,12 @@ This template Set can then be pushed to the BIG-IP. The FAST App can be deployed
       :language: YAML
 
 #. While you are in the VScode highlight the **Agility** folder Right Click to get at 
-   the **Post Template**.
-   
-   When prompted for ``Destination FAST Template Folder Name``, enter ``Agility``
-   
-   When prompted for ``Input Destination FAST Template Name``, enter ``httpTemplate``
-   
-   This will post the **Template Set** on the BIG-IP.
+   the **Post Template Set**
+   This will post the **Template Set** on the BIG-IP
 
    .. image:: ../images/ag16.png
 
-#. Go to UDF and Click on the ``bigip1`` TMUI and login into the BIG-IP, Click on the
+#. Go to UDF and Click on the bigip1 TMUI and login into the BIG-IP, Click on the
    **iApps --> Application Services --> Application LX**
 
    .. image:: ../images/ag17.png
@@ -166,7 +162,7 @@ This template Set can then be pushed to the BIG-IP. The FAST App can be deployed
    .. image:: ../images/ag18.png
    
 
-#. Click on the ``Deploy`` while you are in the F5 Application Services Templates 
+#. Click on the Deploy while you are in the F5 Application Services Templates 
 
    .. image:: ../images/ag19.png
 
