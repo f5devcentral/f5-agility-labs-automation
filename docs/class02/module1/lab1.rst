@@ -11,8 +11,9 @@ state of one of our BIG-IP appliances.
    provisioned.  Also notice the hostname in the upper left hand corner.
 
    .. note :: 
-      | URL: https://bigip-01 
-      | Username/password: **admin/@gi1ity2021**
+      | **URL:** https\://10.1.1.6 
+      | **Username:** admin
+      | **Password:** @gi1ity2021
 
    .. image:: images/bigip01_01.png
 
@@ -27,7 +28,9 @@ state of one of our BIG-IP appliances.
    Within the add host prompt add each BIG-IP using the username\@hostname format
    and press enter.
 
-   .. note :: Username/password: **admin/@gi1ity2021**
+   .. note :: 
+      | **Username:** admin
+      | **Password:** @gi1ity2021
 
    .. image:: images/f5_extension_add_host_02.png
 
@@ -322,7 +325,9 @@ state of one of our BIG-IP appliances.
    **BIGIP-01** and notice the host name has changed and the device is now
    licensed.
 
-   .. note :: Username/password: **admin/@gi1ity2021**
+   .. note :: 
+      | **Username:** admin
+      | **Password** @gi1ity2021
 
    .. image:: images/bigip01_02.png
 

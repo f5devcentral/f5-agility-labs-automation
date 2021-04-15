@@ -200,8 +200,9 @@ orchestrator may provide such as Jinja2 in Ansible.
    all onboarding objects present from the declaration.
 
    .. note :: 
-      | URL: https://bigip-02
-      | Username/password: **admin/@gi1ity2021**
+      | **URL:** https\://10.1.1.7
+      | **Username:** admin
+      | **Password:** @gi1ity2021
 
    In the BIG-IP console navigate to **Device Management -> Device Groups**
    and view the device group that was created by the declaration.  Click on the

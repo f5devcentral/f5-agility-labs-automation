@@ -23,7 +23,6 @@ the BIG-IP. Additionally, the device will be onboarded and managed by BIG-IQ.
    .. code-block:: JSON
 
      {
-       "$schema": "https://raw.githubusercontent.com/F5Networks/f5-declarative-onboarding/master/src/schema/latest/base.schema.json",
        "class": "DO",
        "declaration": {
            "schemaVersion": "1.5.0",
@@ -138,8 +137,9 @@ the BIG-IP. Additionally, the device will be onboarded and managed by BIG-IQ.
 #. Once the declaration completes, login to **BIGIQ-01**. 
 
    .. note :: 
-      | URL: https://bigiq-01
-      | Username/password: **admin/@gi1ity2021**
+      | **URL:** https\://10.1.1.9
+      | **Username:** admin
+      | **Password:** @gi1ity2021
    
    .. attention ::
       When onboarding BIGIP-03 vi BIGIQ-01 the DO post may take a few minutes
@@ -160,7 +160,10 @@ the BIG-IP. Additionally, the device will be onboarded and managed by BIG-IQ.
 
 #. Login into **BIGIP-03** and review the configurations. 
 
-   .. note :: Username/password: **admin/@gi1ity2021**
+   .. note :: 
+      | **URL:** https\://10.1.1.8
+      | **Username:** admin
+      | **Password:** @gi1ity2021
 
 This completes the Declarative Onboarding lab
 ---------------------------------------------
