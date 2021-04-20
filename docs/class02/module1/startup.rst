@@ -12,11 +12,11 @@ networks and credentials to use.
    :header-rows: 1
    :stub-columns: 1
 
-   * - **System Type**
+   * - **System Name**
      - **Networks**
      - **Credentials**
    * - BIGIP-01
-     - Management: 10.1.1.4
+     - Management: 10.1.1.6
      - admin / @gi1ity2021
    * - BIGIP-02
      - Management: 10.1.1.7
@@ -24,7 +24,7 @@ networks and credentials to use.
    * - BIGIP-03
      - Management: 10.1.1.8
      - admin / @gi1ity2021
-   * - BIGIQ
+   * - BIGIQ-01
      - Management: 10.1.1.9
      - admin / @gi1ity2021
 
