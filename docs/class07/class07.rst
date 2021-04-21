@@ -58,4 +58,5 @@ Application Services Extension 3 (AS3) provides a declarative interface to the B
    aws-marketplace          
    terraform-2
    aws-auto-scale
+   nia
    clean-up
