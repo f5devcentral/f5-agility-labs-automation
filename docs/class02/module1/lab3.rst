@@ -5,7 +5,7 @@ In the previous labs, we pushed the declaration directly to BIG-IP. In this
 lab, we are going to send our JSON declaration to BIG-IQ, which will configure 
 the BIG-IP. Additionally, the device will be onboarded and managed by BIG-IQ.
 
-#. Review the declaration for **BIGIP-03**, and notice the following changes:
+#. Review the declaration for **BIG-IP-03**, and notice the following changes:
 
    - Updated license class 
    - New statements to target the BIG-IQ
@@ -35,7 +35,7 @@ the BIG-IP. Additionally, the device will be onboarded and managed by BIG-IQ.
                    "licensePool": "lab-licenses",
                    "licenseType": "licensePool",
                    "bigIpUsername": "admin",
-                   "bigIpPassword": "@gi1ity2021"
+                   "bigIpPassword": "@gi1ity2022"
                },
                "myProvisioning": {
                    "class": "Provision",
@@ -121,7 +121,7 @@ the BIG-IP. Additionally, the device will be onboarded and managed by BIG-IQ.
          "targetUsername": "admin",
          "targetHost": "10.1.1.8",
          "targetPort": 443,
-         "targetPassphrase": "@gi1ity2021",
+         "targetPassphrase": "@gi1ity2022",
          "bigIqSettings": {
            "statsConfig": {
                "enabled": true
@@ -134,17 +134,17 @@ the BIG-IP. Additionally, the device will be onboarded and managed by BIG-IQ.
          }
      }
 
-#. Once the declaration completes, login to **BIGIQ-01**. 
+#. Once the declaration completes, login to **BIG-IQ-01**. 
 
    .. note :: 
       | **URL:** https\://10.1.1.9
       | **Username:** admin
-      | **Password:** @gi1ity2021
+      | **Password:** @gi1ity2022
    
    .. attention ::
-      When onboarding BIGIP-03 vi BIGIQ-01 the DO post may take a few minutes
-      to complete. Be sure to refresh DO in VSCode until you receive a 200 OK
-      message before proceeding.
+      When onboarding BIG-IP-03 via BIG-IQ-01 the DO post may take a few minutes
+      to complete. Be sure wait until the declaration result window appears in
+      VSCode with the success message before proceeding.
    
    .. attention ::
       When the declaration is complete you may notice that BIG-IQ is still
@@ -158,12 +158,12 @@ the BIG-IP. Additionally, the device will be onboarded and managed by BIG-IQ.
 
    .. image:: images/bigiq_1.png
 
-#. Login into **BIGIP-03** and review the configurations. 
+#. Login into **BIG-IP-03** and review the configurations. 
 
    .. note :: 
       | **URL:** https\://10.1.1.8
       | **Username:** admin
-      | **Password:** @gi1ity2021
+      | **Password:** @gi1ity2022
 
 This completes the Declarative Onboarding lab
 ---------------------------------------------
