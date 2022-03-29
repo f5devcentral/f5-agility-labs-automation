@@ -17,16 +17,16 @@ networks and credentials to use.
      - **Credentials**
    * - BIGIP-01
      - Management: 10.1.1.6
-     - admin / @gi1ity2021
+     - admin / @gi1ity2022
    * - BIGIP-02
      - Management: 10.1.1.7
-     - admin / @gi1ity2021
+     - admin / @gi1ity2022
    * - BIGIP-03
      - Management: 10.1.1.8
-     - admin / @gi1ity2021
+     - admin / @gi1ity2022
    * - BIGIQ-01
      - Management: 10.1.1.9
-     - admin / @gi1ity2021
+     - admin / @gi1ity2022
 
 Starting the Lab
 ----------------
