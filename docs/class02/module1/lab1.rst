@@ -20,8 +20,8 @@ state of one of our BIG-IP appliances.
 #. In order to install Declarative Onboarding using the VSCode extension we
    need to add our BIG-IP devices to VSCode.
 
-   Within the VSCode window click on the ``F5 Extension icon`` then click
-   ``ADD HOST`` in the ``F5 HOSTS`` window.
+   Within the VSCode window click on the ``F5 Extension icon`` then click the
+   ``+`` in the ``F5 HOSTS`` window.
 
    .. image:: images/f5_extension_add_host_01.png
 
