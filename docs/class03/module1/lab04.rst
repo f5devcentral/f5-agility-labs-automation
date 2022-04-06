@@ -6,42 +6,77 @@ Install FAST template on BIG-IP
 
 #. Connect to admin@10.1.1.6 by clicking the device in the F5 HOSTS view
    
-#. You should see that FAST(1.7.1) is already installed.  
+#. You should see that FAST(1.16.0) is already installed.  
 
    .. image:: ../images/lab01_vscode_fastInstalledVersion.png
 
-#. If you do not see FAST(1.7.1) installed you can do the following:
+#. If you do not see FAST(1.16.0) installed you can do the following:
 
-#. Press F1 (Windows), Command/Shift/P (Mac), then type ``f5 install``
+#. Navigate to ``FAST`` under the ``BIG-IP`` menu by choosing ``BIG-IP`` >> ``ATC`` >> ``FAST``
 
-#. Select ``F5 Install RPM``
+   .. image:: ../images/VScodeFASTDropdown.jpg
 
-#. Select FAST
-   
-#. Select latest version (or 1.7.1)
+#. Under the ``FAST`` dropdown, you should see a list of version options for the FAST extension. Select ``v1.16.0``. This will automatically install the rpm file to the connected BIG-IP. After a minute or so, you should see messages in your output indicating that it is installed: 
+        
+   .. code-block:: bash
 
-   .. NOTE:: The vscode-f5 extension queries the repos for the different ATC version to consistently provide an up to date list. Once a version is selected, the extension will download the necessary assets to the local machine (in this case the linux host vscode is running on), then it will upload and install the ATC ILX RPM on the F5. The install happens rather quickly, but it can take another 30-60 seconds for all the servcies to restart and present the changes.
+      [INFO]: installing atc rpm job complete, waiting for services to restart (~30 seconds)
+      
+#. After seeing the above message, please wait another a minute for your connected device to update in VSCode. If it has not refreshed automatically after a minute, try clicking on the ``10.1.1.6`` host again to refresh manually. 
 
-  After everything is complete, the vsocde-f5 extension should reconnect and refresh all the details
 
 Render Simple FAST YML template to AS3
 --------------------------------------
 This lab will focus on rendering a FAST yml template using VScode template HTML Preview and generating AS3
 declaration which can posted to BIG-IP in VScode istself.
 
-#. From the ``VScode`` window click on the ``F5 logo`` on the left to access ``F5 HOST``
-
-#. Right click on the F5 Host to display ``Show Device Info``.  This will show device info details about the BIG-IP like chassis serial number, license, number of interfaces etc. 
-
-   .. image:: ../images/showdeviceinfo.png
-      :scale: 50%
-  
-#. Select the contents of the file and Delete or clear the contents. We are deleting these contents so we can enter the yml file which can be rendered later in the lab.
-
 #. Copy the below YML file into the ``VScode`` browser.  The below yml shows the values already populated for tenant name, virtual address, virtual port, server addresses and server port. The template portion has those variables already templatize with double curly braces. 
 
-   .. literalinclude:: http.yml
-      :language: YAML
+   .. codeblock:: yml
+   
+   title: Simple HTTP Application
+   description: Simple HTTP load balancer using the same port on client and server side.
+   parameters:
+     tenant_name: tophttp
+     application_name: defaultsHTTP_8080
+     virtual_address: 10.0.0.200
+     virtual_port: 8080
+     server_addresses:
+       - 10.1.20.10
+       - 10.1.20.11
+     service_port: 80
+   template: |
+     {
+       "class": "ADC",
+       "schemaVersion": "3.20.0",
+       "{{tenant_name}}": {
+         "class": "Tenant",
+         "{{application_name}}": {
+           "class": "Application",
+           "template": "http",
+           "serviceMain": {
+             "class": "Service_HTTP",
+             "virtualAddresses": [
+               "{{virtual_address}}"
+             ],
+             "virtualPort": {{virtual_port}},
+             "pool": "{{application_name}}_Pool1"
+           },
+           "{{application_name}}_Pool1": {
+             "class": "Pool",
+             "monitors": [
+               "icmp"
+             ],
+             "members": [
+               {
+                 "serverAddresses": {{server_addresses::array}},
+                 "servicePort": {{service_port}}
+               }
+             ]
+           }
+         }
+       }
+     }
 
 #. Remaining on the VScode, select ``Render FAST template HTML Preview``.
 
@@ -86,7 +121,7 @@ Use VScode for Posting FAST Template Set
 ----------------------------------------
 This lab will focus on converting a AS3 declaration into FAST YML and then packaging into FAST Template Set. The template set can be pushed to the BIG-IP. The FAST App can be deployed using the recently pushed template set.
 
-#. Go to ``VScode`` right click on fast/templates folder and click on ``New Folder`` as shown below
+#. Go to ``VScode`` right click on ``fast`` >> ``templates`` folder and click on ``New Folder`` as shown below
 
    .. image:: ../images/ag1.png
 
@@ -94,26 +129,56 @@ This lab will focus on converting a AS3 declaration into FAST YML and then packa
 
    .. image:: ../images/ag2.png
 
-#. Access BIG-IP through ``VScode`` by clicking on the F5 Logo on bottom left then click on **F5 HOSTS**, right 
-   click on the F5 HOST and then click on **Show Device info**
+#. Ensure that you have the ``10.1.1.6`` host selected in the F5 Extension. 
 
-   .. image:: ../images/ag4.png
-   .. image:: ../images/ag5.png
-
-#. You can see the BIG-IP info details here. Clear the contents of the file. 
-
-   .. image:: ../images/ag6.png
-
-#. Type as3 in the box to list **as3-Sample_01** file and hit enter this will display the sample http as3
+#. Create a new file in VSCode and copy/paste the AS3 declaration below 
 
 
-   .. image:: ../images/ag7.png
+   .. codeblock:: json
+      
+      {
+        "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
+        "class": "AS3",
+        "action": "deploy",
+        "persist": true,
+        "declaration": {
+          "class": "ADC",
+          "schemaVersion": "3.0.0",
+          "id": "urn:uuid:33045210-3ab8-4636-9b2a-c98d22ab915d",
+          "label": "Sample 1",
+          "remark": "Simple HTTP application with RR pool",
+          "Sample_01": {
+            "class": "Tenant",
+            "A1": {
+              "class": "Application",
+              "template": "http",
+              "serviceMain": {
+                "class": "Service_HTTP",
+                "virtualAddresses": [
+                  "10.0.1.10"
+                ],
+                "pool": "web_pool"
+              },
+              "web_pool": {
+                "class": "Pool",
+                "monitors": [
+                  "http"
+                ],
+                "members": [
+                  {
+                    "servicePort": 80,
+                    "serverAddresses": [
+                      "192.0.1.10",
+                      "192.0.1.11"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
 
-#. Below shows the complete AS3 which you plan to templatize 
-
-
-   .. literalinclude:: as3.json
-      :language: JSON
 
 #. We need to convert from AS3 JSON to YML FAST template
 
@@ -137,7 +202,7 @@ This lab will focus on converting a AS3 declaration into FAST YML and then packa
 
    .. image:: ../images/ag12.png
 
-#. Now add the **service_address**, **service_port** and **virtual_server** to the parameters section along with description as shown below.
+#. Now add the **server_address**, **service_port** and **virtual_server** to the parameters section along with description as shown below.
   
    .. image:: ../images/ag13.png
 
@@ -147,8 +212,61 @@ This lab will focus on converting a AS3 declaration into FAST YML and then packa
 
 #. Review the YML template file which was just created.
 
-   .. literalinclude:: as3.yml
-      :language: YAML
+   .. codeblock:: yml
+   
+   title: template title
+   description: template description
+   parameters:
+     tenant_name: default tenant name
+     service_address: Server Addresses
+     service_port: 80
+     virtual_server: Virtual Server
+   definitions: 
+     tenant_name:
+       title: Tenant Name
+       type: string
+       description: partition on bigip
+   template: | 
+     {
+       "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
+       "class": "AS3",
+       "action": "deploy",
+       "persist": true,
+       "declaration": {
+         "class": "ADC",
+         "schemaVersion": "3.0.0",
+         "id": "urn:uuid:33045210-3ab8-4636-9b2a-c98d22ab915d",
+         "label": "Sample 1",
+         "remark": "Simple HTTP application with RR pool",
+         "{{tenant_name}}": {
+           "class": "Tenant",
+           "A1": {
+             "class": "Application",
+             "template": "http",
+             "serviceMain": {
+               "class": "Service_HTTP",
+               "virtualAddresses": [
+                 "{{virtual_server}}"
+               ],
+               "pool": "web_pool"
+             },
+             "web_pool": {
+               "class": "Pool",
+               "monitors": [
+                 "http"
+               ],
+               "members": [
+                 {
+                   "servicePort": {{service_port::integer}},
+                   "serverAddresses": {{server_address::array}}
+                 }
+               ]
+             }
+           }
+         }
+       }
+     }
+
 
 #. While you are in the ``VScode`` window highlight the folder **Agility**. Right click and select **Post Template Set** to post the new template to BIG-IP.  
 
@@ -160,7 +278,7 @@ This lab will focus on converting a AS3 declaration into FAST YML and then packa
    .. image:: ../images/ag17.png
 
 
-#. Go to ``Templates`` to see the **Agility** Template Set 
+#. Go to ``FAST Templates`` and scroll to the botto to see the new **Agility** Template Set 
 
    .. image:: ../images/ag18.png
    
