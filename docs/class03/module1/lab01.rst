@@ -130,7 +130,7 @@ Task 4 - Install FAST extension
    .. image:: ../images/VScode_F5ConnectedBIGIP01.jpg
       :scale: 100%
 
-#. In VSCode, navigate to ``FAST`` under the ``BIG-IP`` menu by choosing ``BIG-IP`` >> ``ATC`` >> ``FAST``
+#. Navigate to ``FAST`` under the ``BIG-IP`` menu by choosing ``BIG-IP`` >> ``ATC`` >> ``FAST``
    
    .. image:: ../images/VScodeFASTDropdown.jpg
 
@@ -143,7 +143,7 @@ Task 4 - Install FAST extension
       
 #. After seeing the above message, please wait another a minute for your connected device to update in VSCode. If it has not refreshed automatically after a minute, try clicking on the ``10.1.1.6`` host again to refresh manually. 
 
-#. Once finished and your connected device has refreshed, you should now see a green icon next to the FAST dropdown:
+#. Once finished and your connected device has refreshed, you should now see a green icon next to the FAST dropdown indicating that it has been installed:
 
    .. image:: ../images/VScode_FASTInstalled.jpg
       :scale: 60%
