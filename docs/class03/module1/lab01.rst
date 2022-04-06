@@ -68,7 +68,7 @@ Task 1 - Getting connected
 
 #. Confirming connection
 
-      You can confirm ``VS CODE`` is connected by looking at detail on ``F5 -> Connect!`` at bottom of screen.  In the status you can see the version of AS3 that is installed on the ``BIG-IP``.  In this case, it is version ``3.26.0``.
+      You can confirm ``VS CODE`` is connected by looking at detail on ``F5 -> Connect!`` at bottom of screen.  In the status you can see the version of AS3 that is installed on the ``BIG-IP``.  In this case, it is version ``3.35.0``.
 
       .. image:: ../images/VScode_F5ConnectedBIGIP01.jpg
          :scale: 50 %
@@ -125,35 +125,35 @@ Task 4 - Install FAST extension
 
       How to install ATC services using the extension.
 
-      .. NOTE::  This method is considered the "offline" method so all the lab users are not trying to download the same files from github at the same time.  For additional information on alternate install methods see:  https://f5devcentral.github.io/vscode-f5/#/atc_rpm_mgmt
-
 #. In VSCode, make sure you are connected to BIG-IP01 (10.1.1.6) by looking at the bottom ribbon:
 
    .. image:: ../images/VScode_F5ConnectedBIGIP01.jpg
       :scale: 60%
 
-#. In VSCode, go to the File Explorer view by choosing ``Menu`` >> ``View`` >> ``Explorer``
-      .. image:: ../images/VScodeOpenFileExplorer.jpg
+#. In VSCode, navigate to ``FAST`` under the ``BIG-IP`` menu by choosing ``BIG-IP`` >> ``ATC`` >> ``FAST``
+      .. image:: ../images/VScodeFASTDropdown.jpg
 
-#. Open the files folder
-
-#. Right-click ``f5-appsvcs-templates-1.7.0.noarch.rpm``, then select ``Install RPM``
-
-      .. image:: ../images/VSCode-FAST-RPMinstall.png
-         :scale: 50 %
-
-      .. Note:: This process will upload the local RPM and install it on the F5.  The install happens rather quickly, but it can take another 30-60 seconds for all the servcies to restart and present the changes.  
-
-
-#. When complete, the vscode-f5 extension should reconnect and refresh all the details.
-
-      You may need to click on the device in the HOSTS view to reconnect and refresh the discovered services
-
-#. Notice that FAST now shows as installed (with version number) along the bottom of the editor
-
-      .. image:: ../images/lab01_vscode_fastInstalledVersion.png
-         :scale: 80 %
+#. Under the ``FAST`` dropdown, you should see a list of version options for the FAST extension. Select ``v1.16.0``. This will automatically install the rpm file to the connected BIG-IP. After a minute or so, you should see messages in your output indicating that it is installed: 
+         .. code-block:: bash
+            :linenos:
+            
+            [INFO]: installing atc rpm job complete, waiting for services to restart (~30 seconds)
       
+#. After seeing the above message, please wait another a minute for your connected device to update in VSCode. If it has not refreshed automatically after a minute, try clicking on the 10.1.1.6 host again to refresh manually. 
+
+#. Once finished and your connected device has refreshed, you should now see a green icon next to the FAST dropdown:
+
+   .. image:: ../images/VScode_FASTInstalled.jpg
+      :scale: 60%
+
+.. NOTE::  
+
+Color Status: 
+Green Icon- Indicates the latest version of the extension has been installed
+Orange Icon- Indicates the extension is installed, but it is not on the latest version. 
+
+If your extension is showing an orange icon, you can update the version by simply selecting the latest release.
+
       
 Task 5 - Deploy application via FAST template in TMUI
 -----------------------------------------------------
