@@ -148,7 +148,7 @@ Task 4 - Install FAST extension
    .. image:: ../images/VScode_FASTInstalled.jpg
       :scale: 60%
 
-.. NOTE:: The icon next to the extension drop down will indicate the version you are on. The Green Icon indicates that the latest version of the extension has been installed. The Orange Icon indicates that the extension is installed, but it is not the latest version. If your extension is showing an orange icon, you can update the version by simply selecting the latest release.
+   .. NOTE::  The icon next to the extension drop down will indicate the version you have installed. The Green icon indicates that the latest version of the extension has been installed. The Orange icon indicates that the extension is installed, but it is not the latest version. If your extension is showing an orange icon, you can update the version by simply selecting the latest release.
 
 
 Task 5 - Deploy application via FAST template in TMUI
