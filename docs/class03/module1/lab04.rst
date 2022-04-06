@@ -32,7 +32,7 @@ declaration which can posted to BIG-IP in VScode istself.
 
 #. Copy the below YML file into the ``VScode`` browser.  The below yml shows the values already populated for tenant name, virtual address, virtual port, server addresses and server port. The template portion has those variables already templatize with double curly braces. 
 
-   .. codeblock:: json
+   .. code-block:: yml
    
       title: Simple HTTP Application
       description: Simple HTTP load balancer using the same port on client and server side.
@@ -134,7 +134,7 @@ This lab will focus on converting a AS3 declaration into FAST YML and then packa
 #. Create a new file in VSCode and copy/paste the AS3 declaration below 
 
 
-   .. codeblock:: json
+   .. code-block:: json
       
       {
         "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
@@ -212,60 +212,60 @@ This lab will focus on converting a AS3 declaration into FAST YML and then packa
 
 #. Review the YML template file which was just created.
 
-   .. codeblock:: yml
+   .. code-block:: yml
    
-   title: template title
-   description: template description
-   parameters:
-     tenant_name: default tenant name
-     service_address: Server Addresses
-     service_port: 80
-     virtual_server: Virtual Server
-   definitions: 
-     tenant_name:
-       title: Tenant Name
-       type: string
-       description: partition on bigip
-   template: | 
-     {
-       "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
-       "class": "AS3",
-       "action": "deploy",
-       "persist": true,
-       "declaration": {
-         "class": "ADC",
-         "schemaVersion": "3.0.0",
-         "id": "urn:uuid:33045210-3ab8-4636-9b2a-c98d22ab915d",
-         "label": "Sample 1",
-         "remark": "Simple HTTP application with RR pool",
-         "{{tenant_name}}": {
-           "class": "Tenant",
-           "A1": {
-             "class": "Application",
-             "template": "http",
-             "serviceMain": {
-               "class": "Service_HTTP",
-               "virtualAddresses": [
-                 "{{virtual_server}}"
-               ],
-               "pool": "web_pool"
-             },
-             "web_pool": {
-               "class": "Pool",
-               "monitors": [
-                 "http"
-               ],
-               "members": [
-                 {
-                   "servicePort": {{service_port::integer}},
-                   "serverAddresses": {{server_address::array}}
-                 }
-               ]
-             }
-           }
-         }
-       }
-     }
+      title: template title
+      description: template description
+      parameters:
+        tenant_name: default tenant name
+        service_address: Server Addresses
+        service_port: 80
+        virtual_server: Virtual Server
+      definitions: 
+        tenant_name:
+          title: Tenant Name
+          type: string
+          description: partition on bigip
+      template: | 
+        {
+          "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
+          "class": "AS3",
+          "action": "deploy",
+          "persist": true,
+          "declaration": {
+            "class": "ADC",
+            "schemaVersion": "3.0.0",
+            "id": "urn:uuid:33045210-3ab8-4636-9b2a-c98d22ab915d",
+            "label": "Sample 1",
+            "remark": "Simple HTTP application with RR pool",
+            "{{tenant_name}}": {
+              "class": "Tenant",
+              "A1": {
+                "class": "Application",
+                "template": "http",
+                "serviceMain": {
+                  "class": "Service_HTTP",
+                  "virtualAddresses": [
+                    "{{virtual_server}}"
+                  ],
+                  "pool": "web_pool"
+                },
+                "web_pool": {
+                  "class": "Pool",
+                  "monitors": [
+                    "http"
+                  ],
+                  "members": [
+                    {
+                      "servicePort": {{service_port::integer}},
+                      "serverAddresses": {{server_address::array}}
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
 
 
 #. While you are in the ``VScode`` window highlight the folder **Agility**. Right click and select **Post Template Set** to post the new template to BIG-IP.  
