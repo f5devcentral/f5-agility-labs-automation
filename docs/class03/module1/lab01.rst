@@ -100,7 +100,6 @@ How to import devices for larger/automated environments
       #. Paste the following into the editor
 
          .. code-block:: bash
-            :linenos:
 
             [
                {
