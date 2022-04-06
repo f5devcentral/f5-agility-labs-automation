@@ -131,6 +131,7 @@ Task 4 - Install FAST extension
       :scale: 100%
 
 #. In VSCode, navigate to ``FAST`` under the ``BIG-IP`` menu by choosing ``BIG-IP`` >> ``ATC`` >> ``FAST``
+   
    .. image:: ../images/VScodeFASTDropdown.jpg
 
 #. Under the ``FAST`` dropdown, you should see a list of version options for the FAST extension. Select ``v1.16.0``. This will automatically install the rpm file to the connected BIG-IP. After a minute or so, you should see messages in your output indicating that it is installed: 
@@ -148,7 +149,6 @@ Task 4 - Install FAST extension
       :scale: 60%
 
 .. NOTE::  
-
 Color Status: 
 Green Icon- Indicates the latest version of the extension has been installed
 Orange Icon- Indicates the extension is installed, but it is not on the latest version. 
