@@ -283,9 +283,9 @@ This lab will focus on converting an AS3 declaration into FAST YML and then pack
    .. image:: ../images/ag18.png
    
 
-#. Under the **Agility** Template set, Click on the ``template name``
+#. Under the **Agility** Template set, Click on the ``template title``
 
-#. Once you click on the ``template name``, the template with default values will appear.
+#. Once you click on the ``template title``, the template with default values will appear.
    you will see the template is rendered and is ready
    to take different values:
 
