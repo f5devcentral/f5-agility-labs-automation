@@ -71,7 +71,7 @@ Task 1 - Getting connected
       You can confirm ``VS CODE`` is connected by looking at detail on ``F5 -> Connect!`` at bottom of screen.  In the status you can see the version of AS3 that is installed on the ``BIG-IP``.  In this case, it is version ``3.35.0``.
 
       .. image:: ../images/VScode_F5ConnectedBIGIP01.jpg
-         :scale: 50 %
+         :scale: 100 %
 
       .. NOTE:: The version of ``AS3`` in the graphic could differ from the lab guide. 
 
@@ -128,13 +128,14 @@ Task 4 - Install FAST extension
 #. In VSCode, make sure you are connected to BIG-IP01 (10.1.1.6) by looking at the bottom ribbon:
 
    .. image:: ../images/VScode_F5ConnectedBIGIP01.jpg
-      :scale: 60%
+      :scale: 100%
 
 #. In VSCode, navigate to ``FAST`` under the ``BIG-IP`` menu by choosing ``BIG-IP`` >> ``ATC`` >> ``FAST``
-      .. image:: ../images/VScodeFASTDropdown.jpg
+   .. image:: ../images/VScodeFASTDropdown.jpg
 
 #. Under the ``FAST`` dropdown, you should see a list of version options for the FAST extension. Select ``v1.16.0``. This will automatically install the rpm file to the connected BIG-IP. After a minute or so, you should see messages in your output indicating that it is installed: 
-         .. code-block:: bash
+        
+        .. code-block:: bash
             :linenos:
             
             [INFO]: installing atc rpm job complete, waiting for services to restart (~30 seconds)
