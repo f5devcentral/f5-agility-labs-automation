@@ -141,21 +141,16 @@ Task 4 - Install FAST extension
             
             [INFO]: installing atc rpm job complete, waiting for services to restart (~30 seconds)
       
-#. After seeing the above message, please wait another a minute for your connected device to update in VSCode. If it has not refreshed automatically after a minute, try clicking on the 10.1.1.6 host again to refresh manually. 
+#. After seeing the above message, please wait another a minute for your connected device to update in VSCode. If it has not refreshed automatically after a minute, try clicking on the ``10.1.1.6`` host again to refresh manually. 
 
 #. Once finished and your connected device has refreshed, you should now see a green icon next to the FAST dropdown:
 
    .. image:: ../images/VScode_FASTInstalled.jpg
       :scale: 60%
 
-.. NOTE::  
-Color Status: 
-Green Icon- Indicates the latest version of the extension has been installed
-Orange Icon- Indicates the extension is installed, but it is not on the latest version. 
+.. NOTE:: The icon next to the extension drop down will indicate the version you are on. The Green Icon indicates that the latest version of the extension has been installed. The Orange Icon indicates that the extension is installed, but it is not the latest version. If your extension is showing an orange icon, you can update the version by simply selecting the latest release.
 
-If your extension is showing an orange icon, you can update the version by simply selecting the latest release.
 
-      
 Task 5 - Deploy application via FAST template in TMUI
 -----------------------------------------------------
    
