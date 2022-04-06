@@ -34,49 +34,49 @@ declaration which can posted to BIG-IP in VScode istself.
 
    .. codeblock:: yml
    
-   title: Simple HTTP Application
-   description: Simple HTTP load balancer using the same port on client and server side.
-   parameters:
-     tenant_name: tophttp
-     application_name: defaultsHTTP_8080
-     virtual_address: 10.0.0.200
-     virtual_port: 8080
-     server_addresses:
-       - 10.1.20.10
-       - 10.1.20.11
-     service_port: 80
-   template: |
-     {
-       "class": "ADC",
-       "schemaVersion": "3.20.0",
-       "{{tenant_name}}": {
-         "class": "Tenant",
-         "{{application_name}}": {
-           "class": "Application",
-           "template": "http",
-           "serviceMain": {
-             "class": "Service_HTTP",
-             "virtualAddresses": [
-               "{{virtual_address}}"
-             ],
-             "virtualPort": {{virtual_port}},
-             "pool": "{{application_name}}_Pool1"
-           },
-           "{{application_name}}_Pool1": {
-             "class": "Pool",
-             "monitors": [
-               "icmp"
-             ],
-             "members": [
-               {
-                 "serverAddresses": {{server_addresses::array}},
-                 "servicePort": {{service_port}}
-               }
-             ]
-           }
-         }
-       }
-     }
+      title: Simple HTTP Application
+      description: Simple HTTP load balancer using the same port on client and server side.
+      parameters:
+        tenant_name: tophttp
+        application_name: defaultsHTTP_8080
+        virtual_address: 10.0.0.200
+        virtual_port: 8080
+        server_addresses:
+          - 10.1.20.10
+          - 10.1.20.11
+        service_port: 80
+      template: |
+        {
+          "class": "ADC",
+          "schemaVersion": "3.20.0",
+          "{{tenant_name}}": {
+            "class": "Tenant",
+            "{{application_name}}": {
+              "class": "Application",
+              "template": "http",
+              "serviceMain": {
+                "class": "Service_HTTP",
+                "virtualAddresses": [
+                  "{{virtual_address}}"
+                ],
+                "virtualPort": {{virtual_port}},
+                "pool": "{{application_name}}_Pool1"
+              },
+              "{{application_name}}_Pool1": {
+                "class": "Pool",
+                "monitors": [
+                  "icmp"
+                ],
+                "members": [
+                  {
+                    "serverAddresses": {{server_addresses::array}},
+                    "servicePort": {{service_port}}
+                  }
+                ]
+              }
+            }
+          }
+        }
 
 #. Remaining on the VScode, select ``Render FAST template HTML Preview``.
 
