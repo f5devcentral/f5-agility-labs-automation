@@ -214,8 +214,8 @@ This lab will focus on converting a AS3 declaration into FAST YML and then packa
 
    .. code-block:: yml
    
-      title: template title
-      description: template description
+      title: Simple Template
+      description: This is my simple template
       parameters:
         tenant_name: default tenant name
         service_address: Server Addresses
@@ -278,27 +278,28 @@ This lab will focus on converting a AS3 declaration into FAST YML and then packa
    .. image:: ../images/ag17.png
 
 
-#. Go to ``FAST Templates`` and scroll to the botto to see the new **Agility** Template Set 
+#. Go to ``FAST Templates`` and scroll to the bottom to see the new **Agility** Template Set 
 
    .. image:: ../images/ag18.png
    
 
-#. Click on the ``Deploy`` while you are in the F5 Application Services Templates 
+#. Under the **Agility** Template set, Click on the ``Simple template``
 
-   .. image:: ../images/ag19.png
-
-#. Once you click on **Deploy ---> Agility**, the template with default values will appear.
-   you will see the template ***Agility/httpTemplate*** is rendered and is ready
+#. Once you click on the ``Simple template``, the template with default values will appear.
+   you will see the template is rendered and is ready
    to take different values. In the next step we will see the actual values you need to enter.
-
 
    .. image:: ../images/ag21.png
 
-#. Click on *Agility/http* Enter the values for **Tenant Name**,  **virtual_server**, **service_port**.
+#. Enter the following values
+   - **Tenant Name**: Agility1
+   - **virtual_server**: 10.0.0.200 
 
-#. Click on the row tab under **server_addresses** to expand.  Enter the server addresses ***10.1.20.10** and **10.1.20.11***.
+#. Next, click on the row tab under **server_addresses** to expand.  Enter the server addresses ***10.1.20.10** and **10.1.20.11***.
 
-#. Hit *Submit* you can also render it as see.
+#. Once finished, select ``Deploy`` in the top right corner of the screen. 
+
+#. After deploying, you will be brought to the ``History`` tab with the status of your deployment:
 
 
    .. image:: ../images/ag22.png
