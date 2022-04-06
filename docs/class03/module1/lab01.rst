@@ -165,28 +165,28 @@ Task 5 - Deploy application via FAST template in TMUI
 
       Login if needed: ``admin/admin``
 
-      Select the ``Deploy`` tab, expand the ``examples`` section, select ``examples/simple_udp_defaults``
+      Under the ``examples`` section at the bottom, select ``Simple UDP Application``
 
       Notice that the template has default parameters
 
-      Click each of the buttons at the bottom, next to the submit button, to see the different outputs:
-
-      - View Template
-
-      - View Schema
-
-      - View Inputs
-
-      - View Rendered
-
-      Now click  ``Submit`` to deploy an application using the ``FAST`` template
-
       .. image:: ../images/lab01_tmui_fast_template01b.jpg
          :scale: 80 %
-      
-      This will bring you back to the ``Deploy Log`` tab and provide a status the application deployment process
+         
+      At the bottom of the template, expand the ``Debug View`` dropdown and click through the different outputs:
 
-#. In the vscode-f5 extension refresh the ``FAST/AS3`` views with the refresh icon in the upper right hand corner of each view window
+      - Template
+
+      - Schema
+
+      - Inputs
+
+      - Rendered
+
+      Now click  ``Deploy`` to deploy an application using this FAST template
+
+      This will bring you back to the ``History`` tab and provide a status the application deployment process
+
+#. In the vscode-f5 extension refresh the ``FAST VIEW`` and ``AS3`` menus with the refresh icon in the upper right hand corner of each view window
 
       Explore the windows to see the deployed ``FAST`` application/task, and how it resulted in an AS3 Tenant/Task
 
@@ -195,11 +195,11 @@ Task 5 - Deploy application via FAST template in TMUI
 
 #. Delete application
 
-      In the TMUI (F5 GUI), in the ``F5 Application Services Templates`` screen, select the ``Application List``.
+      In the TMUI (F5 GUI), in the ``F5 Application Services Templates`` screen, select the ``Application`` tab.
 
       We should see the application we deployed with ``FAST``.
 
-      On the right side of the application row item, select the ``trash`` icon to delete the application.
+      On the left side of the application row item, select the checkbox followed by the ``Delete`` button to delete the application.
 
       .. image:: ../images/lab01_vscode_deleteFastAppFromTMUI.png
 
@@ -256,7 +256,7 @@ Task 6 - Deploy FAST application via API
 
       .. image:: ../images/lab01_vscode_deployFastAppAPI.gif
 
-#. Check the ``BIG-IP`` TMUI to see that the application is now in the ``Application List`` tab.
+#. Check the ``BIG-IP`` TMUI to see that the application is now in the ``Applications`` tab.
 
 #. Check out the vscode-f5 FAST/AS3 views to see what was deployed
 
