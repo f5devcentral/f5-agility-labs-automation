@@ -136,8 +136,7 @@ Task 4 - Install FAST extension
 #. Under the ``FAST`` dropdown, you should see a list of version options for the FAST extension. Select ``v1.16.0``. This will automatically install the rpm file to the connected BIG-IP. After a minute or so, you should see messages in your output indicating that it is installed: 
         
         .. code-block:: bash
-            :linenos:
-            
+       
             [INFO]: installing atc rpm job complete, waiting for services to restart (~30 seconds)
       
 #. After seeing the above message, please wait another a minute for your connected device to update in VSCode. If it has not refreshed automatically after a minute, try clicking on the ``10.1.1.6`` host again to refresh manually. 
@@ -208,7 +207,6 @@ Task 6 - Deploy FAST application via API
 #. In Coder (browser tab for ``VS CODE``), paste the following into an editor
 
       .. code-block:: json
-         :linenos:
 
          {
          "name": "examples/simple_http",
@@ -230,7 +228,6 @@ Task 6 - Deploy FAST application via API
       This should produce the following output in another tab
 
       .. code-block:: json
-         :linenos:
 
          {
             "id": "4b06e4d9-01f1-497e-93e5-662d5eb75d1d",
