@@ -295,7 +295,7 @@ This lab will focus on converting an AS3 declaration into FAST YML and then pack
       - **Tenant Name**: Agility1
       - **virtual_server**: 10.0.0.200 
 
-#. Next, click ``Add row`` under **server_addresses** to expand.  Enter the server addresses ***10.1.20.10** and **10.1.20.11***.
+#. Next, click ``Add row`` under **server_addresses** to expand.  Enter the server addresses **10.1.20.10** and **10.1.20.11**.
 
 #. Once finished, select ``Deploy`` in the top right corner of the screen. 
 
