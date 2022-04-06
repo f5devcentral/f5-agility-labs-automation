@@ -195,7 +195,7 @@ Task 5 - Deploy application via FAST template in TMUI
 
 #. Delete application
 
-      In the TMUI (F5 GUI), in the ``F5 Application Services Templates`` screen, select the ``Application`` tab.
+      In the TMUI (F5 GUI), in the ``F5 Application Services Templates`` screen, select the ``Applications`` tab.
 
       We should see the application we deployed with ``FAST``.
 
