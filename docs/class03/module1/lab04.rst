@@ -32,7 +32,7 @@ declaration which can posted to BIG-IP in VScode istself.
 
 #. Copy the below YML file into the ``VScode`` browser.  The below yml shows the values already populated for tenant name, virtual address, virtual port, server addresses and server port. The template portion has those variables already templatize with double curly braces. 
 
-   .. codeblock:: yml
+   .. codeblock:: json
    
       title: Simple HTTP Application
       description: Simple HTTP load balancer using the same port on client and server side.
