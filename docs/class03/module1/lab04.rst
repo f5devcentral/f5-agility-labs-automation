@@ -119,7 +119,7 @@ declaration which can posted to BIG-IP in VScode istself.
 
 Use VScode for Posting FAST Template Set
 ----------------------------------------
-This lab will focus on converting a AS3 declaration into FAST YML and then packaging into FAST Template Set. The template set can be pushed to the BIG-IP. The FAST App can be deployed using the recently pushed template set.
+This lab will focus on converting an AS3 declaration into FAST YML and then packaging into FAST Template Set. The template set can be pushed to the BIG-IP. The FAST App can be deployed using the recently pushed template set.
 
 #. Go to ``VScode`` right click on ``fast`` >> ``templates`` folder and click on ``New Folder`` as shown below
 
@@ -214,8 +214,8 @@ This lab will focus on converting a AS3 declaration into FAST YML and then packa
 
    .. code-block:: yml
    
-      title: Simple Template
-      description: This is my simple template
+      title: template title
+      description: template description
       parameters:
         tenant_name: default tenant name
         service_address: Server Addresses
@@ -283,11 +283,11 @@ This lab will focus on converting a AS3 declaration into FAST YML and then packa
    .. image:: ../images/ag18.png
    
 
-#. Under the **Agility** Template set, Click on the ``Simple template``
+#. Under the **Agility** Template set, Click on the ``template name``
 
-#. Once you click on the ``Simple template``, the template with default values will appear.
+#. Once you click on the ``template name``, the template with default values will appear.
    you will see the template is rendered and is ready
-   to take different values. In the next step we will see the actual values you need to enter.
+   to take different values:
 
    .. image:: ../images/ag21.png
 
@@ -295,47 +295,33 @@ This lab will focus on converting a AS3 declaration into FAST YML and then packa
    - **Tenant Name**: Agility1
    - **virtual_server**: 10.0.0.200 
 
-#. Next, click on the row tab under **server_addresses** to expand.  Enter the server addresses ***10.1.20.10** and **10.1.20.11***.
+#. Next, click ``Add row`` under **server_addresses** to expand.  Enter the server addresses ***10.1.20.10** and **10.1.20.11***.
 
 #. Once finished, select ``Deploy`` in the top right corner of the screen. 
 
 #. After deploying, you will be brought to the ``History`` tab with the status of your deployment:
 
-
    .. image:: ../images/ag22.png
 
-#. If prompted to login, login with credentials admin / admin
-
-#. Check the ***Result** it should say *Success* in the *Deploy log*
-
-
-   .. image:: ../images/ag24.png
-   
-
-#. Go to UDF bigip1 access Click on TMUI to access bigip1, you can see your application is deployed.
-
-   .. image:: ../images/BIGIP_TMUIlogin.jpg
-
-#. Click on *Partition* on the top right on bigip1 and select **Agility1**
-
+#. Click on ``Partition`` on the top right select **Agility1**
 
    .. image:: ../images/ag25.png
 
-#. Click on Local Traffic Manager and Select Virtual Server to see the new Virtual Server created
-
+#. Now go to ``Local Traffic`` and Select ``Virtual Servers`` to see the new Virtual Server created
 
    .. image:: ../images/ag26.png
 
-#. Go back to VScode and click on the F5 Hosts  and then click on FAST VIEW in VScode to see what
-   applications are deployed, lookout for *Agility/A1* 
+#. Go back to VScode and click on your ``10.1.1.6`` BIG-IP under F5 Hosts. Then click on ``FAST VIEW`` >> ``Deployed Applications`` to see yournew **Agility1/A1** application
 
 
    .. image:: ../images/ag27.png
 
 
-#. Remianing on the *Agility/A1* Right Click and Select *Delete FAST App* to remove the application frm BIG-IP
+#. Remianing on the *Agility/A1* Right Click and Select ``Delete FAST App`` to remove the application frm BIG-IP
 
 
    .. image:: ../images/ag28.png
 
-#. You can go back to ``bigip1`` GUI and check the application / Tenant is deleted.
+#. You can go back to BIG-IP GUI and check the application / Tenant is deleted.
+
+This completes the lab. 
