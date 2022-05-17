@@ -137,6 +137,10 @@ Perform the following steps to configure the Route object/resource:
 
 #. Click the ``Step 9: Get Routes`` item in the collection again. Click the ``Send`` button to ``GET`` the routes collection. Examine the response to make sure the route has been created.
 
+#. Click the ``Step 10: Save config`` item in the collection. Click the ``Send`` button to save the BIG-IP configuration.
+
+.. Warning:: Similar to changes made in TMSH, configuration changes made through the iControl REST API are not saved to the startup config by default. A configuration save prior to a reload or reboot of the system is required.
+
 .. |lab-4-1| image:: images/lab-4-1.png
 .. |lab-4-2| image:: images/lab-4-2.png
 .. |lab-4-3| image:: images/lab-4-3.png

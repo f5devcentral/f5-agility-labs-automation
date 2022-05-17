@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "03580f52-6b13-47ba-9a31-adedf9e1a1d3",
+		"_postman_id": "207696dc-e558-4d6b-9b2e-8a1a65072c49",
 		"name": "F5 Programmability: Class 1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -281,8 +281,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Lab 1.3 - Review/Set Device Settings",
@@ -403,7 +402,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1fc5b8d3-46e5-43bf-9c18-64f60c047eaa",
 								"exec": [
 									""
 								],
@@ -681,7 +679,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b85db50a-dd3f-42bf-aa35-a1b793ca6eb0",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -789,12 +786,56 @@
 					"response": []
 				},
 				{
-					"name": "Step 10: License BIG-IP A",
+					"name": "Step 10: Save config",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "54a76119-d76f-4ed8-bd45-661840f14138",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"command\": \"run\",\n    \"utilCmdArgs\": \"-c 'tmsh save /sys config'\"\n}"
+						},
+						"url": {
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/util/bash",
+							"protocol": "https",
+							"host": [
+								"{{bigip_a_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"util",
+								"bash"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 11: License BIG-IP A",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
 								"exec": [
 									""
 								],
@@ -859,12 +900,11 @@
 					"response": []
 				},
 				{
-					"name": "Step 11: License BIG-IP B",
+					"name": "Step 12: License BIG-IP B",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "54a76119-d76f-4ed8-bd45-661840f14138",
 								"exec": [
 									""
 								],
@@ -929,12 +969,11 @@
 					"response": []
 				},
 				{
-					"name": "Step 12: Provision ASM BIG-IP A",
+					"name": "Step 13: Provision ASM BIG-IP A",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "54a76119-d76f-4ed8-bd45-661840f14138",
 								"exec": [
 									""
 								],
@@ -997,12 +1036,11 @@
 					"response": []
 				},
 				{
-					"name": "Step 13: Provision ASM BIG-IP B",
+					"name": "Step 14: Provision ASM BIG-IP B",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "54a76119-d76f-4ed8-bd45-661840f14138",
 								"exec": [
 									""
 								],
@@ -1064,8 +1102,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Lab 1.4 - Basic Network Connectivity",
@@ -1076,7 +1113,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ee59729e-a8d5-40d7-af25-0bc69eebc571",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -1157,7 +1193,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0801cd21-e74f-4957-a27c-dd40933bd52e",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -1252,7 +1287,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d5f1947e-ef08-417c-bf08-5199e0f63eeb",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -1318,7 +1352,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "68e4eaa2-f5f6-4d8f-8a45-1d033d06f001",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -1383,7 +1416,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b25d7fdc-cb6f-4585-879f-052ea343e718",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -1444,7 +1476,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ef461f28-8e70-4c51-9eb0-3f6878ae365f",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -1595,7 +1626,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "54a76119-d76f-4ed8-bd45-661840f14138",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -1655,7 +1685,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "bacda5a7-a210-4312-8278-7530e2eb6a0f",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -1710,9 +1739,53 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Step 10: Save config",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"command\": \"run\",\n    \"utilCmdArgs\": \"-c 'tmsh save /sys config'\"\n}"
+						},
+						"url": {
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/util/bash",
+							"protocol": "https",
+							"host": [
+								"{{bigip_a_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"util",
+								"bash"
+							]
+						}
+					},
+					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Lab 1.5 - Build a Cluster",
@@ -2011,7 +2084,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1fc5b8d3-46e5-43bf-9c18-64f60c047eaa",
 								"exec": [
 									""
 								],
@@ -2374,7 +2446,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e7f732aa-8888-447c-b664-5f448167f5fa",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -2724,7 +2795,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "92314763-aeb4-48e4-a33c-5d4088d07c87",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -3278,7 +3348,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "62b34474-9563-4b3a-ac39-a6e8b9195f80",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -3334,7 +3403,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e0a5c820-14f1-4514-8a1d-82abf17da8d3",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -4288,8 +4356,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Lab 1.6 - Build a Basic LTM Config using Transactions",
@@ -4351,7 +4418,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "bbeb4b65-2648-4d7a-8415-e2a8e0253536",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -4411,7 +4477,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "729335eb-dbe4-4a58-8976-18b45cbf82b5",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -4470,7 +4535,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "9dbfad8a-fcea-4a61-843c-e774dc9722ce",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -4530,7 +4594,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "fd6e73e0-5f71-4acb-8428-b10b26cd39cf",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -4590,7 +4653,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "93f98873-c2c5-4cb2-8ab8-9a23e1bc8964",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -4963,8 +5025,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Lab 2.2 - Install AS3 onto BIG-IP",
@@ -4975,7 +5036,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5e098299-9d1c-4d54-b189-b8d35751507c",
 								"type": "text/javascript",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
@@ -5027,7 +5087,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "bb38c6e9-0658-458c-be36-3f95d74c9a1c",
 								"type": "text/javascript",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
@@ -5047,7 +5106,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ec269764-4137-4028-b375-4e6471b42ff9",
 								"type": "text/javascript",
 								"exec": [
 									"// Create the value for the Content-Range header based on the file size of the RPM",
@@ -5106,7 +5164,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a4da1ae5-cea8-48aa-b803-b45a0086508a",
 								"type": "text/javascript",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
@@ -5169,7 +5226,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2cfb16a5-d7b6-4580-9428-93f10b49d6ad",
 								"type": "text/javascript",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
@@ -5222,7 +5278,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "72146941-5edf-430b-b687-8e6c3e0b5ecd",
 								"type": "text/javascript",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
@@ -5278,7 +5333,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "6d75e112-93b6-45bb-b6f6-3a70d6724a0a",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -5288,15 +5342,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "16cc20b4-c98c-4913-8670-65caacab136c",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Lab 2.3 - Application Service Deployments with AS3",
@@ -5307,7 +5359,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8c6701d3-b448-441a-bbfc-7523bdbab8b4",
 								"type": "text/javascript",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
@@ -5347,7 +5398,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e79d5b87-090a-46d6-8f22-962fd0fbde38",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -5403,7 +5453,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a5278280-d8b1-4192-a6f5-3caaf71c38f0",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -5459,7 +5508,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a5278280-d8b1-4192-a6f5-3caaf71c38f0",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -5515,7 +5563,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8647b36e-2d75-4155-a4d7-cf7cf710e377",
 								"type": "text/javascript",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
@@ -5571,7 +5618,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "23fab218-396f-410a-a2be-879e9ca8d38e",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -5631,7 +5677,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8deb3fbd-bfeb-409c-b90e-596b5f2ca90f",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -5687,7 +5732,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "7863f183-5ab5-46a4-b0cb-d1b00a9b6574",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -5744,7 +5788,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a95851bf-0fcd-47fc-b5c9-234ff2fde30e",
 								"type": "text/javascript",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
@@ -5801,7 +5844,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8647b36e-2d75-4155-a4d7-cf7cf710e377",
 								"type": "text/javascript",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
@@ -5857,7 +5899,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8c6701d3-b448-441a-bbfc-7523bdbab8b4",
 								"type": "text/javascript",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
@@ -5896,7 +5937,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "270bb224-2389-46f2-a3f3-f63f5a8ea268",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -5906,22 +5946,19 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d62a3a63-19a9-42b5-89bf-06c489b15643",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "6bc859cd-3989-4415-a39d-3efa2eaa181f",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -5931,13 +5968,11 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "b59485b1-c0be-46d0-a43c-95bf234efffd",
 				"type": "text/javascript",
 				"exec": [
 					""
 				]
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

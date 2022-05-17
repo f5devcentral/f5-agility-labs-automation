@@ -104,7 +104,7 @@ Perform the following steps to complete this task:
 
 #. Click the ``Step 7: Set System NTP Settings`` item in the folder. Click :guilabel:`Body`. Review the JSON body to verify the NTP servers with hostnames ``0.pool.ntp.org`` and ``1.pool.ntp.org`` are contained in the ``servers`` attribute (another JSON array!).
 
-#. Click the :guilabel:`Send` button and verify the requested changes were successfully implemented by looking at the response or sending the ``Step 5: Get System NTP Settings`` again.
+#. Click the :guilabel:`Send` button and verify the requested changes were successfully implemented by looking at the response or sending the ``Step 6: Get System NTP Settings`` again.
 
 Task 3 - Update default user account passwords
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -141,6 +141,12 @@ Perform the following steps to change the **admin** user password:
 
 #. **Repeat the procedure above to change the password back to** ``Agility2020!``.
 
+Perform the following steps to save the system configuration before licensing the device:
+
+#. Click the ``Step 10: Save config`` item in the collection. Click the ``Send`` button to save the BIG-IP configuration.
+
+.. Warning:: Similar to changes made in TMSH, configuration changes made through the iControl REST API are not saved to the startup config by default. A configuration save prior to a reload or reboot of the system is required.
+
 .. |lab-3-1| image:: images/lab-3-1.png
 .. |lab-3-2| image:: images/lab-3-2.png
 .. |lab-3-3| image:: images/lab-3-3.png
@@ -150,16 +156,16 @@ Perform the following steps to change the **admin** user password:
 Task 4 - License the BIG-IPs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In more recent versions of BIG-IP TMOS editions, you can place configuration on the platform **prior** to installing a license. If you have logged into the BIG-IPs at any point before this section, you will have noticed ours do not have a license. 
+In more recent versions of BIG-IP TMOS editions, you can place configuration on the platform **prior** to installing a license. If you have logged into the BIG-IPs at any point before this section, you will have noticed ours do not have a license.
 
-This concept can be used in several applications, like placing a BIG-IP into an environment before needing it or testing out configuration restores or validation. 
+This concept can be used in several applications, like placing a BIG-IP into an environment before needing it or testing out configuration restores or validation.
 
-This lab contains a BIG-IQ instance which houses a license pool, 
-which will come in Enterprise License Agreements, or Subscription agreements directly from F5. 
+This lab contains a BIG-IQ instance which houses a license pool,
+which will come in Enterprise License Agreements, or Subscription agreements directly from F5.
 
-#. Click the ``Step 10: License BIG-IP A`` item in the collection. Click the ``Send`` button to ``POST`` the request to BIG-IQ for license allocation. Examine the BIG-IP A GUI to see the license has been allocated.
+#. Click the ``Step 11: License BIG-IP A`` item in the collection. Click the ``Send`` button to ``POST`` the request to BIG-IQ for license allocation. Examine the BIG-IP A GUI to see the license has been allocated.
 
-#. Click the ``Step 11: License BIG-IP B`` item in the collection. Click the ``Send`` button to ``POST`` the request to BIG-IQ for license allocation. Examine the BIG-IP B GUI to see the license has been allocated.
+#. Click the ``Step 12: License BIG-IP B`` item in the collection. Click the ``Send`` button to ``POST`` the request to BIG-IQ for license allocation. Examine the BIG-IP B GUI to see the license has been allocated.
 
 .. Warning:: Licensing a BIG-IP can take several seconds, as the license is checked and the requested services are restarted. Please wait for the systems to be **ONLINE (ACTIVE)** before proceeding
 
@@ -170,8 +176,8 @@ The example services we will create in this lab will need ASM provisioned for em
 
 Provisioning or de-provisioning a module is a **PATCH** operation, as there are modules that exist alongside what we are requesting, we do not utilize a **POST**  as that would erase all other settings to the endpoint.
 
-#. Click the ``Step 12: Provision ASM BIG-IP A`` item in the collection. Click the ``Send`` button to ``POST`` the request to BIG-IQ for license allocation. Examine the BIG-IP A GUI to see the module has been provisioned.
+#. Click the ``Step 13: Provision ASM BIG-IP A`` item in the collection. Click the ``Send`` button to ``POST`` the request to BIG-IQ for license allocation. Examine the BIG-IP A GUI to see the module has been provisioned.
 
-#. Click the ``Step 13: Provision ASM BIG-IP B`` item in the collection. Click the ``Send`` button to ``POST`` the request to BIG-IQ for license allocation. Examine the BIG-IP B GUI to see the module has been provisioned.
+#. Click the ``Step 14: Provision ASM BIG-IP B`` item in the collection. Click the ``Send`` button to ``POST`` the request to BIG-IQ for license allocation. Examine the BIG-IP B GUI to see the module has been provisioned.
 
 .. Warning:: Changing of modules provisioned on a BIG-IP is an outage level event. This should only be done during a change window. The elapsed time for the new services to be online will be several seconds to minutes. Please wait for the systems to be **ONLINE (ACTIVE)** before proceeding.
