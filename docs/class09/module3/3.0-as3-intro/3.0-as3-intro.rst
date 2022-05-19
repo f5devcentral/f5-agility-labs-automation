@@ -96,7 +96,7 @@ their customers. The important parts to understand are:
        "serviceMain": {
            "class": "Service_HTTP",
            "virtualAddresses": [
-               "{{private_ip}}"
+               "{{vs_private_ip}}"
            ],
            "pool": "app_pool"
        },
@@ -229,7 +229,7 @@ configure and license Red Hat Ansible Tower.
 
      - name: PUSH AS3
        uri:
-         url: "https://{{ ansible_host }}:8443/mgmt/shared/appsvcs/declare"
+         url: "https://{{ private_ip }}:8443/mgmt/shared/appsvcs/declare"
          method: POST
          body: "{{ lookup('template','j2/tenant_base.j2', split_lines=False) }}"
          status_code: 200

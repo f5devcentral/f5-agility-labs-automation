@@ -21,13 +21,16 @@ what is configured:
 
 .. code-block:: shell-session
 
-   [centos@ansible networking-workshop]$ ansible --version
-   ansible 2.6.2
-     config file = /home/centos/.ansible.cfg
-     configured module search path = [u'/home/centos/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
-     ansible python module location = /usr/lib/python2.7/site-packages/ansible
-     executable location = /usr/bin/ansible
-     python version = 2.7.5 (default, May  3 2017, 07:55:04) [GCC 4.8.5 20150623 (Red Hat 4.8.5-14)]
+  [centos@ansible networking-workshop]$ ansible --version
+  ansible [core 2.12.4]
+  config file = /home/centos/.ansible.cfg
+  configured module search path = ['/home/centos/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /home/centos/.local/lib/python3.8/site-packages/ansible
+  ansible collection location = /home/centos/.ansible/collections:/usr/share/ansible/collections
+  executable location = /home/centos/.local/bin/ansible
+  python version = 3.8.12 (default, Mar 31 2022, 14:42:38) [GCC 4.8.5 20150623 (Red Hat 4.8.5-44)]
+  jinja version = 3.1.1
+  libyaml = True
 
 ..
 

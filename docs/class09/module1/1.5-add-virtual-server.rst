@@ -188,7 +188,7 @@ browser:
 
 .. note::
    In your environment, go to the f5 component and use the
-   ``Virtual Server Test`` access method to test.
+   ``HTTPS Virtual Server Test`` access method to test.
 
 Each time you refresh the host will change between **host1** and
 **host2**. Here is animation of the host field changing: |animation|
@@ -207,11 +207,11 @@ respective workbench. (e.g. student5 would ``| grep student5``)
 
 ::
 
-   [studentX@ansible ~]$ curl https://172.16.26.136:443 --insecure --silent | grep studentX
+   [centos@ansible ~]$ curl https://10.1.20.100:443 --insecure --silent
        <p>F5TEST-studentX-host1</p>
-   [studentX@ansible ~]$ curl https://172.16.26.136:443 --insecure --silent | grep studentX
+   [centos@ansible ~]$ curl https://10.1.20.100:443 --insecure --silent
        <p>F5TEST-studentX-host2</p>
-   [studentX@ansible ~]$ curl https://172.16.26.136:443 --insecure --silent | grep studentX
+   [centos@ansible ~]$ curl https://10.1.20.100:443 --insecure --silent
        <p>F5TEST-studentX-host1</p>
 
 You have finished this exercise. `Click here to return to the lab

@@ -54,12 +54,6 @@ Add a tasks section with a set_fact for setting the provider values
 
 .. code-block:: yaml
 
-   ---
-   - name: BIG-IP SETUP
-     hosts: lb
-     connection: local
-     gather_facts: false
-
    tasks:
        - name: Setup provider
          set_fact:
@@ -82,12 +76,6 @@ from the F5 BIG-IP load balancer.
 
 .. code-block:: yaml
 
-   ---
-   - name: BIG-IP SETUP
-     hosts: lb
-     connection: local
-     gather_facts: false
-
      - name: DELETE VIRTUAL SERVER
        bigip_virtual_server:
          provider: "{{provider}}"
@@ -109,22 +97,8 @@ parameter set to ``absent``.
 
 .. code-block:: yaml
 
-   ---
-   - name: BIG-IP SETUP
-     hosts: lb
-     connection: local
-     gather_facts: false
-
-     tasks:
-
-     - name: DELETE VIRTUAL SERVER
-       bigip_virtual_server:
-         provider: "{{provider}}"
-         name: "vip"
-         state: absent
-
-     - name: DELETE POOL
-       bigip_pool:
+   - name: DELETE POOL
+     bigip_pool:
         provider: "{{provider}}"
          name: "http_pool"
          state: absent
@@ -139,26 +113,6 @@ BIG-IP <1.2-add-node>` with an additional **state** parameter set to
 ``absent``.
 
 .. code-block:: yaml
-
-   ---
-   - name: BIG-IP SETUP
-     hosts: lb
-     connection: local
-     gather_facts: false
-
-     tasks:
-
-     - name: DELETE VIRTUAL SERVER
-       bigip_virtual_server:
-         provider: "{{provider}}"
-         name: "vip"
-         state: absent
-
-     - name: DELETE POOL
-       bigip_pool:
-         provider: "{{provider}}"
-         name: "http_pool"
-         state: absent
 
      - name: DELETE NODES
        bigip_node:

@@ -125,6 +125,9 @@ file, and type it in like so: https://X.X.X.X:8443/
    to port **80** for their ``service_port``
 
 --------------
+.. note::
+   In your environment, go to the f5 component and use the
+   ``HTTP Virtual Server Test`` access method to test.
 
 You have finished this exercise. `Click here to return to the lab
 guide <..>`__
