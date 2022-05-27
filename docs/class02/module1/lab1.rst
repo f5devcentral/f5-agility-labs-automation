@@ -11,7 +11,7 @@ state of one of our BIG-IP appliances.
    and notice that it is not licensed and nothing has been provisioned.  
    Also notice the hostname in the upper left hand corner.
 
-   ..**note**:: 
+   ..note:: 
       | **URL:** https\://10.1.1.6 
       | **Username:** admin
       | **Password:** @gi1ity2022
