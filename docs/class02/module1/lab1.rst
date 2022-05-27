@@ -7,30 +7,32 @@ Onboarding (DO). For other installation options please see appendix A.
 Before we jump into Declarative Onboarding (DO) lets take a look at the current
 state of one of our BIG-IP appliances.
 
-#. Login to **BIGIP-01** and notice that it is not licensed and nothing has been
-   provisioned.  Also notice the hostname in the upper left hand corner.
+#. Select the Firefox access method on the client Ubuntu server, login to **BIG-IP-01**
+   and notice that it is not licensed and nothing has been provisioned.  
+   Also notice the hostname in the upper left hand corner.
 
-   .. note :: 
+   .. note::
       | **URL:** https\://10.1.1.6 
       | **Username:** admin
-      | **Password:** @gi1ity2021
+      | **Password:** @gi1ity2022
 
    .. image:: images/bigip01_01.png
 
 #. In order to install Declarative Onboarding using the VSCode extension we
    need to add our BIG-IP devices to VSCode.
 
-   Within the VSCode window click on the ``F5 Extension icon`` then click
-   ``ADD HOST`` in the ``F5 HOSTS`` window.
+   Select the VS Code access method on the Client Ubuntu server.
+   Within the VSCode window click on the ``F5 Extension icon`` then click the
+   ``+`` in the ``F5 HOSTS`` window.
 
    .. image:: images/f5_extension_add_host_01.png
 
    Within the add host prompt add each BIG-IP using the username\@hostname format
    and press enter.
 
-   .. note :: 
+   .. note:: 
       | **Username:** admin
-      | **Password:** @gi1ity2021
+      | **Password:** @gi1ity2022
 
    .. image:: images/f5_extension_add_host_02.png
 
@@ -38,36 +40,32 @@ state of one of our BIG-IP appliances.
    the device.
 
    .. image:: images/f5_extension_add_host_03.png
+   
+   .. note:: If the password popup doesn't appear, refresh the VSCode's browser tab.
+   
+   .. note:: If you enter the password incorrectly, wait for the login attempts to time out.  
+      Then right-click on the host, choose ``Clear Password`` and then click on the host to
+      re-enter the correct password.
 
-   .. note:: Be sure to add all three BIG-IPs and BIG-IQ to the F5 VSCode 
-      extension.
+   .. note:: Be sure to add all three BIG-IPs and the BIG-IQ to the F5 VSCode 
+      extension.  Once complete, your list of hosts in VSCode should look like this:
+      
+      .. image:: images/f5_extension_hosts.png
 
-   Once the device has been added, select **BIGIP-01**. 
+   Once the device has been added, select **BIG-IP-01 (10.1.1.6)**. 
       - Press **F1** your keyboard (this opens the command palette).
       - Type **F5** (this will filter the F5 commands)
-      
-      .. image:: images/do_install_01.png
-
       - Select **Install RPM**
   
-      .. image:: images/do_install_02.png
-
-      - Select **DO**
-  
-      .. image:: images/do_install_03.png
-
-      - Then select the latest version of DO
-  
-      .. image:: images/do_install_04.png
-
-      .. note:: At this point you will see several prompts in the bottom right 
-         hand corner of VSCode indicating the DO is being installed.
-         (similar to the images below) 
-        
-         .. image:: images/do_install_05.png
+      .. image:: images/do_install_01.png
 
       - Proceed to install DO on the other three BIG-IPs. BIG-IQ already has DO
         installed.
+
+      .. note:: If you are having trouble getting the command palette to function
+         correctly on your computer, you can alternatively expand the ATC section
+         in the BIG-IP menu located below the F5 HOSTS list.  Expand DO and click
+         on the latest version.
 
       .. note:: Once you have successfully installed DO on the BIG-IP device
          you will notice that the bottom of your VSCode window will show the
@@ -88,7 +86,7 @@ state of one of our BIG-IP appliances.
    declarative solution allows us to compose configurations that are reusable 
    with templating technologies and storable in Source Control.
 
-   We will use VSCode to send our declaration to **BIGIP-01**.
+   We will use VSCode to send our declaration to **BIG-IP-01**.
 
    In our first declaration we will configure the following items on the BIG-IP:
 
@@ -293,46 +291,49 @@ state of one of our BIG-IP appliances.
       you can try misspelling some of the declaration objects to see errors,
       remember to  revert your changes.
 
-#. We are now ready to send our declaration to **BIGIP-01**
+#. We are now ready to send our declaration to **BIG-IP-01**
 
-   Right click in the file editor of VSCode and select ``Post DO Declaration``.
+   Select the **admin@10.1.1.6** host from the F5 HOSTS list.  Then,
+   right click in the file editor of VSCode and select ``Post DO Declaration``.
 
    .. image:: images/post_do_declaration.png
 
    .. note::
 
       In the bottom right hand corner of VSCode you should see that the DO 
-      declaration is processing.
+      declaration is processing.  If this does not appear, click on the **admin@10.1.1.6** 
+      host again to reconnect, and try posting the declaration again.
 
       .. image:: images/do_declaration_processing.png
-
-   After a few moments you will receive a second tab in VSCode that shows that the
-   declaration is running.
+      
+     After a few moments you will begin seeing output in the bottom VSCode window that shows that the
+   declaration is running.  You will see a periodic get request being sent to **admin@10.1.1.6** 
+   to poll for the completion of the processing.
 
    .. image:: images/do_declaration_status_01.png
 
-   To know when the BIG-IP is finished processing the declaration click the DO
-   version on the status bar of VSCode.
-
-   .. image:: images/do_version.png
-
-   When complete, you should receive a 200 response code, a status of OK and a
-   message of success
+   When the BIG-IP is finished processing the declaration, another window will open in VSCode showing the
+   result and the complete declaration.  You should see a 200 response code, a status of OK and a
+   message of success.
 
    .. image:: images/do_declaration_status_02.png
 
 #. Once the BIG-IP has finished processing the declaration, login to
-   **BIGIP-01** and notice the host name has changed and the device is now
+   **BIG-IP-01** and notice the host name has changed and the device is now
    licensed.
 
-   .. note :: 
+   .. note:: 
+      | **URL:** https\://10.1.1.6
       | **Username:** admin
-      | **Password** @gi1ity2021
+      | **Password** @gi1ity2022
 
    .. image:: images/bigip01_02.png
 
-   Futhermore, take a look at the following settings on **BIGIP-01** to see what
-   all was configured with Declarative Onboarding (DO)
+   .. note:: You may need to browse to System->License to see the screen shot above, 
+      and your Licensed Date may differ.
+
+   Futhermore, take a look at the following System and Network settings on **BIG-IP-01**
+   to see everything that was configured with Declarative Onboarding (DO):
 
    - Credentials
    - Provisioning
