@@ -17,8 +17,10 @@ Step 1:
 Using your text editor of choice create a new file called
 ``delete.yml``:
 
-   ``vim`` and ``nano`` are available on the control node, as well as
-   Visual Studio and Atom via RDP
+..
+
+   ``vim`` and ``nano`` are available on the control node. 
+   The Ansible node is equiped with ``Visual Studio Code`` and can be accessed via UDF ACCESS Methods.
 
 Step 2:
 -------
@@ -54,7 +56,7 @@ Step 3
 
      - name: PUSH AS3
        uri:
-         url: "https://{{ remote_ip }}:8443/mgmt/shared/appsvcs/declare/WorkshopExample"
+         url: "https://{{ private_ip }}:8443/mgmt/shared/appsvcs/declare/WorkshopExample"
          method: DELETE
          status_code: 200
          timeout: 300
@@ -105,7 +107,7 @@ The finished Ansible Playbook is provided here for an Answer key. Click
 here:
 :download:`delete.yml <./delete.yml>`.
 
-Login to the web UI and make sure the ``Partition`` is removed.
+Login to the web UI and make sure the ``Partition`` ``WorkshopExample`` is removed.
 
 – You have finished this exercise. `Click here to return to the lab
 guide <..>`__
