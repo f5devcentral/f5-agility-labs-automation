@@ -119,10 +119,10 @@ How to import devices for larger/automated environments
       .. image:: ../images/ImportDeviceResults.jpg
 
 
-Task 4 - Install FAST extension
+Task 4 - Verify FAST extension
 -------------------------------
 
-      How to install ATC services using the extension.
+      How to view ATC services using the extension.
 
 #. In VSCode, make sure you are connected to BIG-IP01 (10.1.1.6) by looking at the bottom ribbon:
 
@@ -133,20 +133,12 @@ Task 4 - Install FAST extension
    
    .. image:: ../images/VScodeFASTDropdown.jpg
 
-#. Under the ``FAST`` dropdown, you should see a list of version options for the FAST extension. Select ``v1.16.0``. This will automatically install the rpm file to the connected BIG-IP. After a minute or so, you should see messages in your output indicating that it is installed: 
-        
-        .. code-block:: bash
-       
-            [INFO]: installing atc rpm job complete, waiting for services to restart (~30 seconds)
-      
-#. After seeing the above message, please wait another a minute for your connected device to update in VSCode. If it has not refreshed automatically after a minute, try clicking on the ``10.1.1.6`` host again to refresh manually. 
-
-#. Once finished and your connected device has refreshed, you should now see a green icon next to the FAST dropdown indicating that it has been installed:
+#. Under the ``FAST`` dropdown, you should see a list of version options for the FAST extension. There should be a colored icon next to a version in the list. This icon identifies the version you have installed. The Green icon indicates that the latest version of the extension has been installed. The Orange icon indicates that the extension is installed, but it is not the latest version. 
 
    .. image:: ../images/VScode_FASTInstalled.jpg
       :scale: 60%
 
-   .. NOTE::  The icon next to the extension drop down will indicate the version you have installed. The Green icon indicates that the latest version of the extension has been installed. The Orange icon indicates that the extension is installed, but it is not the latest version. If your extension is showing an orange icon, you can update the version by simply selecting the latest release.
+   .. NOTE::  If your extension is showing an orange icon, you can update the version by simply selecting the latest release.
 
 
 Task 5 - Deploy application via FAST template in TMUI
