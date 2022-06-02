@@ -131,7 +131,7 @@ Task 4 - Verify FAST extension
 
 #. Navigate to ``FAST`` under the ``BIG-IP`` menu by choosing ``BIG-IP`` >> ``ATC`` >> ``FAST``
 
-#. Under the ``FAST`` dropdown, you should see a list of version options for the FAST extension. There should be a colored icon next to a version in the list. This icon identifies the version you have installed. The Green icon indicates that the latest version of the extension has been installed. The Orange icon indicates that the extension is installed, but it is not the latest version. 
+#. Under the ``FAST`` dropdown, you should see a list of version options for the FAST extension. There should be a colored icon next to `FAST``. This icon identifies the version you have installed. The Green icon indicates that the latest version of the extension has been installed. The Orange icon indicates that the extension is installed, but it is not the latest version. 
 
    .. image:: ../images/VScode_FASTInstalled.jpg
       :scale: 60%
