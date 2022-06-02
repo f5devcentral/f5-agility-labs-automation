@@ -37,10 +37,10 @@ Make sure the F5 BIG-IP has AS3 enabled.
 
 If this is not working please ask your instructor for help.
 
-.. figure:: f5-appsvcs.gif
-   :alt: f5 gui
+.. figure:: f5-appsvcs.png
+   :alt: f5 appsvcs
 
-   f5 gui
+   f5 appssvcs
 
 Step 2:
 -------
@@ -86,7 +86,7 @@ their customers. The important parts to understand are:
 
 --------------
 
-1. ``as3_template.j2``
+2. ``as3_template.j2``
 
 .. code-block:: jinja
 
@@ -151,8 +151,10 @@ Step 3:
 
 Using your text editor of choice create a new file called ``as3.yml``:
 
-   ``vim`` and ``nano`` are available on the control node, as well as
-   Visual Studio and Atom via RDP
+..
+
+   ``vim`` and ``nano`` are available on the control node. 
+   The Ansible node is equiped with ``Visual Studio Code`` and can be accessed via UDF ACCESS Methods.
 
 Step 4:
 -------
@@ -324,7 +326,7 @@ Login to the F5 with your web browser to see what was configured. Grab
 the IP information for the F5 load balancer from the lab_inventory/hosts
 file, and type it in like so: https://X.X.X.X:8443/
 
-.. figure:: f5-as3.gif
+.. figure:: f5-as3.png
    :alt: f5 gui as3
 
    f5 gui as3

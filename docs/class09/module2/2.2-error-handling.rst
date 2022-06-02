@@ -24,8 +24,8 @@ Using your text editor of choice create a new file called
 
 ..
 
-   ``vim`` and ``nano`` are available on the control node, as well as
-   Visual Studio and Atom via RDP
+   ``vim`` and ``nano`` are available on the control node. 
+   The Ansible node is equiped with ``Visual Studio Code`` and can be accessed via UDF ACCESS Methods.
 
 Step 2
 ------
@@ -57,6 +57,7 @@ Add a tasks section with a set_fact for setting the provider values
 .. code-block:: yaml
 
    tasks:
+
        - name: Setup provider
          set_fact:
           provider:
@@ -70,19 +71,19 @@ Step 4
 ------
 
 Next, add the ``block`` stanza and the first ``task``. The first task
-will be the bigip_node as performed in :ref:`Exercise 1.2 - Adding nodes to
-F5 BIG-IP<1.2-add-node>`.
+will be the bigip_node as performed in :ref:`Exercise 1.2 - Adding nodes 
+to F5 BIG-IP <1.2-add-node>`.
 
 .. code-block:: yaml
 
-     - name: Setup and graceful rollback BIG-IP configuration
-       block:
-         - name: CREATE NODES
-           bigip_node:
-            provider: "{{provider}}"
-            host: "{{hostvars[item].ansible_host}}"
-            name: "{{hostvars[item].inventory_hostname}}"
-           loop: "{{ groups['webservers'] }}"
+    - name: Setup and graceful rollback BIG-IP configuration
+      block:
+        - name: CREATE NODES
+          bigip_node:
+           provider: "{{provider}}"
+           host: "{{hostvars[item].ansible_host}}"
+           name: "{{hostvars[item].inventory_hostname}}"
+          loop: "{{ groups['webservers'] }}"
 
 Step 5
 ------
@@ -264,7 +265,7 @@ Finally add the **always** to save the running configuration.
 
 The above playbook will try and configure the Virtual Server, Pool and
 Nodes but since the snat value is provided as ‘Automap1’ the addition of
-virtual server will fail and the ‘rescue’ block will be run
+virtual server will fail and the ‘rescue’ block will be run.
 
 Step 9
 ------
@@ -319,6 +320,16 @@ Playbook Output
 
    PLAY RECAP *****************************************************************************************************************
    f5                         : ok=8    changed=6    unreachable=0    failed=1
+
+
+Notice that without the declarative error handling, the Ansible playbook would have stopped here.
+
+.. figure:: error.png
+
+The work you have been saved is that you don't need to clean the config at the BIG-IP. 
+This declarative ``bigip-error-handling.yml`` Ansible playbook has this done for you.
+
+Check the BIG-IP by login to the GUI and check the Local Traffic configuration.
 
 Solution
 ========

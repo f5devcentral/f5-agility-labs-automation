@@ -8,7 +8,7 @@
 
   - name: PUSH AS3
     uri:
-      url: "https://{{ ansible_host }}:8443/mgmt/shared/appsvcs/declare/WorkshopExample"
+      url: "https://{{ private_ip }}:8443/mgmt/shared/appsvcs/declare/WorkshopExample"
       method: DELETE
       status_code: 200
       timeout: 300
