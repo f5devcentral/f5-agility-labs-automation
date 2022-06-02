@@ -12,12 +12,15 @@ Lab 3 - Converting existing configuration to AS3 using ACC - (AS3 Configuration 
                 * AS3 supports ASM/APM policy reference
             * Don't forget to put the application into the appropriate tenant
 
-#. In VSCODE tab select ``Explorer`` and then expand ``Project Folder, Files`` and right click on bigip1.ucs and select ``Explore TMOS Config``
+#. In VSCODE tab select ``Explorer`` and then select ``Open Folder``. In the Open Folder dialog, type ``/home/ubuntu/project_folder/`` and select ``OK``.  
+#. After the ``PROJECT_FOLDER`` has been added, select the ``files`` dropdown. 
+
+#. Right click on bigip1.ucs and select ``Explore TMOS Config``
 
     .. image:: ../images/exploretmos.png
        :scale: 60%
 
-#. Click on the F5 Extension in VSCODE and expand the ``CONFIG EXPLORER`` area.  Expand ``Apps`` and select ``/Common/juiceshop_vs``.  Notice this is the entire configuration for the JuiceShop application, including virtual servers, pools, nodes, and iRules if any.
+#. Click on the F5 Extension in VSCODE and expand the ``CONFIG EXPLORER`` area.  Expand ``Partitions`` >> ``Common`` and select ``juiceshop_vs``.  Notice this is the entire configuration for the JuiceShop application, including virtual servers, pools, nodes, and iRules if any.
 
    .. image:: ../images/juiceshop.png
       :scale: 60%

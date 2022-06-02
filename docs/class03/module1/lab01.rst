@@ -68,10 +68,10 @@ Task 1 - Getting connected
 
 #. Confirming connection
 
-      You can confirm ``VS CODE`` is connected by looking at detail on ``F5 -> Connect!`` at bottom of screen.  In the status you can see the version of AS3 that is installed on the ``BIG-IP``.  In this case, it is version ``3.26.0``.
+      You can confirm ``VS CODE`` is connected by looking at detail on ``F5 -> Connect!`` at bottom of screen.  In the status you can see the version of AS3 that is installed on the ``BIG-IP``.  In this case, it is version ``3.35.0``.
 
       .. image:: ../images/VScode_F5ConnectedBIGIP01.jpg
-         :scale: 50 %
+         :scale: 100 %
 
       .. NOTE:: The version of ``AS3`` in the graphic could differ from the lab guide. 
 
@@ -100,7 +100,6 @@ How to import devices for larger/automated environments
       #. Paste the following into the editor
 
          .. code-block:: bash
-            :linenos:
 
             [
                {
@@ -120,41 +119,26 @@ How to import devices for larger/automated environments
       .. image:: ../images/ImportDeviceResults.jpg
 
 
-Task 4 - Install FAST extension
+Task 4 - Verify FAST extension
 -------------------------------
 
-      How to install ATC services using the extension.
-
-      .. NOTE::  This method is considered the "offline" method so all the lab users are not trying to download the same files from github at the same time.  For additional information on alternate install methods see:  https://f5devcentral.github.io/vscode-f5/#/atc_rpm_mgmt
+      How to view ATC services using the extension.
 
 #. In VSCode, make sure you are connected to BIG-IP01 (10.1.1.6) by looking at the bottom ribbon:
 
    .. image:: ../images/VScode_F5ConnectedBIGIP01.jpg
+      :scale: 100%
+
+#. Navigate to ``FAST`` under the ``BIG-IP`` menu by choosing ``BIG-IP`` >> ``ATC`` >> ``FAST``
+
+#. Under the ``FAST`` dropdown, you should see a list of version options for the FAST extension. There should be a colored icon next to ``FAST``. This icon identifies the version you have installed. The Green icon indicates that the latest version of the extension has been installed. The Orange icon indicates that the extension is installed, but it is not the latest version. 
+
+   .. image:: ../images/VScode_FASTInstalled.jpg
       :scale: 60%
 
-#. In VSCode, go to the File Explorer view by choosing ``Menu`` >> ``View`` >> ``Explorer``
-      .. image:: ../images/VScodeOpenFileExplorer.jpg
-
-#. Open the files folder
-
-#. Right-click ``f5-appsvcs-templates-1.7.0.noarch.rpm``, then select ``Install RPM``
-
-      .. image:: ../images/VSCode-FAST-RPMinstall.png
-         :scale: 50 %
-
-      .. Note:: This process will upload the local RPM and install it on the F5.  The install happens rather quickly, but it can take another 30-60 seconds for all the servcies to restart and present the changes.  
+   .. NOTE::  If your extension is showing an orange icon, you can update the version by simply selecting the latest release.
 
 
-#. When complete, the vscode-f5 extension should reconnect and refresh all the details.
-
-      You may need to click on the device in the HOSTS view to reconnect and refresh the discovered services
-
-#. Notice that FAST now shows as installed (with version number) along the bottom of the editor
-
-      .. image:: ../images/lab01_vscode_fastInstalledVersion.png
-         :scale: 80 %
-      
-      
 Task 5 - Deploy application via FAST template in TMUI
 -----------------------------------------------------
    
@@ -169,28 +153,28 @@ Task 5 - Deploy application via FAST template in TMUI
 
       Login if needed: ``admin/admin``
 
-      Select the ``Deploy`` tab, expand the ``examples`` section, select ``examples/simple_udp_defaults``
+      Under the ``examples`` section at the bottom, select ``Simple UDP Application``
 
       Notice that the template has default parameters
 
-      Click each of the buttons at the bottom, next to the submit button, to see the different outputs:
-
-      - View Template
-
-      - View Schema
-
-      - View Inputs
-
-      - View Rendered
-
-      Now click  ``Submit`` to deploy an application using the ``FAST`` template
-
       .. image:: ../images/lab01_tmui_fast_template01b.jpg
          :scale: 80 %
-      
-      This will bring you back to the ``Deploy Log`` tab and provide a status the application deployment process
+         
+      At the bottom of the template, expand the ``Debug View`` dropdown and click through the different outputs:
 
-#. In the vscode-f5 extension refresh the ``FAST/AS3`` views with the refresh icon in the upper right hand corner of each view window
+      - Template
+
+      - Schema
+
+      - Inputs
+
+      - Rendered
+
+      Now click  ``Deploy`` to deploy an application using this FAST template
+
+      This will bring you back to the ``History`` tab and provide a status the application deployment process
+
+#. In the vscode-f5 extension refresh the ``FAST VIEW`` and ``AS3`` menus with the refresh icon in the upper right hand corner of each view window
 
       Explore the windows to see the deployed ``FAST`` application/task, and how it resulted in an AS3 Tenant/Task
 
@@ -199,11 +183,11 @@ Task 5 - Deploy application via FAST template in TMUI
 
 #. Delete application
 
-      In the TMUI (F5 GUI), in the ``F5 Application Services Templates`` screen, select the ``Application List``.
+      In the TMUI (F5 GUI), in the ``F5 Application Services Templates`` screen, select the ``Applications`` tab.
 
       We should see the application we deployed with ``FAST``.
 
-      On the right side of the application row item, select the ``trash`` icon to delete the application.
+      On the left side of the application row item, select the checkbox followed by the ``Delete`` button to delete the application.
 
       .. image:: ../images/lab01_vscode_deleteFastAppFromTMUI.png
 
@@ -213,7 +197,6 @@ Task 6 - Deploy FAST application via API
 #. In Coder (browser tab for ``VS CODE``), paste the following into an editor
 
       .. code-block:: json
-         :linenos:
 
          {
          "name": "examples/simple_http",
@@ -235,7 +218,6 @@ Task 6 - Deploy FAST application via API
       This should produce the following output in another tab
 
       .. code-block:: json
-         :linenos:
 
          {
             "id": "4b06e4d9-01f1-497e-93e5-662d5eb75d1d",
@@ -260,7 +242,7 @@ Task 6 - Deploy FAST application via API
 
       .. image:: ../images/lab01_vscode_deployFastAppAPI.gif
 
-#. Check the ``BIG-IP`` TMUI to see that the application is now in the ``Application List`` tab.
+#. Check the ``BIG-IP`` TMUI to see that the application is now in the ``Applications`` tab.
 
 #. Check out the vscode-f5 FAST/AS3 views to see what was deployed
 
