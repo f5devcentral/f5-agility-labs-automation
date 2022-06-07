@@ -6,16 +6,20 @@ Exercise 2.0: Disabling a pool member
 Objective
 =========
 
-For this last exercise instead of prescriptive step-by-step walkthrough
-a framework of objectives with hints for each step will be provided.
+This time we are going to disable a pool member from the pool. 
+The build syntax will demonstrate the removal of a node 
+from the pool.
 
-Demonstrate the removal of a node from the pool. Build a Playbook that:
-- Retrieve Facts from BIG-IP for the pools present on the BIG-IP (in our
-example only one pool is present) - Display pools available - Store the
-pool name as a fact - Display all the pool members that belong to the
-pool => IP and port information to the terminal window - Prompt the user
-to disable a particular member or disable all members of the pool -
-Force the appropriate pool members offline
+Build a Playbook that:
+
+-  Retrieve Facts from BIG-IP for the pools present on the BIG-IP (in our
+   example only one pool is present) 
+-  Display pools available
+-  Store the pool name as a fact
+-  Display all the pool members that belong to the
+   pool
+-  Prompt the user to disable a particular member or disable all members of the pool 
+-  Force the appropriate pool members offline
 
 Guide
 =====
@@ -32,8 +36,8 @@ Using your text editor of choice create a new file called
 
 ..
 
-   ``vim`` and ``nano`` are available on the control node, as well as
-   Visual Studio and Atom via RDP
+   ``vim`` and ``nano`` are available on the control node. 
+   The Ansible node is equiped with ``Visual Studio Code`` and can be accessed via UDF ACCESS Methods.
 
 Step 2:
 -------
@@ -43,11 +47,10 @@ Enter the following play definition into ``disable-pool-member.yml``:
 .. code-block:: yaml
 
    ---
-
-   - name:  Disabling a pool member
-     hosts: f5
-     connection: local
+   - name: "Disabling a pool member"
+     hosts: lb
      gather_facts: false
+     connection: local
 
 Step 3
 ------
@@ -59,13 +62,8 @@ task.
 
 .. code-block:: yaml
 
-   ---
-   - name: "Disabling a pool member"
-     hosts: lb
-     gather_facts: false
-     connection: local
-
      tasks:
+     
      - name: Setup provider
        set_fact:
         provider:
@@ -75,81 +73,117 @@ task.
          server_port: "8443"
          validate_certs: "no"
 
-Now in the next task you can use provider as follows:
+
+Step 4
+------
+Next, add a task to Retrieve Facts from BIG-IP for the subset ``ltm-pools``
 
 .. code-block:: yaml
 
-   bigip_device_info:
-     provider: "{{provider}}"
-     gather_subset:
-     - ltm-pools
+   - name: Query BIG-IP facts
+    bigip_device_info:
+      provider: "{{provider}}"
+      gather_subset:
+        - ltm-pools
+    register: bigip_facts
 
 You DO NOT need to pass the server_ip/user/password etc. for each module
-going forward
-
-.. code-block:: yaml
-
-   ---
-   - name: "Disabling a pool member"
-     hosts: lb
-     gather_facts: false
-     connection: local
-
-Next, add a task for the objective listed below:
-
--  Retrieve Facts from BIG-IP for the subset ltm-pools
-
-HINT: Try using the bigip_device_info module from Exercise 1.1
+going forward.
 
 Step 5
 ------
 
-Next, add a task for the objective listed below:
+Deploy ``ansible-playbook disable-pool-members.yml -vvvv`` and watch the outcome.
 
--  Display the pool information to the terminal window
-
-HINT: Find a way to ``loop`` on the output from the above step. Remember
-to also use the debug module
+The ``-vvvv`` creates extra verbose and makes that you sew more output when the ansible playbook gets deployed
 
 Step 6
 ------
 
-Next, add a task for the objective listed below:
+Next, add a task to Display the pool information to the terminal window
 
--  Store the pool name as a fact
+.. code-block:: yaml
 
-HINT: An easy way to set fact variables within a Playbook dynamically is
-using the set_fact module
+  - name: Display Pools available
+    debug: "msg={{item.name}}"
+    loop: "{{bigip_facts.ltm_pools}}"
+    loop_control:
+      label: "{{item.name}}"
+
+Repeat Step 5 by deploying the Ansible playbook.
 
 Step 7
 ------
 
-Next, add a task for the objective listed below:
+Next, add a task to Store the pool name as a fact
 
--  Display members belonging to the pool
+.. code-block:: yaml
 
-HINT: Remember to use the debug and refer Exercise 1.4
+  - name: Store pool name in a variable
+    set_fact:
+      pool_name: "{{item.name}}"
+    loop: "{{bigip_facts.ltm_pools}}"
+    no_log: true
+
+Repeat Step 5 by deploying the Ansible playbook.
 
 Step 8
 ------
 
-Next, add a task for the objective listed below:
+Next, add a task to Display members belonging to the pool
 
--  Prompt the user to enter a Host:Port to disable a particular member
-   or ‘all’ to disable all members
+.. code-block:: yaml
 
-HINT: Use the prompts module
+  - name: "Show members belonging to pool {{pool_name}}"
+    debug: "msg={{item}}"
+    loop: "{{bigip_facts.ltm_pools | json_query(query_string)}}"
+    vars:
+      query_string: "[?name=='{{pool_name}}'].members[*].name[]"
 
 Step 9
 ------
 
-Next, add a task for the objective listed below:
+Next, add a task which will ask the user to enter one of two options:
 
--  Read the prompt information and disable all members or a single
-   member based on the input from the user
+-  a Host:Port to disable a particular member
+-  ‘all’ to disable all members
 
-HINT: Remember to use when conditions and loops and `BIG-IP pool member
-module <https://docs.ansible.com/ansible/latest/modules/bigip_pool_member_module.html>`__
+.. code-block:: yaml
+
+  - pause:
+      prompt: "To disable a particular member enter member with format member_name:port \nTo disable all members of the pool enter 'all'"
+    register: member_name
+
+Step 10
+------
+
+Next, add a task which will Read the prompt information and disable all members or a single member based on the input from the user
+
+.. code-block:: yaml
+
+  - name: Disable ALL pool members
+    bigip_pool_member:
+      provider: "{{provider}}"
+      state: "forced_offline"
+      name: "{{item.split(':')[0]}}"
+      pool: "{{pool_name}}"
+      port: "{{item.split(':')[1]}}"
+      host: "{{hostvars[item.split(':')[0]].ansible_host}}"
+    loop: "{{bigip_facts.ltm_pools | json_query(query_string)}}"
+    vars:
+      query_string: "[?name=='{{pool_name}}'].members[*].name[]"
+    when: '"all" in member_name.user_input'
+
+  - name: Disable pool member {{member_name.user_input}}
+    bigip_pool_member:
+      provider: "{{provider}}"
+      state: "forced_offline"
+      name: "{{member_name.user_input.split(':')[0]}}"
+      pool: "{{pool_name}}"
+      port: "{{member_name.user_input.split(':')[1]}}"
+      host: "{{hostvars[member_name.user_input.split(':')[0]].ansible_host}}"
+    when: '"all" not in member_name.user_input'
+
 
 Step 10
 -------
@@ -221,7 +255,6 @@ indicating the specified node was forced offline.
 .. figure:: f5bigip-gui.png
    :alt: f5bigip-gui
 
-   f5bigip-gui
 
 You have finished this exercise. `Click here to return to the lab
 guide <..>`__

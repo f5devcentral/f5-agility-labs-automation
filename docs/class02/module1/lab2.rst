@@ -1,21 +1,21 @@
 Lab 2 Configure Clustered BIG-IP with Declarative Onboarding
 ==============================================================
 
-In this lab we are going to configure **BIGIP-02**.  The build out will be
-similar, but the declaration will be slightly different than **BIGIP-01**. There
+In this lab we are going to configure **BIG-IP-02**.  The build out will be
+similar, but the declaration will be slightly different than **BIG-IP-01**. There
 are some device specific items, like Self-IPs, that will be different between
-devices. These differences illustrate examples where templatizing would work
-exceptionally well. For these situations you could use a templating tool that an
+devices. These differences illustrate examples where templatizing works
+exceptionally well. For these situations you can use a templating tool that an
 orchestrator may provide such as Jinja2 in Ansible.
 
-#. Lets connect to **BIGIP-02** in VSCode in preparation to send our declaration.
+#. Lets connect to **BIG-IP-02** in VSCode in preparation to send our declaration.
 
-   In the F5 host section select the host for **BIGIP-02**
+   In the F5 host section select the host for **BIG-IP-02 (10.1.1.7)**
 
    .. image:: images/f5_extension_select_host_01.png
 
-#. Below is our declaration for **BIGIP-02**.  Copy the declaration to be used
-   in the VScode extension. Use the copy button in the upper right hand corner
+#. Below is our declaration for **BIG-IP-02**.  Copy the declaration to be used
+   in the VSCode extension. Use the copy button in the upper right hand corner
    of the declaration.
 
    .. code-block:: JSON
@@ -158,8 +158,8 @@ orchestrator may provide such as Jinja2 in Ansible.
                 "class": "DeviceGroup",
                 "type": "sync-failover",
                 "members": [
-                    "bigip-01.compute.internal",
-                    "bigip-02.compute.internal"
+                    "10.1.1.6",
+                    "10.1.1.7"
                 ],
                 "owner": "/Common/failoverGroup/members/0",
                 "autoSync": true,
@@ -171,25 +171,25 @@ orchestrator may provide such as Jinja2 in Ansible.
             "trust": {
                 "class": "DeviceTrust",
                 "localUsername": "admin",
-                "localPassword": "@gi1ity2021",
+                "localPassword": "@gi1ity2022",
                 "remoteHost": "/Common/failoverGroup/members/0",
                 "remoteUsername": "admin",
-                "remotePassword": "@gi1ity2021"
+                "remotePassword": "@gi1ity2022"
             }
         }
     }
 
    Just as we did in the previous lab, you will use VSCode and POST the 
-   declaration to **BIGIP-02**
+   declaration to **BIG-IP-02**
 
 
 #. Open a new file within VSCode and paste the declaration above. Be sure to
    set the language mode to JSON.
 
    .. note::  If you have forgotten how to change the language mode and POST the
-      DO declaration, refering back to the example in the first lab.
+      DO declaration, refer back to the example in the first lab.
 
-   Once you have post the declaration check the status of the declaration being
+   Once you have posted the declaration check the status of the declaration being
    processed.
 
    .. note::  Clustering via Declarative Onboarding can take several minutes
@@ -202,10 +202,12 @@ orchestrator may provide such as Jinja2 in Ansible.
    .. note :: 
       | **URL:** https\://10.1.1.7
       | **Username:** admin
-      | **Password:** @gi1ity2021
+      | **Password:** @gi1ity2022
 
-   In the BIG-IP console navigate to **Device Management -> Device Groups**
+   In the BIG-IP console, navigate to **Device Management -> Device Groups**
    and view the device group that was created by the declaration.  Click on the
    ``failoverGroup`` and verify both devices are members of the group.
+   
+   .. image:: images/failoverGroup.png
 
    Feel free to check other objects such as Self IPs, NTP settings, user accounts, etc.

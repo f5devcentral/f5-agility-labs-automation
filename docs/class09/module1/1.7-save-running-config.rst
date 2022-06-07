@@ -25,9 +25,8 @@ Using your text editor of choice create a new file called
 
 ..
 
-   ``vim`` and ``nano`` are available on the control node, as well as
-   Visual Studio and Atom via RDP
-
+   ``vim`` and ``nano`` are available on the control node. 
+   The Ansible node is equiped with ``Visual Studio Code`` and can be accessed via UDF ACCESS Methods.
 Step 2:
 -------
 

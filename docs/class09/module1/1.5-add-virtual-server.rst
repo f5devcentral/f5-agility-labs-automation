@@ -26,8 +26,8 @@ Using your text editor of choice create a new file called
 
 ..
 
-   ``vim`` and ``nano`` are available on the control node, as well as
-   Visual Studio and Atom via RDP
+   ``vim`` and ``nano`` are available on the control node. 
+   The Ansible node is equiped with ``Visual Studio Code`` and can be accessed via UDF ACCESS Methods.
 
 Step 2:
 -------
@@ -188,11 +188,12 @@ browser:
 
 .. note::
    In your environment, go to the f5 component and use the
-   ``Virtual Server Test`` access method to test.
+   ``HTTPS Virtual Server Test`` access method to test.
 
 Each time you refresh the host will change between **host1** and
-**host2**. Here is animation of the host field changing: |animation|
+**host2**. Here is animation of the host field changing: |apptest|
 >the animation might not work on certain browsers
+>the 'Agility' animation will say **F5 Agility 2022**
 
 Alternate Verification Method
 -----------------------------
@@ -207,15 +208,15 @@ respective workbench. (e.g. student5 would ``| grep student5``)
 
 ::
 
-   [studentX@ansible ~]$ curl https://172.16.26.136:443 --insecure --silent | grep studentX
-       <p>F5TEST-studentX-host1</p>
-   [studentX@ansible ~]$ curl https://172.16.26.136:443 --insecure --silent | grep studentX
-       <p>F5TEST-studentX-host2</p>
-   [studentX@ansible ~]$ curl https://172.16.26.136:443 --insecure --silent | grep studentX
-       <p>F5TEST-studentX-host1</p>
+   [centos@ansible ~]$ curl https://10.1.20.100:443 --insecure --silent
+       <p>F5 Agility 2022 - HOST1</p>
+   [centos@ansible ~]$ curl https://10.1.20.100:443 --insecure --silent
+       <p>F5 Agility 2022 - HOST2</p>
+   [centos@ansible ~]$ curl https://10.1.20.100:443 --insecure --silent
+       <p>F5 Agility 2022 - HOST1</p>
 
 You have finished this exercise. `Click here to return to the lab
 guide <..>`__
 
 .. |f5 vip image| image:: f5vip.png
-.. |animation| image:: animation.gif
+.. |apptest| image:: apptest.png

@@ -14,7 +14,32 @@ server.
 Guide
 =====
 
-Step 1:
+Step 1
+------
+
+Create two dummy irules with the names ‘irule1’ and ‘irule2’
+
+.. code-block:: shell-session
+
+   [centos@ansible ~]$ nano irule1
+
+   when HTTP_REQUEST {
+          log local0. "Accessing iRule1"
+   }
+
+Save the file
+
+.. code-block:: shell-session
+
+   [centos@ansible ~]$ nano irule2
+
+   when HTTP_REQUEST {
+          log local0. "Accessing iRule2"
+   }
+
+Save the file
+
+Step 2:
 -------
 
 Using your text editor of choice create a new file called
@@ -29,7 +54,7 @@ Using your text editor of choice create a new file called
    ``vim`` and ``nano`` are available on the control node, as well as
    Visual Studio and Atom via RDP
 
-Step 2:
+Step 3:
 -------
 
 Ansible playbooks are **YAML** files. YAML is a structured encoding
@@ -57,36 +82,10 @@ Enter the following play definition into ``bigip-irule.yml``:
 
 Save and Exit out of editor.
 
-Step 3
-------
-
-Create two dummy irules with the names ‘irule1’ and ‘irule2’
-
-.. code-block:: shell-session
-
-   [centos@ansible ~]$ nano irule1
-
-   when HTTP_REQUEST {
-          log local0. "Accessing iRule1"
-   }
-
-Save the file
-
-.. code-block:: shell-session
-
-   [centos@ansible ~]$ nano irule2
-
-   when HTTP_REQUEST {
-          log local0. "Accessing iRule2"
-   }
-
-Save the file
-
 Step 4
 ------
 
-Next, re-open ``bigip-irule.yml`` and add the ``task``. This task will
-use the ``bigip-irule`` to add irules to the BIG-IP.
+Next, add the ``task``. This task will use the ``bigip-irule`` to add irules to the BIG-IP.
 
 .. code-block:: yaml
 

@@ -21,8 +21,8 @@ Using your text editor of choice create a new file called
 
 ..
 
-   ``vim`` and ``nano`` are available on the control node, as well as
-   Visual Studio and Atom via RDP
+   ``vim`` and ``nano`` are available on the control node. 
+   The Ansible node is equiped with ``Visual Studio Code`` and can be accessed via UDF ACCESS Methods.
 
 Step 2:
 -------
@@ -34,9 +34,9 @@ Enter the following play definition into
 
    ---
    - name: BIG-IP SETUP
-     hosts: lb
-     connection: local
-     gather_facts: false
+   hosts: lb
+   connection: local
+   gather_facts: false
 
 -  The ``---`` at the top of the file indicates that this is a YAML
    file.
@@ -54,21 +54,16 @@ Add a tasks section with a set_fact for setting the provider values
 
 .. code-block:: yaml
 
-   ---
-   - name: BIG-IP SETUP
-     hosts: lb
-     connection: local
-     gather_facts: false
+      tasks:
 
-   tasks:
-       - name: Setup provider
-         set_fact:
-          provider:
-           server: "{{private_ip}}"
-           user: "{{ansible_user}}"
-           password: "{{ansible_ssh_pass}}"
-           server_port: "8443"
-           validate_certs: "no"
+         - name: Setup provider
+            set_fact:
+            provider:
+            server: "{{private_ip}}"
+            user: "{{ansible_user}}"
+            password: "{{ansible_ssh_pass}}"
+            server_port: "8443"
+            validate_certs: "no"
 
 Step 4
 ------
@@ -82,17 +77,11 @@ from the F5 BIG-IP load balancer.
 
 .. code-block:: yaml
 
-   ---
-   - name: BIG-IP SETUP
-     hosts: lb
-     connection: local
-     gather_facts: false
-
-     - name: DELETE VIRTUAL SERVER
-       bigip_virtual_server:
-         provider: "{{provider}}"
-         name: "vip"
-         state: absent
+        - name: DELETE VIRTUAL SERVER
+          bigip_virtual_server:
+            provider: "{{provider}}"
+            name: "vip"
+            state: absent
 
 -  ``state: absent`` is a parameter that tells the module to delete the
    configuration
@@ -109,25 +98,11 @@ parameter set to ``absent``.
 
 .. code-block:: yaml
 
-   ---
-   - name: BIG-IP SETUP
-     hosts: lb
-     connection: local
-     gather_facts: false
-
-     tasks:
-
-     - name: DELETE VIRTUAL SERVER
-       bigip_virtual_server:
-         provider: "{{provider}}"
-         name: "vip"
-         state: absent
-
-     - name: DELETE POOL
-       bigip_pool:
-        provider: "{{provider}}"
-         name: "http_pool"
-         state: absent
+         - name: DELETE POOL
+           bigip_pool:
+              provider: "{{provider}}"
+              name: "http_pool"
+              state: absent
 
 Step 6
 ------
@@ -140,32 +115,12 @@ BIG-IP <1.2-add-node>` with an additional **state** parameter set to
 
 .. code-block:: yaml
 
-   ---
-   - name: BIG-IP SETUP
-     hosts: lb
-     connection: local
-     gather_facts: false
-
-     tasks:
-
-     - name: DELETE VIRTUAL SERVER
-       bigip_virtual_server:
-         provider: "{{provider}}"
-         name: "vip"
-         state: absent
-
-     - name: DELETE POOL
-       bigip_pool:
-         provider: "{{provider}}"
-         name: "http_pool"
-         state: absent
-
-     - name: DELETE NODES
-       bigip_node:
-         provider: "{{provider}}"
-         name: "{{hostvars[item].inventory_hostname}}"
-         state: absent
-       loop: "{{ groups['webservers'] }}"
+        - name: DELETE NODES
+          bigip_node:
+            provider: "{{provider}}"
+            name: "{{hostvars[item].inventory_hostname}}"
+            state: absent
+          loop: "{{ groups['webservers'] }}"
 
 The above playbook will delete the virtual server, then the pool and
 then the nodes configured in previous exercises.
@@ -223,8 +178,13 @@ Login information for the BIG-IP: - username: admin - password:
 **provided by instructor defaults to ansible**
 
 Navigate the menu on the left and view that the configuration has been
-deleted \* Local Traffic Manager -> Virtual Server \* Local Traffic
-Manager -> Pool \* Local Traffic Manager -> Node
+deleted.
+
+-  Check: Local Traffic Manager -> Virtual Server
+-  Check: Local Traffic Manager -> Pool
+-  Check: Local Traffic Manager -> Node
+
+All configured objetcs are removed and the BIG-IP is 'empty'.
 
 You have finished this exercise. `Click here to return to the lab
 guide <..>`__

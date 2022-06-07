@@ -46,8 +46,10 @@ Step 2:
 Using your text editor of choice open the existing jinja template
 ``as3_template.j2``:
 
-   ``vim`` and ``nano`` are available on the control node, as well as
-   Visual Studio and Atom via RDP
+..
+
+   ``vim`` and ``nano`` are available on the control node. 
+   The Ansible node is equiped with ``Visual Studio Code`` and can be accessed via UDF ACCESS Methods.
 
 Step 3:
 -------
@@ -109,7 +111,7 @@ Login to the F5 with your web browser to see what was configured. Grab
 the IP information for the F5 load balancer from the lab_inventory/hosts
 file, and type it in like so: https://X.X.X.X:8443/
 
-.. figure:: as3-fix.gif
+.. figure:: as3-fix.png
    :alt: f5 gui as3
 
    f5 gui as3
@@ -125,6 +127,9 @@ file, and type it in like so: https://X.X.X.X:8443/
    to port **80** for their ``service_port``
 
 --------------
+.. note::
+   In your environment, go to the f5 component and use the
+   ``HTTP Virtual Server Test`` access method to test.
 
 You have finished this exercise. `Click here to return to the lab
 guide <..>`__
