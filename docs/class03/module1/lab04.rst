@@ -214,6 +214,8 @@ This lab will focus on converting an AS3 declaration into FAST YML and then pack
 
 #. Save the file as http.yml in the **Agility** folder.
 
+   .. image:: ../images/saveas.png
+
    .. image:: ../images/ag14.png
 
 #. Review the YML template file which was just created.
