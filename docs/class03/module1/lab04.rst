@@ -6,17 +6,17 @@ Install FAST template on BIG-IP
 
 #. Connect to admin@10.1.1.6 by clicking the device in the F5 HOSTS view
    
-#. You should see that FAST(1.16.0) is already installed.  
+#. You should see that FAST is already installed.  
 
    .. image:: ../images/lab01_vscode_fastInstalledVersion.png
 
-#. If you do not see FAST(1.16.0) installed you can do the following:
+#. If you do not see FAST installed you can do the following:
 
 #. Navigate to ``FAST`` under the ``BIG-IP`` menu by choosing ``BIG-IP`` >> ``ATC`` >> ``FAST``
 
    .. image:: ../images/VScodeFASTDropdown.jpg
 
-#. Under the ``FAST`` dropdown, you should see a list of version options for the FAST extension. Select ``v1.16.0``. This will automatically install the rpm file to the connected BIG-IP. After a minute or so, you should see messages in your output indicating that it is installed: 
+#. Under the ``FAST`` dropdown, you should see a list of version options for the FAST extension. Select the Latest version. This will automatically install the rpm file to the connected BIG-IP. After a minute or so, you should see messages in your output indicating that it is installed: 
         
    .. code-block:: bash
 
