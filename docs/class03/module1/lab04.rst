@@ -206,9 +206,9 @@ This lab will focus on converting an AS3 declaration into FAST YML and then pack
   
    .. code-block:: yml
    
-    virtual_server: Virtual Server
-    service_port: 80
-    server_addres: Server Address
+      virtual_server: Virtual Server
+      service_port: 80
+      server_addres: Server Address
   
    .. image:: ../images/ag13.png
 
