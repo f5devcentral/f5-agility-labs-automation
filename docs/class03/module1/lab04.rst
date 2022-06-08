@@ -204,6 +204,11 @@ This lab will focus on converting an AS3 declaration into FAST YML and then pack
 
 #. Now add the **server_address**, **service_port** and **virtual_server** to the parameters section along with description as shown below.
   
+   .. code-block:: json
+    virtual_server: Virtual Server
+    service_port: 80
+    server_addres: Server Address
+  
    .. image:: ../images/ag13.png
 
 #. Save the file as http.yml in the **Agility** folder.
