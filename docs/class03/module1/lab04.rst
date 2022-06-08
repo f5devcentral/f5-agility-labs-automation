@@ -302,6 +302,7 @@ This lab will focus on converting an AS3 declaration into FAST YML and then pack
    .. code-block:: yml
    
       Tenant Name: Agility1
+      service_port: 80
       virtual_server: 10.0.0.200 
 
 #. Next, click ``Add row`` under **server_addresses** to expand.  Enter the server addresses **10.1.20.10** and **10.1.20.11**.
