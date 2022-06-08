@@ -121,7 +121,7 @@ Use VScode for Posting FAST Template Set
 ----------------------------------------
 This lab will focus on converting an AS3 declaration into FAST YML and then packaging into FAST Template Set. The template set can be pushed to the BIG-IP. The FAST App can be deployed using the recently pushed template set.
 
-#. Go to ``VScode`` right click on ``fast`` >> ``templates`` folder and click on ``New Folder`` as shown below
+#. Go to ``VScode`` and select the explorer icon (files). Right click on ``fast`` >> ``templates`` folder and click on ``New Folder`` as shown below
 
    .. image:: ../images/ag1.png
 
