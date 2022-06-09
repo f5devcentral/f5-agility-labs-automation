@@ -57,7 +57,7 @@ Task 1 - Getting connected
       .. NOTE:: An alternative method to connect is to select ``F5 -> Connect!`` at the bottom of the screen
       
       .. image:: ../images/VScode_F5Connect.jpg
-         :scale: 50 %
+         :scale: 100 %
 
       When prompted choose ``admin@10.1.1.6`` from the list of choices:
       
@@ -134,7 +134,7 @@ Task 4 - Verify FAST extension
 #. Under the ``FAST`` dropdown, you should see a list of version options for the FAST extension. There should be a colored icon next to ``FAST``. This icon identifies the version you have installed. The Green icon indicates that the latest version of the extension has been installed. The Orange icon indicates that the extension is installed, but it is not the latest version. 
 
    .. image:: ../images/VScode_FASTInstalled.jpg
-      :scale: 60%
+      :scale: 100%
 
    .. NOTE::  If your extension is showing an orange icon, you can update the version by simply selecting the latest release.
 
