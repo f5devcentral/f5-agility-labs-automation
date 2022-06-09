@@ -34,9 +34,9 @@ Enter the following play definition into
 
    ---
    - name: BIG-IP SETUP
-   hosts: lb
-   connection: local
-   gather_facts: false
+     hosts: lb
+     connection: local
+     gather_facts: false
 
 -  The ``---`` at the top of the file indicates that this is a YAML
    file.
