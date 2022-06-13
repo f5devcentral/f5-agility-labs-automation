@@ -139,8 +139,7 @@ Solution
 ========
 
 The finished Ansible Playbook is provided here for an Answer key. Click
-here:
-:download:`bigip-pool.yml <./bigip-pool.yml>`.
+here: :download:`bigip-pool.yml <./bigip-pool.yml>`.
 
 Verifying the Solution
 ======================

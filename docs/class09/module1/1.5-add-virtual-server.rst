@@ -156,8 +156,7 @@ Solution
 ========
 
 The finished Ansible Playbook is provided here for an Answer key. Click
-here:
-:download:`bigip-virtual-server.yml <./bigip-virtual-server.yml>`.
+here: :download:`bigip-virtual-server.yml <./bigip-virtual-server.yml>`.
 
 Verifying the Solution
 ======================

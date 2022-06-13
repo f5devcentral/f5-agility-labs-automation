@@ -146,8 +146,7 @@ Solution
 ========
 
 The finished Ansible Playbook is provided here for an Answer key. Click
-here:
-:download:`bigip-node.yml <./bigip-node.yml>`.
+here: :download:`bigip-node.yml <./bigip-node.yml>`.
 
 Verifying the Solution
 ======================
