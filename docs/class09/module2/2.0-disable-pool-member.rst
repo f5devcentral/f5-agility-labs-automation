@@ -155,7 +155,7 @@ Next, add a task which will ask the user to enter one of two options:
     register: member_name
 
 Step 10
-------
+-------
 
 Next, add a task which will Read the prompt information and disable all members or a single member based on the input from the user
 

@@ -126,7 +126,6 @@ file, and type it in like so: https://X.X.X.X:8443/
 6. Verify under ``Pools`` for ``app_pool`` that both web servers are set
    to port **80** for their ``service_port``
 
---------------
 .. note::
    In your environment, go to the f5 component and use the
    ``HTTP Virtual Server Test`` access method to test.

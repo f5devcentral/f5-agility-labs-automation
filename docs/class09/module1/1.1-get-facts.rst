@@ -327,8 +327,7 @@ Solution
 ========
 
 The finished Ansible Playbook is provided here for an Answer key. Click
-here for
-:download:`bigip-facts.yml ./bigip-facts.yml`.
+here for :download:`bigip-facts.yml <./bigip-facts.yml>`.
 
 Going Further
 =============
