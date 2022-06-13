@@ -171,8 +171,7 @@ the BIG-IP.
 
 Details of `BIG-IP virtual_Server
 module <https://docs.ansible.com/ansible/latest/modules/bigip_irule_module.html>`__
-or reference :download:`Exercise
-1.5 <./bigip-virtual-server.yml>`
+or reference :download:`bigip-virtual-server.yml <./bigip-virtual-server.yml>`
 
 Save the file and exit out of editor.
 
@@ -209,8 +208,7 @@ Solution
 ========
 
 The finished Ansible Playbook is provided here for an Answer key. Click
-here:
-:download:`bigip-irule.yml <./bigip-irule.yml>`.
+here: :download:`bigip-irule.yml <./bigip-irule.yml>`.
 
 Verifying the Solution
 ======================

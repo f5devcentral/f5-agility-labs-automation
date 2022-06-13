@@ -104,8 +104,7 @@ Solution
 ========
 
 The finished Ansible Playbook is provided here for an Answer key. Click
-here:
-:download:`delete.yml <./delete.yml>`.
+here: :download:`delete.yml <./delete.yml>`.
 
 Login to the web UI and make sure the ``Partition`` ``WorkshopExample`` is removed.
 

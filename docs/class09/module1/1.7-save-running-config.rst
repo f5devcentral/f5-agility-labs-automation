@@ -139,8 +139,7 @@ Solution
 ========
 
 The finished Ansible Playbook is provided here for an Answer key. Click
-here:
-:download:`bigip-config.yml <./bigip-config.yml>`.
+here: :download:`bigip-config.yml <./bigip-config.yml>`.
 
 You have finished this exercise. `Click here to return to the lab
 guide <..>`__

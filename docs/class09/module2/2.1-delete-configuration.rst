@@ -164,8 +164,7 @@ Solution
 ========
 
 The finished Ansible Playbook is provided here for an Answer key. Click
-here:
-:download:`bigip-delete-configuration.yml <./bigip-delete-configuration.yml>`.
+here: :download:`bigip-delete-configuration.yml <./bigip-delete-configuration.yml>`.
 
 Verifying the Solution
 ======================
