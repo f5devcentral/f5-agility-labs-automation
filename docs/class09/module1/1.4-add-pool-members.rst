@@ -281,8 +281,7 @@ Solution
 ========
 
 The finished Ansible Playbook is provided here for an Answer key. Click
-here:
-:download:`bigip-pool-members.yml <./bigip-pool-members.yml>`.
+here: :download:`bigip-pool-members.yml <./bigip-pool-members.yml>`.
 
 Verifying the Solution
 ======================
