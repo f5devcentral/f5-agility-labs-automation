@@ -14,12 +14,10 @@ Guide
 Step 1:
 -------
 
-Using your text editor of choice create a new file called
-``delete.yml``:
+Use VS Code Explorer to create a new file called ``delete.yml``:
 
 ..
 
-   ``vim`` and ``nano`` are available on the control node. 
    The Ansible node is equiped with ``Visual Studio Code`` and can be accessed via UDF ACCESS Methods.
 
 Step 2:

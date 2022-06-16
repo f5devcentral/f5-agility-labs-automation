@@ -17,17 +17,11 @@ Guide
 Step 1:
 -------
 
-Using your text editor of choice create a new file called
-``bigip-pool-members.yml``.
-
-.. code-block:: shell-session
-
-   [student1@ansible ~]$ nano bigip-pool-members.yml
+Use VS Code Explorer to create a new file called ``bigip-pool-members.yml``.
 
 ..
 
-   ``vim`` and ``nano`` are available on the control node. 
-   The Ansible node is equiped with ``Visual Studio Code`` and can be accessed via UDF ACCESS Methods.
+  The Ansible node is equiped with ``Visual Studio Code`` and can be accessed via UDF ACCESS Methods.
 
 Step 2:
 -------
@@ -146,11 +140,9 @@ Let’s use the bigip_device_info to collect the pool members on BIG-IP.
 `JSON
 query <https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#json-query-filter>`__
 is a powerful filter that can be used. Please go through before
-proceeding
+proceeding.
 
-.. code-block:: shell-session
-
-   [student1@ansible ~]$ nano display-pool-members.yml
+Use VS Code Explorer to create a new file called ``display-pool-members.yml``.
 
 Enter the following:
 
