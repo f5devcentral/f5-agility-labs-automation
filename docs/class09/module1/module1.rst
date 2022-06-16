@@ -4,6 +4,7 @@ Section 1 - Ansible F5 Basic Exercises
 .. toctree::
    :maxdepth: 1
 
+   0.0-getting-started
    1.0-explore
    1.1-get-facts
    1.2-add-node
