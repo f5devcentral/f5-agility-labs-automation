@@ -24,16 +24,10 @@ Make sure you are in the home directory
 Step 1:
 -------
 
-Using your text editor of choice create a new file called
-``bigip-facts.yml``.
-
-.. code-block:: shell-session
-
-   [centos@ansible ~]$ nano bigip-facts.yml
+Use VS Code Explorer to create a new file called ``bigip-facts.yml``.
 
 ..
 
-   ``vim`` and ``nano`` are available on the control node. 
    The Ansible node is equiped with ``Visual Studio Code`` and can be accessed via UDF ACCESS Methods.
 
 Step 2:

@@ -42,17 +42,11 @@ Save the file
 Step 2:
 -------
 
-Using your text editor of choice create a new file called
-``bigip-irule.yml``.
-
-.. code-block:: shell-session
-
-   [centos@ansible ~]$ nano bigip-irule.yml
+Use VS Code Explorer to create a new file called ``bigip-irule.yml``.
 
 ..
 
-   ``vim`` and ``nano`` are available on the control node, as well as
-   Visual Studio and Atom via RDP
+   The Ansible node is equipped with ``Visual Studio Code`` and can be accessed via UDF ACCESS Methods.
 
 Step 3:
 -------
