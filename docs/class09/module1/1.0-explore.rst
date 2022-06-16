@@ -6,7 +6,7 @@ Exercise 1.0: Exploring the lab environment
 Step 1
 ------
 
-Navigate to the ``networking-workshop`` directory.
+In the VS Code terminal section, navigate to the ``networking-workshop`` directory.
 
 .. code-block:: shell-session
 
