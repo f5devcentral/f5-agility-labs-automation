@@ -99,7 +99,7 @@ state of one of our BIG-IP appliances.
    - Vlans
 
    Copy the Declarative Onboarding (DO) declaration below.
-   Use the copy button in the upper left hand corner of the declaration.
+   Use the copy button in the upper right hand corner of the declaration.
 
    .. code-block:: JSON
 
