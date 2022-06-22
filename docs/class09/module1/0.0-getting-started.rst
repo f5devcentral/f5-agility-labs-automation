@@ -5,7 +5,7 @@ Exercise 0.0: Getting Started
 
 During this lab Visual Studio Code will be used as the editor of choice and also provides a terminal to run Ansible playbooks and watch the logging accordingly.
 
-Follow the steps below to start using VS Code in local browser as part of this lab.
+Follow the steps below to start using VS Code in your local browser during this lab.
 
 Step 1
 ------
@@ -26,12 +26,14 @@ Your local browser will start up VS Code.
 Step 3
 ------
 
-If you want to you can select a theme or keep the default by clicking **Mark Done** and select **Yes, I trust...**. Ignore the pop-up windows in the bottom-right of your browser by **closing** them.
+If you want to you can select a theme or keep the default by clicking **Mark Done** and select **Yes, I trust...**.
+
+Ignore the pop-up windows in the bottom-right of your browser by **closing** them.
 
 Step 4
 ------
 
-Go to the left side of the screen and select the **three stripes**, go to **Terminal** and select **New Terminal**. |terminal|
+Go to the left side of the screen and select the **three stripes**. Then go to **Terminal** and select **New Terminal**. |terminal|
 
 .. |terminal| image:: terminal.png
 
@@ -45,13 +47,13 @@ You can use the **terminal Pane** to launch **Ansible playbooks** and execute **
 Step 5
 ------
 In order to be able to deploy those Ansible playbooks, you need to create YAML scripts which will become your ansible-playbooks.
-In **Explorer right-click** and select **New File**. |new_file|
+In **VS Code Explorer** and ``right-click`` and select **New File**. |new_file|
 
 .. |new_file| image:: new_file.png
 
 ..
 
-   Make sure you right-click in the 'empty' grey area. When you right-click at the height of the folder section and create anew file, that file will end up in that selected directory.
+   Note: Make sure you right-click in the 'empty' grey area. When you right-click at the height of the folder section and create a new file, that file will end up in that selected folder.
 
 
 You finished the **Getting Started** section. `Click here to return to the labguide <..>`__
