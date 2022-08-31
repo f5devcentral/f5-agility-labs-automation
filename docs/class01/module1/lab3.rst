@@ -98,7 +98,7 @@ Perform the following steps to complete this task:
 
    |lab-3-4|
 
-#. Click the :guilabel:`Send` button and verify the requested changes were successfully implemented by looking at the response or by sending the ``Step 3: Get System DNS Settings`` request again.
+#. Click the :guilabel:`Send` button and verify the requested changes were successfully implemented by looking at the response or by sending the ``Step 4: Get System DNS Settings`` request again.
 
 #. Click the ``Step 6: Get System NTP Settings`` item in the folder. Click :guilabel:`Send` and review the current settings.
 
