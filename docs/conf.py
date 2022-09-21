@@ -10,9 +10,6 @@ classname = "Automation, Orchestration & DevOps"
 # OPTIONAL: The URL to the GitHub Repository for this class
 github_repo = "https://github.com/f5devcentral/f5-agility-labs-automation"
 
-# OPTIONAL: Google Analytics
-# googleanalytics_id = 'UA-85156643-4'
-
 #
 # END CONFIG
 # ----------
@@ -86,13 +83,10 @@ extensions = [
   'sphinx.ext.extlinks',
   'sphinx.ext.graphviz',
   'sphinxcontrib.nwdiag',
-  'sphinxcontrib.blockdiag'
+  'sphinxcontrib.blockdiag',
+  'sphinx_copybutton'
   #'sphinx.ext.autosectionlabel'
 ]
-
-if 'googleanalytics_id' in locals() and len(googleanalytics_id) > 0:
-  extensions += ['sphinxcontrib.googleanalytics']
-  googleanalytics_enabled = True
 
 graphviz_output_format = 'svg'
 graphviz_font = 'DejaVu Sans:style=Book'
@@ -101,6 +95,10 @@ graphviz_dot_args = [
      "-Nfontname='%s'" % graphviz_font,
      "-Efontname='%s'" % graphviz_font
 ]
+
+html_context = {
+  "github_url":github_repo
+}
 
 diag_fontpath = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
 diag_html_image_format = 'SVG'
@@ -126,6 +124,10 @@ if found:
   spelling_ignore_python_builtins=True
   spelling_ignore_importable_modules=True
   spelling_filters=[]
+
+source_parsers = {
+   '.md': 'recommonmark.parser.CommonMarkParser',
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -176,17 +178,16 @@ todo_include_todos = True
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 
+html4_writer = True
 html_theme = 'f5_sphinx_theme'
 html_theme_path = f5_sphinx_theme.get_html_theme_path()
-html_sidebars = {'**': ['searchbox.html', 'localtoc.html', 'globaltoc.html','relations.html']}
+html_sidebars = {'**': ['searchbox.html', 'localtoc.html', 'globaltoc.html']}
 html_theme_options = {
                         'site_name': 'Community Training Classes & Labs',
                         'next_prev_link': True
                      }
-html_last_updated_fmt = '%Y-%m-%d %I:%M:%S'
-
-def setup(app):
-    app.add_stylesheet('css/f5_agility_theme.css')
+html_last_updated_fmt = '%Y-%m-%d %H:%M:%S'
+html_codeblock_linenos_style = 'table'
 
 extlinks = {
     'issues':( ("%s/issues/%%s" % github_repo), 'issue ' )

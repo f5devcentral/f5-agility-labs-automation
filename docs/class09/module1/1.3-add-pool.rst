@@ -18,17 +18,11 @@ Guide
 Step 1:
 -------
 
-Using your text editor of choice create a new file called
-``bigip-pool.yml``.
-
-.. code-block:: shell-session
-
-   [centos@ansible ~]$ nano bigip-pool.yml
+Use VS Code Explorer to create a new file called ``bigip-pool.yml``.
 
 ..
 
-   ``vim`` and ``nano`` are available on the control node, as well as
-   Visual Studio and Atom via RDP
+   The Ansible node is equiped with ``Visual Studio Code`` and can be accessed via UDF ACCESS Methods.
 
 Step 2:
 -------
@@ -139,8 +133,7 @@ Solution
 ========
 
 The finished Ansible Playbook is provided here for an Answer key. Click
-here:
-:download:`bigip-pool.yml <./bigip-pool.yml>`.
+here: :download:`bigip-pool.yml <./bigip-pool.yml>`.
 
 Verifying the Solution
 ======================
@@ -150,7 +143,7 @@ the IP information for the F5 load balancer from the lab_inventory/hosts
 file, and type it in like so: https://X.X.X.X:8443/
 
 Login information for the BIG-IP: - username: admin - password:
-**provided by instructor, defaults to ansible**
+**provided by instructor, defaults to f5ansible**
 
 The load balancer pool can be found by navigating the menu on the left.
 Click on Local Traffic-> then click on Pools. |f5pool|

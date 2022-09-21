@@ -15,17 +15,11 @@ Guide
 Step 1
 ------
 
-Using your text editor of choice create a new file called
-``bigip-error-handling.yml``.
-
-.. code-block:: shell-session
-
-   [centos@ansible ~]$ nano bigip-error-handling.yml
+Use VS Code Explorer to create a new file called ``bigip-error-handling.yml``.
 
 ..
 
-   ``vim`` and ``nano`` are available on the control node, as well as
-   Visual Studio and Atom via RDP
+   The Ansible node is equiped with ``Visual Studio Code`` and can be accessed via UDF ACCESS Methods.
 
 Step 2
 ------
@@ -56,13 +50,8 @@ Add a tasks section with a set_fact for setting the provider values
 
 .. code-block:: yaml
 
-   ---
-   - name: BIG-IP SETUP
-     hosts: lb
-     connection: local
-     gather_facts: false
-
    tasks:
+
        - name: Setup provider
          set_fact:
           provider:
@@ -76,35 +65,19 @@ Step 4
 ------
 
 Next, add the ``block`` stanza and the first ``task``. The first task
-will be the bigip_node as performed in :ref:`Exercise 1.2 - Adding nodes to
-F5 BIG-IP<1.2-add-node>`.
+will be the bigip_node as performed in :ref:`Exercise 1.2 - Adding nodes 
+to F5 BIG-IP <1.2-add-node>`.
 
 .. code-block:: yaml
 
-   ---
-   - name: BIG-IP SETUP
-     hosts: lb
-     connection: local
-     gather_facts: false
-
-     tasks:
-     - name: Setup provider
-         set_fact:
-          provider:
-           server: "{{private_ip}}"
-           user: "{{ansible_user}}"
-           password: "{{ansible_ssh_pass}}"
-           server_port: "8443"
-           validate_certs: "no"
-
-     - name: Setup and graceful rollback BIG-IP configuration
-       block:
-         - name: CREATE NODES
-           bigip_node:
-            provider: "{{provider}}"
-            host: "{{hostvars[item].ansible_host}}"
-            name: "{{hostvars[item].inventory_hostname}}"
-           loop: "{{ groups['webservers'] }}"
+    - name: Setup and graceful rollback BIG-IP configuration
+      block:
+        - name: CREATE NODES
+          bigip_node:
+           provider: "{{provider}}"
+           host: "{{hostvars[item].ansible_host}}"
+           name: "{{hostvars[item].inventory_hostname}}"
+          loop: "{{ groups['webservers'] }}"
 
 Step 5
 ------
@@ -113,31 +86,6 @@ Next, add the second task for bigip_pool as demonstrated in :ref:`Exercise
 1.3 - Adding a load balancing pool <1.3-add-pool>`.
 
 .. code-block:: yaml
-
-   ---
-   - name: BIG-IP SETUP
-     hosts: lb
-     connection: local
-     gather_facts: false
-
-     tasks:
-       - name: Setup provider
-         set_fact:
-          provider:
-           server: "{{private_ip}}"
-           user: "{{ansible_user}}"
-           password: "{{ansible_ssh_pass}}"
-           server_port: "8443"
-           validate_certs: "no"
-
-       - name: SETUP AND GRACEFUL ROLLBACK BIG-IP CONFIGURATION
-         block:
-           - name: CREATE NODES
-             bigip_node:
-               provider: "{{provider}}"
-               host: "{{hostvars[item].ansible_host}}"
-               name: "{{hostvars[item].inventory_hostname}}"
-             loop: "{{ groups['webservers'] }}"
 
            - name: CREATE POOL
              bigip_pool:
@@ -155,39 +103,6 @@ as demonstrated in :ref:`Exercise 1.4 - Adding members to a
 pool<1.4-add-pool-members>`.
 
 .. code-block:: yaml
-
-   ---
-   - name: BIG-IP SETUP
-     hosts: lb
-     connection: local
-     gather_facts: false
-
-     tasks:
-       - name: Setup provider
-         set_fact:
-          provider:
-           server: "{{private_ip}}"
-           user: "{{ansible_user}}"
-           password: "{{ansible_ssh_pass}}"
-           server_port: "8443"
-           validate_certs: "no"
-
-       - name: SETUP AND GRACEFUL ROLLBACK BIG-IP CONFIGURATION
-         block:
-           - name: CREATE NODES
-             bigip_node:
-               provider: "{{provider}}"
-               host: "{{hostvars[item].ansible_host}}"
-               name: "{{hostvars[item].inventory_hostname}}"
-             loop: "{{ groups['webservers'] }}"
-
-           - name: CREATE POOL
-             bigip_pool:
-               provider: "{{provider}}"
-               name: "http_pool"
-               lb_method: "round-robin"
-               monitors: "/Common/http"
-               monitor_type: "and_list"
 
            - name: ADD POOL MEMBERS
              bigip_pool_member:
@@ -207,49 +122,6 @@ bigip_virtual_server as demonstrated in :ref:`Exercise 1.5 - Adding a virtual
 server<1.5-add-virtual-server>`.
 
 .. code-block:: yaml
-
-   ---
-   - name: BIG-IP SETUP
-     hosts: lb
-     connection: local
-     gather_facts: false
-
-     tasks:
-       - name: Setup provider
-         set_fact:
-          provider:
-           server: "{{private_ip}}"
-           user: "{{ansible_user}}"
-           password: "{{ansible_ssh_pass}}"
-           server_port: "8443"
-           validate_certs: "no"
-
-       - name: SETUP AND GRACEFUL ROLLBACK BIG-IP CONFIGURATION
-         block:
-           - name: CREATE NODES
-             bigip_node:
-               provider: "{{provider}}"
-               host: "{{hostvars[item].ansible_host}}"
-               name: "{{hostvars[item].inventory_hostname}}"
-             loop: "{{ groups['webservers'] }}"
-
-           - name: CREATE POOL
-             bigip_pool:
-               provider: "{{provider}}"
-               name: "http_pool"
-               lb_method: "round-robin"
-               monitors: "/Common/http"
-               monitor_type: "and_list"
-
-           - name: ADD POOL MEMBERS
-             bigip_pool_member:
-              provider: "{{provider}}"
-              state: "present"
-              name: "{{hostvars[item].inventory_hostname}}"
-              host: "{{hostvars[item].ansible_host}}"
-              port: "80"
-              pool: "http_pool"
-             loop: "{{ groups['webservers'] }}"
 
            - name: ADD VIRTUAL SERVER
              bigip_virtual_server:
@@ -276,60 +148,6 @@ the nodes and pool will remove all configuration. If any task within the
 pool, and nodes will be removed gracefully.
 
 .. code-block:: yaml
-
-   ---
-   - name: BIG-IP SETUP
-     hosts: lb
-     connection: local
-     gather_facts: false
-
-     tasks:
-       - name: Setup provider
-         set_fact:
-          provider:
-           server: "{{private_ip}}"
-           user: "{{ansible_user}}"
-           password: "{{ansible_ssh_pass}}"
-           server_port: "8443"
-           validate_certs: "no"
-
-       - name: SETUP AND GRACEFUL ROLLBACK BIG-IP CONFIGURATION
-         block:
-           - name: CREATE NODES
-             bigip_node:
-               provider: "{{provider}}"
-               host: "{{hostvars[item].ansible_host}}"
-               name: "{{hostvars[item].inventory_hostname}}"
-             loop: "{{ groups['webservers'] }}"
-
-           - name: CREATE POOL
-             bigip_pool:
-               provider: "{{provider}}"
-               name: "http_pool"
-               lb_method: "round-robin"
-               monitors: "/Common/http"
-               monitor_type: "and_list"
-
-           - name: ADD POOL MEMBERS
-             bigip_pool_member:
-               provider: "{{provider}}"
-               state: "present"
-               name: "{{hostvars[item].inventory_hostname}}"
-               host: "{{hostvars[item].ansible_host}}"
-               port: "80"
-               pool: "http_pool"
-             loop: "{{ groups['webservers'] }}"
-
-           - name: ADD VIRTUAL SERVER
-             bigip_virtual_server:
-               provider: "{{provider}}"
-               name: "vip"
-               destination: "{{private_ip}}"
-               port: "443"
-               enabled_vlans: "all"
-               all_profiles: ['http','clientssl','oneconnect']
-               pool: "http_pool"
-               snat: "Automap1"
 
          rescue:
 
@@ -441,7 +259,7 @@ Finally add the **always** to save the running configuration.
 
 The above playbook will try and configure the Virtual Server, Pool and
 Nodes but since the snat value is provided as ‘Automap1’ the addition of
-virtual server will fail and the ‘rescue’ block will be run
+virtual server will fail and the ‘rescue’ block will be run.
 
 Step 9
 ------
@@ -497,12 +315,21 @@ Playbook Output
    PLAY RECAP *****************************************************************************************************************
    f5                         : ok=8    changed=6    unreachable=0    failed=1
 
+
+Notice that without the declarative error handling, the Ansible playbook would have stopped here.
+
+.. figure:: error.png
+
+The work you have been saved is that you don't need to clean the config at the BIG-IP. 
+This declarative ``bigip-error-handling.yml`` Ansible playbook has this done for you.
+
+Check the BIG-IP by login to the GUI and check the Local Traffic configuration.
+
 Solution
 ========
 
 The finished Ansible Playbook is provided here for an Answer key. Click
-here:
-:download:`bigip-error-handling.yml <./bigip-error-handling.yml>`.
+here: :download:`bigip-error-handling.yml <./bigip-error-handling.yml>`.
 
 You have finished this exercise. `Click here to return to the lab
 guide <..>`__

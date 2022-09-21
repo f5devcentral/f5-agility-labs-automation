@@ -1,109 +1,339 @@
-Lab 4 - Creating Multiple HTTP Applications per tenant using AS3
-================================================================
+Lab 4 - Creating FAST Template for future app deployments
+=========================================================
 
-In this lab, we will create two simple HTTP applications using AS3 within the
-same tenant. Afterwards, we will modify the AS3 declaration to compose and
-create our very own third application within the same tenant.
+Install FAST template on BIG-IP
+-------------------------------
 
-**Exercise 1 - Multi-App AS3 Declaration**
-
-#. Open Postman and locate the ``Lab 4`` folder, and double-click the
-   ``HTTP Multi-Applications (2 Apps)`` declaration.
-
-#. Examine the body of the AS3 declaration. Take some time to familiarize
-   yourself with how we are declaring two HTTP applications within the same
-   tenant.  The two applications are: ``http_vs`` and ``http_vs_2``.
-
-#. After examining the declaration, ``Send`` the declaration.
-
-#. Confirm the results of the POST, and make sure you receive a result of 200.
-
-#. Navigate to the BIG-IP and visually confirm the changes have been made.  Note: change to the ``http_tenant`` partition.
-
-   .. image:: images/two_apps_confirm.jpg
-
-**Exercise 2 - Add an Additional HTTP Application within a Multi-App
-Single-Tenant AS3 Declaration**
-
-#. In Postman, locate the declaration we previously sent.
-
-#. We want to add another HTTP Application within the same tenant.
-
-#. In Postman, and most text-editors, you can move your cursor next to an open
-   (or closed) brace and it will locate the corresponding closed (or open)
-   brace. This is depicted in the following images:
-
-   .. image:: images/app_begin.jpg
-
-   |
-
-   .. image:: images/app_end.jpg
-
-#. We want to add another application to our ``http_tenant``. We can copy the
-   existing declaration for an application and modify parts as needed.
-
-   .. image:: images/app_template.jpg
-
-#. We want to name the application ``http_app_3`` and configure the following:
-
-   +---------------+------------------------------------+
-   | Virtual Server| Name: 'http_vs_3'                  |
-   |               | Address: 10.1.20.100               |
-   +---------------+------------------------------------+
-   | Pool          | Name: 'http_pool_3'                |
-   |               | Members: 10.1.10.34 and 10.1.10.35 |
-   +---------------+------------------------------------+
-
-#. Modify the AS3 declaration so that our ``http_app_3`` has the appropriate
-   information. Once modified, it should look like the following.
+#. Connect to admin@10.1.1.6 by clicking the device in the F5 HOSTS view
    
-   .. note:: You can confirm your updated declaration with the
-      ``HTTP Multi-Application (3 Apps)`` declaration.
+#. You should see that FAST is already installed.  
 
-   .. image:: images/app_template_pt2.jpg
+   .. image:: ../images/lab01_vscode_fastInstalledVersion.png
 
-#. ``Send`` the declaration.
+#. If you do not see FAST installed you can do the following:
 
-#. Confirm the results of the POST, and make sure you receive a result of 200.
+#. Navigate to ``FAST`` under the ``BIG-IP`` menu by choosing ``BIG-IP`` >> ``ATC`` >> ``FAST``
 
-   .. image:: images/200.jpg
+   .. image:: ../images/VScodeFASTDropdown.jpg
 
-#. Confirm the changes on the BIG-IP. On the left column, navigate to
-   **Local Traffic -> Virtual Servers** and validate the **partition** is
-   ``http_tenant``.
+#. Under the ``FAST`` dropdown, you should see a list of version options for the FAST extension. Select the Latest version. This will automatically install the rpm file to the connected BIG-IP. After a minute or so, you should see messages in your output indicating that it is installed: 
+        
+   .. code-block:: bash
 
-#. You should see the list of 3 virtual servers.
+      [INFO]: installing atc rpm job complete, waiting for services to restart (~30 seconds)
+      
+#. After seeing the above message, please wait another a minute for your connected device to update in VSCode. If it has not refreshed automatically after a minute, try clicking on the ``10.1.1.6`` host again to refresh manually. 
 
-   .. image:: images/3apps.jpg
 
-#. You can navigate to **Local Traffic -> Pools** to confirm the changes made
-   to the ``Pools``.
+Render Simple FAST YML template to AS3
+--------------------------------------
+This lab will focus on rendering a FAST yml template using VScode template HTML Preview and generating AS3
+declaration which can posted to BIG-IP in VScode istself.
 
-   .. image:: images/3pools.jpg
+#. Copy the below YML file into the ``VScode`` browser.  The below yml shows the values already populated for tenant name, virtual address, virtual port, server addresses and server port. The template portion has those variables already templatize with double curly braces. 
 
-**Exercise 3 - Delete HTTP Applications and Tenant**
+   .. code-block:: yml
+   
+      title: Simple HTTP Application
+      description: Simple HTTP load balancer using the same port on client and server side.
+      parameters:
+        tenant_name: tophttp
+        application_name: defaultsHTTP_8080
+        virtual_address: 10.0.0.200
+        virtual_port: 8080
+        server_addresses:
+          - 10.1.20.10
+          - 10.1.20.11
+        service_port: 80
+      template: |
+        {
+          "class": "ADC",
+          "schemaVersion": "3.20.0",
+          "{{tenant_name}}": {
+            "class": "Tenant",
+            "{{application_name}}": {
+              "class": "Application",
+              "template": "http",
+              "serviceMain": {
+                "class": "Service_HTTP",
+                "virtualAddresses": [
+                  "{{virtual_address}}"
+                ],
+                "virtualPort": {{virtual_port}},
+                "pool": "{{application_name}}_Pool1"
+              },
+              "{{application_name}}_Pool1": {
+                "class": "Pool",
+                "monitors": [
+                  "icmp"
+                ],
+                "members": [
+                  {
+                    "serverAddresses": {{server_addresses::array}},
+                    "servicePort": {{service_port}}
+                  }
+                ]
+              }
+            }
+          }
+        }
 
-#. In order to delete our virtual server, pools, and pool members, we can
-   simply send a POST with an empty tenant body. Since AS3 is declarative, it
-   will notice that we are sending a POST with an empty tenant body, and will
-   by default delete the existing virtual server, pool and pool members.
+#. Remaining on the VScode, select ``Render FAST template HTML Preview``.
 
-   .. image:: images/clear_tenant.jpg
+   .. image:: ../images/render.png
+      :scale: 50%
 
-#. In Postman, find the ``Delete Application`` request. Examine the URI and
-   body declaration. Notice we are sending a POST to the same API endpoint, but
-   take a close look at the JSON body.
+#. Review the Simple HTTP Application details.
 
-#. The body declares a AS3 tenant called ``http_tenant``, but the body
-   describing the state of the tenant is empty. By default, AS3 will remove the
-   virtual server, pool, and pool members. Since this would cause the entire
-   tenant to be empty, AS3 will also remove the tenant for us.
+   .. image:: ../images/simplehttp.png
 
-#. Click on ``Send``.
+#. Click on the ``Render`` button at the bottom of screen to see the generated AS3 declaration.
 
-#. Confirm the results of the POST, and make sure you receive a result of 200.
+   .. image:: ../images/renderas3.png
 
-#. Navigate back to the BIG-IP, refresh the page and confirm the changes that
-   the tenant has been deleted.
+#. Review the generated AS3 declaration.
 
-   .. image:: images/delete_tenant.jpg
+   .. image:: ../images/as3.png
+
+#. Remaining on ``VScode`` right click to ``POST as AS3 Declaration``.
+
+   .. image:: ../images/postas3.png
+
+#. Remaining on ``VScode`` click on the AS3 tab --> ``Tenant``, and you can see your **tophttp** application.
+
+   .. image:: ../images/tophttp1.png
+      :scale: 60%
+
+#. Go to UDF ``bigip1`` Access, and click on TMUI to access ``bigip1``.
+
+   .. image:: ../images/BIGIP_TMUIlogin.jpg
+
+#. Access ``bigip1`` by logging into the GUI to review the configuration, Select partition as ``tophttp`` to see the details.
+
+   .. image:: ../images/bigip1.png
+
+#. Clean up the tenant after use.  In ``VScode`` window, right click on the **tophttp** tenant and select ``Delete Tenant``.
+
+   .. image:: ../images/deletetophttp1.png
+      :scale: 50%
+
+Use VScode for Posting FAST Template Set
+----------------------------------------
+This lab will focus on converting an AS3 declaration into FAST YML and then packaging into FAST Template Set. The template set can be pushed to the BIG-IP. The FAST App can be deployed using the recently pushed template set.
+
+#. Go to ``VScode`` and select the explorer icon (files). Right click on ``fast`` >> ``templates`` folder and click on ``New Folder`` as shown below
+
+   .. image:: ../images/ag1.png
+
+#. Type name of the folder as **Agility** and hit return
+
+   .. image:: ../images/ag2.png
+
+#. Ensure that you have the ``10.1.1.6`` host selected in the F5 Extension. 
+
+#. Create a new file in VSCode and copy/paste the AS3 declaration below 
+
+
+   .. code-block:: json
+      
+      {
+        "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
+        "class": "AS3",
+        "action": "deploy",
+        "persist": true,
+        "declaration": {
+          "class": "ADC",
+          "schemaVersion": "3.0.0",
+          "id": "urn:uuid:33045210-3ab8-4636-9b2a-c98d22ab915d",
+          "label": "Sample 1",
+          "remark": "Simple HTTP application with RR pool",
+          "Sample_01": {
+            "class": "Tenant",
+            "A1": {
+              "class": "Application",
+              "template": "http",
+              "serviceMain": {
+                "class": "Service_HTTP",
+                "virtualAddresses": [
+                  "10.0.1.10"
+                ],
+                "pool": "web_pool"
+              },
+              "web_pool": {
+                "class": "Pool",
+                "monitors": [
+                  "http"
+                ],
+                "members": [
+                  {
+                    "servicePort": 80,
+                    "serverAddresses": [
+                      "192.0.1.10",
+                      "192.0.1.11"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+
+
+#. We need to convert from AS3 JSON to YML FAST template
+
+   .. image:: ../images/ag8.png
+
+#. While in the ``VScode`` right click to see the **AS3-->FAST YAML** option
+
+   .. image:: ../images/ag9.png
+
+#. Review the converted YML file.
+
+#. Replace the Virtual Server IP address **"10.0.1.10"** with **"{{virtual_server}}"**.
+
+#. Replace **["192.0.1.10", "192.0.1.11"]** with **{{server_address::array}}**.
+
+#. Replace **80** with **{{service_port::integer}}**.
+
+   .. image:: ../images/ag11.png
+
+#. Below shows the replacement or templatized parameters.
+
+   .. image:: ../images/ag12.png
+
+#. Now add the **server_address**, **service_port** and **virtual_server** to the parameters section along with description as shown below.
+  
+   .. code-block:: yml
+   
+      virtual_server: Virtual Server
+      service_port: 80
+      server_addres: Server Address
+  
+   .. image:: ../images/ag13.png
+
+#. Save the file as http.yml in the **Agility** folder.
+
+   .. image:: ../images/saveas.png
+
+   .. image:: ../images/ag14.png
+
+#. Review the YML template file which was just created.
+
+   .. code-block:: yml
+   
+      title: template title
+      description: template description
+      parameters:
+        tenant_name: default tenant name
+        service_address: Server Addresses
+        service_port: 80
+        virtual_server: Virtual Server
+      definitions: 
+        tenant_name:
+          title: Tenant Name
+          type: string
+          description: partition on bigip
+      template: | 
+        {
+          "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
+          "class": "AS3",
+          "action": "deploy",
+          "persist": true,
+          "declaration": {
+            "class": "ADC",
+            "schemaVersion": "3.0.0",
+            "id": "urn:uuid:33045210-3ab8-4636-9b2a-c98d22ab915d",
+            "label": "Sample 1",
+            "remark": "Simple HTTP application with RR pool",
+            "{{tenant_name}}": {
+              "class": "Tenant",
+              "A1": {
+                "class": "Application",
+                "template": "http",
+                "serviceMain": {
+                  "class": "Service_HTTP",
+                  "virtualAddresses": [
+                    "{{virtual_server}}"
+                  ],
+                  "pool": "web_pool"
+                },
+                "web_pool": {
+                  "class": "Pool",
+                  "monitors": [
+                    "http"
+                  ],
+                  "members": [
+                    {
+                      "servicePort": {{service_port::integer}},
+                      "serverAddresses": {{server_address::array}}
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+
+
+#. While you are in the ``VScode`` window highlight the folder **Agility**. Right click and select **Post Template Set** to post the new template to BIG-IP.  
+
+   .. image:: ../images/ag16.png
+
+#. Go to UDF and Click on the ``bigip1`` TMUI and login into the BIG-IP, Click on the
+   **iApps --> Application Services --> Application LX**
+
+   .. image:: ../images/ag17.png
+
+
+#. Go to ``FAST Templates`` and scroll to the bottom to see the new **Agility** Template Set 
+
+   .. image:: ../images/ag18.png
+   
+
+#. Under the **Agility** Template set, Click on the ``template title``
+
+#. Once you click on the ``template title``, the template with default values will appear.
+   you will see the template is rendered and is ready
+   to take different values:
+
+   .. image:: ../images/ag21.png
+
+#. Enter the following values
+
+   .. code-block:: yml
+   
+      Tenant Name: Agility1
+      service_port: 80
+      virtual_server: 10.0.0.200 
+
+#. Next, click ``Add row`` under **server_addresses** to expand.  Enter the server addresses **10.1.20.10** and **10.1.20.11**.
+
+#. Once finished, select ``Deploy`` in the top right corner of the screen. 
+
+#. After deploying, you will be brought to the ``History`` tab with the status of your deployment:
+
+   .. image:: ../images/ag22.png
+
+#. Click on ``Partition`` on the top right select **Agility1**
+
+   .. image:: ../images/ag25.png
+
+#. Now go to ``Local Traffic`` and Select ``Virtual Servers`` to see the new Virtual Server created
+
+   .. image:: ../images/ag26.png
+
+#. Go back to VScode and click on your ``10.1.1.6`` BIG-IP under F5 Hosts. Then click on ``FAST VIEW`` >> ``Deployed Applications`` to see yournew **Agility1/A1** application
+
+
+   .. image:: ../images/ag27.png
+
+
+#. Remianing on the *Agility/A1* Right Click and Select ``Delete FAST App`` to remove the application frm BIG-IP
+
+
+   .. image:: ../images/ag28.png
+
+#. You can go back to BIG-IP GUI and check the application / Tenant is deleted.
+
+This completes the lab. 

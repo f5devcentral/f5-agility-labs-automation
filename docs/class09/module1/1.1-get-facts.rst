@@ -24,17 +24,11 @@ Make sure you are in the home directory
 Step 1:
 -------
 
-Using your text editor of choice create a new file called
-``bigip-facts.yml``.
-
-.. code-block:: shell-session
-
-   [centos@ansible ~]$ nano bigip-facts.yml
+Use VS Code Explorer to create a new file called ``bigip-facts.yml``.
 
 ..
 
-   ``vim`` and ``nano`` are available on the control node, as well as
-   Visual Studio and Atom via RDP
+   The Ansible node is equiped with ``Visual Studio Code`` and can be accessed via UDF ACCESS Methods.
 
 Step 2:
 -------
@@ -70,6 +64,10 @@ Step 3
 Next, add the first ``task``. This task will use the
 ``bigip_device_info`` module to grab useful information from the BIG-IP
 device.
+
+.. warning::
+   The ``tasks:`` item should line up to the same indentation as ``gather_facts:``
+   while the ``- name:`` item should be indented 2 spaces under ``tasks:``
 
 .. code-block:: yaml
 
@@ -152,7 +150,7 @@ The output will look as follows.
 
 .. code-block:: shell-session
 
-   [centos@ansible ~]$ ansible-playbook bigip-facts.yml 
+   [centos@ansible ~]$ ansible-playbook bigip-facts.yml
 
    PLAY [GRAB F5 FACTS] *****************************************************************************************************************************************
 
@@ -160,7 +158,7 @@ The output will look as follows.
    ok: [f5]
 
    TASK [DISPLAY COMPLETE BIG-IP SYSTEM INFORMATION] ************************************************************************************************************
-   ok: [f5] => 
+   ok: [f5] =>
      device_facts:
        ansible_facts:
          discovered_interpreter_python: /usr/bin/python
@@ -215,8 +213,7 @@ Finally let’s append two more tasks to get more specific info from facts
 gathered, to the above playbook.
 
 .. code-block:: yaml
-
-
+   
        - name: DISPLAY ONLY THE MAC ADDRESS
          debug:
            var: device_facts['system_info']['base_mac_address']
@@ -256,7 +253,7 @@ The output will look as follows.
 
 .. code-block:: shell-session
 
-   [centos@ansible ~]$ ansible-playbook bigip-facts.yml 
+   [centos@ansible ~]$ ansible-playbook bigip-facts.yml
 
    PLAY [GRAB F5 FACTS] *****************************************************************************************************************************************
 
@@ -264,7 +261,7 @@ The output will look as follows.
    ok: [f5]
 
    TASK [DISPLAY COMPLETE BIG-IP SYSTEM INFORMATION] ************************************************************************************************************
-   ok: [f5] => 
+   ok: [f5] =>
      device_facts:
        ansible_facts:
          discovered_interpreter_python: /usr/bin/python
@@ -310,11 +307,11 @@ The output will look as follows.
          uptime: 9443.0
 
    TASK [DISPLAY ONLY THE MAC ADDRESS] **************************************************************************************************************************
-   ok: [f5] => 
+   ok: [f5] =>
      device_facts['system_info']['base_mac_address']: 06:95:66:ab:b6:1c
 
    TASK [DISPLAY ONLY THE VERSION] ******************************************************************************************************************************
-   ok: [f5] => 
+   ok: [f5] =>
      device_facts['system_info']['product_version']: 15.0.1
 
    PLAY RECAP ***************************************************************************************************************************************************
@@ -324,8 +321,7 @@ Solution
 ========
 
 The finished Ansible Playbook is provided here for an Answer key. Click
-here for
-:download:`bigip-facts.yml <./bigip-facts.yml>`.
+here for :download:`bigip-facts.yml <./bigip-facts.yml>`.
 
 Going Further
 =============

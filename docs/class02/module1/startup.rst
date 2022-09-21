@@ -12,72 +12,59 @@ networks and credentials to use.
    :header-rows: 1
    :stub-columns: 1
 
-   * - **System Type**
+   * - **System Name**
      - **Networks**
      - **Credentials**
-   * - BIGIP-01
-     - Management: 10.1.1.4
-     - admin / @gi1ity2020
-   * - BIGIP-02
+   * - BIG-IP-01
+     - Management: 10.1.1.6
+     - admin / @gi1ity2022
+   * - BIG-IP-02
      - Management: 10.1.1.7
-     - admin / @gi1ity2020
-   * - BIGIP-03
+     - admin / @gi1ity2022
+   * - BIG-IP-03
      - Management: 10.1.1.8
-     - admin / @gi1ity2020
-   * - Windows Server
-     - Management: 10.1.1.5
-     - Administrator / brwP61Ag
+     - admin / @gi1ity2022
+   * - BIG-IQ-01
+     - Management: 10.1.1.9
+     - admin / @gi1ity2022
 
 Starting the Lab
 ----------------
 
-In order to complete this lab, you will connect to a Windows jump host, and you
-will perform all steps from there.  In the instructions below, there are steps
-to connect to that jump host first, then you will complete the other steps from
-there. You can open the lab guide from the Windows jump host in order to make
-it easier to follow the rest of the lab.
+In order to complete this lab, you will use the F5 Extension within VSCode, and you
+will use a firefox browser. A jumphost should not be required to complete this lab.
+In the instructions below, you'll find the necessary information to access
+VSCode, Firefox, and the lab guide. 
 
-**Exercise 1 - Login to Windows jump host**
+**Exercise 1 - Launch VSCode and Firefox browser**
 
-#. Click on the ``Components`` tab in your UDF deployment
+#. Click on the ``Deployment`` link in the upper left corner of the browser.
 
-   .. image:: images/components.png
+   .. image:: images/udf_deployment.png
 
-#. Under ``Systems`` find the Windows Server 2019 Base and click ``Access``,
-   then click ``RDP``.  When prompted, select option to ``Save`` RDP file. RDP
-   file will be downloaded to your local machine.
+#. Under ``Systems`` find the Ubuntu client and click ``Access``,
+   then click ``VSCode``. VSCode will open in a new tab.
 
-   .. image:: images/win2016_rdp_access.png
+   .. image:: images/udf_systems.png
 
-#. Open the RDP file downloaded in the previous step and click ``Connect``
-   when prompted.
+#. Under ``Systems`` find the Ubuntu client and click ``Access``,
+   then click ``Firefox``. Firefox will open in a new tab. Yes, this is a
+   browser in a browser.
 
-   .. image:: images/win2019_rdp_connect.png
+   .. image:: images/udf_systems_02.png
 
-#. Enter credentials: Administrator / brwP61Ag then click ``OK``
-
-   .. image:: images/win2019_rdp_credentials.png
-
-#. When prompted, click ``Yes`` to connection, and session will be established
-   to Windows host.
-   
-   .. image:: images/win2019_rdp_yesconnect.png
-
-#. Congratulations! You are now connected to your Windows jump host.
+#. Congratulations! You have now launched VSCode and Firefox and are ready
+   to begin the lab!
 
 |
 
 Using browser to connect to BIGIP UI
 ------------------------------------
 
-When using Chrome on your jumphost there are three shortcuts to each appliance
-for your convenience.
-
-.. image:: images/chrome_shortcuts.png
-
-|
+When using Firefox to connect to the F5 appliances you will receive certificate
+warnings as we are using self signed certs in this lab.
 
 Bypass any security warning you may receive by clicking ``Advanced`` in the
-browser, then clicking ``Proceed``
+browser, then clicking ``Accept the Risk and Continue``
 
-.. image:: images/chrome_warnings.png
+.. image:: images/firefox_warnings.png

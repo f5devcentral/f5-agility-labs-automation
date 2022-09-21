@@ -6,7 +6,7 @@ Exercise 1.0: Exploring the lab environment
 Step 1
 ------
 
-Navigate to the ``networking-workshop`` directory.
+In the VS Code terminal section, navigate to the ``networking-workshop`` directory.
 
 .. code-block:: shell-session
 
@@ -21,13 +21,16 @@ what is configured:
 
 .. code-block:: shell-session
 
-   [centos@ansible networking-workshop]$ ansible --version
-   ansible 2.6.2
-     config file = /home/centos/.ansible.cfg
-     configured module search path = [u'/home/centos/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
-     ansible python module location = /usr/lib/python2.7/site-packages/ansible
-     executable location = /usr/bin/ansible
-     python version = 2.7.5 (default, May  3 2017, 07:55:04) [GCC 4.8.5 20150623 (Red Hat 4.8.5-14)]
+  [centos@ansible networking-workshop]$ ansible --version
+  ansible [core 2.12.4]
+  config file = /home/centos/.ansible.cfg
+  configured module search path = ['/home/centos/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /home/centos/.local/lib/python3.8/site-packages/ansible
+  ansible collection location = /home/centos/.ansible/collections:/usr/share/ansible/collections
+  executable location = /home/centos/.local/bin/ansible
+  python version = 3.8.12 (default, Mar 31 2022, 14:42:38) [GCC 4.8.5 20150623 (Red Hat 4.8.5-44)]
+  jinja version = 3.1.1
+  libyaml = True
 
 ..
 
@@ -44,6 +47,7 @@ Use the ``cat`` command to view the contents of the ``ansible.cfg``
 file.
 
 .. code-block:: shell-session
+   :emphasize-lines: 5,7
 
    [centos@ansible networking-workshop]$ cat ~/.ansible.cfg
    [defaults]
@@ -89,14 +93,14 @@ The output will look similar to as follows:
    ansible_ssh_private_key_file=/home/centos/.ssh/aws-private.pem
 
    [lb]
-   f5 ansible_host=10.1.1.7 ansible_user=admin private_ip=10.1.1.7 ansible_ssh_pass=f5ansible
+   f5 ansible_host=10.1.20.7 ansible_user=admin private_ip=10.1.1.7 destination_ip=10.1.20.100 ansible_ssh_pass=f5ansible
 
    [control]
    ansible ansible_host=10.1.1.4 ansible_user=centos
 
    [webservers]
-   host1 ansible_host=10.1.1.5 ansible_user=centos
-   host2 ansible_host=10.1.1.6 ansible_user=centos
+   host1 ansible_host=10.1.20.5 ansible_user=centos private_ip=10.1.1.5
+   host2 ansible_host=10.1.20.6 ansible_user=centos private_ip=10.1.1.6
 
 ..
 
@@ -118,7 +122,7 @@ for the host ``f5``:
 
 .. code-block:: yaml
 
-   f5 ansible_host=10.1.1.7 ansible_user=admin private_ip=10.1.1.7 ansible_ssh_pass=f5ansible
+   f5 ansible_host=10.1.20.7 ansible_user=admin private_ip=10.1.1.7 destination_ip=10.1.20.100 ansible_ssh_pass=f5ansible
 
 -  ``f5`` - The name that Ansible will use. This can but does not have
    to rely on DNS
@@ -131,6 +135,8 @@ for the host ``f5``:
    default to a `host
    variable <http://docs.ansible.com/ansible/latest/intro_inventory.html#host-variables>`__.
    This variable can be used by playbooks or ignored completely.
+-  ``destination_ip`` - This value is not reserved either, we are
+   using it to define the Virtual Server IP we want.
 -  ``ansible_ssh_pass`` - The password ansible will use to login to this
    host, if not configured it will assume the user the playbook ran from
    has access to this host through SSH keys.

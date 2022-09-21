@@ -1,315 +1,69 @@
-Lab 3 - Adding a WAF policy to an application
-=============================================
+Lab 3 - Converting existing configuration to AS3 using ACC - (AS3 Configuration Converter)
+==========================================================================================
 
-This lab will be broken down to 3 parts.
+        ACC or AS3 Configuration Converter is another great tool from the F5 Automation Toolchain group.  This tool can help convert TMOS based applications to AS3 declarations.
 
-#. We will apply an already existing WAF policy to an HTTPS virtual server.
-#. We will apply an policy that is stored in a source repository to an HTTPS
-   virtual server.
-#. We will update the policy to be in blocking mode.
-#. We will delete our application configurations.
+        This tool handles the bulk of the conversion process, but most customer configurations **will require modification** before deployment.
+
+        Things to keep in mind when migrating applications from TMOS to AS3:
+            * Certificates/keys are not included in this process at this time
+                * this includes any other secrets or pre-shared-keys
+            * ACC/AS3 does not support ASM/APM policy converstion or deployment
+                * AS3 supports ASM/APM policy reference
+            * Don't forget to put the application into the appropriate tenant
+
+#. In VSCODE tab select ``Explorer`` and then select ``Open Folder``. In the Open Folder dialog, type ``/home/ubuntu/project_folder/`` and select ``OK``.  
+#. After the ``PROJECT_FOLDER`` has been added, select the ``files`` dropdown. 
+
+#. Right click on bigip1.ucs and select ``Explore TMOS Config``
+
+    .. image:: ../images/exploretmos.png
+       :scale: 60%
+
+#. Click on the F5 Extension in VSCODE and expand the ``CONFIG EXPLORER`` area.  Expand ``Partitions`` >> ``Common`` and select ``juiceshop_vs``.  Notice this is the entire configuration for the JuiceShop application, including virtual servers, pools, nodes, and iRules if any.
+
+   .. image:: ../images/juiceshop.png
+      :scale: 60%
+
+#. Right-click in the editor, then select ``Convert with ACC``.  his process takes the text in the editor and attempts to convert it to AS3.  A new editor tab with the converted object should appear:
+
+   .. NOTE:: In order to see the two docs side by side click on the highlighted icon in the image below, in the top right corner of VSCode.
+       
+   .. image:: ../images/lab01_vscode_chariot_output.png
+
+   .. NOTE:: For more detailed information about the converstion process, check out the f5-chariot OUTPUT window
+
+#. Right-click on the declaration (Untitled-1), then select ``Inject/Remove Schema Reference``
+
+    This process will attempt to detect what type of declaration (as3/do/ts/cf) and inject the appropriate schema reference
+
+    The schema reference provides real-time feedback during modification or authoring process.
+
+    https://f5devcentral.github.io/vscode-f5/#/schema_validation
 
 
-Already Existing WAF policy deployment
---------------------------------------
+#. Modify line 10 of the AS3 declaration to publish the application to the appropriate tenant/partition.  "JuiceShop", for example.
 
-#. If you already have a WAF policy on the BIG-IP that you would like to apply
-   to your application then it is easy enough to just reference it in the AS3
-   declaration in the policyWAF area.
+   .. image:: ../images/accfixes.png
+      :scale: 60%
 
-#. In Postman select the ``Lab3``, ``HTTPS with local WAF policy`` request.
-   Notice in the body the ``policyWAF`` option.
+#. Connect to Bigip2 (admin@10.1.1.7) and deploy the declaration by right-click, then select ``Post as AS3 declaration``. 
 
-   .. code-block:: json
-      :linenos:
+    The process should result in the following:
 
-      {
-      "class": "AS3",
-      "action": "deploy",
-      "persist": true,
-      "syncToGroup": "/Common/failoverGroup",
-      "declaration": {
-         "class": "ADC",
-         "schemaVersion": "3.0.0",
-         "id": "123abc",
-         "label": "Sample 4",
-         "remark": "HTTPS with sslbridging and WAF",
-         "Sample_04": {
-         "class": "Tenant",
-         "A1": {
-               "class": "Application",
-               "template": "https",
-               "serviceMain": {
-               "class": "Service_HTTPS",
-               "virtualAddresses": [
-                  "10.1.10.103"
-               ],
-               "pool": "web_pool",
-               "policyWAF": {
-                  "bigip": "/Common/test-policy"
-               },
-               "clientTLS": {
-                  "bigip": "/Common/serverssl"
-               },
-               "serverTLS": "webtls"
-               },
-               "web_pool": {
-               "class": "Pool",
-               "loadBalancingMode": "predictive-node",
-               "monitors": [
-               "https"
-               ],
-               "members": [{
-                  "servicePort": 443,
-                  "shareNodes": true,
-                  "serverAddresses": [
-                  "10.1.10.31"
-                  ]
-               }]
-               },
-               "webtls": {
-               "class": "TLS_Server",
-               "certificates": [{
-                  "certificate": "webcert"
-               }]
-               },
-               "webcert": {
-               "class": "Certificate",
-               "remark": "in practice we recommend using a passphrase",
-               "certificate": "-----BEGIN CERTIFICATE-----\nMIICnDCCAgWgAwIBAgIJAJ5n2b0OCEjwMA0GCSqGSIb3DQEBCwUAMGcxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApXYXNoaW5ndG9uMRAwDgYDVQQHDAdTZWF0dGxlMRQwEgYDVQQKDAtmNV9OZXR3b3JrczEbMBkGA1UEAwwSc2FtcGxlLmV4YW1wbGUubmV0MB4XDTE3MTEyNjE5NTAyNFoXDTE4MDIyNTE5NTAyNFowZzELMAkGA1UEBhMCVVMxEzARBgNVBAgMCldhc2hpbmd0b24xEDAOBgNVBAcMB1NlYXR0bGUxFDASBgNVBAoMC2Y1X05ldHdvcmtzMRswGQYDVQQDDBJzYW1wbGUuZXhhbXBsZS5uZXQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALEsuXmSXVQpYjrZPW+WiTBjn491mwZYT7Q92V1HlSBtM6WdWlK1aZN5sovfKtOX7Yrm8xa+e4o/zJ2QYLyyv5O+t2EGN/4qUEjEAPY9mwJdfzRQy6Hyzm84J0QkTuUJ/EjNuPji3D0QJRALUTzu1UqqDCEtiN9OGyXEkh7uvb7BAgMBAAGjUDBOMB0GA1UdDgQWBBSVHPNrGWrjWyZvckQxFYWO59FRFjAfBgNVHSMEGDAWgBSVHPNrGWrjWyZvckQxFYWO59FRFjAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4GBAJeJ9SEckEwPhkXOm+IuqfbUS/RcziifBCTmVyE+Fa/j9pKSYTgiEBNdbJeBEa+gPMlQtbV7Y2dy8TKx/8axVBHiXC5geDML7caxOrAyHYBpnx690xJTh5OIORBBM/a/NvaR+P3CoVebr/NPRh9oRNxnntnqvqD7SW0U3ZPe3tJc\n-----END CERTIFICATE-----",
-               "privateKey": "-----BEGIN RSA PRIVATE KEY-----\nProc-Type: 4,ENCRYPTED\nDEK-Info: AES-256-CBC,D8FFCE6B255601587CB54EC29B737D31\n\nkv4Fc3Jn0Ujkj0yRjt+gQQfBLSNF2aRLUENXnlr7Xpzqu0Ahr3jS1bAAnd8IWnsR\nyILqVmKsYF2DoHh0tWiEAQ7/y/fe5DTFhK7N4Wml6kp2yVMkP6KC4ssyYPw27kjK\nDBwBZ5O8Ioej08A5sgsLCmglbmtSPHJUn14pQnMTmLOpEtOsu6S+2ibPgSNpdg0b\nCAJNG/KHe+Vkx59qNDyDeKb7FZOlsX30+y67zUq9GQqJEDuysPJ2BUNP0IJXAjst\nFIt1qNoZew+5KDYs7u/lPxcMGTirUhgI84Jy4WcDvSOsP/tKlxj04TbIE3epmSKy\n+TihHkwY7ngIGtcm3Sfqk5jz2RXoj1/Ac3SW8kVTYaOUogBhn7zAq4Wju6Et4hQG\nRGapsJp1aCeZ/a4RCDTxspcKoMaRa97/URQb0hBRGx3DGUhzpmX9zl7JI2Xa5D3R\nmdBXtjLKYJTdIMdd27prBEKhMUpae2rz5Mw4J907wZeBq/wu+zp8LAnecfTe2nGY\nE32x1U7gSEdYOGqnwxsOexb1jKgCa67Nw9TmcMPV8zmH7R9qdvgxAbAtwBl1F9OS\nfcGaC7epf1AjJLtaX7krWmzgASHl28Ynh9lmGMdv+5QYMZvKG0LOg/n3m8uJ6sKy\nIzzvaJswwn0j5P5+czyoV5CvvdCfKnNb+3jUEN8I0PPwjBGKr4B1ojwhogTM248V\nHR69D6TxFVMfGpyJhCPkbGEGbpEpcffpgKuC/mEtMqyDQXJNaV5HO6HgAJ9F1P6v\n5ehHHTMRvzCCFiwndHdlMXUjqSNjww6me6dr6LiAPbejdzhL2vWx1YqebOcwQx3G\n-----END RSA PRIVATE KEY-----",
-               "passphrase": {
-                  "ciphertext": "ZjVmNQ==",
-                  "protected": "eyJhbGciOiJkaXIiLCJlbmMiOiJub25lIn0"
-               }
-               }
-         }
-         }
-      }
-      }
+   .. image:: ../images/as3-declaration-success.png
+      :scale: 60%
 
-#. Click on ``Send``.
+#. Login to the BIG-IP to confirm our changes. Go back to UDF deployment screen, and choose the component ``bigip2``.  Then choose the ``Access Method`` of ``TMUI``.  This will allow you to login to the ``BIG-IP`` GUI with userid ``admin`` and password ``admin``.
 
-#. Confirm the results of the POST, and make sure you receive a result of 200.
+      .. image:: ../images/VSCode-bigip2_tmui_access.png
+         :scale: 75%
 
-#. Look at the BIG-IP configuration and select ``Local Traffic`` and
-   ``Virtual Servers``.  Select the ``Sample_04`` partition.
+#. Select Local Traffic, Virtual Servers.  Notice there is no virtual server listed.
 
-#. Select the ``serviceMain`` virtual server, and then go to the ``Security``
-   tab and see the ``test-policy`` applied to the virtual server.
+#. Now go to the partitions section in the upper right corner and select the JuiceShop partition.
 
-   .. image:: images/lab3-waf-onbox.png
+   .. image:: ../images/JuiceShop-partition.png
+      :scale: 75%
 
-#. You can also open a tab and browse to ``https://10.1.20.103``.  We have now
-   deployed the hackazon application with a WAF policy in learning mode.
-
-WAF policy in source repository
--------------------------------
-
-#. If you store your WAF policy in a Source Control Repository, you can assign
-   it via AS3 as follows.
-
-#. Select the ``Lab 3``, ``HTTPS with external WAF policy`` request, and look
-   at the ``Body``. Notice the Policy at the bottom and the ``policyWAF``
-   referencing it, with the URL for the WAF Policy file:
-
-   The body of the post will be as follows:
-
-   .. code-block:: json
-      :linenos:
-
-      {
-      "class": "AS3",
-      "action": "deploy",
-      "persist": true,
-      "syncToGroup": "/Common/failoverGroup",
-      "declaration": {
-         "class": "ADC",
-         "schemaVersion": "3.0.0",
-         "id": "123abc",
-         "label": "Sample 4",
-         "remark": "HTTPS with sslbridging and external WAF",
-         "Sample_04": {
-         "class": "Tenant",
-         "A1": {
-               "class": "Application",
-               "template": "https",
-               "serviceMain": {
-               "class": "Service_HTTPS",
-               "virtualAddresses": [
-                  "10.1.10.103"
-               ],
-               "pool": "web_pool",
-               "policyWAF": {
-                  "use": "My_AWAF_Policy"
-               },
-               "clientTLS": {
-                  "bigip": "/Common/serverssl"
-               },
-               "serverTLS": "webtls"
-               },
-               "web_pool": {
-               "class": "Pool",
-               "loadBalancingMode": "predictive-node",
-               "monitors": [
-               "https"
-               ],
-               "members": [{
-                  "servicePort": 443,
-                  "shareNodes": true,
-                  "serverAddresses": [
-                  "10.1.10.31"
-                  ]
-               }]
-               },
-               "webtls": {
-               "class": "TLS_Server",
-               "certificates": [{
-                  "certificate": "webcert"
-               }]
-               },
-               "webcert": {
-               "class": "Certificate",
-               "remark": "in practice we recommend using a passphrase",
-               "certificate": "-----BEGIN CERTIFICATE-----\nMIICnDCCAgWgAwIBAgIJAJ5n2b0OCEjwMA0GCSqGSIb3DQEBCwUAMGcxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApXYXNoaW5ndG9uMRAwDgYDVQQHDAdTZWF0dGxlMRQwEgYDVQQKDAtmNV9OZXR3b3JrczEbMBkGA1UEAwwSc2FtcGxlLmV4YW1wbGUubmV0MB4XDTE3MTEyNjE5NTAyNFoXDTE4MDIyNTE5NTAyNFowZzELMAkGA1UEBhMCVVMxEzARBgNVBAgMCldhc2hpbmd0b24xEDAOBgNVBAcMB1NlYXR0bGUxFDASBgNVBAoMC2Y1X05ldHdvcmtzMRswGQYDVQQDDBJzYW1wbGUuZXhhbXBsZS5uZXQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALEsuXmSXVQpYjrZPW+WiTBjn491mwZYT7Q92V1HlSBtM6WdWlK1aZN5sovfKtOX7Yrm8xa+e4o/zJ2QYLyyv5O+t2EGN/4qUEjEAPY9mwJdfzRQy6Hyzm84J0QkTuUJ/EjNuPji3D0QJRALUTzu1UqqDCEtiN9OGyXEkh7uvb7BAgMBAAGjUDBOMB0GA1UdDgQWBBSVHPNrGWrjWyZvckQxFYWO59FRFjAfBgNVHSMEGDAWgBSVHPNrGWrjWyZvckQxFYWO59FRFjAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4GBAJeJ9SEckEwPhkXOm+IuqfbUS/RcziifBCTmVyE+Fa/j9pKSYTgiEBNdbJeBEa+gPMlQtbV7Y2dy8TKx/8axVBHiXC5geDML7caxOrAyHYBpnx690xJTh5OIORBBM/a/NvaR+P3CoVebr/NPRh9oRNxnntnqvqD7SW0U3ZPe3tJc\n-----END CERTIFICATE-----",
-               "privateKey": "-----BEGIN RSA PRIVATE KEY-----\nProc-Type: 4,ENCRYPTED\nDEK-Info: AES-256-CBC,D8FFCE6B255601587CB54EC29B737D31\n\nkv4Fc3Jn0Ujkj0yRjt+gQQfBLSNF2aRLUENXnlr7Xpzqu0Ahr3jS1bAAnd8IWnsR\nyILqVmKsYF2DoHh0tWiEAQ7/y/fe5DTFhK7N4Wml6kp2yVMkP6KC4ssyYPw27kjK\nDBwBZ5O8Ioej08A5sgsLCmglbmtSPHJUn14pQnMTmLOpEtOsu6S+2ibPgSNpdg0b\nCAJNG/KHe+Vkx59qNDyDeKb7FZOlsX30+y67zUq9GQqJEDuysPJ2BUNP0IJXAjst\nFIt1qNoZew+5KDYs7u/lPxcMGTirUhgI84Jy4WcDvSOsP/tKlxj04TbIE3epmSKy\n+TihHkwY7ngIGtcm3Sfqk5jz2RXoj1/Ac3SW8kVTYaOUogBhn7zAq4Wju6Et4hQG\nRGapsJp1aCeZ/a4RCDTxspcKoMaRa97/URQb0hBRGx3DGUhzpmX9zl7JI2Xa5D3R\nmdBXtjLKYJTdIMdd27prBEKhMUpae2rz5Mw4J907wZeBq/wu+zp8LAnecfTe2nGY\nE32x1U7gSEdYOGqnwxsOexb1jKgCa67Nw9TmcMPV8zmH7R9qdvgxAbAtwBl1F9OS\nfcGaC7epf1AjJLtaX7krWmzgASHl28Ynh9lmGMdv+5QYMZvKG0LOg/n3m8uJ6sKy\nIzzvaJswwn0j5P5+czyoV5CvvdCfKnNb+3jUEN8I0PPwjBGKr4B1ojwhogTM248V\nHR69D6TxFVMfGpyJhCPkbGEGbpEpcffpgKuC/mEtMqyDQXJNaV5HO6HgAJ9F1P6v\n5ehHHTMRvzCCFiwndHdlMXUjqSNjww6me6dr6LiAPbejdzhL2vWx1YqebOcwQx3G\n-----END RSA PRIVATE KEY-----",
-               "passphrase": {
-                  "ciphertext": "ZjVmNQ==",
-                  "protected": "eyJhbGciOiJkaXIiLCJlbmMiOiJub25lIn0"
-               }
-               },
-               "My_AWAF_Policy": {
-                  "class": "WAF_Policy",
-                  "ignoreChanges": false,
-                  "url": "https://raw.githubusercontent.com/Larsende/Agility2020-AS3/masterimages/Common_test_policy__2020-1-13_9-38-13__bigip02.as3lab.com.xml"
-               }
-         }
-         }
-      }
-      }
-
-#. Click on ``Send``.  
-
-#. Confirm the results of the POST, and make sure you receive a result of 200.
-
-#. If you go to ``/Security/Application Security/Security Policies`` and then
-   select the ``Sample_04`` partition, you will notice there are two security
-   policies.  One in the ``Common`` partition and one in the ``Sample_04``
-   partition.  The ``Sample_04`` instance is named ``My_AWAF_Policy``.
-
-   Also notice in the Virtual Server Security settings that the new
-   ``My_AWAF_Policy`` is applied to the ``serviceMain`` virtual server instead
-   of the test-policy.
-
-Setting WAF policy to Blocking mode:
-------------------------------------
-
-#. Select the ``Lab 3``, ``BIG-IP: HTTPS with external WAF policy in blocking
-   mode``, and look at the ``Body``.
-
-   In order to set blocking mode we can override what is defined in the Policy
-   with an additional enforcementMode option in our WAF Policy declaration:
-
-   .. code-block:: json
-      :linenos:
-
-      {
-      "class": "AS3",
-      "action": "deploy",
-      "persist": true,
-      "syncToGroup": "/Common/failoverGroup",
-      "declaration": {
-         "class": "ADC",
-         "schemaVersion": "3.0.0",
-         "id": "123abc",
-         "label": "Sample 4",
-         "remark": "HTTPS with sslbridging and external WAF",
-         "Sample_04": {
-         "class": "Tenant",
-         "A1": {
-               "class": "Application",
-               "template": "https",
-               "serviceMain": {
-               "class": "Service_HTTPS",
-               "virtualAddresses": [
-                  "10.1.10.103"
-               ],
-               "pool": "web_pool",
-               "policyWAF": {
-                  "use": "My_AWAF_Policy"
-               },
-               "clientTLS": {
-                  "bigip": "/Common/serverssl"
-               },
-               "serverTLS": "webtls"
-               },
-               "web_pool": {
-               "class": "Pool",
-               "loadBalancingMode": "predictive-node",
-               "monitors": [
-               "https"
-               ],
-               "members": [{
-                  "servicePort": 443,
-                  "shareNodes": true,
-                  "serverAddresses": [
-                  "10.1.10.31"
-                  ]
-               }]
-               },
-               "webtls": {
-               "class": "TLS_Server",
-               "certificates": [{
-                  "certificate": "webcert"
-               }]
-               },
-               "webcert": {
-               "class": "Certificate",
-               "remark": "in practice we recommend using a passphrase",
-               "certificate": "-----BEGIN CERTIFICATE-----\nMIICnDCCAgWgAwIBAgIJAJ5n2b0OCEjwMA0GCSqGSIb3DQEBCwUAMGcxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApXYXNoaW5ndG9uMRAwDgYDVQQHDAdTZWF0dGxlMRQwEgYDVQQKDAtmNV9OZXR3b3JrczEbMBkGA1UEAwwSc2FtcGxlLmV4YW1wbGUubmV0MB4XDTE3MTEyNjE5NTAyNFoXDTE4MDIyNTE5NTAyNFowZzELMAkGA1UEBhMCVVMxEzARBgNVBAgMCldhc2hpbmd0b24xEDAOBgNVBAcMB1NlYXR0bGUxFDASBgNVBAoMC2Y1X05ldHdvcmtzMRswGQYDVQQDDBJzYW1wbGUuZXhhbXBsZS5uZXQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALEsuXmSXVQpYjrZPW+WiTBjn491mwZYT7Q92V1HlSBtM6WdWlK1aZN5sovfKtOX7Yrm8xa+e4o/zJ2QYLyyv5O+t2EGN/4qUEjEAPY9mwJdfzRQy6Hyzm84J0QkTuUJ/EjNuPji3D0QJRALUTzu1UqqDCEtiN9OGyXEkh7uvb7BAgMBAAGjUDBOMB0GA1UdDgQWBBSVHPNrGWrjWyZvckQxFYWO59FRFjAfBgNVHSMEGDAWgBSVHPNrGWrjWyZvckQxFYWO59FRFjAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4GBAJeJ9SEckEwPhkXOm+IuqfbUS/RcziifBCTmVyE+Fa/j9pKSYTgiEBNdbJeBEa+gPMlQtbV7Y2dy8TKx/8axVBHiXC5geDML7caxOrAyHYBpnx690xJTh5OIORBBM/a/NvaR+P3CoVebr/NPRh9oRNxnntnqvqD7SW0U3ZPe3tJc\n-----END CERTIFICATE-----",
-               "privateKey": "-----BEGIN RSA PRIVATE KEY-----\nProc-Type: 4,ENCRYPTED\nDEK-Info: AES-256-CBC,D8FFCE6B255601587CB54EC29B737D31\n\nkv4Fc3Jn0Ujkj0yRjt+gQQfBLSNF2aRLUENXnlr7Xpzqu0Ahr3jS1bAAnd8IWnsR\nyILqVmKsYF2DoHh0tWiEAQ7/y/fe5DTFhK7N4Wml6kp2yVMkP6KC4ssyYPw27kjK\nDBwBZ5O8Ioej08A5sgsLCmglbmtSPHJUn14pQnMTmLOpEtOsu6S+2ibPgSNpdg0b\nCAJNG/KHe+Vkx59qNDyDeKb7FZOlsX30+y67zUq9GQqJEDuysPJ2BUNP0IJXAjst\nFIt1qNoZew+5KDYs7u/lPxcMGTirUhgI84Jy4WcDvSOsP/tKlxj04TbIE3epmSKy\n+TihHkwY7ngIGtcm3Sfqk5jz2RXoj1/Ac3SW8kVTYaOUogBhn7zAq4Wju6Et4hQG\nRGapsJp1aCeZ/a4RCDTxspcKoMaRa97/URQb0hBRGx3DGUhzpmX9zl7JI2Xa5D3R\nmdBXtjLKYJTdIMdd27prBEKhMUpae2rz5Mw4J907wZeBq/wu+zp8LAnecfTe2nGY\nE32x1U7gSEdYOGqnwxsOexb1jKgCa67Nw9TmcMPV8zmH7R9qdvgxAbAtwBl1F9OS\nfcGaC7epf1AjJLtaX7krWmzgASHl28Ynh9lmGMdv+5QYMZvKG0LOg/n3m8uJ6sKy\nIzzvaJswwn0j5P5+czyoV5CvvdCfKnNb+3jUEN8I0PPwjBGKr4B1ojwhogTM248V\nHR69D6TxFVMfGpyJhCPkbGEGbpEpcffpgKuC/mEtMqyDQXJNaV5HO6HgAJ9F1P6v\n5ehHHTMRvzCCFiwndHdlMXUjqSNjww6me6dr6LiAPbejdzhL2vWx1YqebOcwQx3G\n-----END RSA PRIVATE KEY-----",
-               "passphrase": {
-                  "ciphertext": "ZjVmNQ==",
-                  "protected": "eyJhbGciOiJkaXIiLCJlbmMiOiJub25lIn0"
-               }
-               },
-               "My_AWAF_Policy": {
-                  "class": "WAF_Policy",
-                  "url": "https://raw.githubusercontent.com/Larsende/Agility2020-AS3/masterimages/Common_test_policy__2020-1-13_9-38-13__bigip02.as3lab.com.xml",
-                  "ignoreChanges": false,
-                  "enforcementMode": "blocking",
-                  "serverTechnologies": [
-                     "PHP",
-                     "MySQL"
-                  ]
-               }
-         }
-         }
-      }
-      }
-
-#. Click on ``Send``.
-
-#. Confirm the results of the POST, and make sure you receive a result of 200.
-
-#. Now go to the BIG-IP configuration and look at the Security Policies.
-   Select the ``My_AWAF_Policy`` and look at the Enforcement Mode.
-
-   .. image:: images/lab3-blocking.png
-
-Delete the Applications deployed
---------------------------------
-
-#. This time we will delete all the AS3 declarations that are currently
-   deployed.
-
-#. In Postman open the ``Getting Started`` section.
-
-#. Select the ``BIG-IP: Delete ALL declarations`` declaration, and look at the
-   ``Body`` of the declaration.
-
-#. In this instance we are setting the Action to ``remove``.  Also notice that
-   we set a ``syncToGroup`` option in order to cause the HA pair to sync
-   configurations.
-   
-#. Click ``Send``, and wait for confirm results of receiving 200.  Now all applications deployed with ``AS3`` have been deleted from the ``BIG-IP``.
+#.  You should now see your juiceshop_vs virtual server.

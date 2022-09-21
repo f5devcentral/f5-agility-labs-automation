@@ -6,7 +6,7 @@ Class 1- Programmability - Introduction to BIG-IP Rest Structure and Concepts
 
 Class 2- A&O Toolchain 111: BIG-IP Deployments with Declarative Onboarding (DO)
 
-Class 3- A&O Tool Chain - Application Deployments with BIG-IP and Application Services (AS3)
+Class 3- Deploy apps with AS3, FAST, and ACC
 
 Class 4- A&O Tool Chain - BIG-IP Service Analytics and Metrics with Telemetry Streaming (TS)
 
@@ -25,3 +25,5 @@ Class 10- Advanced BIG-IP Configuration Management with Ansible
 Class 11- 101 of Terraform BIG-IP Provider
 
 Class 12- Cisco ACI Integration with BIG-IP
+
+Class 13- ADC Performance Monitoring and Scaling Lab

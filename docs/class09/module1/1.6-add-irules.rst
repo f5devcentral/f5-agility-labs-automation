@@ -14,22 +14,41 @@ server.
 Guide
 =====
 
-Step 1:
--------
+Step 1
+------
 
-Using your text editor of choice create a new file called
-``bigip-irule.yml``.
+Create two dummy irules with the names ‘irule1’ and ‘irule2’
 
 .. code-block:: shell-session
 
-   [centos@ansible ~]$ nano bigip-irule.yml
+   [centos@ansible ~]$ nano irule1
+
+   when HTTP_REQUEST {
+          log local0. "Accessing iRule1"
+   }
+
+Save the file
+
+.. code-block:: shell-session
+
+   [centos@ansible ~]$ nano irule2
+
+   when HTTP_REQUEST {
+          log local0. "Accessing iRule2"
+   }
+
+Save the file
+
+Step 2:
+-------
+
+Use VS Code Explorer to create a new file called ``bigip-irule.yml``.
 
 ..
 
-   ``vim`` and ``nano`` are available on the control node, as well as
-   Visual Studio and Atom via RDP
+   The Ansible node is equipped with ``Visual Studio Code`` and can be accessed via UDF ACCESS Methods.
 
-Step 2:
+Step 3:
 -------
 
 Ansible playbooks are **YAML** files. YAML is a structured encoding
@@ -57,36 +76,10 @@ Enter the following play definition into ``bigip-irule.yml``:
 
 Save and Exit out of editor.
 
-Step 3
-------
-
-Create two dummy irules with the names ‘irule1’ and ‘irule2’
-
-.. code-block:: shell-session
-
-   [centos@ansible ~]$ nano irule1
-
-   when HTTP_REQUEST {
-          log local0. "Accessing iRule1"
-   }
-
-Save the file
-
-.. code-block:: shell-session
-
-   [centos@ansible ~]$ nano irule2
-
-   when HTTP_REQUEST {
-          log local0. "Accessing iRule2"
-   }
-
-Save the file
-
 Step 4
 ------
 
-Next, re-open ``bigip-irule.yml`` and add the ``task``. This task will
-use the ``bigip-irule`` to add irules to the BIG-IP.
+Next, add the ``task``. This task will use the ``bigip-irule`` to add irules to the BIG-IP.
 
 .. code-block:: yaml
 
@@ -172,8 +165,7 @@ the BIG-IP.
 
 Details of `BIG-IP virtual_Server
 module <https://docs.ansible.com/ansible/latest/modules/bigip_irule_module.html>`__
-or reference :download:`Exercise
-1.5 <./bigip-virtual-server.yml>`
+or reference :download:`bigip-virtual-server.yml <./bigip-virtual-server.yml>`
 
 Save the file and exit out of editor.
 
@@ -210,8 +202,7 @@ Solution
 ========
 
 The finished Ansible Playbook is provided here for an Answer key. Click
-here:
-:download:`bigip-irule.yml <./bigip-irule.yml>`.
+here: :download:`bigip-irule.yml <./bigip-irule.yml>`.
 
 Verifying the Solution
 ======================

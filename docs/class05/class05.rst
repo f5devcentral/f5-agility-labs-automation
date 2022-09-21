@@ -9,7 +9,7 @@ from:
 - Chris Adrian
 - Daniel Edgar (aknot242_)
 - Terrance Kam (tkam8_)
-- Wojciech Wypior (wojtek0806_)
+- Wojciech Wypior
 - Yossi Rosenboim (yossi-r_)
 
 .. toctree::
@@ -32,3 +32,4 @@ from:
 .. _aknot242: https://www.github.com/aknot242
 .. _tkam8: https://www.github.com/tkam8
 .. _yossi-r: https://www.github.com/yossi-r
+.. _wojtek0806: https://github.com/wojtek0806

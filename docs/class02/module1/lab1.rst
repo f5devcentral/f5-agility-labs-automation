@@ -1,39 +1,107 @@
 Lab 1 Configure Standalone BIG-IP with Declarative Onboarding
 ==============================================================
 
-In this lab declarative onboarding (DO) has already been installed.  For
-instructions on how to install declarative onboarding (DO) please see appendix
-A.
+In this lab we will use the F5 VSCode extenion to install Declarative 
+Onboarding (DO). For other installation options please see appendix A.
 
-Before we jump into declarative onboarding (DO) lets take a look at the current
-state of one of our **BIGIP** appliances.
+Before we jump into Declarative Onboarding (DO) lets take a look at the current
+state of one of our BIG-IP appliances.
 
-Login to **BIGIP-01** and notice that it is not licensed and nothing has been
-provisioned.  Also notice the hostname in the upper left hand corner.
+#. Select the Firefox access method on the client Ubuntu server, login to **BIG-IP-01**
+   and notice that it is not licensed and nothing has been provisioned.  
+   Also notice the hostname in the upper left hand corner.
 
-.. image:: images/bigip01_01.png
+   .. note::
+      | **URL:** https\://10.1.1.6 
+      | **Username:** admin
+      | **Password:** @gi1ity2022
 
-With the declarative onboarding (DO) package installed on BIG-IP, we are ready
-to build out our first BIG-IP.
+   .. image:: images/bigip01_01.png
 
-The desired end state of these DO configurations is to configure the objects
-below, built on the BIG-IPs with a single call in a single file.  This
-declarative solution allows us to compose configurations that are reusable with
-templating technologies and storable in Source Control.
+#. In order to install Declarative Onboarding using the VSCode extension we
+   need to add our BIG-IP devices to VSCode.
 
-In our first declaration we will configure the following items on the BIG-IP:
+   Select the VS Code access method on the Client Ubuntu server.
+   Within the VSCode window click on the ``F5 Extension icon`` then click the
+   ``+`` in the ``F5 HOSTS`` window.
 
-- Licensing
-- Credentials
-- Provisioning
-- DNS
-- NTP
-- Self-IPs
-- Vlans
+   .. image:: images/f5_extension_add_host_01.png
 
-Copy **all** of the declarative onboarding (DO) declaration below.
+   Within the add host prompt add each BIG-IP using the username\@hostname format
+   and press enter.
 
-.. code-block:: JSON
+   .. note:: 
+      | **Username:** admin
+      | **Password:** @gi1ity2022
+
+   .. image:: images/f5_extension_add_host_02.png
+
+   Lastly, click the device you just added enter in the password to connect to
+   the device.
+
+   .. image:: images/f5_extension_add_host_03.png
+   
+   .. note:: If the password popup doesn't appear, refresh the VSCode's browser tab.
+   
+   .. note:: If you enter the password incorrectly, wait for the login attempts to time out.  
+      Then right-click on the host, choose ``Clear Password`` and then click on the host to
+      re-enter the correct password.
+
+   .. note:: Be sure to add all three BIG-IPs and the BIG-IQ to the F5 VSCode 
+      extension.  Once complete, your list of hosts in VSCode should look like this:
+      
+      .. image:: images/f5_extension_hosts.png
+
+   Once the device has been added, select **BIG-IP-01 (10.1.1.6)**. 
+      - Press **F1** your keyboard (this opens the command palette).
+      - Type **F5** (this will filter the F5 commands)
+      - Select **Install RPM**
+  
+      .. image:: images/do_install_01.png
+
+      - Proceed to install DO on the other three BIG-IPs. BIG-IQ already has DO
+        installed.
+
+      .. note:: If you are having trouble getting the command palette to function
+         correctly on your computer, you can alternatively expand the ATC section
+         in the BIG-IP menu located below the F5 HOSTS list.  Expand DO and click
+         on the latest version.
+
+      .. note:: Once you have successfully installed DO on the BIG-IP device
+         you will notice that the bottom of your VSCode window will show the
+         version of Declarative Onboarding that is installed
+         (as well as other ATC components that may be installed).
+
+      .. image:: images/do_version.png
+
+   .. attention:: The BIG-IQ device already has DO installed, theres no need to
+      attempt to install DO on the BIG-IQ device.
+
+
+#. With the Declarative Onboarding (DO) package now installed on BIG-IP, we are 
+   ready to build out our first BIG-IP.
+
+   The desired end state of these DO declarations is to configure the objects
+   below, built on the BIG-IPs with a single call in a single file.  This
+   declarative solution allows us to compose configurations that are reusable 
+   with templating technologies and storable in Source Control.
+
+   We will use VSCode to send our declaration to **BIG-IP-01**.
+
+   In our first declaration we will configure the following items on the BIG-IP:
+
+   - Licensing
+   - Credentials
+   - Provisioning
+   - DNS
+   - NTP
+   - Self-IPs
+   - Vlans
+
+   Copy the Declarative Onboarding (DO) declaration below.
+   Use the copy button in the upper right hand corner of the declaration.
+
+   .. code-block:: JSON
 
     {
         "$schema": "https://raw.githubusercontent.com/F5Networks/f5-declarative-onboarding/master/src/schema/latest/base.schema.json",
@@ -186,121 +254,90 @@ Copy **all** of the declarative onboarding (DO) declaration below.
             "trust": {
                 "class": "DeviceTrust",
                 "localUsername": "admin",
-                "localPassword": "@gi1ity2020",
+                "localPassword": "@gi1ity2021",
                 "remoteHost": "/Common/failoverGroup/members/0",
                 "remoteUsername": "admin",
-                "remotePassword": "@gi1ity2020"
+                "remotePassword": "@gi1ity2021"
             }
         }
     }
 
-F5 publishes a schema for each of the Automation Toolchain items. This
-published schema can be used in Visual Studio Code allowing you to see context
-and find errors within your different declarations. The schema reference is
-added at the top of your declaration, and requires vscode to know the language
-is JSON.
+   .. note:: F5 publishes a schema for each of the Automation Toolchain items. This
+      published schema can be used in Visual Studio Code allowing you to see context
+      and find errors within your different declarations. The schema reference is
+      added at the top of your declaration, and requires vscode to know the language
+      is JSON.
 
-Open Visual Studio Code on your jump host desktop and open a New File and paste
-all of the DO declaration contents.  Additionally, the language setting in
-VSCode must be set to JSON.
+#. We wiil now use Visual Studio Code to validate our declaraion.
 
-.. image:: images/schemavalidation_01.png
+   Open Visual Studio Code on and open a New File. To open a new file click the
+   hamburger icon, hover over ``File`` and select ``New File``.
 
-Once the declaration and language are set, you can highlight over sections of
-the code to see contect and errors
+   .. image:: images/vscode_newfile.png
 
-.. image:: images/schemacontext_01.png
+   .. attention:: Once you have a new file open paste all of the DO declaration
+      contents. Additionally, the language setting in VSCode must be set to 
+      JSON. In the bottom right on the VSCode screen, click ``plain text``. 
+      Then in the language mode screen type ``JSON``.
 
-.. note::  Now that you've added the schema validation to your JSON declaration
-   you can try misspelling some of the declaration objects to see errors,
-   remember to  revert your changes.
+      .. image:: images/schema_validation_01.png
 
-We are now ready to send our declaration to **BIGIP-01**
+   Once the declaration and language are set, you can highlight over sections
+   of the code to see context and errors
 
-Expand the Declarative Onboarding Collection folder, then Declarative Onboarding
-Request, lastly BIGIP-01.  Select ``Get Declarative Onboarding Version Info``
+   .. image:: images/schema_context_01.png
 
-.. image:: images/postman_01.png
+   .. note::  Now that you've added the schema validation to your JSON declaration
+      you can try misspelling some of the declaration objects to see errors,
+      remember to  revert your changes.
 
-|
+#. We are now ready to send our declaration to **BIG-IP-01**
 
-You'll notice that we are sending a GET request to the URL
-**https://{{bigip-01}}/mgmt/shared/declarative-onboarding**
+   Select the **admin@10.1.1.6** host from the F5 HOSTS list.  Then,
+   right click in the file editor of VSCode and select ``Post DO Declaration``.
 
-Select ``SEND`` to the right of the GET request field.
+   .. image:: images/post_do_declaration.png
 
-.. image:: images/postman_02.png
+   .. note::
 
-|
-|
+      In the bottom right hand corner of VSCode you should see that the DO 
+      declaration is processing.  If this does not appear, click on the **admin@10.1.1.6** 
+      host again to reconnect, and try posting the declaration again.
 
-When sending a GET request to the **https://{{bigip-01}}/mgmt/shared/declarative-onboarding/info**
-we get a response with the version of declarative that is currently installed.
+      .. image:: images/do_declaration_processing.png
+      
+     After a few moments you will begin seeing output in the bottom VSCode window that shows that the
+   declaration is running.  You will see a periodic get request being sent to **admin@10.1.1.6** 
+   to poll for the completion of the processing.
 
-.. image:: images/postman_03.png
+   .. image:: images/do_declaration_status_01.png
 
-|
-|
+   When the BIG-IP is finished processing the declaration, another window will open in VSCode showing the
+   result and the complete declaration.  You should see a 200 response code, a status of OK and a
+   message of success.
 
-Next, select the ``BIGIP-01 POST DO Declaration to Configure BIG_IP`` request
-and select the ``Body`` tab.
+   .. image:: images/do_declaration_status_02.png
 
-Notice the following in the request:
+#. Once the BIG-IP has finished processing the declaration, login to
+   **BIG-IP-01** and notice the host name has changed and the device is now
+   licensed.
 
-#.  The request URL **https://{{bigip-01}}/mgmt/shared/declarative-onboarding**
-#.  The language is set to **JSON**
+   .. note:: 
+      | **URL:** https\://10.1.1.6
+      | **Username:** admin
+      | **Password** @gi1ity2022
 
-.. image:: images/postman_04.png
+   .. image:: images/bigip01_02.png
 
-|
-|
+   .. note:: You may need to browse to System->License to see the screen shot above, 
+      and your Licensed Date may differ.
 
-Paste the JSON declaration into the Body of the Postman application and click ``Send``
+   Futhermore, take a look at the following System and Network settings on **BIG-IP-01**
+   to see everything that was configured with Declarative Onboarding (DO):
 
-.. image:: images/postman_05.png
-
-|
-|
-
-In the response of the field you should see a response the the declaration is 
-running.
-
-.. image:: images/postman_06.png
-
-|
-|
-
-In order to retrieve the status of the DO process we can send a GET request to
-the same URL that we posted our declartion to. In Postman select
-the ``GET Declarative Onboarding Status`` request in the BIGIP-01 folder and send the
-GET request to view the status of the running process.
-
-.. image:: images/postman_07.png
-
-|
-
-Send the GET request every so often until you receive a status of "OK." Once
-you receive a status of "OK" the declaration has completed.
-
-.. image:: images/postman_08.png
-
-|
-
-Once the **BIG-IP** has finished processing the declaration, login to
-**BIGIP-01** and notice the host name has changed and the device is now
-licensed.
-
-.. image:: images/bigip01_02.png
-
-|
-|
-
-Futhermore, take a look at the following settings on **BIGIP-01** to see what
-all was configured with declarative onboarding (DO)
-
-- Credentials
-- Provisioning
-- DNS
-- NTP
-- Self-IPs
-- Vlans
+   - Credentials
+   - Provisioning
+   - DNS
+   - NTP
+   - Self-IPs
+   - Vlans

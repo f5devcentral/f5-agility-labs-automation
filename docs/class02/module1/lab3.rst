@@ -1,60 +1,169 @@
-Lab 3 (Optional) Build a declaration from scratch
-=================================================
+Lab 3 Onboard a BIG-IP via BIG-IQ
+=================================
 
-Up to this point we've given you the necessary declaration needed to onboard
-your **BIGIP**.
+In the previous labs, we pushed the declaration directly to BIG-IP. In this 
+lab, we are going to send our JSON declaration to BIG-IQ, which will configure 
+the BIG-IP. Additionally, the device will be onboarded and managed by BIG-IQ.
 
-In this lab you will start from a blank state and build the declaration on your
-own.  Use the F5 schema reference and the published schema validation for
-declarative onboarding to help you accomplish the task below.
+#. Review the declaration for **BIG-IP-03**, and notice the following changes:
 
-Onboard a standalone **BIGIP** that includes the following in the declaration:
+   - Updated license class 
+   - New statements to target the BIG-IQ
 
-- Licensing for the **BIGIP**
-- DNS
-- NTP
-- Regular user
-- Provision LTM, DNS, AFM
-- Internal VLAN
-- Non floating self IP on internal VLAN
-- External VLAN
-- Non floating self IP on external VLAN
-- Syslog destination **In this lab there is no syslog server configured, the
-  declaration is for demonstration purposes**
-- Enable an advisory message in the UI that show the hostname with a green
-  background. **(Extra cool points if you use a JSON pointer for the hostname)**
+#. Just as before we will use VSCode to send the declaration. This time we will
+   send the declaration to BIG-IQ and BIG-IQ will onboard the BIG-IP.
 
-|
+   - Use the copy button in the upper right hand corner of the declaration below
+   - Paste the declaration into the VSCode editor
 
-.. note:: Use the table below for the necessary values in your declaration
+   .. attention:: Be sure to connect to the BIG-IQ device in VSCode before sending
+      the declaration.
 
-|
 
-.. list-table:: **Declaration Values**
-   :widths: 30 30
-   :header-rows: 1
+   .. code-block:: JSON
 
-   * - Property
-     - Value
-   * - regKey
-     - X0400-17381-92678-76392-8132569
-   * - nameServers
-     - 10.1.255.254, 8.8.8.8
-   * - NTP servers
-     - 0.pool.ntp.org, 1.pool.ntp.org
-   * - internal VLAN
-     - interface 1.1
-   * - internal self-IP
-     - 10.1.10.250
-   * - external VLAN
-     - interface 1.2
-   * - external self-IP
-     - 10.1.20.250
-   * - SyslogRemoteServer
-     - host 10.1.10.254
+     {
+       "class": "DO",
+       "declaration": {
+           "schemaVersion": "1.5.0",
+           "class": "Device",
+           "async": true,
+           "Common": {
+               "class": "Tenant",
+               "myLicense": {
+                   "class": "License",
+                   "licensePool": "lab-licenses",
+                   "licenseType": "licensePool",
+                   "bigIpUsername": "admin",
+                   "bigIpPassword": "@gi1ity2022"
+               },
+               "myProvisioning": {
+                   "class": "Provision",
+                   "ltm": "nominal",
+                   "gtm": "minimum",
+                   "afm": "minimum"
+               },           
+               "myDns": {
+                   "class": "DNS",
+                   "nameServers": [
+                      "8.8.8.8",
+                      "2001:4860:4860::8844"
+                   ],
+                   "search": [
+                       "f5.com"
+                   ]
+               },
+               "myNtp": {
+                   "class": "NTP",
+                   "servers": [
+                       "0.pool.ntp.org",
+                       "1.pool.ntp.org",
+                       "2.pool.ntp.org"
+                   ],
+                   "timezone": "UTC"
+               },
+               "external": {
+                   "class": "VLAN",
+                   "interfaces": [
+                       {
+                           "name": "1.1",
+                           "tagged": false
+                       }
+                   ]
+               },
+               "internal": {
+                   "class": "VLAN",
+                   "interfaces": [
+                       {
+                           "name": "1.2",
+                           "tagged": false
+                       }
+                   ]
+               },
+               "external-fl": {
+                   "vlan": "external",
+                   "class": "SelfIp",
+                   "address": "10.1.10.240/24",
+                   "trafficGroup": "traffic-group-1"
+               },
+               "internal-fl": {
+                   "vlan": "internal",
+                   "class": "SelfIp",
+                   "address": "10.1.20.240/24",
+                   "trafficGroup": "traffic-group-1"
+               },
+               "external-self": {
+                   "vlan": "external",
+                   "class": "SelfIp",
+                   "address": "10.1.10.241/24",
+                   "allowService": "none"
+               },
+               "internal-self": {
+                   "vlan": "internal",
+                   "class": "SelfIp",
+                   "address": "10.1.20.241/24"
+               },
+               "defualt": {
+                   "gw": "10.1.10.1",
+                   "class": "Route"
+               },
+               "myConfigSync": {
+                   "class": "ConfigSync",
+                   "configsyncIp": "10.1.20.241"
+               },
+               "myFailoverUnicast": {
+                   "class": "FailoverUnicast",
+                   "address": "10.1.20.241"
+               },
+               "hostname": "bigip-03.compute.internal"
+           }
+         },
+         "targetUsername": "admin",
+         "targetHost": "10.1.1.8",
+         "targetPort": 443,
+         "targetPassphrase": "@gi1ity2022",
+         "bigIqSettings": {
+           "statsConfig": {
+               "enabled": true
+           },
+           "useBigiqSync": true,
+           "conflictPolicy": "USE_BIGIQ",
+           "deviceConflictPolicy": "USE_BIGIP",
+           "failImportOnConflict": false,
+           "versionedConflictPolicy": "KEEP_VERSION"
+         }
+     }
 
-The schema reference can be found at the following url: 
-https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/schema-reference.html#syslogremoteserver
+#. Once the declaration completes, login to **BIG-IQ-01**. 
 
-Example declarations can be found at the following url: 
-https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/examples.html
+   .. note :: 
+      | **URL:** https\://10.1.1.9
+      | **Username:** admin
+      | **Password:** @gi1ity2022
+   
+   .. attention ::
+      When onboarding BIG-IP-03 via BIG-IQ-01 the DO post may take a few minutes
+      to complete. Be sure wait until the declaration result window appears in
+      VSCode with the success message before proceeding.
+   
+   .. attention ::
+      When the declaration is complete you may notice that BIG-IQ is still
+      adding the device. This is expected as BIG-IQ will perform the device
+      onboarding first. Afterwards, it will proceed to add the device and
+      discover services on the BIG-IP.
+
+#. Navigate to the devices tab and then click on BIG-IP devices.
+
+   - Notice that the BIG-IP device has been added to BIG-IQ
+
+   .. image:: images/bigiq_1.png
+
+#. Login into **BIG-IP-03** and review the configurations. 
+
+   .. note :: 
+      | **URL:** https\://10.1.1.8
+      | **Username:** admin
+      | **Password:** @gi1ity2022
+
+This completes the Declarative Onboarding lab
+---------------------------------------------

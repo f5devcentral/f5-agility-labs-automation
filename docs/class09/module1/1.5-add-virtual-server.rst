@@ -17,17 +17,11 @@ Guide
 Step 1:
 -------
 
-Using your text editor of choice create a new file called
-``bigip-virtual-server.yml``.
-
-.. code-block:: shell-session
-
-   [centos@ansible ~]$ nano bigip-virtual-server.yml
+Use VS Code Explorer to create a new file called ``bigip-virtual-server.yml``.
 
 ..
 
-   ``vim`` and ``nano`` are available on the control node, as well as
-   Visual Studio and Atom via RDP
+   The Ansible node is equiped with ``Visual Studio Code`` and can be accessed via UDF ACCESS Methods.
 
 Step 2:
 -------
@@ -76,7 +70,7 @@ Next, append the ``task`` to above playbook. This task will use the
            server_port: 8443
            validate_certs: no
          name: "vip"
-         destination: "{{private_ip}}"
+         destination: "{{destination_ip}}"
          port: "443"
          enabled_vlans: "all"
          all_profiles: ['http','clientssl','oneconnect']
@@ -156,8 +150,7 @@ Solution
 ========
 
 The finished Ansible Playbook is provided here for an Answer key. Click
-here:
-:download:`bigip-virtual-server.yml <./bigip-virtual-server.yml>`.
+here: :download:`bigip-virtual-server.yml <./bigip-virtual-server.yml>`.
 
 Verifying the Solution
 ======================
@@ -170,7 +163,7 @@ with your web browser.
    type it in like so: https://X.X.X.X:8443/
 
 Login information for the BIG-IP: - username: admin - password:
-**provided by instructor** defaults to ansible
+**provided by instructor** defaults to f5ansible
 
 The load balancer virtual server can be found by navigating the menu on
 the left. Click on **Local Traffic**. then click on **Virtual Server**.
@@ -186,9 +179,14 @@ browser:
 
    This time use port 443 instead of 8443, e.g. https://X.X.X.X:443/
 
+.. note::
+   In your environment, go to the f5 component and use the
+   ``HTTPS Virtual Server Test`` access method to test.
+
 Each time you refresh the host will change between **host1** and
-**host2**. Here is animation of the host field changing: |animation|
+**host2**. Here is animation of the host field changing: |apptest|
 >the animation might not work on certain browsers
+>the 'Agility' animation will say **F5 Agility 2022**
 
 Alternate Verification Method
 -----------------------------
@@ -203,15 +201,15 @@ respective workbench. (e.g. student5 would ``| grep student5``)
 
 ::
 
-   [studentX@ansible ~]$ curl https://172.16.26.136:443 --insecure --silent | grep studentX
-       <p>F5TEST-studentX-host1</p>
-   [studentX@ansible ~]$ curl https://172.16.26.136:443 --insecure --silent | grep studentX
-       <p>F5TEST-studentX-host2</p>
-   [studentX@ansible ~]$ curl https://172.16.26.136:443 --insecure --silent | grep studentX
-       <p>F5TEST-studentX-host1</p>
+   [centos@ansible ~]$ curl https://10.1.20.100:443 --insecure --silent
+       <p>F5 Agility 2022 - HOST1</p>
+   [centos@ansible ~]$ curl https://10.1.20.100:443 --insecure --silent
+       <p>F5 Agility 2022 - HOST2</p>
+   [centos@ansible ~]$ curl https://10.1.20.100:443 --insecure --silent
+       <p>F5 Agility 2022 - HOST1</p>
 
 You have finished this exercise. `Click here to return to the lab
 guide <..>`__
 
 .. |f5 vip image| image:: f5vip.png
-.. |animation| image:: animation.gif
+.. |apptest| image:: apptest.png
