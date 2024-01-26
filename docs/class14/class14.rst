@@ -1,5 +1,5 @@
 Class 14: Basic BIG-IP Configuration Management with Ansible
-===========================================================
+============================================================
 
 During this lab you will make use of Ansible
 to deploy and configure a BIG-IP instance.
