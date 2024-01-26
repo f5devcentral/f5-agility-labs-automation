@@ -10,7 +10,7 @@ Follow the steps below to start using VS Code in your local browser during this 
 Step 1
 ------
 
-If you already haven't done so. Use the UDF deployment to go to the **Documentation** section and grab the lab guide: https://clouddocs.f5.com/training/community/automation/html/class09/class09.html |labguide|
+If you already haven't done so. Use the UDF deployment to go to the **Documentation** section and grab the lab guide: https://clouddocs.f5.com/training/community/automation/html/class14/class14.html |labguide|
 
 .. |labguide| image:: labguide.png
 
