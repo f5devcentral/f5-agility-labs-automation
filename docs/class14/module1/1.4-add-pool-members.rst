@@ -278,9 +278,7 @@ here: :download:`bigip-pool-members.yml <./bigip-pool-members.yml>`.
 Verifying the Solution
 ======================
 
-Login to the F5 with your web browser to see what was configured. Grab
-the IP information for the F5 load balancer from the lab_inventory/hosts
-file, and type it in like so: https://X.X.X.X:8443/
+Login to the F5 with your web browser to see what was configured.
 
 Login information for the BIG-IP: - username: admin - password:
 **provided by instructor** defaults to f5ansible
