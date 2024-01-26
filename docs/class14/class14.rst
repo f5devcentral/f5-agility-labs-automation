@@ -1,4 +1,4 @@
-Class 9: Basic BIG-IP Configuration Management with Ansible
+Class 14: Basic BIG-IP Configuration Management with Ansible
 ===========================================================
 
 During this lab you will make use of Ansible
