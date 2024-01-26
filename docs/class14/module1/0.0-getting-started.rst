@@ -1,7 +1,7 @@
 .. _0.0-getting-started:
 
 Exercise 0.0: Getting Started
-###########################################
+#############################
 
 During this lab Visual Studio Code will be used as the editor of choice and also provides a terminal to run Ansible playbooks and watch the logging accordingly.
 
