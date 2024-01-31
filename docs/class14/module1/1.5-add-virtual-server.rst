@@ -178,9 +178,8 @@ web servers. Go to Components, BIG-IP, ACCESS drop down and click the
 
 
 Each time you refresh the host will change between **host1** and
-**host2**. Here is animation of the host field changing: |apptest|
->the animation might not work on certain browsers
->the 'AppWorld' animation will say **F5 AppWorld 2024**
+**host2**.  |apptest|
+
 
 Alternate Verification Method
 -----------------------------
