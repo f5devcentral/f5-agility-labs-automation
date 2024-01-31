@@ -211,6 +211,9 @@ Verifying the Solution
 To see the configured **iRules and Virtual Server**, login to the F5
 load balancer.
 
+   In the Compnent tab On the BIG-IP click the ACCESS drop down
+   then the TMUI link.
+
 Login information for the BIG-IP: - username: admin - password:
 **provided by instructor** defaults to ansible
 
