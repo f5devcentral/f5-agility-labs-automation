@@ -8,3 +8,5 @@ pdf/*
 terraform.tfstate*
 *.rpm
 *.swp
+docs/conf.py
+.vscode/settings.json
