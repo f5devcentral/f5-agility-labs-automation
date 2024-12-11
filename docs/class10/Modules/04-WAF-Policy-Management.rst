@@ -1,4 +1,4 @@
-Use Case 05: WAF (XML) Policy Management in a Role
+Use Case 04: WAF (XML) Policy Management in a Role
 =====================================================
 
 OVERVIEW
@@ -22,7 +22,7 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
 
       .. code:: bash
       
-         cd ~/f5-bd-ansible-labs/201-F5-Advanced/Modules/05-WAF-Policy-Management-Role/
+         cd ~/f5-bd-ansible-labs/201-F5-Advanced/Modules/04-WAF-Policy-Management-Role/
 
 
    3. **(Optional)** Edit 'vars/f5_vars.yml' file to customize your variables.
@@ -55,7 +55,7 @@ TESTING AND VALIDATION
 
    Using the External Client (UDF --> Components --> External Client --> Access --> Firefox)
 
-      - In the Bookmarks bar you can select the ``Ansible Labs`` Folder and goto ``201 - Labs`` and Select ``Use Case 5`` 
+      - In the Bookmarks bar you can select the ``Ansible Labs`` Folder and goto ``401 - Labs`` and Select ``Use Case 4`` 
       - OR within the browser you can browse to https://10.1.20.30:8084/ 
       - Access the URL's present in the f5_vars.yml file to see the WAF policy in action 
 

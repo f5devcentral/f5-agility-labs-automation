@@ -1,5 +1,5 @@
-Use Case 04: Application Maintenance with AS3
-=============================================
+Use Case 03: Application Maintenance
+====================================
 
 OVERVIEW
 --------
@@ -21,13 +21,16 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
 
       .. code:: bash
       
-         cd ~/f5-bd-ansible-labs/201-F5-Advanced/AS3/04-Application-Maintenance-AS3
+         cd ~/f5-bd-ansible-labs/401-F5-AppWorld-Lab/Modules/03-Application-Maintenance
 
-   3. Run the Ansible Playbook ‘Application-Maintenance.yaml’
+
+   3. **(Optional)** Edit 'f5_vars.yml' file to customize your variables for your environment. 
+
+   4. Run the Ansible Playbook ‘Application-Maintenance.yaml’ with the variable file ‘f5_vars.yml’:
 
       .. code:: bash
 
-         ansible-navigator run Application-Maintenance.yaml --mode stdout
+         ansible-navigator run Application-Maintenance.yaml --mode stdout -e @f5_vars.yml
 
       .. note::
 
@@ -35,6 +38,7 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
          
          Modification of the f5_vars.yml file can change the pool, node(s) and state which can be modified within the f5_vars.yml.
 
+   
 TESTING AND VALIDATION
 ----------------------
 
@@ -46,7 +50,7 @@ This section assumes knowledge of how to operate BIG-IP commands and networking.
 
    Using the External Client (UDF --> Components --> External Client --> Access --> Firefox)
 
-      - In the Bookmarks bar you can select the ``Ansible Labs`` Folder and goto ``201 - Labs`` and Select ``Use Case 4`` 
+      - In the Bookmarks bar you can select the ``Ansible Labs`` Folder and goto ``401 - Labs`` and Select ``Use Case 3`` 
       - OR within the browser you can browse to https://10.1.20.30:8083/ 
       - Browse the page and notice that only NODE2 is the only responsive Node as Node 1 was disabled.
 

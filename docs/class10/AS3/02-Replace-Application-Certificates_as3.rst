@@ -19,7 +19,7 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
 
     .. code::
     
-        cd ~/f5-bd-ansible-labs/201-F5-Advanced/AS3/02-Replace-Application-Certificates-AS3/
+        cd ~/f5-bd-ansible-labs/401-F5-AppWorld-Lab/AS3/02-Replace-Application-Certificates-AS3/
 
 
   3. Run the Ansible Playbook ‘Replace-Application-Certificates.yaml’:
@@ -153,7 +153,7 @@ TESTING AND VALIDATION
 
    Using the External Client (UDF --> Components --> External Client --> Access --> Firefox)
 
-      - In the Bookmarks bar you can select the ``Ansible Labs`` Folder and goto ``201 - Labs`` and Select ``Use Case 2`` 
+      - In the Bookmarks bar you can select the ``Ansible Labs`` Folder and goto ``401 - Labs`` and Select ``Use Case 2`` 
       - OR within the browser you can browse to https://10.1.20.30:8081/
       - From a client browser, access the VIP on port 8081 to view the new self-signed certificate (https://10.1.20.30:8081)
 
