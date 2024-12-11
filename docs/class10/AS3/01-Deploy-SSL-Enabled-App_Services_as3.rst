@@ -20,7 +20,7 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
 
     .. code::
     
-        cd ~/f5-bd-ansible-labs/201-F5-Advanced/AS3/01-Deploy-SSL-Enabled-App_Services-AS3/
+        cd ~/f5-bd-ansible-labs/401-F5-AppWorld-Lab/AS3/01-Deploy-SSL-Enabled-App_Services-AS3/
 
   3. Run the Ansible Playbook ‘Deploy-SSL-Enabled-App_Services.yaml’:
 
@@ -37,7 +37,7 @@ TESTING AND VALIDATION
 
       Using the External Client (UDF --> Components --> External Client --> Access --> Firefox)
 
-      - In the Bookmarks bar you can select the ``Ansible Labs`` Folder and goto ``201 - Labs`` and Select ``Use Case 1 - HTTP or Use Case 1 - HTTPS`` 
+      - In the Bookmarks bar you can select the ``Ansible Labs`` Folder and goto ``401 - Labs`` and Select ``Use Case 1 - HTTP or Use Case 1 - HTTPS`` 
       - OR within the browser you can browse to https://10.1.20.30/
       - You will need to bypass the certificate warning (within Firefox Warning --> Advanced --> Accept the Risk and Continue)
       

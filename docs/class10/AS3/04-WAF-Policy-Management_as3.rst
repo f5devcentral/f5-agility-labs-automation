@@ -1,4 +1,4 @@
-Use Case 05: WAF (XML) Policy Management in a Role with AS3
+Use Case 04: WAF (XML) Policy Management in a Role with AS3
 ===========================================================
 
 OVERVIEW
@@ -21,7 +21,7 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
 
       .. code:: bash
       
-         cd ~/f5-bd-ansible-labs/201-F5-Advanced/AS3/05-WAF-Policy-Management-Role-AS3/
+         cd ~/f5-bd-ansible-labs/401-F5-AppWorld-Lab/AS3/04-WAF-Policy-Management-AS3/
 
    3. Launch the Ansible playbook 'WAF-Policy-Management-Role.yaml':
 
@@ -47,7 +47,7 @@ TESTING AND VALIDATION
 
    Using the External Client (UDF --> Components --> External Client --> Access --> Firefox)
 
-      - In the Bookmarks bar you can select the ``Ansible Labs`` Folder and goto ``201 - Labs`` and Select ``Use Case 5`` 
+      - In the Bookmarks bar you can select the ``Ansible Labs`` Folder and goto ``401 - Labs`` and Select ``Use Case 4`` 
       - OR within the browser you can browse to https://10.1.20.30:8084/ 
       - Access the URL's present in the f5_vars.yml file to see the WAF policy in action 
 
