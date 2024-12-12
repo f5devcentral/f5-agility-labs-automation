@@ -27,7 +27,7 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
 
       .. code::
 
-         ansible-navigator run WAF-Policy-Management-Role.yaml --mode stdout
+         ansible-navigator run WAF-Policy-Management.yaml --mode stdout
 
       .. note::
 
