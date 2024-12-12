@@ -22,17 +22,17 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
 
       .. code:: bash
       
-         cd ~/f5-bd-ansible-labs/201-F5-Advanced/Modules/04-WAF-Policy-Management-Role/
+         cd ~/f5-bd-ansible-labs/401-F5-AppWorld-Lab/Modules/04-WAF-Policy-Management/
 
 
    3. **(Optional)** Edit 'vars/f5_vars.yml' file to customize your variables.
       Here you can add/remove IP addresses and URLs from the 'Blocked_IPs' and 'Blocked_URLs' list
 
-   4. Launch the Ansible playbook 'WAF-Policy-Management-Role.yaml':
+   4. Launch the Ansible playbook 'WAF-Policy-Management.yaml':
 
       .. code:: bash
 
-         ansible-navigator run WAF-Policy-Management-Role.yaml --mode stdout
+         ansible-navigator run WAF-Policy-Management.yaml --mode stdout
 
       This template will configure the F5 BIG-IP to provision the `WAF module <https://www.f5.com/products/security/advanced-waf>`__, create a Virtual IP (VIP) including a Pool and nodes, a WAF policy for the use case, then modify the policy to block IP’s and URL’s.
 
@@ -81,3 +81,8 @@ This section is optional and for testing and verification purposes only. It assu
    
       * username: admin 
       * password: **found in the inventory hosts file**
+
+**UDF Lab Revert**
+-------------------------------
+
+   Once you have completed this section it is recommended to go back to Use-Case 00 and run the **restore** of the BIG-IP before continuing to test the AS3 Section.

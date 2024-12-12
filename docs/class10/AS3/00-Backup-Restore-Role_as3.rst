@@ -25,7 +25,7 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
 
       .. code:: bash
       
-         cd ~/f5-bd-ansible-labs/201-F5-Advanced/AS3/00-Backup-Restore-Role/
+         cd ~/f5-bd-ansible-labs/401-F5-AppWorld-Lab/AS3/00-Backup-Restore-Role/
 
    3. **(Optional)** Edit 'f5_vars.yml' file in the vars folder to customize the existing variables. For example: File-Name: ‘mybackup.ucs'
       
