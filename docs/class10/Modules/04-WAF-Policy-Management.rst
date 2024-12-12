@@ -81,3 +81,8 @@ This section is optional and for testing and verification purposes only. It assu
    
       * username: admin 
       * password: **found in the inventory hosts file**
+
+**UDF Lab Revert**
+-------------------------------
+
+   Once you have completed this section it is recommended to go back to Use-Case 00 and run the **restore** of the BIG-IP before continuing to test the AS3 Section.
