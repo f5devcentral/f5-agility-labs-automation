@@ -1,10 +1,10 @@
-Use Case 04: WAF (XML) Policy Management in a Role with AS3
-===========================================================
+Use Case 04: WAF (XML) Policy Management with AS3
+=================================================
 
 OVERVIEW
 --------
 
-WAF-Policy-Management-Role.yaml is a templated Ansible Role to manage blocked IP addresses and URL's on F5 ASM through Ansible automation. 
+WAF-Policy-Management.yaml is a templated Ansible Role to manage blocked IP addresses and URL's on F5 ASM through Ansible automation. 
 
 Web Application Firewalls work to protect web applications by inspecting incoming traffic, blocking bots, SQL injection, Cross Site Scripting and a host of other attacks. This playbook is designed to demonstrate a basic WAF scenario to create and modify an F5 WAF (ASM) policy to block URL(s) or IP address(s) or both. 
 
@@ -15,7 +15,7 @@ RUNNING THE TEMPLATE
 
 Running this template assumes that a F5 BIG-IP instance, necessary webservers and Ansible node are available. 
 
-   1. Login to the Ansible host
+   1. Ensure you are using a terminal from VSCode (UDF --> Ansible-Node --> Access --> Code-Server --> Password: Ansible123! --> Trust --> Terminal --> New Terminal)
 
    2. Change Directory in the Ansible Host to the use-cases repo previously downloaded
 
@@ -49,7 +49,7 @@ TESTING AND VALIDATION
 
       - In the Bookmarks bar you can select the ``Ansible Labs`` Folder and goto ``401 - Labs`` and Select ``Use Case 4`` 
       - OR within the browser you can browse to https://10.1.20.30:8084/ 
-      - Access the URL's present in the f5_vars.yml file to see the WAF policy in action 
+      - Access the URL's present in the vars/f5_vars.yml file to see the WAF policy in action 
 
          - https://10.1.20.30:8084/blocked.html
          - https://10.1.20.30:8084/hacked.html
@@ -66,6 +66,7 @@ This section is optional and for testing and verification purposes only. It assu
 
       - Login to the BIG-IP instance
       - Navigate to Security --> Application Security to view the WAF policy deployed
+      - Change the Partition (Top Right Corner) to "WorkshopExample"
       - Navigate to Local Traffic --> Virtual Servers
       - View the deployed use case access F5-BIG-IP-Public-IP:port (8084)
 
@@ -73,8 +74,3 @@ This section is optional and for testing and verification purposes only. It assu
    
       * username: admin 
       * password: **found in the inventory hosts file**
-
-**UDF Lab Revert**
--------------------------------
-
-   Once you have completed this section it is recommended to go back to Use-Case 00 and run the **restore** of the BIG-IP before continuing to test the AS3 Section.

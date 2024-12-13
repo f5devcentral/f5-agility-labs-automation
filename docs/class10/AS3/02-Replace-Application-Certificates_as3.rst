@@ -13,14 +13,13 @@ RUNNING THE TEMPLATE
 --------------------
 Running this template assumes that a F5 BIG-IP instance, necessary webservers and Ansible node are available.  
 
-  1. Login to the Ansible host
+  1. Ensure you are using a terminal from VSCode (UDF --> Ansible-Node --> Access --> Code-Server --> Password: Ansible123! --> Trust --> Terminal --> New Terminal)
     
   2. Change Directory in the Ansible Host to the use-cases repo previously downloaded
 
     .. code::
     
         cd ~/f5-bd-ansible-labs/401-F5-AppWorld-Lab/AS3/02-Replace-Application-Certificates-AS3/
-
 
   3. Run the Ansible Playbook ‘Replace-Application-Certificates.yaml’:
 
@@ -99,7 +98,7 @@ In this code we have the two usecases (Use Case 1's code and Use Case 2's code),
             "class": "Application",
             "{{F5_VIP_Name}}": {
                "class": "Service_HTTPS",
-               "virtualPort": 8081,
+               "virtualPort": 8082,
                "virtualAddresses": [
                   "{{ private_ip }}"
                ],
@@ -142,7 +141,7 @@ In this code we have the two usecases (Use Case 1's code and Use Case 2's code),
             }
          }
 
-In this section we focus on Use Case 2 but we wanted to provide an example of how AS3 stacks applications within the template (will be seen in Use Case 3 as well)
+In this section we focus on Use Case 2 but we wanted to provide an example of how AS3 stacks applications within a single template.
 
 TESTING AND VALIDATION
 ----------------------
@@ -154,8 +153,8 @@ TESTING AND VALIDATION
    Using the External Client (UDF --> Components --> External Client --> Access --> Firefox)
 
       - In the Bookmarks bar you can select the ``Ansible Labs`` Folder and goto ``401 - Labs`` and Select ``Use Case 2`` 
-      - OR within the browser you can browse to https://10.1.20.30:8081/
-      - From a client browser, access the VIP on port 8081 to view the new self-signed certificate (https://10.1.20.30:8081)
+      - OR within the browser you can browse to https://10.1.20.30:8082/
+      - From a client browser, access the VIP on port 8081 to view the new self-signed certificate (https://10.1.20.30:8082)
 
 
 **BIG-IP CONFIGURATION VERIFICATION**
@@ -168,7 +167,8 @@ This section is optional and for testing and verification purposes only. It assu
 
       * Login to the BIG-IP instance
       * Navigate to Local Traffic --> Virtual Servers
-      * View the deployed use case access VIP:port (8081)
+      * Change the Partition (Top Right Corner) to "WorkshopExample"
+      * View the deployed use case access VIP:port (8082)
 
    - Login information for the BIG-IP:
    

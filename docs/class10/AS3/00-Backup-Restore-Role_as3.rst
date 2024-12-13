@@ -12,14 +12,14 @@ Restore-Role.yaml is a templated Ansible play that utilizes an underlying Role t
 
 .. attention::
 
-   The restore command will produce an error in some builds of Ansible even though the restoration does complete. It is a known bug.
+   The restore command will produce an error in some builds of Ansible even though the restoration does complete. It is a known issue due to the reset of the RestAPI services.
 
 RUN THE TEMPLATE
 ----------------
 
-Running this template assumes that a F5 BIG-IP instance, necessary webservers and Ansible node are available. To deploy a sandbox infrastructure in AWS users can use the `Ansible Workshops <https://github.com/ansible/workshops>`__
+Running this template assumes that a F5 BIG-IP instance, necessary webservers and Ansible node are available.
 
-   1. Login to the Ansible Host
+   1. Ensure you are using a terminal from VSCode (UDF --> Ansible-Node --> Access --> Code-Server --> Password: Ansible123! --> Trust --> Terminal --> New Terminal)
 
    2. Change Directory in the Ansible Host to the use-cases repo previously downloaded
 
@@ -27,7 +27,7 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
       
          cd ~/f5-bd-ansible-labs/401-F5-AppWorld-Lab/AS3/00-Backup-Restore-Role/
 
-   3. **(Optional)** Edit 'f5_vars.yml' file in the vars folder to customize the existing variables. For example: File-Name: ‘mybackup.ucs'
+   3. **(Optional)** View 'vars/f5_vars.yml' file in the vars folder to see information about the deployment (i.e. local_folder_location)
       
    4. Run the Ansible Playbook ‘Backup-Role.yaml’:
       
@@ -50,7 +50,7 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
 
       .. note::
 
-         you might see an error that looks like `fatal: [f5]: FAILED! => {"changed": false, "msg": "{'code': 503, 'message': 'There is an active asynchronous task executing.', 'errorStack': [], 'apiError': 32964609}"}`  this can happen and doesnt impact the effect of the restore.  
+         you might see an error that looks like `fatal: [f5 -> localhost]: FAILED! => {"changed": false, "msg": "Expecting value: line 1 column 1 (char 0)"}`  this can occurs due to restarting of services and shouldn't impact the effect of the restore.  
          
          after the command is run wait up to 5 minutes for the restore to complete.
 
@@ -73,7 +73,9 @@ This section is optional and for testing and verification purposes only. It assu
 
    **Ansible Host:**
 
-   - Within a terminal window run `ls /tmp/f5/Use-Case-00-backup.ucs` to verify the backup file exists, this is also assuming that the variables file was not changed.
+   - Within a terminal window run `ls /f5/code-output/` to verify the backup file exists
+   - This file will be named based on the inventory-hostname-Year-Month-Day-Hour-Minute-Second.ucs `e.g. f5-2024-12-13-03-27-51.ucs`.
+   - This method was used to ensure date/timestamps of backups on files and prevents overwriting of other backups. 
 
 
    **F5 BIG-IP**
@@ -82,7 +84,7 @@ This section is optional and for testing and verification purposes only. It assu
 
       - Login to the BIG-IP instance  
       - Navigate to System --> Archives  
-      - There should be an archive file called "Use-Case-00-backup.ucs"  
+      - There should be an archive file named similarly to `f5-2024-12-13-03-27-51.ucs` based on the date/timestamp
 
    - Login information for the BIG-IP:
    

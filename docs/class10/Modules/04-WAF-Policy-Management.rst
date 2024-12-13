@@ -15,7 +15,7 @@ RUNNING THE TEMPLATE
 
 Running this template assumes that a F5 BIG-IP instance, necessary webservers and Ansible node are available. 
 
-   1. Login to the Ansible host
+   1. Ensure you are using a terminal from VSCode (UDF --> Ansible-Node --> Access --> Code-Server --> Password: Ansible123! --> Trust --> Terminal --> New Terminal)
 
    2. Change Directory in the Ansible Host to the use-cases repo previously
       downloaded

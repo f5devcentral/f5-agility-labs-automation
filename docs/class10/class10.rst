@@ -7,13 +7,13 @@ Class 10: Mastering Imperative and Declarative Automation with F5 BIG-IP
 OVERVIEW
 --------
 
-The use cases templates are built for the F5 Automation Sandbox ennvironment. To run the use-cases, users must use the environment to stand-up the F5 automation sandbox environment. 
+The use cases templates are built for the F5 UDF ennvironment. These usecases can be adapted to any environment feel free to take/fork/expand upon this code! 
 
-With a F5 Automation Sandbox environment and these scenario use cases, users can/will be able to
+With a F5 UDF environment and these scenario use cases, users can/will be able to
 
-- Test common deployment scenarios through Automation with Ansible
-- Fork instances of code to develop their own plugins and automation playbooks 
-- Provide feedback on existing and new use cases that are relevant to everyday work
+- Understand the differences between Imparative (iRest API) and Declarative (AS3) coding
+- Test common deployment scenarios with imparative coding and seeing the same scenarios in declarative coding. 
+- Test deployments with Ansible Automation Platform.
 
 .. attention:: 
 
@@ -27,10 +27,7 @@ HOW TO USE
 
 **1. PROVISION INFRASTRUCTURE**
 
-   There are two options to creating a F5 Automation Sandbox environment, you only need to do one of these (not both) to access the lab.
-
-      - Contact your F5 Account Manager or Sales Engineer to help setup a F5 UDF Environment for testing.
-
+   To provision a lab, reach out to an F5 Account Manager or Sales Engineer at F5 to deploy this UDF Lab (BIG-IP & Ansible Labs - 101 and 201)
 
 
 **2. Examine the Ansible-Use-Case Code via Github**
@@ -43,13 +40,20 @@ HOW TO USE
    When using the F5 UDF environment, everything is configured and setup correctly, use the instructions on how to access your lab given to you by either your F5 instructor or by the UDF Instructions Email.   
    
 
-**4. RUN USE CASE TEMPLATES**
+**4. Launching VScode (Code Server) from the UDF environment 
+   
+   - Within your UDF Environment deployment find the "Ansible-Node" click on the "Access" link and select "Code Server" to launch a VSCode Server instance.
+   - When Asked for a password the common password between all items is Ansible123!
+   - Make sure to check the checkbox to "Trust the authors of all files in the parent folder 'home'" and click "Yes, I trust the authors"
+   - Open a terminal session within VSCode by going to the top menus and selecting Terminal --> New Terminal (or press CTRL+SHIFT+C)
 
-   Start with Use-Cases (Click the following link) to begin - `Use-Case 00 <https://clouddocs.f5.com/training/fas-ansible-use-cases/00-Backup-Restore-Role.html>`_ 
+**5. RUN USE CASE TEMPLATES**
+
+   Start with Use-Cases (Click the following link) to begin - `Use-Case 00 <https://clouddocs.f5.com/training/community/automation/html/class10/Modules/00-Backup-Restore-Role.html>`_ 
 
    .. note::
 
-      Keep the BIG-IP login handy to login and validate configuration when use cases are executed
+      Keep the BIG-IP login (admin/Ansible123!) handy to login and validate configuration when use cases are executed
    
 Support
 -------

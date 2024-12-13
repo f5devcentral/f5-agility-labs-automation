@@ -15,7 +15,7 @@ RUNNING THE TEMPLATE
 
 Running this template assumes that a F5 BIG-IP instance, necessary webservers and Ansible node are available. 
 
-   1. Login to the Ansible host
+   1. Ensure you are using a terminal from VSCode (UDF --> Ansible-Node --> Access --> Code-Server --> Password: Ansible123! --> Trust --> Terminal --> New Terminal)
 
    2. Change Directory in the Ansible Host to the use-cases repo previously downloaded
 
@@ -33,7 +33,7 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
 
          By default a VIP and pool will be created during the execution of the code, then the code will disable a single node in that created pool.
          
-         Modification of the f5_vars.yml file can change the pool, node(s) and state which can be modified within the f5_vars.yml.
+         Modification of the vars/f5_vars.yml file can change the pool, node(s) and state which can be modified within the f5_vars.yml.
 
 TESTING AND VALIDATION
 ----------------------
@@ -59,6 +59,7 @@ This section assumes knowledge of how to operate BIG-IP commands and networking.
 
       - Login to the BIG-IP
       - Navigate to Local Traffic --> Pools
+      - Change the Partition (Top Right Corner) to "WorkshopExample"
       - Click on the pool you selected while running the playbook
       - View the members of the pool and verify their state based on action choosen while running the playbook
 
