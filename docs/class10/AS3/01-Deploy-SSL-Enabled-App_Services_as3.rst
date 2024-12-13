@@ -13,8 +13,7 @@ RUN THE TEMPLATE
 ----------------
 Running this template assumes that a F5 BIG-IP instance, necessary webservers and Ansible node are available.  
 
-
-  1. Login to the Ansible Host
+  1. Ensure you are using a terminal from VSCode (UDF --> Ansible-Node --> Access --> Code-Server --> Password: Ansible123! --> Trust --> Terminal --> New Terminal)
 
   2. Change Directory in the Ansible Host to the use-cases repo previously downloaded
 
@@ -27,6 +26,10 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
     .. code::
     
         ansible-navigator run Deploy-SSL-Enabled-App_Services.yaml --mode stdout
+
+    .. note:: 
+      
+        Any errors seen on the screen are expected behavior and can be ignored.
 
 TESTING AND VALIDATION
 -----------------------
@@ -59,6 +62,7 @@ This section is optional and for testing and verification purposes only. It assu
 
       * Login to the BIG-IP instance
       * Navigate to Local Traffic --> Virtual Servers
+      * Change the Partition (Top Right Corner) to "WorkshopExample"
       * Ensure there are 2 VIPs with same IP
 
          + One listening on port 443
