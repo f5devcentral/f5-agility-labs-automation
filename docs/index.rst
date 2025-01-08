@@ -5,7 +5,7 @@ The purpose of these labs is to give you better understanding of...
 
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
    :caption: Contents:
    :glob:
 
