@@ -11,8 +11,8 @@ The use cases templates are built for the F5 UDF ennvironment. These usecases ca
 
 With a F5 UDF environment and these scenario use cases, users can/will be able to
 
-- Understand the differences between Imparative (iRest API) and Declarative (AS3) coding
-- Test common deployment scenarios with imparative coding and seeing the same scenarios in declarative coding. 
+- Understand the differences between Imperative (iControl REST API) and Declarative (AS3) coding
+- Test common deployment scenarios with Imperative coding and seeing the same scenarios in declarative coding. 
 - Test deployments with Ansible Automation Platform.
 
 .. attention:: 
