@@ -20,7 +20,7 @@ Class 8- Containers - Kubernetes & OpenShift Integration with BIG-IP
 
 Class 9- Basic BIG-IP Configuration Management with Ansible
 
-Class 10- Advanced BIG-IP Configuration Management with Ansible
+Class 10- Mastering Imperative and Declarative Automation with F5 BIG-IP
 
 Class 11- 101 of Terraform BIG-IP Provider
 
