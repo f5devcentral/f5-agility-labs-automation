@@ -31,7 +31,7 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
 
       .. note::
 
-         This Playbook modifies the provisioning of modules on the BIG-IP and will take some time to complete as the new module comes online.
+         This Playbook modifies the provisioning of modules using Declarative Onboarding (DO) on the BIG-IP and will take some time to complete as the new module comes online.
          
       .. attention::
 
