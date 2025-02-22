@@ -9,6 +9,22 @@ Being able to create and swap SSL Profiles on a BIG-IP to singular or multiple V
 
 This use case template will create a new application service (VIP) on the F5 BIG-IP that will use a custom key and certificate to terminate the client's SSL connection.
 
+HIGHLIGHTS
+----------
+
+   1. This will import in a Certificate/Key Combination (Self Signed in our Lab) to the F5 Device and then Create a ClientSSL Profile that utilizes these certificates
+
+   2. When using faster expiring certificates it is possible to just upload the updated/new Cert/Key combo in replacement of an existing certificate that utilizes a existing ClientSSL Profile without modifying the Virtual Server or ClientSSL Profile (typically easier as a PFX)
+
+EXAMINING THE CODE
+------------------
+
+   1. In the VSCode (Code-Server) on the left menus expand f5-bd-ansible-labs --> 401-F5-AppWorld-Lab --> Modules --> 02-Replace-Application-Certificates --> and select the ``Replace-Application-Certificates.yaml`` file.
+
+   2. Notice that this playbook we are deploying this Virtual Server on a different port 8081 but at first it's deploying with the default certificate just like our previous use-case.
+
+   3. At Line 57+ in the code is when we start importing our Certificate/Key Combination and creating our ClientSSL Profile, and attach that newly created SSL profile to our Virtual Server.
+
 RUNNING THE TEMPLATE
 --------------------
 
@@ -22,16 +38,15 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
       
          cd ~/f5-bd-ansible-labs/401-F5-AppWorld-Lab/Modules/02-Replace-Application-Certificates
 
+   3. **(Optional)** Edit ``f5_vars.yml`` file to customize your variables.
 
-   3. **(Optional)** Edit 'f5_vars.yml' file to customize your variables.
-
-   4. Run the Ansible Playbook ‘Replace-Application-Certificates.yaml’ with the variable file ‘f5_vars.yml’:
+   4. Run the Ansible Playbook ``Replace-Application-Certificates.yaml`` with the variable file ``f5_vars.yml``:
 
       .. code:: bash
 
          ansible-navigator run Replace-Application-Certificates.yaml --mode stdout -e @f5_vars.yml
 
-      In this example, the playbook will configure the BIG-IP instance to import certificates and create (if it doesnt already exist) a Virtual IP (VIP), a Pool and ClientSSL Profile and assign it to the created VIP (Use-Case-2).  
+      In this example, the playbook will configure the BIG-IP instance to import certificates and create (if it doesn't already exist) a Virtual IP (VIP), a Pool and ClientSSL Profile and assign it to the created VIP (Use-Case-2).  
    
       .. note::
          
@@ -50,10 +65,9 @@ TESTING AND VALIDATION
 
    Using the External Client (UDF --> Components --> External Client --> Access --> Firefox)
 
-      - In the Bookmarks bar you can select the ``Ansible Labs`` Folder and goto ``401 - Labs`` and Select ``Use Case 2`` 
+      - In the Bookmarks bar you can select the ``Ansible Labs`` Folder and go to ``401 - Labs`` and Select ``Use Case 2`` 
       - OR within the browser you can browse to https://10.1.20.30:8082/
       - From a client browser, access the VIP on port 8081 to view the new self-signed certificate (https://10.1.20.30:8082)
-
 
 **BIG-IP CONFIGURATION VERIFICATION**
 
@@ -70,4 +84,4 @@ This section is optional and for testing and verification purposes only. It assu
    - Login information for the BIG-IP:
    
       * username: admin 
-      * password: **found in the inventory hosts file**
+      * password: Ansible123!
