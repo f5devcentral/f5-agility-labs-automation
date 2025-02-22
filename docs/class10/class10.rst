@@ -1,18 +1,18 @@
 Class 10: Mastering Imperative and Declarative Automation with F5 BIG-IP
 ========================================================================
 
-`Last updated: 2024-12-05 11:00 AM MT`
+`Last updated: 2025-02-21 11:00 AM MT`
 
 
 OVERVIEW
 --------
 
-The use cases templates are built for the F5 UDF ennvironment. These usecases can be adapted to any environment feel free to take/fork/expand upon this code! 
+The use case templates are built for the F5 UDF environment. These use cases can be adapted to any environment. Feel free to take, fork, or expand upon this code!
 
 With a F5 UDF environment and these scenario use cases, users can/will be able to
 
-- Understand the differences between Imperative (iControl REST API) and Declarative (AS3) coding
-- Test common deployment scenarios with Imperative coding and seeing the same scenarios in declarative coding. 
+- Understand the differences between **Imperative** (iControl REST API) and **Declarative** (AS3) automation.
+- Test common deployment scenarios using Imperative coding and compare them with their Declarative counterparts.
 - Test deployments with Ansible Automation Platform.
 
 .. attention:: 
@@ -40,7 +40,7 @@ HOW TO USE
    When using the F5 UDF environment, everything is configured and setup correctly, use the instructions on how to access your lab given to you by either your F5 instructor or by the UDF Instructions Email.   
    
 
-**4. Launching VScode (Code Server) from the UDF environment 
+**4. Launching VScode (Code Server) from the UDF environment**
    
    - Within your UDF Environment deployment find the "Ansible-Node" click on the "Access" link and select "Code Server" to launch a VSCode Server instance.
    - When Asked for a password the common password between all items is Ansible123!
@@ -71,7 +71,7 @@ Modules Labs
 .. toctree::
    :glob:
    :maxdepth: 2
-   :Caption: 201 Modules Labs
+   :Caption: 401 Modules Labs
 
    Modules/*
 
@@ -81,7 +81,7 @@ AS3 Labs
 .. toctree::
    :glob:
    :maxdepth: 2
-   :Caption: 201 AS3 Labs
+   :Caption: 401 AS3 Labs
 
    AS3/*
    
