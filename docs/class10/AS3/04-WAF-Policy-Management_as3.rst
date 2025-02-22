@@ -45,21 +45,6 @@ EXAMINING THE CODE
 
    3. inside of the declaration (roles --> apply_as3 --> templates --> `configure_as3.j2`) we can see how the WAF Policy is applied using variables from the `vars/f5_vars.yml` also note that the WAF policy is defined as its own class then applied to the virtual server above (similar to how the certificates were done in use-case 2)
 
-      .. code:: json
-         ...
-            "policyWAF": {
-               "use": "{{F5_VIP_Name}}-Policy"
-				},
-         ...
-			"{{F5_VIP_Name}}-Policy": {
-            "class": "WAF_Policy",
-            "url": "{{ ASM_Policy_Website }}{{ file_name.stdout }}",
-            "ignoreChanges": false
-			}
-
-
-
-
 RUNNING THE TEMPLATE
 --------------------
 
