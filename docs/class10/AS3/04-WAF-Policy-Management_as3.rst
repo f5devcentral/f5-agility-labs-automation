@@ -25,7 +25,6 @@ HIGHLIGHTS
 
    6. if you re-run the code after the first time, the **RED** errors will not show as the IP addresses and URLs are part of the WAF Policy and are not null pointers.
 
-
 EXAMINING THE CODE
 ------------------
 
@@ -72,7 +71,6 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
 
          This Playbook detects if blocked URLs or IPs already exist and only adds new ones (idempotency).  because of that it will create Errors and ignore them on first run, this is expected behavior.  The Errors will indicate when the exported ASM Policy doesn't contain the data we are attempting to add, and then will add that data.  
 
-
 TESTING AND VALIDATION
 ----------------------
 
@@ -89,7 +87,6 @@ TESTING AND VALIDATION
          - https://10.1.20.30:8084/blocked.html
          - https://10.1.20.30:8084/hacked.html
          - https://10.1.20.30:8084/robot.txt 
-
 
 **BIG-IP CONFIGURATION VERIFICATION:**
 

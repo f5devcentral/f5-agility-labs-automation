@@ -19,10 +19,9 @@ HIGHLIGHTS
 
    3. This code extracts the F5 WAF policy as a XML and then modifies it to add blocked IP addresses and blocked URLs defined in the ``vars/f5_vars.yml`` file (which is now coded into our primary playbook).
 
-   4. This code will show ``RED`` errors in Ansible, typically these are fatal errors, in our use-case we are utilizing the error (null pointers) as a decision maker to ensure that we do not duplicate the insertion of blocked IP addresses and urls into the WAF policy.  (This is expected behavior)
+   4. This code will show **RED** errors in Ansible, typically these are fatal errors, in our use-case we are utilizing the error (null pointers) as a decision maker to ensure that we do not duplicate the insertion of blocked IP addresses and urls into the WAF policy.  (This is expected behavior)
 
-   5. if you re-run the code after the first time, the ``RED`` errors will not show as the IP addresses and URLs are part of the WAF Policy and are not null pointers.
-
+   5. if you re-run the code after the first time, the **RED** errors will not show as the IP addresses and URLs are part of the WAF Policy and are not null pointers.
 
 EXAMINING THE CODE
 ------------------
@@ -46,8 +45,6 @@ EXAMINING THE CODE
             f5networks.f5_modules.bigip_command:
                commands: "publish asm policy {{ ASM_Policy_Name }}"
                provider: "{{ provider }}"
-
-
 
 RUNNING THE TEMPLATE
 --------------------
@@ -83,7 +80,6 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
       .. attention::
 
          This playbook detects if blocked URL or IP already exists and only add what is new (idempotency).
-   
 
 TESTING AND VALIDATION
 ----------------------
@@ -101,7 +97,6 @@ TESTING AND VALIDATION
          - https://10.1.20.30:8084/blocked.html
          - https://10.1.20.30:8084/hacked.html
          - https://10.1.20.30:8084/robot.txt 
-
 
 **BIG-IP CONFIGURATION VERIFICATION:**
 

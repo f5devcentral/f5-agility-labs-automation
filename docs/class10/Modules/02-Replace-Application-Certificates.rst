@@ -16,7 +16,6 @@ HIGHLIGHTS
 
    2. When using faster expiring certificates it is possible to just upload the updated/new Cert/Key combo in replacement of an existing certificate that utilizes a existing ClientSSL Profile without modifying the Virtual Server or ClientSSL Profile (typically easier as a PFX)
 
-
 EXAMINING THE CODE
 ------------------
 
@@ -25,7 +24,6 @@ EXAMINING THE CODE
    2. Notice that this playbook we are deploying this Virtual Server on a different port 8081 but at first it's deploying with the default certificate just like our previous use-case.
 
    3. At Line 57+ in the code is when we start importing our Certificate/Key Combination and creating our ClientSSL Profile, and attach that newly created SSL profile to our Virtual Server.
-
 
 RUNNING THE TEMPLATE
 --------------------
@@ -39,7 +37,6 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
       .. code:: bash
       
          cd ~/f5-bd-ansible-labs/401-F5-AppWorld-Lab/Modules/02-Replace-Application-Certificates
-
 
    3. **(Optional)** Edit ``f5_vars.yml`` file to customize your variables.
 
@@ -71,7 +68,6 @@ TESTING AND VALIDATION
       - In the Bookmarks bar you can select the ``Ansible Labs`` Folder and go to ``401 - Labs`` and Select ``Use Case 2`` 
       - OR within the browser you can browse to https://10.1.20.30:8082/
       - From a client browser, access the VIP on port 8081 to view the new self-signed certificate (https://10.1.20.30:8082)
-
 
 **BIG-IP CONFIGURATION VERIFICATION**
 
