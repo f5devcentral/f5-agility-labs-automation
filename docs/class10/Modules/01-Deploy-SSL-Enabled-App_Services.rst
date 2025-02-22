@@ -21,15 +21,15 @@ HIGHLIGHTS
 EXAMINING THE CODE
 ------------------
 
-   1. In the VSCode (Code-Server) on the left menus expand f5-bd-ansible-labs --> 401-F5-AppWorld-Lab --> Modules --> 01-Deploy-SSL-Enabled-App_Services --> and select the `Deploy-SSL-Enabled-App_Services.yaml` file.
+   1. In the VSCode (Code-Server) on the left menus expand f5-bd-ansible-labs --> 401-F5-AppWorld-Lab --> Modules --> 01-Deploy-SSL-Enabled-App_Services --> and select the ``Deploy-SSL-Enabled-App_Services.yaml`` file.
 
    2. Notice that this playbook we are deploying this Virtual Server with the following properties
 
       - It must be deployed in a specific sequence for to work properly  (Create Pool --> Add Pool Members --> Create Virtual Server).  This is how we would typically create in the GUI to ensure our VS comes up correctly
-      - There are other variables used that are not defined in the inventory file such as `F5_VIP_Name` this comes from the `f5_vars.yml` file in the directory we can use external variables to add to our code execution.
+      - There are other variables used that are not defined in the inventory file such as ``F5_VIP_Name`` this comes from the ``f`5_vars.yml`` file in the directory we can use external variables to add to our code execution.
       - We are using the F5 default certificate in this use-case.
 
-   3. Another piece of code worth noting, the loop in this code is using the reserved word groups['web'] this is referencing our inventory file to loop and iterate over our group `web` so that both objects node1 and node2 provide their details to the f5 to be added as pool members.
+   3. Another piece of code worth noting, the loop in this code is using the reserved word groups['web'] this is referencing our inventory file to loop and iterate over our group ``web`` so that both objects node1 and node2 provide their details to the f5 to be added as pool members.
 
       .. code:: yaml
 
@@ -59,16 +59,16 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
          cd ~/f5-bd-ansible-labs/401-F5-AppWorld-Lab/Modules/01-Deploy-SSL-Enabled-App_Services/
 
 
-   3. **(Optional)** Edit 'f5_vars.yml' file to customize the existing variables.
-      For example: F5_VIP_Name: ‘Use-Case-1-VIP'
+   3. **(Optional)** Edit ``f5_vars.yml`` file to customize the existing variables.
+      For example: F5_VIP_Name: 'Use-Case-1-VIP'
 
-   4. Run the Ansible Playbook ‘Deploy-SSL-Enabled-App_Services.yaml’ with the variable file ‘f5_vars.yml’:
+   4. Run the Ansible Playbook ``Deploy-SSL-Enabled-App_Services.yaml`` with the variable file ``f5_vars.yml``.
 
       .. code:: bash
       
          ansible-navigator run Deploy-SSL-Enabled-App_Services.yaml --mode stdout -e @f5_vars.yml
 
-      In this example, the playbook looks for F5_VIP_Name: ‘Use-Case-1-VIP’ as specified in the f5_vars.yaml variable file and creates a app-service named 'Use-Case-1-VIP' with both port '80' and port '443' enabled.
+      In this example, the playbook looks for ``F5_VIP_Name: 'Use-Case-1-VIP'`` as specified in the ``f5_vars.yaml`` variable file and creates a app-service named 'Use-Case-1-VIP' with both port '80' and port '443' enabled.
 
       .. attention::
 
@@ -113,4 +113,4 @@ This section is optional and for testing and verification purposes only. It assu
    - Login information for the BIG-IP:
    
       * username: admin 
-      * password: **found in the inventory hosts file**
+      * password: Ansible123!

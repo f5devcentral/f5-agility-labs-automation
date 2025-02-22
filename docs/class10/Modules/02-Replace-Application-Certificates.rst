@@ -20,7 +20,7 @@ HIGHLIGHTS
 EXAMINING THE CODE
 ------------------
 
-   1. In the VSCode (Code-Server) on the left menus expand f5-bd-ansible-labs --> 401-F5-AppWorld-Lab --> Modules --> 02-Replace-Application-Certificates --> and select the `Replace-Application-Certificates.yaml` file.
+   1. In the VSCode (Code-Server) on the left menus expand f5-bd-ansible-labs --> 401-F5-AppWorld-Lab --> Modules --> 02-Replace-Application-Certificates --> and select the ``Replace-Application-Certificates.yaml`` file.
 
    2. Notice that this playbook we are deploying this Virtual Server on a different port 8081 but at first it's deploying with the default certificate just like our previous use-case.
 
@@ -41,9 +41,9 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
          cd ~/f5-bd-ansible-labs/401-F5-AppWorld-Lab/Modules/02-Replace-Application-Certificates
 
 
-   3. **(Optional)** Edit 'f5_vars.yml' file to customize your variables.
+   3. **(Optional)** Edit ``f5_vars.yml`` file to customize your variables.
 
-   4. Run the Ansible Playbook ‘Replace-Application-Certificates.yaml’ with the variable file ‘f5_vars.yml’:
+   4. Run the Ansible Playbook ``Replace-Application-Certificates.yaml`` with the variable file ``f5_vars.yml``:
 
       .. code:: bash
 
@@ -88,4 +88,4 @@ This section is optional and for testing and verification purposes only. It assu
    - Login information for the BIG-IP:
    
       * username: admin 
-      * password: **found in the inventory hosts file**
+      * password: Ansible123!

@@ -20,13 +20,12 @@ HIGHLIGHTS
 EXAMINING THE CODE
 ------------------
 
-   1. In the VSCode (Code-Server) on the left menus expand f5-bd-ansible-labs --> 401-F5-AppWorld-Lab --> AS3 --> 03-Application-Maintenance-AS3 --> and lets first examine the `vars/f5_vars.yml` file, this vars file is similar to our modules section vars.
+   1. In the VSCode (Code-Server) on the left menus expand f5-bd-ansible-labs --> 401-F5-AppWorld-Lab --> AS3 --> 03-Application-Maintenance-AS3 --> and lets first examine the ``vars/f5_vars.yml`` file, this vars file is similar to our modules section vars.
 
-      - The `F5_Pool_Members` variable can be set in the array to a specific node and port (e.g. [hostname]:[port] or [ip address]:[port]) or can be set to (All) the code is designed to be able to determine if you want a specific node or all nodes to have a changed state.
-      - The `F5_Pool_Node_State` variable can be set to 3 states (Enabled, Disabled, Offline) just like you could do to pool members on a BIG-IP Pool within the GUI.
+      - The **F5_Pool_Members** variable can be set in the array to a specific node and port (e.g. [hostname]:[port] or [ip address]:[port]) or can be set to (All) the code is designed to be able to determine if you want a specific node or all nodes to have a changed state.
+      - The **F5_Pool_Node_State** variable can be set to 3 states (Enabled, Disabled, Offline) just like you could do to pool members on a BIG-IP Pool within the GUI.
 
-
-   2. Now lets examine a the specific section within the declaration `j2/app_maint.j2` this code loops and iterates over the `pool_members` variable which is our inventory file group called `web` it will use the information from the inventory with the `F5_Pool_Members` and `F5_Pool_Node_State` variables to determine the state of the nodes.
+   2. Now lets examine a the specific section within the declaration ``j2/app_maint.j2`` this code loops and iterates over the ``pool_members`` variable which is our inventory file group called ``web`` it will use the information from the inventory with the ``F5_Pool_Members`` and ``F5_Pool_Node_State`` variables to determine the state of the nodes.
 
       .. code:: json 
 

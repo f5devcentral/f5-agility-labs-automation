@@ -46,7 +46,6 @@ EXAMINING THE CODE
    4.  Notice that there are 2 folders in there a defaults folder and a tasks folder.  
    
        -  The **defaults** folder contains a main.yml that creates the variable ``provider`` for allowing any f5 ansible module within that role to utilize for connecting to the f5 device (using our inventory file information).
-       
        -  The **tasks** folder contains a main.yml that references another yaml file ``f5_backup_config.yaml`` this contains the code for backing up the F5 device and how the date/timestamp are collected along with the hostname (gathered from our inventory file).
 
    5.  When running a restore later you can also examine the restore role ``f5_restore_data_imparative`` within the roles folder to see how its is coded (we are using the imperative restore code)
@@ -65,9 +64,7 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
       
          cd ~/f5-bd-ansible-labs/401-F5-AppWorld-Lab/AS3/00-Backup-Restore-Role/
 
-   3. **(Optional)** View ``vars/f5_vars.yml`` file in the vars folder to see information about the deployment (i.e. local_folder_location)
-      
-   4. Run the Ansible Playbook ``Backup-Role.yaml``:
+   3. Run the Ansible Playbook ``Backup-Role.yaml``:
       
       .. note:: 
          
@@ -79,7 +76,8 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
 
       In this example, the playbook looks for the Folder-Location and File-Name variables as specified in the vars/f5_vars.yaml file and uses that information to tell the BIG-IP to run a backup and then export that file to where the Folder-Location and File-Name variables points to.
 
-   5. **(Optional)** Run the Ansible Playbook ``Restore-Role.yaml``:
+   4. **(Optional)** Run the Ansible Playbook ``Restore-Role.yaml``:
+
       If you have run the Modules section of this lab and already executed a backup and want to test the AS3 section then it is **(Recommended)** to run a restore
       
       .. code:: bash

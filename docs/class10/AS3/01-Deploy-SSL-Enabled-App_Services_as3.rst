@@ -41,6 +41,7 @@ EXAMINING THE CODE
 
 RUN THE TEMPLATE
 ----------------
+
 Running this template assumes that a F5 BIG-IP instance, necessary webservers and Ansible node are available.  
 
   1. Ensure you are using a terminal from VSCode (UDF --> Ansible-Node --> Access --> Code-Server --> Password: Ansible123! --> Trust --> Terminal --> New Terminal)
