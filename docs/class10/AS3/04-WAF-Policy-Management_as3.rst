@@ -21,9 +21,9 @@ HIGHLIGHTS
 
    4. When using AS3 with WAF Policies, the WAF policy is also treated as a single source of truth and requires to be located on a URL resource (e.g. gitlab/github/webserver) instead of a local file being uploaded.
 
-   4. This code will show `RED` errors in Ansible, typically these are fatal errors, in our use-case we are utilizing the error (null pointers) as a decision maker to ensure that we do not duplicate the insertion of blocked IP addresses and urls into the WAF policy.  (This is expected behavior)
+   5. This code will show `RED` errors in Ansible, typically these are fatal errors, in our use-case we are utilizing the error (null pointers) as a decision maker to ensure that we do not duplicate the insertion of blocked IP addresses and urls into the WAF policy.  (This is expected behavior)
 
-   5. if you re-run the code after the first time, the `RED` errors will not show as the IP addresses and URLs are part of the WAF Policy and are not null pointers.
+   6. if you re-run the code after the first time, the `RED` errors will not show as the IP addresses and URLs are part of the WAF Policy and are not null pointers.
 
 
 EXAMINING THE CODE
