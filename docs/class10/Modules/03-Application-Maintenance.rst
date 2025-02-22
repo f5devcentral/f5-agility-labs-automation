@@ -17,7 +17,6 @@ HIGHLIGHTS
 
    2. This code utilizes querying from the BIG-IP to determine the pool-members actual name and node to disable it properly. 
 
-
 EXAMINING THE CODE
 ------------------
 
@@ -25,7 +24,6 @@ EXAMINING THE CODE
 
       - The **F5_Pool_Members** variable can be set in the array to a specific node and port (e.g. [hostname]:[port] or [ip address]:[port]) or can be set to (All) the code is designed to be able to determine if you want a specific node or all nodes to have a changed state.
       - The **F5_Pool_Node_State** variable can be set to 3 states (Enabled, Disabled, Offline) just like you could do to pool members on a BIG-IP Pool within the GUI.
-
 
    2. Now lets examine the code In the VSCode (Code-Server) on the left menus expand f5-bd-ansible-labs --> 401-F5-AppWorld-Lab --> Modules --> 03-Application-Maintenance --> select the ``Application-Maintenance.yaml``
 
@@ -60,7 +58,6 @@ EXAMINING THE CODE
             when: '"all" not in F5_Pool_Members|lower and F5_Pool_Node_State is defined'
 
 
-
 RUNNING THE TEMPLATE
 --------------------
 
@@ -89,7 +86,6 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
          
    5.  **(Optional)** Try changing the ``f5_vars.yml`` file to disable additional nodes, or change the original node state back to enabled after saving and the code in #4 is re-executed, then see in the ``Testing and Validation`` Section if your modification worked.
 
-   
 TESTING AND VALIDATION
 ----------------------
 
@@ -104,7 +100,6 @@ This section assumes knowledge of how to operate BIG-IP commands and networking.
       - In the Bookmarks bar you can select the ``Ansible Labs`` Folder and goto ``401 - Labs`` and Select ``Use Case 3`` 
       - OR within the browser you can browse to https://10.1.20.30:8083/ 
       - Browse the page and notice that only NODE2 is the only responsive Node as Node 1 was disabled.
-
 
 **BIG-IP CONFIGURATION VERIFICATION:**
 

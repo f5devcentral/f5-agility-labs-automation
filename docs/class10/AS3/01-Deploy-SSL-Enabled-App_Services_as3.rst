@@ -20,7 +20,6 @@ HIGHLIGHTS
 
    4. AS3 is designed to be the "Single Source of Truth" its recommended to always modify your AS3 declaration and not do modifications with the GUI or imperative automation while using AS3. 
 
-
 EXAMINING THE CODE
 ------------------
 
@@ -37,7 +36,6 @@ EXAMINING THE CODE
              content: "{{ lookup('template','j2/https.j2', split_lines=False) }}"
    
    4. Lets examine our ``https.j2`` file within the ``j2`` folder.  Note the Ansible variables used such as ``as3_tenant_name``, ``F5_VIP_Name`` and ``pool_members`` are variables from our main yaml file.  Also note the jinja2 loop code when adding members to the pool, this is different than our ansible loops.
-
 
 RUN THE TEMPLATE
 ----------------
@@ -80,8 +78,6 @@ TESTING AND VALIDATION
          Your browser is presented with a certificate (clientssl cert) that is built with the BIG-IP.
          
          You will therefore see an `unsafe` message from your browser which is expected in this demo. Click proceed to website.
-
-      |
 
 **BIG-IP CONFIGURATION VERIFICATION:**
 

@@ -48,7 +48,6 @@ EXAMINING THE CODE
          ]
 
 
-
 RUNNING THE TEMPLATE
 --------------------
 
@@ -88,7 +87,6 @@ This section assumes knowledge of how to operate BIG-IP commands and networking.
       - In the Bookmarks bar you can select the ``Ansible Labs`` Folder and goto ``401 - Labs`` and Select ``Use Case 3`` 
       - OR within the browser you can browse to https://10.1.20.30:8083/ 
       - Browse the page and notice that only NODE2 is the only responsive Node as Node 1 was disabled.
-
 
 **BIG-IP CONFIGURATION VERIFICATION:**
 

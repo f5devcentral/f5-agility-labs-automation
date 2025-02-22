@@ -13,7 +13,6 @@ HIGHLIGHTS
 
    1. This code shows how declarations can be split into individual templates and combined into a single declaration (we are using the declarations from the previous executions). 
     
-
 EXAMINING THE CODE
 ------------------
 
@@ -61,8 +60,7 @@ RUNNING THE TEMPLATE
 
       Do not run this use-case without running AS3 use-cases 01 thru 04, as this will ensure that services and software is enabled. 
 
-
-Running this template assumes that a F5 BIG-IP instance, necessary webservers and Ansible node are available. 
+   Running this template assumes that a F5 BIG-IP instance, necessary webservers and Ansible node are available. 
 
    1. Ensure you are using a terminal from VSCode (UDF --> Ansible-Node --> Access --> Code-Server --> Password: Ansible123! --> Trust --> Terminal --> New Terminal)
 
@@ -83,7 +81,6 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
          This Playbook assumes all modules are already installed, as well as AS3 is deployed on the F5 device.
          This Playbook also assumes that no modifications of existing declarations are needed (i.e. WAF) and just leverage the existing WAF policies already deployed.
 
-
 TESTING AND VALIDATION
 ----------------------
 
@@ -94,7 +91,6 @@ TESTING AND VALIDATION
    Using the External Client (UDF --> Components --> External Client --> Access --> Firefox)
 
       - In the Bookmarks bar you can select the ``Ansible Labs`` Folder and goto any of the use-cases previously deployed all will be available. 
-
 
 **BIG-IP CONFIGURATION VERIFICATION:**
 
@@ -115,6 +111,6 @@ This section is optional and for testing and verification purposes only. It assu
       * password: Ansible123!
 
 **UDF Lab Revert**
--------------------------------
+------------------
 
-   Once you have completed this section it is recommended to go back to Use-Case 00 and run the **restore** of the BIG-IP before continuing to test the AS3 Section.
+   Once you have completed this section you will need to go back to Use-Case 00 and run the **restore** of the BIG-IP before continuing to test the AS3 Section.

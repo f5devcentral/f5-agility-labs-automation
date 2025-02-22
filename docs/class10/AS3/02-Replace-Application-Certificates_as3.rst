@@ -14,7 +14,6 @@ In this module we will discuss a little bit more about AS3 declarations and how 
 
 When using Modules every action is done sequentially but also doesn't take away from the previous command, where as AS3 if a VIP is in the template it will be there, and if between runs the VIP is not there it is removed.
 
-
 HIGHLIGHTS
 ----------
 
@@ -148,7 +147,6 @@ EXAMINING THE CODE
          "certificate": "{{ lookup('file', '{{playbook_dir}}/app-demo.crt') | replace('\n', '\\n') }}",
          "privateKey": "{{ lookup('file', '{{playbook_dir}}/app-demo.key') | replace('\n', '\\n') }}"
 
-
 RUNNING THE TEMPLATE
 --------------------
 
@@ -168,8 +166,6 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
 
         ansible-navigator run Replace-Application-Certificates.yaml --mode stdout
 
-
-
 TESTING AND VALIDATION
 ----------------------
 
@@ -182,7 +178,6 @@ TESTING AND VALIDATION
       - In the Bookmarks bar you can select the ``Ansible Labs`` Folder and goto ``401 - Labs`` and Select ``Use Case 2`` 
       - OR within the browser you can browse to https://10.1.20.30:8082/
       - From a client browser, access the VIP on port 8081 to view the new self-signed certificate (https://10.1.20.30:8082)
-
 
 **BIG-IP CONFIGURATION VERIFICATION**
 

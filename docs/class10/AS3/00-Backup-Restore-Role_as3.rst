@@ -21,7 +21,6 @@ HIGHLIGHTS
 
    2. The Backup will actually create two (2) backups one on the F5 device (located in the archives) and one located in the ``/f5/code-output/`` directory on the Ansible-node named hostname-date-timestamp.ucs this is 2 levels of backup!
 
-
 EXAMINING THE CODE
 ------------------
 
@@ -49,7 +48,6 @@ EXAMINING THE CODE
        -  The **tasks** folder contains a main.yml that references another yaml file ``f5_backup_config.yaml`` this contains the code for backing up the F5 device and how the date/timestamp are collected along with the hostname (gathered from our inventory file).
 
    5.  When running a restore later you can also examine the restore role ``f5_restore_data_imparative`` within the roles folder to see how its is coded (we are using the imperative restore code)
-
 
 RUN THE TEMPLATE
 ----------------
@@ -105,14 +103,11 @@ TESTING AND VALIDATION
 
 This section is optional and for testing and verification purposes only. It assumes knowledge of how to operate BIG-IP commands and networking.
 
-
-
    **Ansible Host:**
 
    - Within a terminal window run ``ls /f5/code-output/`` to verify the backup file exists
    - This file will be named based on the inventory-hostname-Year-Month-Day-Hour-Minute-Second.ucs ``e.g. f5-2024-12-13-03-27-51.ucs``.
    - This method was used to ensure date/timestamps of backups on files and prevents overwriting of other backups. 
-
 
    **F5 BIG-IP**
 
