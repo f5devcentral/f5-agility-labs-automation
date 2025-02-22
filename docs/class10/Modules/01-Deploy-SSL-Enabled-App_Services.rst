@@ -10,6 +10,41 @@ Using this template, we will create an SSL enabled (on port 443) application ser
 
 The certificates used in this template for SSL termination are self-signed certs that are generated on the BIG-IP. Users will be able to swap out the self-signed certs very easily and we will demonstrate how with the 'certificate-replacement' template that will follow.
 
+HIGHLIGHTS
+----------
+
+   1. This will deploy a HTTPS enabled application with a HTTP Redirect (port 80 --> 443).
+
+   2. This code utilizes the F5 default certificate for the SSL enabled application.
+
+
+EXAMINING THE CODE
+------------------
+
+   1. In the VSCode (Code-Server) on the left menus expand f5-bd-ansible-labs --> 401-F5-AppWorld-Lab --> Modules --> 01-Deploy-SSL-Enabled-App_Services --> and select the `Deploy-SSL-Enabled-App_Services.yaml` file.
+
+   2. Notice that this playbook we are deploying this Virtual Server with the following properties
+
+      - It must be deployed in a specific sequence for to work properly  (Create Pool --> Add Pool Members --> Create Virtual Server).  This is how we would typically create in the GUI to ensure our VS comes up correctly
+      - There are other variables used that are not defined in the inventory file such as `F5_VIP_Name` this comes from the `f5_vars.yml` file in the directory we can use external variables to add to our code execution.
+      - We are using the F5 default certificate in this use-case.
+
+   3. Another piece of code worth noting, the loop in this code is using the reserved word groups['web'] this is referencing our inventory file to loop and iterate over our group `web` so that both objects node1 and node2 provide their details to the f5 to be added as pool members.
+
+      .. code:: yaml
+
+         - name: Add Pool Members
+           f5networks.f5_modules.bigip_pool_member:
+              state: present
+              provider: "{{ provider }}"
+              pool: "{{ F5_VIP_Name }}_pool"
+              name: "{{ hostvars[item].inventory_hostname }}"
+              host: "{{ hostvars[item].private_ip }}"
+              port: "80"
+           loop: "{{ groups['web'] }}"
+        
+   
+
 RUN THE TEMPLATE
 ----------------
 
@@ -40,7 +75,7 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
          This will loop through the entire application list on the BIG-IP to ensure there are no duplicates. So, this could take time depending on the number of Virtual-IPs on your F5 BIG-IP
 
 TESTING AND VALIDATION
------------------------
+----------------------
 
 **VERIFYING RE-DIRECT SERVICE:**
 
