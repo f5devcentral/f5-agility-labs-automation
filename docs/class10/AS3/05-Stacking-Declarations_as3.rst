@@ -52,7 +52,8 @@ EXAMINING THE CODE
             }
 
 
-This will show how you can create individual template files that can be stacked in a single declaration.
+      This will show how you can create individual template files that can be stacked in a single declaration.
+
 RUNNING THE TEMPLATE
 --------------------
 
