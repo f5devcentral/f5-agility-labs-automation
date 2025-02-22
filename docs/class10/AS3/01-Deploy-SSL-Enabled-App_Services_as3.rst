@@ -24,7 +24,7 @@ HIGHLIGHTS
 EXAMINING THE CODE
 ------------------
 
-   1. In the VSCode (Code-Server) on the left menus expand f5-bd-ansible-labs --> 401-F5-AppWorld-Lab --> AS3 --> 01-Deploy-SSL-Enabled-App_Services-AS3 --> and select the `Deploy-SSL-Enabled-App_Services.yaml` file.
+   1. In the VSCode (Code-Server) on the left menus expand f5-bd-ansible-labs --> 401-F5-AppWorld-Lab --> AS3 --> 01-Deploy-SSL-Enabled-App_Services-AS3 --> and select the ``Deploy-SSL-Enabled-App_Services.yaml`` file.
 
    2. In our playbook, we are using block and rescue code to ensure that AS3 is installed within our environment, if our code fails to deploy with AS3 (which it will on first run) then it will install AS3 and re-run the declaration.
 
@@ -36,7 +36,7 @@ EXAMINING THE CODE
            f5networks.f5_bigip.bigip_as3_deploy:
              content: "{{ lookup('template','j2/https.j2', split_lines=False) }}"
    
-   4. Lets examine our `https.j2` file within the `j2` folder.  Note the Ansible variables used such as `as3_tenant_name`, `F5_VIP_Name` and `pool_members` are variables from our main yaml file.  Also note the jinja2 loop code when adding members to the pool, this is different than our ansible loops.
+   4. Lets examine our ``https.j2`` file within the ``j2`` folder.  Note the Ansible variables used such as ``as3_tenant_name``, ``F5_VIP_Name`` and ``pool_members`` are variables from our main yaml file.  Also note the jinja2 loop code when adding members to the pool, this is different than our ansible loops.
 
 
 RUN THE TEMPLATE
@@ -51,7 +51,7 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
     
         cd ~/f5-bd-ansible-labs/401-F5-AppWorld-Lab/AS3/01-Deploy-SSL-Enabled-App_Services-AS3/
 
-  3. Run the Ansible Playbook ‘Deploy-SSL-Enabled-App_Services.yaml’:
+  3. Run the Ansible Playbook ``Deploy-SSL-Enabled-App_Services.yaml``:
 
     .. code::
     
@@ -101,4 +101,4 @@ This section is optional and for testing and verification purposes only. It assu
    - Login information for the BIG-IP:
    
       * username: admin 
-      * password: **found in the inventory hosts file**
+      * password: Ansible123!

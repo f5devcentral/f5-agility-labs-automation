@@ -162,7 +162,7 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
     
         cd ~/f5-bd-ansible-labs/401-F5-AppWorld-Lab/AS3/02-Replace-Application-Certificates-AS3/
 
-  3. Run the Ansible Playbook ‘Replace-Application-Certificates.yaml’:
+  3. Run the Ansible Playbook ``Replace-Application-Certificates.yaml``:
 
     .. code::
 
@@ -200,4 +200,4 @@ This section is optional and for testing and verification purposes only. It assu
    - Login information for the BIG-IP:
    
       * username: admin 
-      * password: **found in the inventory hosts file**
+      * password: Ansible123!

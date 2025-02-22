@@ -63,7 +63,7 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
       
          cd ~/f5-bd-ansible-labs/401-F5-AppWorld-Lab/AS3/03-Application-Maintenance-AS3
 
-   3. Run the Ansible Playbook ‘Application-Maintenance.yaml’
+   3. Run the Ansible Playbook ``Application-Maintenance.yaml``
 
       .. code:: bash
 
@@ -106,4 +106,4 @@ This section assumes knowledge of how to operate BIG-IP commands and networking.
    - Login information for the BIG-IP:
    
       * username: admin 
-      * password: **found in the inventory hosts file**
+      * password: Ansible123!
