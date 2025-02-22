@@ -25,11 +25,11 @@ HIGHLIGHTS
 EXAMINING THE CODE
 ------------------
 
-   1. In the VSCode (Code-Server) on the left menus expand f5-bd-ansible-labs --> 401-F5-AppWorld-Lab --> AS3 --> 02-Replace-Application-Certificates-AS3 --> and select the `Replace-Application-Certificates.yaml` file.
+   1. In the VSCode (Code-Server) on the left menus expand f5-bd-ansible-labs --> 401-F5-AppWorld-Lab --> AS3 --> 02-Replace-Application-Certificates-AS3 --> and select the ``Replace-Application-Certificates.yaml`` file.
 
-   2. In our playbook, we have only two (2) tasks, the conversion of our `as3_app_body` into a json variable which contains the bulk of our AS3 declaration with variables filled in and our push of the AS3 declaration. 
+   2. In our playbook, we have only two (2) tasks, the conversion of our ``as3_app_body`` into a json variable which contains the bulk of our AS3 declaration with variables filled in and our push of the AS3 declaration. 
 
-   3. In our base template `tennant_base.j2` this code sets up our tenant and fills it in with the variable `as3_app_body` which is a rendering of `as3_template.j2`` file with ansible filling in variable areas.
+   3. In our base template ``tennant_base.j2`` this code sets up our tenant and fills it in with the variable ``as3_app_body`` which is a rendering of ``as3_template.j2`` file with ansible filling in variable areas.
 
       .. code::  json
 
@@ -162,7 +162,7 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
     
         cd ~/f5-bd-ansible-labs/401-F5-AppWorld-Lab/AS3/02-Replace-Application-Certificates-AS3/
 
-  3. Run the Ansible Playbook ‘Replace-Application-Certificates.yaml’:
+  3. Run the Ansible Playbook ``Replace-Application-Certificates.yaml``:
 
     .. code::
 
@@ -200,4 +200,4 @@ This section is optional and for testing and verification purposes only. It assu
    - Login information for the BIG-IP:
    
       * username: admin 
-      * password: **found in the inventory hosts file**
+      * password: Ansible123!

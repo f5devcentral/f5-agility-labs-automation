@@ -19,13 +19,13 @@ HIGHLIGHTS
 
    1. Always create a backup of your environment before automating. This ensures a safe and reliable way to revert in case of any issues.
 
-   2. The Backup will actually create two (2) backups one on the F5 device (located in the archives) and one located in the `/f5/code-output/` directory on the Ansible-node named hostname-date-timestamp.ucs this is 2 levels of backup!
+   2. The Backup will actually create two (2) backups one on the F5 device (located in the archives) and one located in the ``/f5/code-output/`` directory on the Ansible-node named hostname-date-timestamp.ucs this is 2 levels of backup!
 
 
 EXAMINING THE CODE
 ------------------
 
-   1. In the VSCode (Code-Server) on the left menus expand f5-bd-ansible-labs --> 401-F5-AppWorld-Lab --> AS3 --> 00-Backup-Restore Role --> and select the `Backup-Role.yaml` file.
+   1. In the VSCode (Code-Server) on the left menus expand f5-bd-ansible-labs --> 401-F5-AppWorld-Lab --> AS3 --> 00-Backup-Restore Role --> and select the ``Backup-Role.yaml`` file.
 
    2. Notice that this playbook is utilizing Ansible Roles rather than one giant playbook, roles are used to break down code into functions that can be used as repeatable code, in our code below it will first remove AS3 from the F5 device using the `f5_remove_as3_backup` role and then then use the `f5_backup_data` role to backup the F5 device.  
    
@@ -45,11 +45,10 @@ EXAMINING THE CODE
 
    4.  Notice that there are 2 folders in there a defaults folder and a tasks folder.  
    
-       -  The `defaults` folder contains a main.yml that creates the variable `provider` for allowing any f5 ansible module within that role to utilize for connecting to the f5 device (using our inventory file information).
-       
-       -  The `tasks` folder contains a main.yml that references another yaml file `f5_backup_config.yaml` this contains the code for backing up the F5 device and how the date/timestamp are collected along with the hostname (gathered from our inventory file).
+       -  The **defaults** folder contains a main.yml that creates the variable ``provider`` for allowing any f5 ansible module within that role to utilize for connecting to the f5 device (using our inventory file information).
+       -  The **tasks** folder contains a main.yml that references another yaml file ``f5_backup_config.yaml`` this contains the code for backing up the F5 device and how the date/timestamp are collected along with the hostname (gathered from our inventory file).
 
-   5.  When running a restore later you can also examine the restore role `f5_restore_data_imparative` within the roles folder to see how its is coded (we are using the imperative restore code)
+   5.  When running a restore later you can also examine the restore role ``f5_restore_data_imparative`` within the roles folder to see how its is coded (we are using the imperative restore code)
 
 
 RUN THE TEMPLATE
@@ -65,9 +64,7 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
       
          cd ~/f5-bd-ansible-labs/401-F5-AppWorld-Lab/AS3/00-Backup-Restore-Role/
 
-   3. **(Optional)** View 'vars/f5_vars.yml' file in the vars folder to see information about the deployment (i.e. local_folder_location)
-      
-   4. Run the Ansible Playbook ‘Backup-Role.yaml’:
+   3. Run the Ansible Playbook ``Backup-Role.yaml``:
       
       .. note:: 
          
@@ -79,7 +76,8 @@ Running this template assumes that a F5 BIG-IP instance, necessary webservers an
 
       In this example, the playbook looks for the Folder-Location and File-Name variables as specified in the vars/f5_vars.yaml file and uses that information to tell the BIG-IP to run a backup and then export that file to where the Folder-Location and File-Name variables points to.
 
-   5. **(Optional)** Run the Ansible Playbook ‘Restore-Role.yaml’:
+   4. **(Optional)** Run the Ansible Playbook ``Restore-Role.yaml``:
+
       If you have run the Modules section of this lab and already executed a backup and want to test the AS3 section then it is **(Recommended)** to run a restore
       
       .. code:: bash
@@ -111,8 +109,8 @@ This section is optional and for testing and verification purposes only. It assu
 
    **Ansible Host:**
 
-   - Within a terminal window run `ls /f5/code-output/` to verify the backup file exists
-   - This file will be named based on the inventory-hostname-Year-Month-Day-Hour-Minute-Second.ucs `e.g. f5-2024-12-13-03-27-51.ucs`.
+   - Within a terminal window run ``ls /f5/code-output/`` to verify the backup file exists
+   - This file will be named based on the inventory-hostname-Year-Month-Day-Hour-Minute-Second.ucs ``e.g. f5-2024-12-13-03-27-51.ucs``.
    - This method was used to ensure date/timestamps of backups on files and prevents overwriting of other backups. 
 
 
@@ -122,9 +120,9 @@ This section is optional and for testing and verification purposes only. It assu
 
       - Login to the BIG-IP instance  
       - Navigate to System --> Archives  
-      - There should be an archive file named similarly to `f5-2024-12-13-03-27-51.ucs` based on the date/timestamp
+      - There should be an archive file named similarly to ``f5-2024-12-13-03-27-51.ucs`` based on the date/timestamp
 
    - Login information for the BIG-IP:
    
       * username: admin 
-      * password: **found in the inventory hosts file**
+      * password: Ansible123!
